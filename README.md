@@ -3,7 +3,9 @@ frontend
 
 Ember front end for HospitalRun
 
-To run the app, you will need the following:
+### MAC set up: 
+
+To run the app (on a mac), you will need the following:
 
 1. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `sudo npm install -g ember-cli@0.1.4`
 2. Install [bower](https://www.npmjs.org/package/bower): `sudo npm install -g bower`
@@ -20,7 +22,9 @@ To run the app, you will need the following:
 7. Start the server so you can view the repo in your browser by running `ember serve` from the `frontend` directory.
 8. Go to `http://0.0.0.0:4200/` in a browser and login with your couchdb admin user.
 
-### WINDOWS version of setting up application: 
+### WINDOWS set up: 
+
+To run the app (on windows), you will need the following:
 
 1. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli`
 2. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
