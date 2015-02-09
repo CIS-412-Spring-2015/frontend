@@ -30,7 +30,7 @@ To run the app (on windows), you will need the following:
 1. Install Nodejs [nodejs.com](https://www.nodejs.com)
 2. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli`
 3. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
-4. Install [git](http://git-scm.com/download/win) 
+4. Install [git](http://git-scm.com/download/win) (will automatically download git when link is clicked)
 5. Clone the `frontend` directory! 
 6. Go to the `frontend` directory in the command line, and run the following:
   * `npm install` to install needed node modules.
