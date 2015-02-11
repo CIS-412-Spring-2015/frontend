@@ -44,6 +44,10 @@ export default Ember.Mixin.create({
             'Pharmacist', 
             'System Administrator'
         ],
+        add_ministry_report: [
+            'Spiritual Ministry Director',
+            'System Administrator'
+        ],
         add_photo: [
             'Data Entry',
             'Hospital Administrator',
