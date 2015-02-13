@@ -8,10 +8,6 @@ import VisitTypes from 'hospitalrun/mixins/visit-types';
 
 export default AbstractEditController.extend(ChargeActions, PatientSubmodule, UserSession, VisitTypes, {
     needs: 'visits',
-    
-    canAddCharge: function() {        
-        return this.currentUserCan('add_charge');
-    }.property(),
 
     canAddImaging: function() {
         return this.currentUserCan('add_imaging');
@@ -63,6 +59,7 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
     
     
     cancelAction: 'returnToPatient',
+    chargePricingCategory: 'Ward',
     chargeRoute: 'visits.charge',
     clinicList: Ember.computed.alias('controllers.visits.clinicList'),
     findPatientVisits: false,

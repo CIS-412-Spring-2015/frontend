@@ -11,9 +11,8 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, {
         return this.currentUserCan('add_procedure');
     }.property(),
     
-    canAddCharge: function() {        
-        return this.currentUserCan('add_charge');
-    }.property(),
+    chargePricingCategory: 'Procedure',
+    chargeRoute: 'procedures.charge',
     
     anesthesiaTypes: Ember.computed.alias('controllers.visits.anesthesiaTypes'),
     anesthesiologistList: Ember.computed.alias('controllers.visits.anesthesiologistList'),
@@ -88,22 +87,15 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, {
     
     beforeUpdate: function() {
         if (this.get('isNew')) {
-            this.set('newProcedure', true);         
-        }
-        return Ember.RSVP.Promise.resolve();
+            return this.addChildToVisit(this.get('model'), 'procedures');
+        } else {
+            return Ember.RSVP.Promise.resolve();
+        }        
     },
     
-    afterUpdate: function(procedure) {
+    afterUpdate: function() {
         var alertTitle = 'Procedure Saved',
             alertMessage = 'The procedure record has been saved.';
-        if (this.get('newProcedure')) {
-            this.get('visitProcedures').then(function(list) {
-                list.addObject(procedure);
-                this.get('editController').send('update');
-                this.displayAlert(alertTitle, alertMessage);                
-            }.bind(this));            
-        } else {
-            this.displayAlert(alertTitle, alertMessage);
-        }
+        this.displayAlert(alertTitle, alertMessage);
     }
 });
