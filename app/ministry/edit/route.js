@@ -1,5 +1,6 @@
-import AbstractIndexRoute from 'hospitalrun/routes/abstract-index-route';
-export default AbstractIndexRoute.extend({
+import AbstractEditRoute from 'hospitalrun/routes/abstract-edit-route';
+export default AbstractEditRoute.extend({
     modelName: 'ministry',
-    pageTitle: 'Edit Monthly Report - {{currentMonth}}'
+    editTitle: 'Edit Monthly Report - {{currentMonth}}',
+    newTitle: 'New Report - {{currentMonth}}'
     });
