@@ -1,4 +1,4 @@
-import AbstractPagedController from 'hospitalrun/controllers/abstract-paged-controller';
-export default AbstractPagedController.extend({
+import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
+export default AbstractEditController.extend({
     
 });

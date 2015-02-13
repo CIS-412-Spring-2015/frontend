@@ -1,3 +1,26 @@
-<div class="alert alert-info">
-    <em>Still Need to Create this page!</em>
+<div class="panel panel-success">
+    <div class="panel-body">
+        <div class="row">        
+            <div class="form-group col-sm-3">
+                <label class="control-label">Id</label> {{displayPatientId}}
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="control-label">Name</label> {{displayName}}
+            </div>
+            <div class="form-group col-sm-2">
+                <label class="control-label">Gender</label> {{gender}}
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="control-label">Age</label> {{age}}
+            </div>
+        </div>                
+    </div>
 </div>
+<ul class="nav nav-pills" role="tablist">
+    <li role="presentation" class="active" ><a href="#general" role="tab" data-toggle="pill">General</a></li>
+    <li role="presentation"><a href="#photos" role="tab" data-toggle="pill">Photos</a></li>            
+    <li role="presentation"><a href="#medication" role="tab" data-toggle="pill">Medication</a></li>
+    <li role="presentation"><a href="#labs" role="tab" data-toggle="pill">Labs/Imaging</a></li>
+    <li role="presentation"><a href="#visits" role="tab" data-toggle="pill">Visits/Appointments</a></li>
+    <li role="presentation"><a href="#social" role="tab" data-toggle="pill">Social Work</a></li>
+</ul>
