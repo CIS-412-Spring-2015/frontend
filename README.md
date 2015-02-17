@@ -7,7 +7,7 @@ Ember front end for HospitalRun
 
 To run the app (on a mac), you will need the following:
 
-1. Install Nodejs [nodejs.org](https://www.nodejs.org)
+1. Install Nodejs [nodejs.org](https://nodejs.org)
 2. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `sudo npm install -g ember-cli@0.1.4`
 3. Install [bower](https://www.npmjs.org/package/bower): `sudo npm install -g bower`
 4. Clone the `frontend` directory after downloading [Github for Mac](https://mac.github.com/)! 
@@ -27,7 +27,7 @@ To run the app (on a mac), you will need the following:
 
 To run the app (on windows), you will need the following:
 
-1. Install Nodejs [nodejs.org](https://www.nodejs.org)
+1. Install Nodejs [nodejs.org](https://nodejs.org)
 2. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli`
 3. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
 4. Install [git](http://git-scm.com/download/win) (will automatically download git when link is clicked)
