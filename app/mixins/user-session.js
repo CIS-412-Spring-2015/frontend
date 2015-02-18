@@ -71,7 +71,14 @@ export default Ember.Mixin.create({
             'Hospital Administrator',
             'Medical Records Officer',
             'System Administrator'             
-        ],        
+        ],
+        add_pricing_profile:  [
+            'Data Entry',
+            'Business Office', 
+            'Hospital Administrator',
+            'Medical Records Officer',
+            'System Administrator'             
+        ],
         add_lab: [
             'Data Entry',
             'Doctor',
@@ -252,6 +259,13 @@ export default Ember.Mixin.create({
             'Medical Records Officer',
             'System Administrator'             
         ],
+        delete_pricing_profile:  [
+            'Data Entry',
+            'Business Office', 
+            'Hospital Administrator',
+            'Medical Records Officer',
+            'System Administrator'             
+        ],        
         delete_procedure: [
             'Doctor', 
             'Hospital Administrator',
@@ -361,8 +375,11 @@ export default Ember.Mixin.create({
             'System Administrator'
         ],
         patients: [
+            'Business Office',
             'Data Entry',
             'Doctor', 
+            'Finance',
+            'Finance Manager',            
             'Hospital Administrator',
             'Medical Records Officer',
             'Nurse', 
