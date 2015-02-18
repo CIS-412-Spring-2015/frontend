@@ -7,7 +7,7 @@ Ember front end for HospitalRun
 
 To run the app (on a mac), you will need the following:
 
-1. Install Nodejs [nodejs.org](https://www.nodejs.org)
+1. Install Nodejs [nodejs.org](https://nodejs.org)
 2. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `sudo npm install -g ember-cli@0.1.4`
 3. Install [bower](https://www.npmjs.org/package/bower): `sudo npm install -g bower`
 4. Clone the `frontend` directory after downloading [Github for Mac](https://mac.github.com/)! 
@@ -27,18 +27,19 @@ To run the app (on a mac), you will need the following:
 
 To run the app (on windows), you will need the following:
 
-1. Install Nodejs [nodejs.org](https://www.nodejs.org)
-2. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli`
-3. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
-4. Install [git](http://git-scm.com/download/win) (will automatically download git when link is clicked)
-5. Clone the `frontend` directory after downloading the [Windows GitHub](https://windows.github.com/)! 
-6. Go to the `frontend` directory in the command line, and run the following:
+1. Install Nodejs [nodejs.org v0.10.36](http://blog.nodejs.org/2015/01/26/node-v0-10-36-stable/)
+2. Install [git](http://git-scm.com/download/win) (will automatically download git when link is clicked)
+3. Install [Windows GitHub](https://windows.github.com/)
+4. Install [ember-cli v0.1.4](https://www.npmjs.org/package/ember-cli): `npm install -g ember-cli`
+5. Install [bower](https://www.npmjs.org/package/bower): `npm install -g bower`
+6. Clone the `frontend` from the GitHub Client
+7. Go to the `frontend` directory in the command line, and run the following:
   * `npm install` to install needed node modules.
   * `bower install` to install needed bower modules.
   * (Make sure your directory for the npm folder is in either the system variables or user variables path. most likely: `C:\Users\[username]\AppData\Roaming\npm`)
-7. Install/configure couchdb
+8. Install/configure couchdb
    1. Download and install couchdb from http://couchdb.apache.org/#download (Make sure use the Windows version or will NOT work)
    2. Run `sh initcouch.sh` in the cmd line `frontend` directory to setup couchdb with an admin user with the credentials `hradmin/test`.
-8. Go into the frontend folder, then into server, then click on config-example.js, check to make sure that the `couch_admin_user` and `couch_admin_password` match your admin credentials, and rename the file to `config.js`. 
-9. Start the server so you can view the repo in your browser by running `ember server` from the `frontend` directory.
-10. Go to `http://0.0.0.0:4200/` or `localhost:4200/` in a browser and login with your couchdb admin user (credntials `hradmin/test`).
+9. Go into the frontend folder, then into server, then click on config-example.js, check to make sure that the `couch_admin_user` and `couch_admin_password` match your admin credentials, and rename the file to `config.js`. 
+10. Start the server so you can view the repo in your browser by running `ember server` from the `frontend` directory.
+11. Go to `http://0.0.0.0:4200/` or `localhost:4200/` in a browser and login with your couchdb admin user (credntials `hradmin/test`).
