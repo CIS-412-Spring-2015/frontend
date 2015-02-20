@@ -46,25 +46,25 @@ To run the app (on windows), you will need the following:
 
 ### Linux set up: (Specifically Ubuntu)
 
-**CL means type the line into Terminal  
+**CL means type the line into Terminal**  
 
-CL: sudo apt-get install nodejs  
-CL: sudo apt-get install npm  
-CL: sudo apt-get install git  
-CL: sudo apt-get install gitg (Gui client for github)  
-CL: sudo npm install -g ember-cli@0.1.4  
-CL: sudo npm install -g bower  
-CL: git clone git://github.com/CIS-412-Spring-2015/frontend.git  
-Move to front end folder in Terminal  
-CL: sudo npm install   
-**Might get some errors (Ignore these let it finish)  
-CL: sudo apt-get install nodejs-legacy  
-CL: bower install (Don't use sudo)  
-CL: sudo apt-get install curl  
-CL: sudo apt-get install couchdb  
-CL: sh initcouch.sh  
-Rename config-example.js to config.js in frontend/server  
-CL: git pull  
-CL: ember serve  
-**App should be running on 127.0.0.1:4200  
-**Might be 0.0.0.0:4200 or localhost:4200  
+1. **CL:** sudo apt-get install nodejs  
+2. **CL:** sudo apt-get install npm  
+3. **CL:** sudo apt-get install git  
+4. **CL:** sudo apt-get install gitg (Gui client for github)  
+5. **CL:** sudo npm install -g ember-cli@0.1.4  
+6. **CL:** sudo npm install -g bower  
+7. **CL:** git clone git://github.com/CIS-412-Spring-2015/frontend.git  
+ * _Move to front end folder in Terminal_  
+8. **CL:** sudo npm install   
+ * _Might get some errors (Ignore these let it finish)_  
+9. **CL:** sudo apt-get install nodejs-legacy  
+10. **CL:** bower install (Don't use sudo)  
+11. **CL:** sudo apt-get install curl  
+12. **CL:** sudo apt-get install couchdb  
+13. **CL:** sh initcouch.sh  
+ * _Rename config-example.js to config.js in frontend/server_  
+14. **CL:** git pull  
+15. **CL:** ember serve  
+ * _App should be running on 127.0.0.1:4200_  
+ * _Might be 0.0.0.0:4200 or localhost:4200_
