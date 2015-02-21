@@ -11,8 +11,8 @@
     </div>
 </div>
 <ul class="nav nav-pills" role="tablist">
-    <li role="presentation" class="active"><a href="#staff" role="tab" data-toggle="pill">Staff</a></li>
-    <li role="presentation"><a href="#patient" role="tab" data-toggle="pill">Patient</a></li>
+    <li role="presentation" class="active" ><a href="#staff" role="tab" data-toggle="pill">Staff</a></li>
+    <li role="presentation" class="active" ><a href="#patient" role="tab" data-toggle="pill">Patient</a></li>
     <li role="presentation"><a href="#leadership" role="tab" data-toggle="pill">Leadership</a></li>
     <li role="presentation"><a href="#community" role="tab" data-toggle="pill">Community</a></li>
     <li role="presentation"><a href="#ce" role="tab" data-toggle="pill">Christianity Explored</a></li>
@@ -120,6 +120,88 @@
                 </tr>
             </table>
         </div>
+        <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson-->
+        <div class="panel detail-section">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                        General Information
+                </h3>
+            </div>
+
+            <div class="panel-body detail-section-content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group has-success">
+                            <label class="control-label">Record Number</label>
+                            <div class="form-control not-editable">
+                                {{id}}
+                            </div>
+                        </div>
+                        {{em-input property="firstName" label="First Name" class="required"}}
+                        {{em-input property="lastName" label="Last Name" class="required"}}
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                       {{em-input property="age" label="Age" class="required"}}
+                        {{em-select
+                            prompt=" "
+                            label="Religious Affiliation"
+                            property="religiousAffiliation"
+                            content=religiousAffiliation
+                            optionValuePath="content"
+                            optionLabelPath="content"
+                        }}
+                        {{em-select
+                            prompt=" "
+                            label="Present Activity"
+                            property="presentActivity"
+                            content=presentActivity
+                            optionValuePath="content"
+                            optionLabelPath="content"
+                        }}
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div>
+                                {{ext-radio name=gender content=genderList value=gender showInline=true}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel detail-section">
+          <div class="panel-heading">
+              <h3 class="panel-title">
+                  Address/Contact Information
+              </h3>
+          </div>
+
+          <div class="panel-body detail-section-content">
+              <div class="row">
+
+                  {{em-input property="phone" label="Phone Contact" class="col-xs-12 col-sm-6"}}
+                  {{em-input property="email" type="email" label="Email" class="col-xs-12 col-sm-6"}}
+                  {{#if haveAddressOptions}}
+                      {{#if address1Include}}
+                          {{em-text label=address1Label property="address" rows=3 class="col-xs-12 col-sm-6"}}
+                      {{/if}}
+                      {{#if address2Include}}
+                          {{em-input label=address2Label property="address2" class="col-xs-12 col-sm-6" }}
+                      {{/if}}
+                      {{#if address3Include}}
+                          {{em-input label=address3Label property="address3" class="col-xs-12 col-sm-6" }}
+                      {{/if}}
+                      {{#if address4Include}}
+                          {{em-input label=address4Label property="address4" class="col-xs-12 col-sm-6" }}
+                      {{/if}}
+                  {{else}}
+                      {{em-text label="Address" property="address" rows=3  class="col-xs-12 col-sm-6"}}
+                  {{/if}}
+                  {{select-or-typeahead property="country" label="Country" list=countryList selection=country class="col-xs-12 col-sm-6" }}
+
+              </div>
+          </div>
+        </div>
+        <!--- end comment ======== by: Celtson-->
     </div>
   </div>
   <div role="tabpanel" class="tab-pane" id="demographics">
