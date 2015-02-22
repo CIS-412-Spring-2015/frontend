@@ -20,4 +20,9 @@ export default AbstractEditController.extend(GenderList, {
       'Other'
   ]
 
+  declarationType: [
+      'New Believer',
+      'Recommittment'
+  ]
+
 });
