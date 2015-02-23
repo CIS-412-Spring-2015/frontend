@@ -18,7 +18,7 @@ export default AbstractEditController.extend(GenderList, {
       'Mobile Clinic Outreach',
       'Door to Door Evangelical',
       'Other'
-  ]
+  ],
 
   declarationType: [
       'New Believer',

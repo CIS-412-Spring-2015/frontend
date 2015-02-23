@@ -137,8 +137,8 @@
                                 {{id}}
                             </div>
                         </div>
-                        {{em-input property="firstName" label="First Name" class="required"}}
-                        {{em-input property="lastName" label="Last Name" class="required"}}
+                        {{em-input property="firstName" label="First Name"}}
+                        {{em-input property="lastName" label="Last Name"}}
                     </div>
                     <div class="col-xs-12 col-sm-6">
                        {{em-input property="age" label="Age" class="required"}}
@@ -160,11 +160,12 @@
                         }}
                         {{em-select
                             prompt=" "
-                            label="Declaration Type"
+                            label="Type of Declaration"
                             property="declarationType"
                             content=declarationType
                             optionValuePath="content"
                             optionLabelPath="content"
+                            class="required"
                         }}
                         <div class="form-group">
                             <label>Gender</label>
