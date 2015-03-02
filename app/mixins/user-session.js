@@ -125,6 +125,13 @@ export default Ember.Mixin.create({
             'Medical Records Officer',
             'System Administrator' 
         ],
+        add_payment: [
+            'Cashier',
+            'Business Office', 
+            'Hospital Administrator',
+            'Medical Records Officer',
+            'System Administrator' 
+        ],        
         add_procedure: [
             'Data Entry',
             'Doctor',

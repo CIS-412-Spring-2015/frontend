@@ -4,7 +4,7 @@
             <th>Number</th>
             <th>Patient</th>
             <th>Total</th>
-            <th>Status</th>
+            <th>Balance Due</th>
             <th>Bill Date</th>
             {{#if showActions}}
                 <th>Actions</th>
@@ -16,10 +16,15 @@
                     <td>{{displayInvoiceNumber}}</td>
                     <td>{{patient.displayName}} - {{patient.displayPatientId}} <br>{{visit.primaryDiagnosis}}</td>
                     <td>{{total}}</td>
-                    <td>{{status}}</td>
+                    <td>{{remainingBalance}}</td>
                     <td>{{date-format billDate}}</td>
                     {{#if parentController.showActions}}
-                        <td>                        
+                        <td> 
+                            {{#if parentController.canAddPayment}}
+                                <button class="btn btn-default neutral" {{action 'showAddPayment' this  bubbles=false }}>
+                                    <span class="octicon octicon-plus"></span> Add Payment
+                                </button>
+                            {{/if}}
                             {{#if parentController.canAdd}}
                                 <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Edit</button>
                             {{/if}}

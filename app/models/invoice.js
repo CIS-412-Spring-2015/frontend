@@ -10,19 +10,21 @@ export default AbstractModel.extend(NumberFormat,{
     visit: DS.belongsTo('visit'),
     status: DS.attr('string'),
     billDate: DS.attr('date'),
-    /* rolloup stored in the object of the payments */
     paidTotal: DS.attr('number'),
     paidFlag: DS.attr('boolean', {defaultValue: false}),
-    /*what do we overlay on the line items to generate the priceTotal */
+    patientResponsibility: DS.attr('number'),
     paymentProfile: DS.belongsTo('price-profile'),
     /*payments track the number of payment events attached to an invoice.*/
     payments: DS.hasMany('payment'),
     /*the individual line items of the invoice*/
     lineItems: DS.hasMany('billing-line-item'),
-
-    amountOwed: function() {
-        return this._calculateTotal('lineItems','amountOwed');
-    }.property('lineItems.@each.amountOwed'),
+    
+        
+    addPayment: function(payment) {
+        var payments = this.get('payments');
+        payments.addObject(payment);
+        this.paymentAmountChanged();
+    },
     
     discount: function() {
         return this._calculateTotal('lineItems','discount');
@@ -31,6 +33,12 @@ export default AbstractModel.extend(NumberFormat,{
     nationalInsurance: function() {
         return this._calculateTotal('lineItems','nationalInsurance');
     }.property('lineItems.@each.nationalInsurance'),
+        
+    remainingBalance: function() {
+        var patientResponsibility = this.get('patientResponsibility'),
+            paidTotal = this.get('paidTotal');
+        return this._numberFormat(patientResponsibility - paidTotal);
+    }.property('patientResponsibility','paidTotal'),    
     
     privateInsurance: function() {
         return this._calculateTotal('lineItems','privateInsurance');
@@ -39,7 +47,7 @@ export default AbstractModel.extend(NumberFormat,{
     total: function() {
         return this._calculateTotal('lineItems','total');
     }.property('lineItems.@each.total'),
-        
+    
     displayInvoiceNumber: function() {
         var externalInvoiceNumber = this.get('externalInvoiceNumber'),
             id = this.get('id');
@@ -76,11 +84,30 @@ export default AbstractModel.extend(NumberFormat,{
     }.property('lineItems.@each.amountOwed'),
     
     patientIdChanged: function() {
-        var patientDisplayName = this.get('patient.displayName'),
-            patientDisplayId = this.get('patient.displayPatientId');
-        this.set('patientInfo', '%@ - %@'.fmt(patientDisplayName, patientDisplayId));
+        if (!Ember.isEmpty(this.get('patient'))) {
+            var patientDisplayName = this.get('patient.displayName'),
+                patientDisplayId = this.get('patient.displayPatientId');
+            this.set('patientInfo', '%@ - %@'.fmt(patientDisplayName, patientDisplayId));
+        }
     }.observes('patient.displayName', 'patient.id', 'patient.displayPatientId'),
     
+    patientResponsibilityChanged: function() {
+        var patientResponsibility = this._calculateTotal('lineItems','amountOwed');
+        this.set('patientResponsibility', patientResponsibility);
+    }.observes('lineItems.@each.amountOwed'),
+    
+    paymentAmountChanged: function() {
+        var payments = this.get('payments'),
+            paidTotal = payments.reduce(function(previousValue, payment) {
+                return previousValue += this._getValidNumber(payment.get('amount'));
+            }.bind(this),0);
+        this.set('paidTotal', this._numberFormat(paidTotal,true));
+        var remainingBalance = this.get('remainingBalance');
+        if (remainingBalance <= 0) {
+            this.set('paidFlag', true);
+        }
+    }.observes('payments.[]','payments.@each.amount'),
+        
     validations: {
         patientTypeAhead: PatientValidation.patientTypeAhead,        
         
