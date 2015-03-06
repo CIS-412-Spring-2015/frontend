@@ -25,28 +25,18 @@ export default AbstractEditController.extend(GenderList, {
       'Recommittment'
   ],
 
+  canBeSeen: false,
+
   actions: {
+        showGenInfo: function() {
+          this.set('canBeSeen', true);
+        },
+        hideGenInfo: function() {
+          this.set('canBeSeen', false);
+        },
         generateReport: function() {
-            var endDate = this.get('endDate'),
-                reportRows = this.get('reportRows'),
-                reportType = this.get('reportType'),
-                startDate = this.get('startDate');
-        //     if (Ember.isEmpty(startDate) && Ember.isEmpty(endDate)) {
-        //         return;
-        //     }
-        //     reportRows.clear();
-        //     this.showProgressModal();
-        //     switch (reportType) {
-        //         case 'expiration': {
-        //             this._generateExpirationReport();
-        //             break;
-        //         }
-        //         default: {
-        //             this._generateInventoryReport();
-        //             break;
-        //         }
-        //     }
+            //Random not needed function at the moment
         }
-    }
+  }
 
 });

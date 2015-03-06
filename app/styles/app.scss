@@ -3,6 +3,47 @@
 @import "bootstrap-theme";
 @import "typography";
 
+/* ================================================================== */
+/* =====Celtson CSS changes until I find where to put CSS file ====== */
+/* ================================================================== */
+ul.list-group li.listSet {
+  width: 18%;
+  margin: 0.75em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  display: block;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+li.listSet.active {
+  background-color: #428bca;
+  color:white;
+}
+
+ul.list-group li.listSet:hover {
+  background-color: #e9f3ff;
+  cursor: pointer;
+}
+
+li.listSet a, li.listSet a:active{
+  text-decoration:none;
+  display: block;
+  padding: 15px 20px;
+}
+
+.allGenInfo {
+}
+
+/* end Celtson changes */
+/* =================== */
+
 @keyframes domChanged {
     from {
         margin-left: 100%;
