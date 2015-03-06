@@ -22,7 +22,7 @@ ul.list-group li.listSet {
   border-radius: 4px;
 }
 
-li.listSet.active {
+li.listSet:active {
   background-color: #428bca;
   color:white;
 }
