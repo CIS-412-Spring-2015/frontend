@@ -1,8 +1,9 @@
 import AbstractReportController from 'hospitalrun/controllers/abstract-report-controller';
 import Ember from 'ember';
 import LocationName from 'hospitalrun/mixins/location-name';
+import ModalHelper from 'hospitalrun/mixins/modal-helper';
 import NumberFormat from "hospitalrun/mixins/number-format";
-export default AbstractReportController.extend(LocationName, NumberFormat, {
+export default AbstractReportController.extend(LocationName, ModalHelper, NumberFormat, {
     needs: ['pouchdb'],
     effectiveDate: null,
     pouchdbController: Ember.computed.alias('controllers.pouchdb'),
@@ -399,7 +400,11 @@ export default AbstractReportController.extend(LocationName, NumberFormat, {
                 //state of inventory at effective date
                 var grandCost = 0,
                     grandQuantity = 0;
-                Ember.keys(inventoryMap).forEach(function(key) {                    
+                Ember.keys(inventoryMap).forEach(function(key) {
+                    if (Ember.isEmpty(inventoryMap[key])) {
+                        //If the inventory item has been deleted, ignore it.
+                        return;
+                    }
                     var item = inventoryMap[key],
                         inventoryPurchases = item.purchaseObjects,
                         inventoryRequests = item.requestObjects,
@@ -668,7 +673,11 @@ export default AbstractReportController.extend(LocationName, NumberFormat, {
                 } 
                 this._addTotalsRow('Total: ', grandCost, grandQuantity);
                 this._finishReport();
+            }.bind(this), function(err) {
+                this._notifyReportError('Error in _findInventoryItemsByPurchase:'+err);
             }.bind(this));
+        }.bind(this), function(err) {
+            this._notifyReportError('Error in _findInventoryItemsByRequest:'+err);
         }.bind(this));
     },
     
@@ -705,6 +714,13 @@ export default AbstractReportController.extend(LocationName, NumberFormat, {
                 resolve(inventoryMap);
             }, reject);
         });
+    },
+        
+    _notifyReportError: function(errorMessage) {
+        var alertMessage = 'An error was encountered while generating the requested report.  Please let your system administrator know that you have encountered an error.';
+        this.closeProgressModal();
+        this.displayAlert('Error Generating Report', alertMessage);
+        throw new Error(errorMessage);
     },
     
     actions: {
