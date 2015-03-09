@@ -1,4 +1,4 @@
-{{#if hasReports}} <!-- Add this function-->
+{{#if hasRecords}} <!-- Add this function-->
     <table class="table">
         <tr class="table-header">
             <th>ID</th>
@@ -9,9 +9,6 @@
                 <td>
                     {{#if parentController.canAdd}}
                         <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Continue Editing</button>
-                        {{/if}}
-                        {{#if parentController.canDelete}}
-                            <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                     {{/if}}
                 </td>
             {{/if}}
@@ -21,9 +18,9 @@
 {{else}}
     <div class="alert alert-info">
         <em>No 'In Progress' Report Exists.</em>
-        {{#if canAdd}}
-            <em>Create a new patient record?</em>
-            <button class="btn btn-primary on-white" {{action 'newReport'}}>Start New Report</button>
+        {{#if canAddReport}}
+            <em>Create a new monthly report?</em>
+            <button class="btn btn-primary on-white" {{action 'new_ministry_report'}}>New Report</button>
         {{/if}}
     </div>
 {{/if}}

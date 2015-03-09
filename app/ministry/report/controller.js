@@ -1,5 +1,11 @@
 import AbstractPagedController from 'hospitalrun/controllers/abstract-paged-controller';
-export default AbstractPagedController.extend({
-    addPermission: 'add_report',
-    deletePermission: 'delete_report',
+import PouchAdapterUtils from "hospitalrun/mixins/pouch-adapter-utils";
+import UserSession from "hospitalrun/mixins/user-session";
+export default AbstractPagedController.extend(PouchAdapterUtils, UserSession,{
+    
+    canAddReport: function() {        
+        return this.currentUserCan('add_ministry_report');
+    }.property(),
+    
+    updateCapability: 'add_ministry_report'
 });
