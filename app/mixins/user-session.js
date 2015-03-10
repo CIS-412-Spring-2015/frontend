@@ -67,6 +67,7 @@ export default Ember.Mixin.create({
         ],
         add_pricing: [
             'Data Entry',
+            'Finance',
             'Business Office', 
             'Hospital Administrator',
             'Medical Records Officer',
@@ -74,6 +75,7 @@ export default Ember.Mixin.create({
         ],
         add_pricing_profile:  [
             'Data Entry',
+            'Finance',
             'Business Office', 
             'Hospital Administrator',
             'Medical Records Officer',
@@ -260,6 +262,7 @@ export default Ember.Mixin.create({
             'System Administrator'
         ],       
         delete_pricing: [
+            'Finance',
             'Data Entry',
             'Business Office', 
             'Hospital Administrator',
@@ -267,6 +270,7 @@ export default Ember.Mixin.create({
             'System Administrator'             
         ],
         delete_pricing_profile:  [
+            'Finance',
             'Data Entry',
             'Business Office', 
             'Hospital Administrator',
@@ -397,6 +401,7 @@ export default Ember.Mixin.create({
         ],
         pricing: [
             'Data Entry',
+            'Finance',
             'Business Office', 
             'Hospital Administrator',
             'Medical Records Officer',
