@@ -13,7 +13,41 @@
                     <th>Hospital Prayer Group Intercessions</th>
                     <th>Spiritual Center Staff Meetings</th>
                 </tr>
+                <tr class="table-header">
+                    <td>
+                        <div class="col-xs-12 col-sm-6">
+                            {{em-input property="integer"}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-12 col-sm-6">
+                            {{em-input property="integer"}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-12 col-sm-6">
+                            {{em-input property="integer"}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-12 col-sm-6">
+                            {{em-input property="integer"}}
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
+        <div class="panel-body detail-section-content">
+            <h3>Staff Development
+            </h3>
+                {{em-text property="staffDevelopment" rows=8 class="col-lg-12 col-sm-6"}}
+            <h3>Continuing Education/Counseling/Support Opportunities
+            </h3>
+                {{em-text property="staffOpportunities" rows=8 class="col-lg-12 col-sm-6"}}
+        </div><!--end row-->
     </div>
+    <div class="panel-footer">
+        <button class="btn btn-default" {{action 'generateReport'}}>Save</button>
+        <button class="btn btn-default warning" {{action 'hideGenInfo'}}>Cancel</button>
+      </div>
   </div>
