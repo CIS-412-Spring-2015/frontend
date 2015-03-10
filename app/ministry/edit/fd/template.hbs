@@ -12,10 +12,21 @@
               </h3>
           </div>
           <div class="panel-body detail-section-content">
-            <h4 class="text-center">
-              Edit Current Believers
+            <h4 class="showCurrentBelievers text-center">
+              <button class="btn btn-default neutral">
+                Show Current Believers
+                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+              </button>
             </h4>
-            <ul class="list-group nav-pills">
+
+            <h4 class="hideCurrentBelievers text-center">
+              <button class="btn btn-default neutral">
+                Hide Current Believers
+                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+              </button>
+            </h4>
+
+            <ul class="list-group nav-pills showHideBelievers">
               <li class="listSet">
                 <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
               </li>
@@ -161,8 +172,25 @@
       </div>
       <div class="panel-footer">
         <button class="btn btn-default" {{action 'generateReport'}}>Save</button>
-        <a href="#ce"><button class="btn btn-default neutral">Previous</button></a>
-        <a href="#demographics"><button class="btn btn-default neutral">Next</button></a>
+        <button class="btn btn-default warning" {{action 'hideGenInfo'}}>Cancel</button>
+        <a href="#ce" role="tab" data-toggle="pill"><button class="btn btn-default neutral">Previous</button></a>
+        <a href="#demographics" role="tab" data-toggle="pill"><button class="btn btn-default neutral">Next</button></a>
       </div>
     </div>
 <!-- {{/em-form}} -->
+
+<script>
+    //This is a jquery function to hide the personal information edit section until they click the Edit arrow//
+    $(document).ready(function(){
+        $('.showCurrentBelievers').click(function(){
+            $('.showHideBelievers').show(1000);
+            $('.showCurrentBelievers').hide();
+            $('.hideCurrentBelievers').show();
+        });
+        $('.hideCurrentBelievers').click(function(){
+            $('.showHideBelievers').hide(1000);
+            $('.hideCurrentBelievers').hide();
+            $('.showCurrentBelievers').show();
+        });
+    });
+</script>

@@ -41,6 +41,15 @@ li.listSet a, li.listSet a:active{
 .allGenInfo {
 }
 
+.hideCurrentBelievers, .showHideBelievers{
+  display:none;
+}
+
+.glyphicon-chevron-down:hover, .glyphicon-chevron-up:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 /* end Celtson changes */
 /* =================== */
 
