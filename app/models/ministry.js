@@ -6,7 +6,7 @@ export default AbstractModel.extend(ReportDate, {
     
     reportDate: DS.attr('date'),
     
-    age: function() {
+    displayReportDate: function() {
         var reportDate = this.get('reportDate'),
             newReportDate = new Date();
         if (!Ember.isEmpty(reportDate)) {
