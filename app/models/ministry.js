@@ -1,19 +1,23 @@
 import AbstractModel from "hospitalrun/models/abstract";
 import ReportDate from 'hospitalrun/mixins/dob-days';
+import Ember from "ember";
 
 export default AbstractModel.extend(ReportDate, {
     
-//    dateOfBirth: DS.attr('date'),
-//    
-//    age: function() {
-//        var reportDate = this.get('reportDate'),
-//            newReportDate = new Date();
-//        if (!Ember.isEmpty(reportDate)) {
-//            return this.convertDOBToText(reportDate);
-//        } else {
-//            return this.convertDOBToText(newReportDate);
-//        }
-//    }.property('reportDate')
+    reportDate: DS.attr('date'),
+    
+    age: function() {
+        var reportDate = this.get('reportDate'),
+            newReportDate = new Date();
+        if (!Ember.isEmpty(reportDate)) {
+            console.log("Using existing Date");
+            return reportDate;
+        } else {
+            console.log("setting report Date");
+            this.set('reportDate', newReportDate);
+            return newReportDate;
+        }
+    }.property('reportDate')
 //    displayMinistryId: function() {
 //        var id = this.get('id');
 //        console.log(id);
