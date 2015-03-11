@@ -1,3 +1,21 @@
+<head>
+    <style>
+        .submissionTab {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        .submissionTabS {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+        
+    </style>
+</head>
+
 <div role="tabpanel" class="tab-pane" id="submit">
     <div class="panel">
         <div class="panel-heading">
@@ -13,20 +31,31 @@
             </table>
             
             <!--Tab Buttons-->
-            <button class="btn btn-default">Staff</button>
-            <button class="btn btn-default">Patient</button>
-            <button class="btn btn-default">Leadership</button>
-            <button class="btn btn-default">Community</button>
-            <button class="btn btn-default">Christianity Explored</button>
-            <button class="btn btn-default">Faith Declarations</button>
-            <button class="btn btn-default">Demographics</button>
-            <button class="btn btn-default">Additional Info</button>
-            <button class="btn btn-default">Summary</button>
+            <span class="row"> 
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Staff</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Patient</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Leadership</button></span>
+            </span>
+            <span class="row">
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Community</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Christianity Explored</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Faith Declarations</button></span>
+            </span>
+            <span class="row">
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Demographics</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Additional Info</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Summary</button></span>
+            </span>
             
             <!--Bottom Buttons-->
-            <button class="btn btn-default" {{action 'generateReport'}}>Save</button>
-            <button class="btn btn-default" {{action 'generateReport'}}>Submit</button>
-            
+            <span class="row">
+                <span class="col-xs-12">
+                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'generateReport'}}>Save</button>
+                </span>   
+                <span class="col-xs-12">
+                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'generateReport'}}>Submit</button>
+                </span>
+            </span>
         </div>
     </div>
   </div>
