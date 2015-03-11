@@ -1,16 +1,44 @@
-<div role="tabpanel" class="tab-pane" id="community">
-    <div class="panel">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                Community
-            </h3>
+<header>
+    <style>
+        textarea {resize: none;}
+    </style>
+</header>
+<body>
+    <div role="tabpanel" class="tab-pane" id="community">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Community
+                </h3>
+            </div>
+            <!There is some functionality missing at the moment. This will be added later when data storage is possible>
+            <!>
+                <!Section to story communtiy events as they are entered>
+            <!>
+            <div class="panel-body detail-section-content">
+                <table class="table">
+                    <tr class="table-header">
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data</th>
+                        <th>Location</th>
+                        <th>Number of Pastors/Churches Present</th>
+                        <th>Number of Participants</th>
+                    </tr>
+                    <tr class="table-header">
+                        <td>{{em-text property="name" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                        <td>{{em-text property="type" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                        <td>{{em-text property="date" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                        <td>{{em-text property="location" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                        <td>{{em-text property="numberPastorChurch" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                        <td>{{em-text property="numberParticipants" rows=1 class="col-lg-12 col-sm-6"}}</td>                    
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div class="panel-body detail-section-content">
-            <table class="table">
-                <tr class="table-header">
-                    <th><p>This will need to be set up to create different events. (not just tabs)</p></th>
-                </tr>
-            </table>
+        <div class="panel-footer">
+            <button class="btn btn-default" {{action 'generateReport'}}>Save</button>
+            <button class="btn btn-default warning" {{action 'hideGenInfo'}}>Cancel</button>
         </div>
     </div>
-  </div>
+</body>
