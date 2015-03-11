@@ -38,6 +38,22 @@ export default AbstractEditController.extend(GenderList, {
         },
         generateReport: function() {
             //Random not needed function at the moment
+        },
+        updateReport: function() {
+            var updateModel = this.get('model');
+
+            if (this.get('isNew')) {
+                var newData = updateModel.getProperties('reportDate');
+      
+                updateModel.deleteRecord();
+                updateModel = this.get('store').createRecord('ministry', newData);
+                this.set('model', updateModel);
+            } 
+
+          
+            updateModel.save().then(function() {
+                this.displayAlert('Report Saved', 'The report has been saved.');                
+            }.bind(this));
         }
   }
 

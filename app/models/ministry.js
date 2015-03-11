@@ -10,10 +10,8 @@ export default AbstractModel.extend(ReportDate, {
         var reportDate = this.get('reportDate'),
             newReportDate = new Date();
         if (!Ember.isEmpty(reportDate)) {
-            console.log("Using existing Date");
             return reportDate;
         } else {
-            console.log("setting report Date");
             this.set('reportDate', newReportDate);
             return newReportDate;
         }
