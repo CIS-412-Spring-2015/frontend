@@ -4,7 +4,7 @@
           <div class="panel-heading">
               <h3 class="panel-title">
                   Faith Declaration
-                  <!-- if canAddConvert make this function in future -->
+                  <!-- if canAddBeliever make this function in future -->
                     <button class="btn btn-primary align-right" {{action "showGenInfo" bubbles=false }}>
                       <span class="octicon octicon-plus"></span>Add New Believer
                     </button>
@@ -12,6 +12,7 @@
               </h3>
           </div>
           <div class="panel-body detail-section-content">
+            <!-- Show Current Believers button-->
             <h4 class="showCurrentBelievers text-center">
               <button class="btn btn-default neutral">
                 Show Current Believers
@@ -19,6 +20,7 @@
               </button>
             </h4>
 
+            <!-- Hide Current Believers button-->
             <h4 class="hideCurrentBelievers text-center">
               <button class="btn btn-default neutral">
                 Hide Current Believers
@@ -124,11 +126,11 @@
                                   class="required"
                               }}
                               <div class="form-group">
-                                  <label>Gender</label>
-                                  <div>
-                                      {{ext-radio name=gender content=genderList value=gender showInline=true}}
-                                  </div>
-                              </div>
+                                <label>Gender</label>
+                                <div>
+                                    {{ext-radio name=gender content=genderList value=gender showInline=true}}
+                                </div>
+                            </div>
                           </div>
                       </div>
                   </div>
@@ -180,15 +182,15 @@
 <!-- {{/em-form}} -->
 
 <script>
-    //This is a jquery function to hide the personal information edit section until they click the Edit arrow//
+    //This is a jquery function to hide the current believers section until they click the Show button//
     $(document).ready(function(){
         $('.showCurrentBelievers').click(function(){
-            $('.showHideBelievers').show(1000);
+            $('.showHideBelievers').show(500);
             $('.showCurrentBelievers').hide();
             $('.hideCurrentBelievers').show();
         });
         $('.hideCurrentBelievers').click(function(){
-            $('.showHideBelievers').hide(1000);
+            $('.showHideBelievers').hide(500);
             $('.hideCurrentBelievers').hide();
             $('.showCurrentBelievers').show();
         });
