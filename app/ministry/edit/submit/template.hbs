@@ -6,13 +6,12 @@
         }
         
         .submissionTabS {
-            padding-top: 15px;
-            padding-bottom: 15px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             
-            margin-top: 4px;
+            margin-top: 10px;
             margin-bottom: 4px;
         }
-        
     </style>
 </head>
 
@@ -26,34 +25,34 @@
         <div class="panel-body detail-section-content">
             <table class="table">
                 <tr class="table-header">
-                    <th><p>This is where we will be saving the monthly report!</p></th>
+                    <th><p>This is where we will be submitting the monthly report!</p></th>
                 </tr>
             </table>
             
             <!--Tab Buttons-->
             <span class="row"> 
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Staff</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Patient</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Leadership</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Staff</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Patient</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Leadership</button></span>
             </span>
             <span class="row">
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Community</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Christianity Explored</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Faith Declarations</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Community</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Christianity Explored</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Faith Declarations</button></span>
             </span>
             <span class="row">
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Demographics</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Additional Info</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-1 col-xs-10 submissionTab">Summary</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Demographics</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Additional Info</button></span>
+                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Summary</button></span>
             </span>
             
             <!--Bottom Buttons-->
             <span class="row">
                 <span class="col-xs-12">
-                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'generateReport'}}>Save</button>
+                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'updateReport'}}>Save</button>
                 </span>   
                 <span class="col-xs-12">
-                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'generateReport'}}>Submit</button>
+                    <button class="btn btn-default col-xs-offset-5 col-xs-2 submissionTabS" {{action 'blahblahreport'}}>Submit</button>
                 </span>
             </span>
         </div>
