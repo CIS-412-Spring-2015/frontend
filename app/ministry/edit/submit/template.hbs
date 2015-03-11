@@ -12,6 +12,20 @@
             margin-top: 10px;
             margin-bottom: 4px;
         }
+        
+        #submissionTabButtons button {
+            color: white;
+            /*Invalid COlor Scheme*/
+            background-color: #B21E06;
+            border-color: #6B1203;
+            
+            /* Valid Color Scheme
+            background-color: #44941E;
+            border-color: #2A5C13;*/
+            
+            border-width: 2px;
+            border-style: solid;
+        }
     </style>
 </head>
 
@@ -30,21 +44,23 @@
             </table>
             
             <!--Tab Buttons-->
-            <span class="row"> 
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Staff</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Patient</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Leadership</button></span>
-            </span>
-            <span class="row">
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Community</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Christianity Explored</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Faith Declarations</button></span>
-            </span>
-            <span class="row">
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Demographics</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Additional Info</button></span>
-                <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Summary</button></span>
-            </span>
+            <div id="submissionTabButtons">
+                <span class="row"> 
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Staff</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Patient</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Leadership</button></span>
+                </span>
+                <span class="row">
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Community</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Christianity Explored</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Faith Declarations</button></span>
+                </span>
+                <span class="row">
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Demographics</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Additional Info</button></span>
+                    <span class="col-xs-4"><button class="btn btn-default col-xs-offset-2 col-xs-8 submissionTab">Summary</button></span>
+                </span>
+            </div>
             
             <!--Bottom Buttons-->
             <span class="row">
