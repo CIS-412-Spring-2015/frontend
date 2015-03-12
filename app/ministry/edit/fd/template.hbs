@@ -13,7 +13,7 @@
           </div>
           <div class="panel-body detail-section-content">
             <!-- Show Current Believers button-->
-            <h4 class="showCurrentBelievers text-center">
+            <h4 class="showCurrentBelievers text-center" {{action "showCurrentBelievers" bubbles=false }}>
               <button class="btn btn-default neutral">
                 Show Current Believers
                 <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
@@ -21,7 +21,7 @@
             </h4>
 
             <!-- Hide Current Believers button-->
-            <h4 class="hideCurrentBelievers text-center">
+            <h4 class="hideCurrentBelievers text-center" {{action "hideCurrentBelievers" bubbles=false }}>
               <button class="btn btn-default neutral">
                 Hide Current Believers
                 <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
@@ -173,26 +173,10 @@
           <!--- end comment ======== by: Celtson-->
       </div>
       <div class="panel-footer">
-        <button class="btn btn-default" {{action 'generateReport'}}>Save</button>
+        <button class="btn btn-default" {{action 'updateReport'}}>Save</button>
         <button class="btn btn-default warning" {{action 'hideGenInfo'}}>Cancel</button>
         <a href="#ce" role="tab" data-toggle="pill"><button class="btn btn-default neutral">Previous</button></a>
         <a href="#demographics" role="tab" data-toggle="pill"><button class="btn btn-default neutral">Next</button></a>
       </div>
     </div>
 <!-- {{/em-form}} -->
-
-<script>
-    //This is a jquery function to hide the current believers section until they click the Show button//
-    $(document).ready(function(){
-        $('.showCurrentBelievers').click(function(){
-            $('.showHideBelievers').show(500);
-            $('.showCurrentBelievers').hide();
-            $('.hideCurrentBelievers').show();
-        });
-        $('.hideCurrentBelievers').click(function(){
-            $('.showHideBelievers').hide(500);
-            $('.hideCurrentBelievers').hide();
-            $('.showCurrentBelievers').show();
-        });
-    });
-</script>
