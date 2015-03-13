@@ -18,14 +18,44 @@
 
   </head>
   <body>
+    <div class="jumbotron" id="apploading">
+        <div class="alert alert-warning" role="alert">
+            <h1><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>HospitalRun is Initializing... </h1>
+            <p>Did You Know: <span id="apploadingmsg"></span></p>
+        </div>
+    </div>
+    <script>
+        var messages = [
+            'The Brimstone butterfly (Gonepteryx rhamni) has the longest lifetime of the adult butterflies: 9-10 months.',
+            'Apples are more efficient than caffeine in keeping people awake in the mornings.',
+            'The human heart creates enough pressure when it pumps out to the body to squirt blood 30 feet.',
+            'Starfish have no brains.',
+            'A dinomaniac is someone with the compulsive urge to dance.',
+            'There is no leading cause of death for people who live past the age of 100.',
+            'Nepal is the only country that doesn’t have a rectangular flag.',
+            'The international telephone dialing code for Antarctica is 672.',
+            'Camels chew in a figure 8 pattern.',
+            'A shark is the only fish that can blink with both eyes.'
+        ]
+        function randomMsg() {
+            var apploading = document.getElementById('apploading');
+            if (apploading) {
+                var idx = Math.floor(Math.random()*10),
+                    message = document.getElementById('apploadingmsg');
+                message.innerHTML = messages[idx];
+                setTimeout(randomMsg, 300);
+            }
+        }
+        randomMsg();
+    </script>
     <script>
         window.addEventListener('load',function(e){window.applicationCache.addEventListener('updateready', function(e){if (window.applicationCache.status==window.applicationCache.UPDATEREADY){window.applicationCache.swapCache();window.location.reload();}},false);},false);
     </script>
 
 
 
-    <script src="assets/vendor-824c7d900325341de2d64d213e0b1ff1.js"></script>
-    <script src="assets/hospitalrun-da7078d609a024ab506f6c376f97835e.js"></script>
+    <script src="assets/vendor-21dc859e26550ed98d3e937f5b8d340e.js"></script>
+    <script src="assets/hospitalrun-8d1ed6b3a87c2384f9709f47cb0645a7.js"></script>
 
 
 

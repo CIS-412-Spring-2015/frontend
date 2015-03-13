@@ -91,10 +91,16 @@ export default function(configs) {
             if (this.ontimeout  !== undefined) {
                 this.internalXHR.ontimeout = this.ontimeout;
             }
-
+            this.readyState = this.internalXHR.readyState;
+            this.status = this.internalXHR.status;
             if (this.onreadystatechange !== undefined) {
                 var xhrwrapper = this;
                 this.internalXHR.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 0) {
+                        console.log("wrapper readystatechange fired with xhr state and status:",this.readyState, this.status);
+                        console.log("URL WAS: "+xhrwrapper.url,xhrwrapper);
+                        console.trace();
+                    }
                     xhrwrapper.readyState = this.readyState;
                     xhrwrapper.response = this.response;
                     xhrwrapper.responseText = this.responseText;
