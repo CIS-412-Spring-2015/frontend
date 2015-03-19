@@ -20,6 +20,12 @@ ul.list-group li.listSet {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+  @media screen and (max-width:480px) {
+    width: 35%;
+  }
+  @media screen and (max-width:760px) and (min-width:480px) {
+    width: 45%;
+  }
 }
 
 li.listSet:active {
@@ -41,15 +47,9 @@ li.listSet a, li.listSet a:active{
 .allGenInfo {
 }
 
-.hideCurrentBelievers, .showHideBelievers{
+.hideCurrentBelievers, .showHideBelievers {
   display:none;
 }
-
-.glyphicon-chevron-down:hover, .glyphicon-chevron-up:hover{
-  cursor: pointer;
-  opacity: 0.8;
-}
-
 /* end Celtson changes */
 /* =================== */
 
