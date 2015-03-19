@@ -55,7 +55,8 @@
             <li role="presentation" class="active" ><a href="#general" role="tab" data-toggle="pill">General</a></li>
             <li role="presentation"><a href="#photos" role="tab" data-toggle="pill">Photos</a></li>            
             <li role="presentation"><a href="#medication" role="tab" data-toggle="pill">Medication</a></li>
-            <li role="presentation"><a href="#labs" role="tab" data-toggle="pill">Labs/Imaging</a></li>
+            <li role="presentation"><a href="#imaging" role="tab" data-toggle="pill">Imaging</a></li>
+            <li role="presentation"><a href="#labs" role="tab" data-toggle="pill">Labs</a></li>
             <li role="presentation"><a href="#visits" role="tab" data-toggle="pill">Visits/Appointments</a></li>
             <li role="presentation"><a href="#social" role="tab" data-toggle="pill">Social Work</a></li>
         </ul>
@@ -265,6 +266,53 @@
                     </div>
                 </div>
             </div>
+            <div role="tabpanel" class="tab-pane" id="imaging">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Imaging
+                            {{#if canAddImaging}}
+                                <button type="button" class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}><span class="octicon octicon-plus"></span> New Imaging</button>
+                            {{/if}}
+                        </h3>
+                    </div>
+                    <div class="panel-body detail-section-content">
+                        <table class="table">
+                            <tr class="table-header">
+                                <th>Date Requested</th>
+                                <th>Imaging Type</th>
+                                <th>Status</th>
+                                <th>Date Processed</th>
+                                <th>Result</th>
+                                <th>Notes</th>
+                                <th>Requested By</th>
+                                <th>Actions</th>
+                            </tr>
+                            {{#each patientImaging itemController="imaging/item-controller"}}
+                                <tr {{action "editImaging" this}}>
+                                    <td>{{date-format requestedDate}}</td>
+                                    <td>{{imagingType.name}}</td>
+                                    <td>{{status}}</td>
+                                    <td>{{date-format imagingDate}}</td>
+                                    <td>{{result}}</td>
+                                    <td>{{notes}}</td>
+                                    <td>{{requestedBy}}</td>
+                                    <td>
+                                        {{#if canEdit}}
+                                            {{#if parentController.canAddImaging}}
+                                                <button type="button" class="btn btn-default neutral" {{action "editImaging" this}}>Edit</button>
+                                            {{/if}}
+                                            {{#if parentController.canDeleteImaging}}
+                                                <button type="button" class="btn btn-default warning" {{action "showDeleteImaging" this  bubbles=false }}><span class="octicon octicon-x"></span> Delete</button>
+                                            {{/if}}
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div role="tabpanel" class="tab-pane" id="labs">
                 <div class="panel">
                     <div class="panel-heading">
@@ -304,51 +352,6 @@
                                             {{/if}}
                                             {{#if parentController.canDeleteLab}}
                                                 <button type="button" class="btn btn-default warning" {{action "showDeleteLab" this  bubbles=false }}><span class="octicon octicon-x"></span> Delete</button>
-                                            {{/if}}
-                                        {{/if}}
-                                    </td>
-                                </tr>
-                            {{/each}}
-                        </table>
-                    </div>
-                </div>
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            Imaging
-                            {{#if canAddImaging}}
-                                <button type="button" class="btn btn-primary align-right" {{action "newImaging" bubbles=false }}><span class="octicon octicon-plus"></span> New Imaging</button>
-                            {{/if}}
-                        </h3>
-                    </div>
-                    <div class="panel-body detail-section-content">
-                        <table class="table">
-                            <tr class="table-header">
-                                <th>Date Requested</th>
-                                <th>Imaging Type</th>
-                                <th>Status</th>
-                                <th>Date Processed</th>
-                                <th>Result</th>
-                                <th>Notes</th>
-                                <th>Requested By</th>
-                                <th>Actions</th>
-                            </tr>
-                            {{#each patientImaging itemController="imaging/item-controller"}}
-                                <tr {{action "editImaging" this}}>
-                                    <td>{{date-format requestedDate}}</td>
-                                    <td>{{imagingType.name}}</td>
-                                    <td>{{status}}</td>
-                                    <td>{{date-format imagingDate}}</td>
-                                    <td>{{result}}</td>
-                                    <td>{{notes}}</td>
-                                    <td>{{requestedBy}}</td>
-                                    <td>
-                                        {{#if canEdit}}
-                                            {{#if parentController.canAddImaging}}
-                                                <button type="button" class="btn btn-default neutral" {{action "editImaging" this}}>Edit</button>
-                                            {{/if}}
-                                            {{#if parentController.canDeleteImaging}}
-                                                <button type="button" class="btn btn-default warning" {{action "showDeleteImaging" this  bubbles=false }}><span class="octicon octicon-x"></span> Delete</button>
                                             {{/if}}
                                         {{/if}}
                                     </td>
@@ -533,14 +536,14 @@
                                 </tr>
                             {{/if}}
                         </table>
-                        {{em-text label="Other support or income" property="otherIncome"}}
+                        
                         <div class="row">
                             <div class="form-group col-sm-6">
                                 <label>Living Arrangement</label>
                                 {{ext-radio 
-                                    name=additionalData.livingArrangement 
+                                    name=livingArrangement 
                                     content=livingArrangementList 
-                                    value=additionalData.livingArrangement 
+                                    value=livingArrangement 
                                     includeOtherOption=true 
                                     otherOptionLabel="Other" 
                                     radioLabelPath="content"
@@ -549,21 +552,22 @@
                             </div>
                             <div class="form-group col-sm-6">
                                 <label>Family Support System</label>
-                                {{em-checkbox label="Family members are living together" property="additionalData.familySupport1"}}
-                                {{em-checkbox label="Family members listen, care and help one another" property="additionalData.familySupport2"}}
-                                {{em-checkbox label="Spend time together in prayer especially in difficult times" property="additionalData.familySupport3"}}
-                                {{em-checkbox label="Family and closest relatives have open communication" property="additionalData.familySupport4"}}
-                                {{em-checkbox label="Has relatives around who are responsive to families needs" property="additionalData.familySupport5"}}
+                                {{em-checkbox label="Family members are living together" property="familySupport1"}}
+                                {{em-checkbox label="Family members listen, care and help one another" property="familySupport2"}}
+                                {{em-checkbox label="Spend time together in prayer especially in difficult times" property="familySupport3"}}
+                                {{em-checkbox label="Family and closest relatives have open communication" property="familySupport4"}}
+                                {{em-checkbox label="Has relatives around who are responsive to families needs" property="familySupport5"}}
                             </div>
                         </div>
-                        {{em-text label="Family practices" property="additionalData.familyPractices"}}
-                        {{em-text label="Family Spiritual Needs" property="additionalData.familySpiritualNeeds"}}
+                        {{em-text label="Assessment/Findings" property="notes"}}
+                        {{em-text label="Recommendation" property="socialRecommendation"}}
+                        {{em-text label="Action Taken" property="socialActionTaken"}}
                         <div class="row">
 
                             {{em-select label="Philhealth" 
-                                property="additionalData.philhealth" content=philhealthTypes
+                                property="insurance" content=philhealthTypes
                                 optionValuePath="content" optionLabelPath="content"
-                                selected=additionalData.philhealth
+                                selected=insurance
                                 class="col-sm-6"
                             }}
                             {{em-select label="Classification" 
@@ -574,7 +578,6 @@
                                 prompt=" "
                             }}
                         </div>
-                        {{em-text label="Other Notes" property="notes"}}
                     </div>
                 </div>
             </div>
