@@ -4,15 +4,18 @@
             <th>ID</th>
         </tr>
         {{#with this as parentController}}
+            {{#each}}
             <tr>
+                <td>{{reportDate}}</td>
+            </tr>     
             {{#if parentController.showActions}}
                 <td>
-                    {{#if parentController.canAdd}}
+                    {{#if parentController.canAddReport}}
                         <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Continue Editing</button>
                     {{/if}}
                 </td>
-            {{/if}}
-             </tr>
+            {{/if}}     
+            {{/each}}
         {{/with}}
     </table>
 {{else}}
