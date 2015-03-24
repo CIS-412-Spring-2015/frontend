@@ -117,9 +117,11 @@ export default AbstractEditController.extend(GenderList, {
           $('ul.nav li.active').removeClass('active').prev('li').addClass('active');
         },
         // hideNextPrevious: function () {
-        //   if ($("#submit").hasClass("active") === true) {
-        //     this.set('submitPage', true);
-        //   }
+        //   this.set('submitPage', true);
+        //   $('.tab-pane.active').removeClass('active');
+        //   $('#submit').addClass('active');
+        //   $('ul.nav li.active').removeClass('active');
+        //   $('ul.nav li:nth-child(10)').addClass('active');
         // },
         showCurrentBelievers: function() {
           $('.showHideBelievers').show(500);
