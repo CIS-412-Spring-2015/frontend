@@ -102,7 +102,7 @@ export default AbstractEditController.extend(GenderList, {
         // ======= Function to move onto the next tab ========== //
         nextMinistryTab: function () {
           if ($("#submit").hasClass("active")) {
-            this.set('submitPage', true);
+            return;
           }
           $('.tab-pane.active').removeClass('active').next('.tab-pane').addClass('active');
           $('ul.nav li.active').removeClass('active').next('li').addClass('active');
