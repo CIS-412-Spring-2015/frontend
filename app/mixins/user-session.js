@@ -247,6 +247,10 @@ export default Ember.Mixin.create({
             'Medical Records Officer',
             'System Administrator'
         ],
+        delete_ministry_report: [
+            'Spiritual Ministry Director',
+            'System Administrator'
+        ],
         delete_photo: [
             'Data Entry',
             'Hospital Administrator',

@@ -1,20 +1,24 @@
-{{#if hasRecords}} <!-- Add this function-->
+{{#if hasRecords}}
     <table class="table">
         <tr class="table-header">
-            <th>ID</th>
+            <th>Date</th>
+            <th>Actions</th>
         </tr>
         {{#with this as parentController}}
             {{#each}}
             <tr>
-                <td>{{reportDate}}</td>
-            </tr>     
-            {{#if parentController.showActions}}
+                <td>{{reportDate}}</td>     
+                {{#if parentController.showActions}}
                 <td>
                     {{#if parentController.canAddReport}}
-                        <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Continue Editing</button>
+                        <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Edit</button>
+                    {{/if}}
+                    {{#if parentController.canDeleteReport}}
+                        <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                     {{/if}}
                 </td>
-            {{/if}}     
+                {{/if}} 
+            </tr>
             {{/each}}
         {{/with}}
     </table>

@@ -8,5 +8,11 @@ export default AbstractPagedController.extend(PouchAdapterUtils, UserSession,{
         return this.currentUserCan('add_ministry_report');
     }.property(),
     
-    updateCapability: 'add_ministry_report'
+    canDeleteReport: function() {        
+        return this.currentUserCan('delete_ministry_report');
+    }.property(),
+    
+    showDeleteMinistryReport: function(ministry) {
+            this.send('openModal', 'ministry.delete', ministry);
+    }
 });
