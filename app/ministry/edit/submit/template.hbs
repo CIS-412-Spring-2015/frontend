@@ -4,25 +4,25 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
-        
+
         .submissionTabS {
             padding-top: 10px;
             padding-bottom: 10px;
-            
+
             margin-top: 10px;
             margin-bottom: 4px;
         }
-        
+
         #submissionTabButtons button {
             color: white;
             /*Invalid Color Scheme*/
             background-color: #B21E06;
             border-color: #6B1203;
-            
+
             /* Valid Color Scheme
             background-color: #44941E;
             border-color: #2A5C13;*/
-            
+
             border-width: 2px;
             border-style: solid;
         }
@@ -31,7 +31,7 @@
             border-width: 2px;
             border-style: solid;
         }
-        
+
     </style>
 </head>
 
@@ -48,67 +48,67 @@
                     <th><p>This is where we will be submitting the monthly report!</p></th>
                 </tr>
             </table>
-            
+
             <!--Tab Buttons-->
             <div id="submissionTabButtons">
-                <span class="row"> 
-                    <a href="#staff" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                <span class="row">
+                    <!-- <a href="#staff" role="tab" data-toggle="pill"> -->
+                        <span {{action 'staffTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Staff</button>
                         </span>
-                    </a>
-                    <a href="#patient" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#patient" role="tab" data-toggle="pill"> -->
+                        <span {{action 'patientTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Patient</button>
                         </span>
-                    </a>
-                    <a href="#leadership" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#leadership" role="tab" data-toggle="pill"> -->
+                        <span {{action 'leadershipTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Leadership</button>
                         </span>
-                    </a>
+                    <!-- </a> -->
                 </span>
                 <span class="row">
-                    <a href="#community" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- <a href="#community" role="tab" data-toggle="pill"> -->
+                        <span {{action 'communityTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Community</button>
                         </span>
-                    </a>
-                    <a href="#ce" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#ce" role="tab" data-toggle="pill"> -->
+                        <span {{action 'ceTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Christianity Explored</button>
                         </span>
-                    </a>
-                    <a href="#fd" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#fd" role="tab" data-toggle="pill"> -->
+                        <span {{action 'fdTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Faith Declarations</button>
                         </span>
-                    </a>
+                    <!-- </a> -->
                 </span>
                 <span class="row">
-                    <a href="#demographics" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- <a href="#demographics" role="tab" data-toggle="pill"> -->
+                        <span {{action 'demographicsTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Demographics</button>
                         </span>
-                    </a>
-                    <a href="#ai" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#ai" role="tab" data-toggle="pill"> -->
+                        <span {{action 'aiTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Additional Info</button>
                         </span>
-                    </a>
-                    <a href="#summary" role="tab" data-toggle="pill">
-                        <span class="col-xs-4">
+                    <!-- </a> -->
+                    <!-- <a href="#summary" role="tab" data-toggle="pill"> -->
+                        <span {{action 'summaryTab'}} class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Summary</button>
                         </span>
-                    </a>
+                    <!-- </a> -->
                 </span>
             </div>
-            
+
             <!--Bottom Buttons-->
             <span id="submissionTabButtonsBottom" class="row">
                 <span class="col-xs-12">
                     <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'updateReport'}}>Save</button>
-                </span>   
+                </span>
                 <span class="col-xs-12">
                     <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'blahblahreport'}}>Submit</button>
                 </span>

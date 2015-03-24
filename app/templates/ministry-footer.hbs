@@ -1,0 +1,12 @@
+<div class="panel panel-primary">
+    {{partial 'paging'}}
+    {{yield}}
+    <div class="panel-footer">
+      <button class="btn btn-default" {{action 'updateReport'}}>Save</button>
+      <a href="/#"><button class="btn btn-default warning">Cancel</button></a>
+      {{#unless submitPage}}
+        <button {{action 'prevMinistryTab'}} class="btn btn-default neutral">Previous</button>
+        <button {{action 'nextMinistryTab'}} class="btn btn-default neutral">Next</button>
+      {{/unless}}
+    </div>
+</div>

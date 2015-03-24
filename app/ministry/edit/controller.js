@@ -30,7 +30,97 @@ export default AbstractEditController.extend(GenderList, {
 
   canBeSeen: false,
 
+  submitPage: false,
+
   actions: {
+    // These are here until I can find a more efficient way to do it.
+    // They change the active classes to show and hide the respective tabs
+        aiTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#ai').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(8)').addClass('active');
+        },
+        ceTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#ce').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(5)').addClass('active');
+        },
+        communityTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#community').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(4)').addClass('active');
+        },
+        demographicsTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#demographics').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(7)').addClass('active');
+        },
+        fdTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#fd').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(6)').addClass('active');
+        },
+        leadershipTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#leadership').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(3)').addClass('active');
+        },
+        patientTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#patient').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(2)').addClass('active');
+        },
+        staffTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#staff').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(1)').addClass('active');
+        },
+        summaryTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#summary').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(9)').addClass('active');
+        },
+
+        // ======= Function to move onto the next tab ========== //
+        nextMinistryTab: function () {
+          if ($("#submit").hasClass("active")) {
+            this.set('submitPage', true);
+          }
+          $('.tab-pane.active').removeClass('active').next('.tab-pane').addClass('active');
+          $('ul.nav li.active').removeClass('active').next('li').addClass('active');
+        },
+
+        // ======= Function to go back to prveious tab ========= //
+        prevMinistryTab: function () {
+          if ($("#staff").hasClass("active")) {
+            return;
+          }
+          $('.tab-pane.active').removeClass('active').prev('.tab-pane').addClass('active');
+          $('ul.nav li.active').removeClass('active').prev('li').addClass('active');
+        },
+        // hideNextPrevious: function () {
+        //   if ($("#submit").hasClass("active") === true) {
+        //     this.set('submitPage', true);
+        //   }
+        // },
         showCurrentBelievers: function() {
           $('.showHideBelievers').show(500);
           $('.showCurrentBelievers').hide();
