@@ -5,12 +5,14 @@ import Ember from "ember";
 export default AbstractModel.extend(ReportDate, {
 
     reportDate: DS.attr('date'),
+    reportMonth: DS.attr(''),
+    reportYear: DS.attr(''),
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
     recommendationsNeeds: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
     //   Faith Declaration View  //
-    
+
 
 // Additional Info View Details //
     displayMinistryResults: function() {
@@ -50,7 +52,21 @@ export default AbstractModel.extend(ReportDate, {
             this.set('reportDate', newReportDate);
             return newReportDate;
         }
-    }.property('reportDate')
+    }.property('reportDate'),
+
+    displayReportMonth: function() {
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var reportDate = this.get('reportDate');
+        var monthNumber = reportDate.getMonth();
+
+        return months[monthNumber];
+    }.property('reportMonth'),
+
+    displayReportYear: function() {
+        var reportDate = this.get('reportDate');
+        return reportDate.getFullYear();
+    }.property('reportYear')
+
 //    displayMinistryId: function() {
 //        var id = this.get('id');
 //        console.log(id);

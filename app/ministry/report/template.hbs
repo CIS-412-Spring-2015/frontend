@@ -1,12 +1,23 @@
+<head>
+    <style>
+        #inprogressreportTitle {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 {{#if hasRecords}}
     <table class="table">
         <tr class="table-header">
-            <th>Date</th>
+            <th>Report Title</th>
+            <th>Last Edited</th>
             <th>Actions</th>
         </tr>
         {{#with this as parentController}}
             {{#each}}
             <tr>
+                <td id="inprogressreportTitle">{{displayReportMonth}} {{displayReportYear}}</td>
                 <td>{{reportDate}}</td>     
                 {{#if parentController.showActions}}
                 <td>
