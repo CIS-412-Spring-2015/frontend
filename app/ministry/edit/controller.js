@@ -135,11 +135,8 @@ export default AbstractEditController.extend(GenderList, {
         },
         // To show and hide the general information view within the faith declarations
         // tab at the moment. Will probably change in future.
-        showGenInfo: function() {
-          this.set('canBeSeen', true);
-        },
-        hideGenInfo: function() {
-          this.set('canBeSeen', false);
+        toggleGenInfo: function() {
+          this.toggleProperty('canBeSeen');
         },
         //end above comment
         updateReport: function() {

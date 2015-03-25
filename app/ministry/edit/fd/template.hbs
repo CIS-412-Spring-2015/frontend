@@ -1,176 +1,176 @@
-<!-- {{#em-form model=this submit_button=false }} -->
-  <div role="tabpanel" class="tab-pane" id="fd">
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">
-                  Faith Declaration
-                  <!-- if canAddBeliever make this function in future -->
-                    <button class="btn btn-primary align-right" {{action "showGenInfo" bubbles=false }}>
-                      <span class="octicon octicon-plus"></span>Add New Believer
-                    </button>
-                  <!-- end if -->
-              </h3>
-          </div>
-          <div class="panel-body detail-section-content">
-            <!-- Show Current Believers button-->
-            <h4 class="showCurrentBelievers text-center" {{action "showCurrentBelievers" bubbles=false }}>
-              <button class="btn btn-default neutral">
-                Show Current Believers
-                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-              </button>
-            </h4>
+<div role="tabpanel" class="tab-pane" id="fd">
+{{#em-form model=this submit_button=false bubbles=false}}
+  <div class="panel">
+      <div class="panel-heading">
+          <h3 class="panel-title">
+              Faith Declaration
+              <!-- if canAddBeliever make this function in future -->
+                <button class="btn btn-primary align-right" {{action "toggleGenInfo" bubbles=false }}>
+                  <span class="octicon octicon-plus"></span>Add New Believer
+                </button>
+              <!-- end if -->
+          </h3>
+      </div>
+      <div class="panel-body detail-section-content">
+        <!-- Show Current Believers button-->
+        <h4 class="showCurrentBelievers text-center">
+          <button class="btn btn-default neutral" {{action "showCurrentBelievers" bubbles=false }}>
+            Show Current Believers
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+          </button>
+        </h4>
 
-            <!-- Hide Current Believers button-->
-            <h4 class="hideCurrentBelievers text-center" {{action "hideCurrentBelievers" bubbles=false }}>
-              <button class="btn btn-default neutral">
-                Hide Current Believers
-                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-              </button>
-            </h4>
+        <!-- Hide Current Believers button-->
+        <h4 class="hideCurrentBelievers text-center">
+          <button class="btn btn-default neutral" {{action "hideCurrentBelievers" bubbles=false }}>
+            Hide Current Believers
+            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+          </button>
+        </h4>
 
-            <ul class="list-group text-center nav-pills showHideBelievers">
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
-              </li>
-              <li class="listSet">
-                <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
-              </li>
-            </ul>
-          </div>
-          <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson-->
-          {{#if canBeSeen}}
-            <div class="allGenInfo">
-              <div class="panel detail-section">
-                  <div class="panel-heading">
-                      <h3 class="panel-title">
-                              General Information
-                      </h3>
-                  </div>
+        <ul class="list-group text-center nav-pills showHideBelievers">
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Cras justo odio</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Dapibus ac facilisis in</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Morbi leo risus</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Porta ac consectetur ac</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
+          </li>
+          <li class="listSet">
+            <a href="#" role="tab" data-toggle="pill">Vestibulum at eros</a>
+          </li>
+        </ul>
+      </div>
+      <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson-->
+      {{#if canBeSeen}}
+        <div class="allGenInfo">
+          <div class="panel detail-section">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                          General Information
+                  </h3>
+              </div>
 
-                  <div class="panel-body detail-section-content">
-                      <div class="row">
-                          <div class="col-xs-12 col-sm-6">
-                              <div class="form-group has-success">
-                                  <label class="control-label">Record Number</label>
-                                  <div class="form-control not-editable">
-                                      {{id}}
-                                  </div>
+              <div class="panel-body detail-section-content">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-6">
+                          <div class="form-group has-success">
+                              <label class="control-label">Record Number</label>
+                              <div class="form-control not-editable">
+                                  {{id}}
                               </div>
-                              {{em-input property="firstName" label="First Name"}}
-                              {{em-input property="lastName" label="Last Name"}}
                           </div>
-                          <div class="col-xs-12 col-sm-6">
-                             {{em-input property="age" label="Age" class="required"}}
-                              {{em-select
-                                  prompt=" "
-                                  label="Religious Affiliation"
-                                  property="religiousAffiliation"
-                                  content=religiousAffiliation
-                                  optionValuePath="content"
-                                  optionLabelPath="content"
-                              }}
-                              {{em-select
-                                  prompt=" "
-                                  label="Present Activity"
-                                  property="presentActivity"
-                                  content=presentActivity
-                                  optionValuePath="content"
-                                  optionLabelPath="content"
-                              }}
-                              {{em-select
-                                  prompt=" "
-                                  label="Type of Declaration"
-                                  property="declarationType"
-                                  content=declarationType
-                                  optionValuePath="content"
-                                  optionLabelPath="content"
-                                  class="required"
-                              }}
-                              <div class="form-group">
-                                <label>Gender</label>
-                                <div>
-                                    {{ext-radio name=gender content=genderList value=gender showInline=true}}
-                                </div>
+                          {{em-input property="firstName" label="First Name"}}
+                          {{em-input property="lastName" label="Last Name"}}
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                         {{em-input property="age" label="Age" class="required"}}
+                          {{em-select
+                              prompt=" "
+                              label="Religious Affiliation"
+                              property="religiousAffiliation"
+                              content=religiousAffiliation
+                              optionValuePath="content"
+                              optionLabelPath="content"
+                          }}
+                          {{em-select
+                              prompt=" "
+                              label="Present Activity"
+                              property="presentActivity"
+                              content=presentActivity
+                              optionValuePath="content"
+                              optionLabelPath="content"
+                          }}
+                          {{em-select
+                              prompt=" "
+                              label="Type of Declaration"
+                              property="declarationType"
+                              content=declarationType
+                              optionValuePath="content"
+                              optionLabelPath="content"
+                              class="required"
+                          }}
+                          <div class="form-group">
+                            <label>Gender</label>
+                            <div>
+                                {{ext-radio name=gender content=genderList value=gender showInline=true}}
                             </div>
-                          </div>
+                        </div>
                       </div>
                   </div>
               </div>
-              <div class="panel detail-section">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        Address/Contact Information
-                    </h3>
-                </div>
+          </div>
+          <div class="panel detail-section">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Address/Contact Information
+                </h3>
+            </div>
 
-                <div class="panel-body detail-section-content">
-                    <div class="row">
+            <div class="panel-body detail-section-content">
+                <div class="row">
 
-                        {{em-input property="phone" label="Phone Contact" class="col-xs-12 col-sm-6"}}
-                        {{em-input property="email" type="email" label="Email" class="col-xs-12 col-sm-6"}}
-                        {{#if haveAddressOptions}}
-                            {{#if address1Include}}
-                                {{em-text label=address1Label property="address" rows=3 class="col-xs-12 col-sm-6"}}
-                            {{/if}}
-                            {{#if address2Include}}
-                                {{em-input label=address2Label property="address2" class="col-xs-12 col-sm-6" }}
-                            {{/if}}
-                            {{#if address3Include}}
-                                {{em-input label=address3Label property="address3" class="col-xs-12 col-sm-6" }}
-                            {{/if}}
-                            {{#if address4Include}}
-                                {{em-input label=address4Label property="address4" class="col-xs-12 col-sm-6" }}
-                            {{/if}}
-                        {{else}}
-                            {{em-text label="Address" property="address" rows=3  class="col-xs-12 col-sm-6"}}
+                    {{em-input property="phone" label="Phone Contact" class="col-xs-12 col-sm-6"}}
+                    {{em-input property="email" type="email" label="Email" class="col-xs-12 col-sm-6"}}
+                    {{#if haveAddressOptions}}
+                        {{#if address1Include}}
+                            {{em-text label=address1Label property="address" rows=3 class="col-xs-12 col-sm-6"}}
                         {{/if}}
-                        {{select-or-typeahead property="country" label="Country" list=countryList selection=country class="col-xs-12 col-sm-6" }}
+                        {{#if address2Include}}
+                            {{em-input label=address2Label property="address2" class="col-xs-12 col-sm-6" }}
+                        {{/if}}
+                        {{#if address3Include}}
+                            {{em-input label=address3Label property="address3" class="col-xs-12 col-sm-6" }}
+                        {{/if}}
+                        {{#if address4Include}}
+                            {{em-input label=address4Label property="address4" class="col-xs-12 col-sm-6" }}
+                        {{/if}}
+                    {{else}}
+                        {{em-text label="Address" property="address" rows=3  class="col-xs-12 col-sm-6"}}
+                    {{/if}}
+                    {{select-or-typeahead property="country" label="Country" list=countryList selection=country class="col-xs-12 col-sm-6" }}
 
-                    </div>
                 </div>
-              </div>
-            </div><!--end allGenInfo -->
-          {{/if}}
-          <!--- end comment ======== by: Celtson-->
-      </div>
-    </div>
-<!-- {{/em-form}} -->
+            </div>
+          </div>
+        </div><!--end allGenInfo -->
+      {{/if}}
+      <!--- end comment ======== by: Celtson-->
+  </div>
+{{/em-form}}
+</div>

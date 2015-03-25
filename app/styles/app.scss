@@ -26,6 +26,9 @@ ul.list-group li.listSet {
   @media screen and (max-width:760px) and (min-width:480px) {
     width: 45%;
   }
+  @media screen and (max-width:1320px) and (min-width:760px) {
+    margin: 0.7em 0.5em;
+  }
 }
 
 li.listSet:active {
