@@ -9,37 +9,38 @@ export default AbstractModel.extend(ReportDate, {
     reportYear: DS.attr(''),
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
-    recommendationsNeeds: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
-    //   Faith Declaration View  //
+    recommendationsNeeds: DS.attr('string'),
 
+    //   Faith Declaration View  //
+    address: DS.attr('string'),
+    address2: DS.attr('string'),
+    address3: DS.attr('string'),
+    address4: DS.attr('string'),
+    age: DS.attr('string'),
+    declarationType: DS.attr('string'),
+    email: DS.attr('string'),
+    firstName: DS.attr('string'),
+    gender: DS.attr('string'),
+    lastName: DS.attr('string'),
+    phone: DS.attr('string'),
+    presentActivity: DS.attr('string'),
+    religiousAffiliation: DS.attr('string'),
 
 // Additional Info View Details //
     displayMinistryResults: function() {
       var ministryResults = this.get('ministryResults');
-      if (!Ember.isEmpty(ministryResults)) {
-          return ministryResults;
-      } else {
-        return null;
-      }
+      return (!Ember.isEmpty(ministryResults));
     }.property('ministryResults'),
 
     displayRecommendationsNeeds: function() {
       var recommendationsNeeds = this.get('recommendationsNeeds');
-      if (!Ember.isEmpty(recommendationsNeeds)) {
-          return recommendationsNeeds;
-      } else {
-        return null;
-      }
+      return (!Ember.isEmpty(recommendationsNeeds));
     }.property('recommendationsNeeds'),
 
     displayOtherSignificantItems: function() {
       var otherSignificantItems = this.get('otherSignificantItems');
-      if (!Ember.isEmpty(otherSignificantItems)) {
-          return otherSignificantItems;
-      } else {
-        return null;
-      }
+      return (!Ember.isEmpty(otherSignificantItems));
     }.property('otherSignificantItems'),
 // end Additional Info View Details //
 
