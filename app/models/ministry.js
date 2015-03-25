@@ -9,8 +9,10 @@ export default AbstractModel.extend(ReportDate, {
     ministryResults: DS.attr('string'),
     recommendationsNeeds: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
+    //   Faith Declaration View  //
+    
 
-// Additional Info View Details (Celtson)//
+// Additional Info View Details //
     displayMinistryResults: function() {
       var ministryResults = this.get('ministryResults');
       if (!Ember.isEmpty(ministryResults)) {
