@@ -17,8 +17,8 @@
         {{#with this as parentController}}
             {{#each}}
             <tr>
-                <td id="inprogressreportTitle">{{displayReportMonth}} {{displayReportYear}}</td>
-                <td>{{reportDate}}</td>     
+                <td id="inprogressreportTitle">{{displayReportDate}}</td>
+                <td>{{lastModified}}</td>     
                 {{#if parentController.showActions}}
                 <td>
                     {{#if parentController.canAddReport}}

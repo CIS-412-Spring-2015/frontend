@@ -3,10 +3,9 @@ import ReportDate from 'hospitalrun/mixins/dob-days';
 import Ember from "ember";
 
 export default AbstractModel.extend(ReportDate, {
-
-    reportDate: DS.attr('date'),
-    reportMonth: DS.attr(''),
-    reportYear: DS.attr(''),
+    // Report Metadata //
+    reportDate: DS.attr('string'),
+    
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
@@ -49,24 +48,17 @@ export default AbstractModel.extend(ReportDate, {
             newReportDate = new Date();
         if (!Ember.isEmpty(reportDate)) {
             return reportDate;
-        } else {
-            this.set('reportDate', newReportDate);
+        } else {            
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                monthNumber = newReportDate.getMonth(),
+                reportYear = newReportDate.getFullYear();
+            
+            var monthAndYear = months[monthNumber] + " " + reportYear;
+            
+            this.set('reportDate', monthAndYear);
             return newReportDate;
         }
-    }.property('reportDate'),
-
-    displayReportMonth: function() {
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var reportDate = this.get('reportDate');
-        var monthNumber = reportDate.getMonth();
-
-        return months[monthNumber];
-    }.property('reportMonth'),
-
-    displayReportYear: function() {
-        var reportDate = this.get('reportDate');
-        return reportDate.getFullYear();
-    }.property('reportYear')
+    }.property('reportDate')
 
 //    displayMinistryId: function() {
 //        var id = this.get('id');
