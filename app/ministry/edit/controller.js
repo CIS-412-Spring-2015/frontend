@@ -1,32 +1,7 @@
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
 import GenderList from 'hospitalrun/mixins/gender-list';
-export default AbstractEditController.extend(GenderList, {
-  /* religiousAffiliation, presentActivity and declarationType are arrays that
-     are accessed within the faith declaration tab to make sure the dropdowns
-     are populated with these data. */
-  religiousAffiliation: [
-    'None',
-    'Catholic',
-    'Muslim',
-    'Protestant',
-    'Recommitment',
-    'Other'
-  ],
-
-  presentActivity: [
-      'Bedside Presentations',
-      'Playroom Presentations',
-      'Jesus Film',
-      'Open Air Meetings',
-      'Mobile Clinic Outreach',
-      'Door to Door Evangelical',
-      'Other'
-  ],
-
-  declarationType: [
-      'New Believer',
-      'Recommittment'
-  ],
+import NewBelieverInfo from 'hospitalrun/mixins/new-believer-info';
+export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
   canBeSeen: false,
 
