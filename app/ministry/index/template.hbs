@@ -11,7 +11,7 @@
     <table class="table">
         <tr class="table-header">
             <th>Report Title</th>
-            <th>Last Edited</th>
+            <th>Submitted</th>
             <th>Actions</th>
         </tr>
         {{#with this as parentController}}
@@ -32,7 +32,7 @@
     </table>
 {{else}}
     <div class="alert alert-info">
-        <em>No 'In Progress' Report Exists.</em>
+        <em>No 'Archived' Report Exists.</em>
         {{#if canAddReport}}
             <em>Create a new monthly report?</em>
             <button class="btn btn-primary on-white" {{action 'newItem'}}>New Report</button>
