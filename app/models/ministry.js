@@ -5,6 +5,7 @@ import Ember from "ember";
 export default AbstractModel.extend(ReportDate, {
     // Report Metadata //
     reportDate: DS.attr('string'),
+    reportArchived: DS.attr('boolean'),
     
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
@@ -57,7 +58,8 @@ export default AbstractModel.extend(ReportDate, {
             var monthAndYear = months[monthNumber] + " " + reportYear;
             
             this.set('reportDate', monthAndYear);
-            return newReportDate;
+            this.set('reportArchived', false);
+            return monthAndYear;
         }
     }.property('reportDate')
 

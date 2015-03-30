@@ -1,3 +1,41 @@
-<div class="alert alert-info">
-    <em>No Archived Ministry Reports found.</em>
-</div>
+<head>
+    <style>
+        #inprogressreportTitle {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+{{#if hasRecords}}
+    <table class="table">
+        <tr class="table-header">
+            <th>Report Title</th>
+            <th>Last Edited</th>
+            <th>Actions</th>
+        </tr>
+        {{#with this as parentController}}
+            {{#each}}
+                {{#if reportArchived}}
+                <tr>
+                    <td id="inprogressreportTitle">{{displayReportDate}}</td>
+                    <td>{{lastModified}}</td>     
+                    {{#if parentController.showActions}}
+                    <td>
+                        <button class="btn btn-default neutral" {{action 'blahblahViewArchivedReport' this  bubbles=false }}>View</button>
+                    </td>
+                    {{/if}} 
+                </tr>
+                {{/if}}
+            {{/each}}
+        {{/with}}
+    </table>
+{{else}}
+    <div class="alert alert-info">
+        <em>No 'In Progress' Report Exists.</em>
+        {{#if canAddReport}}
+            <em>Create a new monthly report?</em>
+            <button class="btn btn-primary on-white" {{action 'newItem'}}>New Report</button>
+        {{/if}}
+    </div>
+{{/if}}

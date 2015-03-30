@@ -16,20 +16,22 @@
         </tr>
         {{#with this as parentController}}
             {{#each}}
-            <tr>
-                <td id="inprogressreportTitle">{{displayReportDate}}</td>
-                <td>{{lastModified}}</td>     
-                {{#if parentController.showActions}}
-                <td>
-                    {{#if parentController.canAddReport}}
-                        <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Edit</button>
-                    {{/if}}
-                    {{#if parentController.canDeleteReport}}
-                        <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-                    {{/if}}
-                </td>
-                {{/if}} 
-            </tr>
+                {{#unless reportArchived}}
+                <tr>
+                    <td id="inprogressreportTitle">{{displayReportDate}}</td>
+                    <td>{{lastModified}}</td>     
+                    {{#if parentController.showActions}}
+                    <td>
+                        {{#if parentController.canAddReport}}
+                            <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Edit</button>
+                        {{/if}}
+                        {{#if parentController.canDeleteReport}}
+                            <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                        {{/if}}
+                    </td>
+                    {{/if}} 
+                </tr>
+                {{/unless}}
             {{/each}}
         {{/with}}
     </table>

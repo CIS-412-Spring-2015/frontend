@@ -117,7 +117,14 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             updateModel.save().then(function() {
                 this.displayAlert('Report Saved', 'The report has been saved.');
             }.bind(this));
+        },
+        //Submit Report
+        submitReport: function() {
+            this.set('reportArchived', true);
+            console.log("set");
+            this.get('model').save().then(function() {
+                this.displayAlert('Report Submitted', 'The report has been submitted.');
+            }.bind(this));
         }
   }
-
 });
