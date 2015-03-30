@@ -15,20 +15,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           $('#submit').removeClass('active');
           $('#ai').addClass('active');
           $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(8)').addClass('active');
-        },
-        ceTab: function () {
-          this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#ce').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(5)').addClass('active');
-        },
-        communityTab: function () {
-          this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#community').addClass('active');
-          $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(4)').addClass('active');
         },
         demographicsTab: function () {
@@ -36,33 +22,26 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           $('#submit').removeClass('active');
           $('#demographics').addClass('active');
           $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(7)').addClass('active');
+          $('ul.nav li:nth-child(6)').addClass('active');
+        },
+        eventsTab: function () {
+          this.set('submitPage', false);
+          $('#submit').removeClass('active');
+          $('#events').addClass('active');
+          $('ul.nav li.active').removeClass('active');
+          $('ul.nav li:nth-child(2)').addClass('active');
         },
         fdTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
           $('#fd').addClass('active');
           $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(6)').addClass('active');
-        },
-        leadershipTab: function () {
-          this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#leadership').addClass('active');
-          $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(3)').addClass('active');
         },
-        patientTab: function () {
+        hospitalTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
-          $('#patient').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(2)').addClass('active');
-        },
-        staffTab: function () {
-          this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#staff').addClass('active');
+          $('#hospital').addClass('active');
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(1)').addClass('active');
         },
@@ -71,7 +50,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           $('#submit').removeClass('active');
           $('#summary').addClass('active');
           $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(9)').addClass('active');
+          $('ul.nav li:nth-child(5)').addClass('active');
         },
 
         // ======= Function to move onto the next tab ========== //
@@ -85,7 +64,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         // ======= Function to go back to prveious tab ========= //
         prevMinistryTab: function () {
-          if ($("#staff").hasClass("active")) {
+          if ($("#hospital").hasClass("active")) {
             return;
           }
           $('.tab-pane.active').removeClass('active').prev('.tab-pane').addClass('active');
