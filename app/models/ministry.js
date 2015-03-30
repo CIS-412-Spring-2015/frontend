@@ -12,6 +12,7 @@ export default AbstractModel.extend(ReportDate, {
     recommendationsNeeds: DS.attr('string'),
 
     //   Faith Declaration View  //
+    // These are going to have to be directed to each believer//
     address: DS.attr('string'),
     address2: DS.attr('string'),
     address3: DS.attr('string'),
