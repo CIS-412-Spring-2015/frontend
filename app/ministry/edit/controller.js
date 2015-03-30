@@ -4,6 +4,8 @@ import NewBelieverInfo from 'hospitalrun/mixins/new-believer-info';
 export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
   canBeSeen: false,
+    
+  showPreview: false,
 
   submitPage: false,
 
@@ -93,6 +95,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.toggleProperty('canBeSeen');
         },
         //end above comment
+      
+        //Toggle Preview
+        togglePreview: function() {
+          this.toggleProperty('showPreview');  
+        },
+      
+        //Save Report
         updateReport: function() {
             var updateModel = this.get('model');
 

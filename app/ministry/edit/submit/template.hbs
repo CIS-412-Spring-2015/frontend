@@ -55,8 +55,13 @@
                 <span class="col-xs-12">
                     <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'blahblahreport'}}>Submit</button>
                 </span>
+                <span class="col-xs-12">
+                    <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'togglePreview'}}>Preview</button>
+                </span>
             </span>
         </div>
-        {{partial 'ministry/edit/preview'}}
+        {{#if showPreview}}
+            {{partial 'ministry/edit/preview'}}
+        {{/if}}
     </div>
   </div>
