@@ -6,6 +6,7 @@ export default AbstractModel.extend(ReportDate, {
     // Report Metadata //
     reportDate: DS.attr('string'),
     reportArchived: DS.attr('boolean'),
+    newReportDate: DS.attr('string'),
     
     //   Additional Info View    //
     ministryResults: DS.attr('string'),

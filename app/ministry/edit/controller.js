@@ -101,6 +101,16 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.toggleProperty('showPreview');  
         },
       
+        //Change report Date
+        changeReportDate: function() {
+            var newReportDate = this.get('model').getProperties('newReportDate');
+            console.log(newReportDate);
+          this.set('reportDate', newReportDate);
+          this.get('model').save().then(function() {
+              this.displayAlert('Date Changed', 'The report date has been changed.');
+          }.bind(this));
+        },
+      
         //Save Report
         updateReport: function() {
             var updateModel = this.get('model');
