@@ -19,7 +19,7 @@
                 {{#if reportArchived}}
                 <tr>
                     <td id="inprogressreportTitle">{{displayReportDate}}</td>
-                    <td>{{lastModified}}</td>     
+                    <td>{{date-format lastModified format="l hh:mm A"}}</td>     
                     {{#if parentController.showActions}}
                     <td>
                         <button class="btn btn-default neutral" {{action 'blahblahViewArchivedReport' this  bubbles=false }}>View</button>

@@ -1,12 +1,18 @@
-<div class="panel panel-primary">
+<div class="panel panel-primary" id="MinistryFooter">
     {{partial 'paging'}}
     {{yield}}
     <div class="panel-footer">
-      <button class="btn btn-default" {{action 'updateReport'}}>Save</button>
-      <a href="/#"><button class="btn btn-default warning">Cancel</button></a>
-      {{#unless submitPage}}
-        <button {{action 'prevMinistryTab'}} class="btn btn-default neutral">Previous</button>
-        <button {{action 'nextMinistryTab'}} class="btn btn-default neutral">Next</button>
-      {{/unless}}
+      {{#em-form model=this submit_button=false bubbles=false}}
+        <button class="btn btn-default" {{action 'updateReport'}}>Save</button>
+        <a href="/#"><button class="btn btn-default warning">Cancel</button></a>
+        {{#unless submitPage}}
+          <button {{action 'prevMinistryTab'}} class="btn btn-default neutral">Previous</button>
+          <button {{action 'nextMinistryTab'}} class="btn btn-default neutral">Next</button>
+        {{/unless}}
+        <span class="pull-right">
+          <span class="col-xs-7">{{date-picker property="reportDate" maxDate="now"}}</span>
+          <button class="btn btn-default col-xs-5" {{action 'updateReport'}}>Change Date</button>
+        </span>
+      {{/em-form}}
     </div>
 </div>
