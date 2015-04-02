@@ -19,7 +19,7 @@
                 {{#unless reportArchived}}
                 <tr>
                     <td id="inprogressreportTitle">{{displayReportDate}}</td>
-                    <td>{{lastModified}}</td>     
+                    <td>{{date-format lastModified format="l hh:mm A"}}</td>     
                     {{#if parentController.showActions}}
                     <td>
                         {{#if parentController.canAddReport}}

@@ -1,17 +1,35 @@
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
+import Ember from 'ember';
 import GenderList from 'hospitalrun/mixins/gender-list';
 import NewBelieverInfo from 'hospitalrun/mixins/new-believer-info';
 export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
-  canBeSeen: false,
-    
-  showPreview: false,
+    canBeSeen: false,
 
-  submitPage: false,
+    showPreview: false,
 
-  actions: {
-    // These are here until I can find a more efficient way to do it.
-    // They change the active classes to show and hide the respective tabs
+    submitPage: false,
+
+    reportDateChanged: function() {
+        var reportDate = moment(this.get('reportDate')).format('MMMM YYYY'),
+            sectionDetails = {};
+
+        if (Ember.isEmpty(this.get('reportDate'))) {
+            this.set('reportDate', new Date());   
+            this.set('reportArchived', false);
+        }
+
+        sectionDetails.currentScreenTitle = 'Edit Monthly Report For ' + reportDate;
+
+        this.send('setSectionHeader', sectionDetails);    
+
+        //Save changed reportDate
+       // this.get('model').save();
+    }.observes('reportDate'),
+
+    actions: {
+        // These are here until I can find a more efficient way to do it.
+        // They change the active classes to show and hide the respective tabs
         aiTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
@@ -95,47 +113,27 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.toggleProperty('canBeSeen');
         },
         //end above comment
-      
+
         //Toggle Preview
         togglePreview: function() {
           this.toggleProperty('showPreview');  
         },
-      
-        //Change report Date
-        changeReportDate: function() {
-            var newReportDate = this.get('model').getProperties('newReportDate');
-            console.log(newReportDate);
-          this.set('reportDate', newReportDate);
-          this.get('model').save().then(function() {
-              this.displayAlert('Date Changed', 'The report date has been changed.');
-          }.bind(this));
-        },
-      
+
         //Save Report
         updateReport: function() {
-            var updateModel = this.get('model');
-
-            if (this.get('isNew')) {
-                var newData = updateModel.getProperties('reportDate');
-
-                updateModel.deleteRecord();
-                updateModel = this.get('store').createRecord('ministry', newData);
-                this.set('model', updateModel);
-            }
-
-
-            updateModel.save().then(function() {
+            this.get('model').save().then(function() {
                 this.displayAlert('Report Saved', 'The report has been saved.');
             }.bind(this));
         },
-      
+
         //Submit Report
         submitReport: function() {
             this.set('reportArchived', true);
+            console.log(this.get('reportArchived'));
             this.get('model').save().then(function() {
                 this.displayAlert('Report Submitted', 'The report has been submitted.');
                 window.location.href = "#/ministry";
             }.bind(this));
         }
-  }
+    }
 });
