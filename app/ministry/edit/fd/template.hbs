@@ -11,6 +11,34 @@
               <!-- end if -->
           </h3>
       </div>
+	  <!--CE start-->
+		<div class="panel-body detail-section-content">
+
+			<h4 class="showChristianityExplored text-center">
+				<button class="btn btn-default neutral" {{action "showChristianityExplored" bubbles=false }}>
+					Show Christianity Explored
+					<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+				</button>
+			</h4>
+
+			<h4 class="hideChristianityExplored text-center">
+				<button class="btn btn-default neutral" {{action "hideChristianityExplored" bubbles=false }}>
+					Hide Christianity Explored
+					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+				</button>
+			</h4>
+			<div class="row showHideChristianityExplored">
+				<div class="col-xs-12 col-sm-6">
+					{{em-input property="Participants" label="Participants"}}
+					{{em-input property="Graduates" label="Graduates"}}
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					{{em-input property="Continued_Education" label="Participants seeking Continued Education"}}
+					{{em-input property="Session" label="Session"}}
+				</div>
+			</div>
+		</div>
+	<!--CE end-->
       <div class="panel-body detail-section-content">
         <!-- Show Current Believers button-->
         <h4 class="showCurrentBelievers text-center">
