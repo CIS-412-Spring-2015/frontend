@@ -1,3 +1,11 @@
+<style>
+      .disabled {
+            cursor: not-allowed;
+            background-color: #eee;
+            opacity: 1;
+      }
+</style>
+
 <div role="tabpanel" class="tab-pane" id="summary">
       <div class="panel">
           <div class="panel-heading">
@@ -31,8 +39,8 @@
                   </tr>
                   <tr class="table-header">
                       <td>Salvations</td>
-                      <td><input type="text" property="bedroomDisplays3" class="col-lg-12 col-sm-6" disabled></td>
-                      <td><input type="text" class="col-lg-12 col-sm-6" disabled></td>
+                      <td>{{em-text property="bedroomDisplays2" rows=1 class="col-lg-12 col-sm-6" class="disabled"}}</td>
+                      <td>{{em-text property="playroomDisplays2" rows=1 class="col-lg-12 col-sm-6" class="disabled"}}</td>
                       <td><input type="text" class="form-control" disabled></td>
                       <td><input type="text" class="form-control" disabled></td>
                       <td><input type="text" class="form-control" disabled></td>
