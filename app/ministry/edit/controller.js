@@ -37,13 +37,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(4)').addClass('active');
         },
-        demographicsTab: function () {
+        /*demographicsTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
           $('#demographics').addClass('active');
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(6)').addClass('active');
-        },
+        },*/
         eventsTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
@@ -109,16 +109,16 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
 		// Function generated to show and hide the Christianity Explored content.
-    		showChristianityExplored: function() {
-    			$('.showHideChristianityExplored').show(500);
-    			$('.showChristianityExplored').hide();
-    			$('.hideChristianityExplored').show();
+        showChristianityExplored: function() {
+            $('.showHideChristianityExplored').show(500);
+            $('.showChristianityExplored').hide();
+            $('.hideChristianityExplored').show();
         },
 
         hideChristianityExplored: function() {
-    			$('.showHideChristianityExplored').hide(500);
-    			$('.hideChristianityExplored').hide();
-    			$('.showChristianityExplored').show();
+            $('.showHideChristianityExplored').hide(500);
+            $('.hideChristianityExplored').hide();
+            $('.showChristianityExplored').show();
         },
 
         // To show and hide the general information view within the faith declarations
