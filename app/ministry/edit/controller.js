@@ -168,6 +168,20 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
                 this.displayAlert('Report Submitted', 'The report has been submitted.');
                 window.location.href = "#/ministry";
             }.bind(this));
+        },
+        
+        showAddCommunity: function() {
+            this.send('openModal', 'ministry.add-community', {});
+        },
+        
+        addCommunity: function(newCommunity) {
+          var commEvents = this.getWithDefault('commEvents', []);
+
+          commEvents.addObject(newCommunity);
+          this.set('commEvents', commEvents);
+          this.send('update', true);
+          this.send('closeModal');
+
         }
     }
 });
