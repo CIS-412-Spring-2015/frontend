@@ -3,12 +3,7 @@
   <div class="panel">
       <div class="panel-heading">
           <h3 class="panel-title">
-              Faith Declaration
-              <!-- if canAddBeliever make this function in future -->
-                <button class="btn btn-primary align-right" {{action "showAddBeliever" bubbles=false }}>
-                  <span class="octicon octicon-plus"></span>Add New Believer
-                </button>
-              <!-- end if -->
+              Christianity Explored
           </h3>
       </div>
 	  <!--CE start-->
@@ -39,6 +34,16 @@
 			</div>
 		</div>
 	<!--CE end-->
+      <div class="panel-heading">
+          <h3 class="panel-title">
+              Faith Declaration
+              <!-- if canAddBeliever make this function in future -->
+                <button class="btn btn-primary align-right" {{action "showAddBeliever" bubbles=false }}>
+                  <span class="octicon octicon-plus"></span>Add New Believer
+                </button>
+              <!-- end if -->
+          </h3>
+      </div>
       <div class="panel-body detail-section-content">
         <!-- Show Current Believers button-->
         <h4 class="showCurrentBelievers text-center">
@@ -64,7 +69,7 @@
           {{/each}}
         </ul>
       </div>
-      <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson-->
+      <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson (Another option for adding Believer info)-->
       {{#if canBeSeen}}
         <div class="allGenInfo">
           <div class="panel detail-section">
@@ -118,7 +123,7 @@
                             <div>
                                 {{ext-radio name=gender content=genderList value=new-believer.gender showInline=true}}
                             </div>
-                        </div>
+                          </div>
                       </div>
                   </div>
               </div>

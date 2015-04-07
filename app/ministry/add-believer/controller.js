@@ -1,6 +1,8 @@
 import Ember from "ember";
 import IsUpdateDisabled from "hospitalrun/mixins/is-update-disabled";
-export default Ember.ObjectController.extend(IsUpdateDisabled, {
+import GenderList from 'hospitalrun/mixins/gender-list';
+import NewBelieverInfo from 'hospitalrun/mixins/new-believer-info';
+export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBelieverInfo, {
     needs: 'ministry/edit',
 
     editController: Ember.computed.alias('controllers.ministry/edit'),
@@ -15,7 +17,9 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
         },
 
         add: function() {
-            var newBeliever = this.getProperties('believerName', 'phone', 'age', 'relationship');
+            var newBeliever = this.getProperties('believerName', 'believer.religiousAffiliation',
+            'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
+            'phone', 'email', 'address', 'country');
             this.get('editController').send('addBeliever', newBeliever);
         }
     }

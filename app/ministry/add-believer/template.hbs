@@ -1,6 +1,39 @@
 {{#em-form model=this submit_button=false }}
     {{em-input label="Name" property="believerName"}}
-    {{em-input label="Phone" property="phone"}}
-    {{em-input label="Age" property="age"}}
-    {{em-input label="Relationship" property="relationship"}}
+    {{em-input property="age" label="Age" class="required"}}
+     {{em-select
+         prompt=" "
+         label="Religious Affiliation"
+         property="believer.religiousAffiliation"
+         content=religiousAffiliation
+         optionValuePath="content"
+         optionLabelPath="content"
+     }}
+     {{em-select
+         prompt=" "
+         label="Present Activity"
+         property="believer.presentActivity"
+         content=presentActivity
+         optionValuePath="content"
+         optionLabelPath="content"
+     }}
+     {{em-select
+         prompt=" "
+         label="Type of Declaration"
+         property="believer.declarationType"
+         content=declarationType
+         optionValuePath="content"
+         optionLabelPath="content"
+         class="required"
+     }}
+     <div class="form-group">
+       <label>Gender</label>
+       <div>
+           {{ext-radio name=gender content=genderList value=new-believer.gender showInline=true}}
+       </div>
+     </div>
+     {{em-input property="phone" label="Phone Contact"}}
+     {{em-input property="email" type="email" label="Email"}}
+     {{em-text label="Address" property="address" rows=3}}
+     {{select-or-typeahead property="country" label="Country" list=countryList selection=country}}
 {{/em-form}}
