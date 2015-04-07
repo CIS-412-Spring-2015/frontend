@@ -15,13 +15,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             sectionDetails = {};
 
         if (Ember.isEmpty(this.get('reportDate'))) {
-            this.set('reportDate', new Date());   
+            this.set('reportDate', new Date());
             this.set('reportArchived', false);
         }
 
         sectionDetails.currentScreenTitle = 'Edit Monthly Report For ' + reportDate;
 
-        this.send('setSectionHeader', sectionDetails);    
+        this.send('setSectionHeader', sectionDetails);
 
         //Save changed reportDate
        // this.get('model').save();
@@ -126,11 +126,31 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         toggleGenInfo: function() {
           this.toggleProperty('canBeSeen');
         },
-        //end above comment
+
+        showAddBeliever: function() {
+            this.send('openModal', 'ministry.add-believer', {});
+        },
+
+        addBeliever: function(newBeliever) {
+          var believers = this.getWithDefault('believers', []);
+          // var newBeliever = this.getProperties('new-believer.address', 'new-believer.age',
+          // 'new-believer.declarationType', 'new-believer.email', 'new-believer.firstName',
+          // 'new-believer.gender', 'new-believer.lastName', 'new-believer.phone',
+          // 'new-believer.presentActivity', 'new-believer.religiousAffiliation');
+
+          believers.addObject(newBeliever);
+          this.set('believers', believers);
+          this.send('update', true);
+          this.send('closeModal');
+
+          // this.get('model').save().then(function() {
+          //     this.displayAlert('Believer Saved', 'The believer has been saved.');
+          // }.bind(this));
+        },
 
         //Toggle Preview
         togglePreview: function() {
-          this.toggleProperty('showPreview');  
+          this.toggleProperty('showPreview');
         },
 
         //Save Report
