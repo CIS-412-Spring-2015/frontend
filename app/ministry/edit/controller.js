@@ -182,6 +182,20 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('update', true);
           this.send('closeModal');
 
+        },
+        
+        showAddLeadership: function() {
+            this.send('openModal', 'ministry.add-leadership', {});
+        },
+        
+        addLeadership: function(newLeadership) {
+          var leadEvents = this.getWithDefault('leadEvents', []);
+
+          leadEvents.addObject(newLeadership);
+          this.set('leadEvents', leadEvents);
+          this.send('update', true);
+          this.send('closeModal');
+
         }
     }
 });

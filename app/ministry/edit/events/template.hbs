@@ -6,6 +6,7 @@
                 Events
             </h3>
         </div>
+        
         <div class="panel-body detail-section-content">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -17,6 +18,7 @@
                     <!-- end if -->
                 </h3>
             </div>
+            
             <div class="panel-body detail-section-content">
                 <table class="table">
                     <tr class="table-header">
@@ -47,42 +49,45 @@
                     {{/each}}
                 </table>
             </div>
+            
             <div class="panel-heading">
                 <h3 class="panel-title">
                     Leadership Events
                     <!-- if canAddCommunityEvent make this function in future -->
-                        <button class="btn btn-primary align-right" {{action "addNewLeadership" bubbles=false }}>
+                        <button class="btn btn-primary align-right" {{action "showAddLeadership" bubbles=false }}>
                             <span class="octicon octicon-plus"></span>Add New Leadership Event
                         </button>
                     <!-- end if -->
                 </h3>
             </div>
+            
             <div class="panel-body detail-section-content">
                 <table class="table">
-                    <tr class="table-header">
-                        <th><p>This will need to be set up to create different events. (not just tabs)</p></th>
-                    </tr>
-
                     <tr class="table-header">
                         <th>Description</th>
                         <th>Name</th>
                         <th>Date</th>
                         <th>Location</th>
+                        <th>Actions</th>
                     </tr>
 
-
-                    <tr class="table-header">
-
-                        <td>{{em-text property="name" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="date" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="location" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="description" rows=1 class="col-lg-12 col-sm-6"}}</td>
-
-                    </tr>
+                    {{#each leadEvents}}
+                                <tr>
+                                    <td>{{description}}</td>
+                                    <td>{{eventName}}</td>
+                                    <td>{{date}}</td>
+                                    <td>{{location}}</td>
+                                    <!--{{#if patientController.canDeleteLeadership}}-->
+                                        <td>
+                                            <button class="btn btn-default warning" {{action "showDeleteCommunity" bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                                        </td>
+                                    <!--{{/if}}-->
+                                </tr>
+                    {{/each}}
 
                 </table>
 
-                  <table class="table">
+                <table class="table">
                     <tr class="table-header">
                         <th><p>Event for new Participant needed</p></th>
                     </tr>
