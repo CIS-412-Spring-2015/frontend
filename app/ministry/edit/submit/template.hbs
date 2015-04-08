@@ -13,35 +13,103 @@
             </table>
 
             <!--Tab Buttons-->
-            <div id="submissionTabButtons">
+            <div>
                 <span class="row">
-                    <span {{action 'hospitalTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Hospital</button>
-                    </span>
-                    <span {{action 'eventsTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Events</button>
-                    </span>
-                    <span {{action 'fdTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Faith Declarations</button>
-                    </span>
+                    {{#if hospitalReportValidation}}
+                        <span class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
+                                Hospital
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'hospitalTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                                Hospital
+                            </button>
+                        </span>
+                    {{/if}}
+                    
+                    {{#if eventsReportValidation}}
+                        <span  class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
+                                Events
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'eventsTab'}}  class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                                Events
+                            </button>
+                        </span>                        
+                    {{/if}}
+                    
+                    {{#if fdReportValidation}}
+                        <span class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
+                                Faith Declaration
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'fdTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                                Faith Declaration
+                            </button>
+                        </span>                    
+                    {{/if}}
                 </span>
                 <span class="row">
-                    <span {{action 'aiTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Additional Info</button>
-                    </span>
-                    <span {{action 'summaryTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab">Summary</button>
-                    </span>
-                    <span {{action 'demographicsTab'}} class="col-xs-4">
-                        <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab" disabled="disabled">Demographics</button>
-                    </span>
+                    {{#if aiReportValidation}}
+                        <span class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
+                                Additional Information
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'aiTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                                Additional Information
+                            </button>
+                        </span>                    
+                    {{/if}}
+
+                    {{#if summaryReportValidation}}
+                        <span class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
+                                Summary
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'summaryTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                                Summary
+                            </button>
+                        </span>                    
+                    {{/if}}
+
+                    {{#if demographicsReportValidation}}
+                        <span class="col-xs-4">
+                            <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue" disabled="disabled">
+                                Demographics
+                            </button>
+                        </span>
+                    {{else}}
+                        <span class="col-xs-4">
+                            <button {{action 'demographicsTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse" disabled="disabled">
+                                Demographics
+                            </button>
+                        </span>                    
+                    {{/if}}
                 </span>
             </div>
 
             <!--Bottom Buttons-->
             <span id="submissionTabButtonsBottom" class="row">
                 <span class="col-xs-12">
-                    <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'submitReport'}}>Submit</button>
+                    {{#if fullReportValidation}}
+                        <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'submitReport'}}>Submit</button>
+                    {{else}}
+                        <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" disabled="disabled">Submit</button>
+                    {{/if}}
                 </span>
                 <span class="col-xs-12">
                     <button class="btn btn-primary col-xs-offset-5 col-xs-2 submissionTabS" {{action 'togglePreview'}}>Preview</button>
