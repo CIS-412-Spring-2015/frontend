@@ -2,10 +2,11 @@ import AbstractEditController from 'hospitalrun/controllers/abstract-edit-contro
 import Ember from "ember";
 import InventoryLocations from "hospitalrun/mixins/inventory-locations";
 import InventoryTypeList from 'hospitalrun/mixins/inventory-type-list';
+import ReturnTo from 'hospitalrun/mixins/return-to';
 import UnitTypes from "hospitalrun/mixins/unit-types";
 import UserSession from "hospitalrun/mixins/user-session";
 
-export default AbstractEditController.extend(InventoryLocations, InventoryTypeList, UnitTypes, UserSession, {
+export default AbstractEditController.extend(InventoryLocations, InventoryTypeList, ReturnTo, UnitTypes, UserSession, {
     needs: ['inventory','pouchdb'],
     
     canAddPurchase: function() {        
@@ -38,6 +39,11 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
     canEditQuantity: function() {		
         return (this.get('isNew'));		
     }.property('isNew'),
+    
+    haveTransactions: function() {
+        var transactions = this.get('transactions');
+        return transactions !== null;
+    }.property('transactions.@each'),
     
     inventoryTypes: function() {
         var defaultInventoryTypes = this.get('defaultInventoryTypes'),
@@ -85,16 +91,22 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
         }
     }.observes('originalQuantity'),
     
+    showTransactions: function() {
+        var transactions = this.get('transactions');
+        return !Ember.isEmpty(transactions);
+    }.property('transactions.@each'),
+    
+    transactions: null,
+    
     updateCapability: 'add_inventory_item',
 
     actions: {
         adjustItems: function(inventoryLocation) {
-            var adjustPurchases = inventoryLocation.get('adjustPurchases'),
-                adjustmentQuantity = parseInt(inventoryLocation.get('adjustmentQuantity')),
+            var adjustmentQuantity = parseInt(inventoryLocation.get('adjustmentQuantity')),
                 inventoryItem = this.get('model'),                
                 transactionType = inventoryLocation.get('transactionType'),
                 request = this.get('store').createRecord('inv-request', {
-                    adjustPurchases: adjustPurchases,
+                    adjustPurchases: true,
                     dateCompleted: inventoryLocation.get('dateCompleted'),
                     inventoryItem: inventoryItem,
                     quantity: adjustmentQuantity,
@@ -103,21 +115,16 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
                     deliveryAisle: inventoryLocation.get('aisleLocation'),
                     deliveryLocation: inventoryLocation.get('location')
                 });
-            request.set('inventoryLocations',[inventoryLocation]);
-            if (adjustPurchases) {
-                var increment = false;
-                if (transactionType === 'Adjustment (Add)') {
-                    increment = true;
-                }
-                request.set('markAsConsumed',true);
-                //Make sure inventory item is resolved first.
-                request.get('inventoryItem').then(function() {
-                    this.send('fulfillRequest', request, true, increment, true);
-                }.bind(this));
-            } else {
-                this.adjustLocation(inventoryItem, inventoryLocation);
-                this._saveRequest(request);
-            }            
+            request.set('inventoryLocations',[inventoryLocation]);            
+            var increment = false;
+            if (transactionType === 'Adjustment (Add)') {
+                increment = true;
+            }
+            request.set('markAsConsumed',true);
+            //Make sure inventory item is resolved first.
+            request.get('inventoryItem').then(function() {
+                this.send('fulfillRequest', request, true, increment, true);
+            }.bind(this));            
         },        
         
         deletePurchase: function(purchase, deleteFromLocation, expire) {
@@ -140,8 +147,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
         },
         
         showAdjustment: function(inventoryLocation) {
-            inventoryLocation.setProperties({
-                adjustPurchases: true,
+            inventoryLocation.setProperties({                
                 dateCompleted: new Date(),
                 adjustmentItem: this.get('model'),
                 adjustmentQuantity: '',
@@ -197,7 +203,7 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
             request.get('inventoryItem').then(function() {
                 //Make sure relationships are resolved before saving
                 this._saveRequest(request);                
-            }.bind(this));
+            }.bind(this));            
         },
         
         updatePurchase: function(purchase, updateQuantity) {
@@ -284,8 +290,24 @@ export default AbstractEditController.extend(InventoryLocations, InventoryTypeLi
         request.set('completedBy',request.getUserName());
         request.save().then(function() {
             this.send('update',true);
-            this.send('closeModal');                    
+            this.send('closeModal');
+            this.getTransactions();
         }.bind(this));
+    },
+    
+    getTransactions: function() {        
+        var inventoryId = 'inventory_'+this.get('id');
+        this.set('transactions',null);
+        this.store.find('inv-request', {
+            options: {
+                endkey: [inventoryId, 'Completed', 0],
+                startkey: [inventoryId, 'Completed', 9999999999999],
+                descending: true                
+            },
+            mapReduce: 'inventory_request_by_item'
+        }).then(function(transactions) {
+            this.set('transactions', transactions);
+        }.bind(this));    
     },
     
     beforeUpdate: function() {
