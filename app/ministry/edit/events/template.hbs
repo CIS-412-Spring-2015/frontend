@@ -28,24 +28,20 @@
                         <th>Location</th>
                         <th>Pastors/Churches Present</th>
                         <th>Number of Participants</th>
-                        <!--if patientController.canDeleteCommunity-->
-                            <th>Action</th>
-                        <!--end if-->
+                        <th>Action</th>
                     </tr>
                     {{#each commEvents}}
-                                <tr>
-                                    <td>{{eventName}}</td>
-                                    <td>{{type}}</td>
-                                    <td>{{date}}</td>
-                                    <td>{{location}}</td>
-                                    <td>{{numberPastorChurch}}</td>
-                                    <td>{{numberParticipants}}</td>
-                                    <!--{{#if patientController.canDeleteCommunity}}-->
-                                        <td>
-                                            <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-                                        </td>
-                                    <!--{{/if}}-->
-                                </tr>
+                        <tr>
+                            <td>{{eventName}}</td>
+                            <td>{{type}}</td>
+                            <td>{{date}}</td>
+                            <td>{{location}}</td>
+                            <td>{{numberPastorChurch}}</td>
+                            <td>{{numberParticipants}}</td>
+                            <td>
+                                <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            </td>
+                        </tr>
                     {{/each}}
                 </table>
             </div>
@@ -72,19 +68,16 @@
                     </tr>
 
                     {{#each leadEvents}}
-                                <tr>
-                                    <td>{{description}}</td>
-                                    <td>{{eventName}}</td>
-                                    <td>{{date}}</td>
-                                    <td>{{location}}</td>
-                                    <!--{{#if patientController.canDeleteLeadership}}-->
-                                        <td>
-                                            <button class="btn btn-default warning" {{action "showDeleteCommunity" bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-                                        </td>
-                                    <!--{{/if}}-->
-                                </tr>
+                        <tr>
+                            <td>{{description}}</td>
+                            <td>{{eventName}}</td>
+                            <td>{{date}}</td>
+                            <td>{{location}}</td>
+                            <td>
+                                <button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            </td>
+                        </tr>
                     {{/each}}
-
                 </table>
 
                 <table class="table">
