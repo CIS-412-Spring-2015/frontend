@@ -1,19 +1,17 @@
-<!--<style>
-      p {
+<style>
+      #instructions {
             margin: 0 0 30px;
             text-align: center;
       }
-      .form-group{
-            margin-bottom: 0;
-      }
-      .col-sm-6 {
+      .enabled {
             padding-right: 0;
             padding-left: 0;
+            margin-bottom: 0;
       }
-      input {
+      .disabled {
             width: 100%;
       }
-</style>-->
+</style>
 
 <div role="tabpanel" class="tab-pane" id="summary">
       <div class="panel">
@@ -23,53 +21,53 @@
               </h3>
           </div>
           <div class="panel-body detail-section-content">
-                <p>
+                <p id="instructions">
                       First enter a vaild number greater than 0 in any of the input fields in the Peopled Reached and/or Bibles Given Out rows
                       (exculdinding the Totals column). Then click the submit button below to save the numbers entered into the input field(s).
                 </p>
                 <table class="table">
                   <tr class="table-header">
                       <td>People Reached</td>
-                      <td>{{em-text label="Bedside Displays" property="bedside_displays1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text label="Playroom Displays" property="playroom_displays1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text label="Jesus Film" property="jesus_film1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text label="Open Air Meetings" property="open_air_meetings1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text label="Mobile Clinic Visits" property="mobile_clinic_visits1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text label="More Opportunities" property="more_opportunities1" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td><label for="totals">Totals</label><input type="text" property="totals1" class="form-control" id="totals" disabled></td>
+                      <td>{{em-text label="Bedside Displays" property="bedside_displays1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text label="Playroom Displays" property="playroom_displays1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text label="Jesus Film" property="jesus_film1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text label="Open Air Meetings" property="open_air_meetings1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text label="Mobile Clinic Visits" property="mobile_clinic_visits1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text label="More Opportunities" property="more_opportunities1" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td><label for="totals">Totals</label><input type="text" property="totals1" class="form-control disabled" id="totals" disabled></td>
                       <!--The feature for calculating and displaying the total number of People Reached has not been developed yet-->
                   </tr>
                   <tr class="table-header">
                       <td>Bibles Given Out</td>
-                      <td>{{em-text property="bedroomDisplays4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text property="playroomDisplays4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text property="jesusFilm4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text property="openAirMeetings4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text property="mobileClinicVisits4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td>{{em-text property="moreOpportunities4" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                      <td><input type="text" property="totals4" class="form-control" disabled></td>
+                      <td>{{em-text property="bedroomDisplays4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text property="playroomDisplays4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text property="jesusFilm4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text property="openAirMeetings4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text property="mobileClinicVisits4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td>{{em-text property="moreOpportunities4" rows=1 class="col-lg-12 col-sm-6 enabled"}}</td>
+                      <td><input type="text" property="totals4" class="form-control disabled" disabled></td>
                       <!--The feature for calculating and displaying the total number of Bibles Given Out has not been developed yet-->
                   </tr>
                   <tr class="table-header">
                       <td>Salvations</td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
                       <!--The feature for calculating and displaying the total number of Salvations has not been developed yet-->
                   </tr>
                   <tr class="table-header">
                       <td>Recommitments</td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
-                      <td><input type="text" class="form-control" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
+                      <td><input type="text" class="form-control disabled" disabled></td>
                       <!--The feature for calculating and displaying the total number of Recommitments has not been developed yet-->
                   </tr>
               </table>
