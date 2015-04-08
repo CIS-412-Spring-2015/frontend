@@ -9,6 +9,23 @@
 #MinistryFooter .panel-footer .form-control{
     line-height: 1;  
 }
+#reportDateHeader {
+  padding-top: 15px;
+  padding-left: 15px;
+  margin: 0px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.reportDateHeader {
+    float: left;   
+    padding-left: 25px
+}
+.reportDateHeaderNote {
+    float: left;   
+    padding-left: 20px;
+    padding-top: 22px;
+}
+.clearReportHeader { clear:both; }
 
 /* ================================================================== */
 /* =====Celtson CSS changes until I find where to put CSS file ====== */

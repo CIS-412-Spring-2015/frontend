@@ -22,7 +22,7 @@
                     <td>{{date-format lastModified format="l hh:mm A"}}</td>     
                     {{#if parentController.showActions}}
                     <td>
-                        <button class="btn btn-default neutral" {{action 'blahblahViewArchivedReport' this  bubbles=false }}>View</button>
+                        <button class="btn btn-default neutral"  {{action 'viewItem' this  bubbles=false }}>View</button>
                         {{#if parentController.canDeleteReport}}
                             <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                         {{/if}}
