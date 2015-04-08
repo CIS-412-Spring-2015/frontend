@@ -189,6 +189,44 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('update', true);
           this.send('closeModal');
 
+        },
+        
+        showDeleteCommunity: function(commEvent){
+                this.send('openModal', 'dialog', Ember.Object.create({
+                confirmAction: 'deleteCommEvent',
+                title: 'Delete Community Event',
+                message: 'Are you sure you want to delete this event?',
+                commEventToDelete: commEvent,
+                updateButtonAction: 'confirm',
+                updateButtonText: 'Ok'
+            }));
+        },
+        
+        deleteCommEvent: function(model) {
+            var commEvent = model.get('commEventToDelete');
+            var commEvents = this.get('commEvents');
+            commEvents.removeObject(commEvent);
+            this.set('commEvents', commEvents);
+            this.send('update', true);
+        },
+        
+        showDeleteLeadership: function(leadEvent){
+                this.send('openModal', 'dialog', Ember.Object.create({
+                confirmAction: 'deleteLeadEvent',
+                title: 'Delete Leadership Event',
+                message: 'Are you sure you want to delete this event?',
+                leadEventToDelete: leadEvent,
+                updateButtonAction: 'confirm',
+                updateButtonText: 'Ok'
+            }));
+        },
+        
+        deleteLeadEvent: function(model) {
+            var leadEvent = model.get('leadEventToDelete');
+            var leadEvents = this.get('leadEvents');
+            leadEvents.removeObject(leadEvent);
+            this.set('leadEvents', leadEvents);
+            this.send('update', true);
         }
     }
 });

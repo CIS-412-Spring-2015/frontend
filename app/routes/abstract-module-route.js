@@ -22,6 +22,11 @@ export default Ember.Route.extend(UserSession, Ember.SimpleAuth.AuthenticatedRou
         var module = this.get('moduleName');
         return module + '.delete';        
     }.property('moduleName'),
+    
+    archivedPath: function() {
+        var module = this.get('moduleName');
+        return module + '.archived';
+    }.property('moduleName'),
 
     newButtonAction: function() {
         if (this.currentUserCan(this.get('addCapability'))) {
@@ -53,7 +58,10 @@ export default Ember.Route.extend(UserSession, Ember.SimpleAuth.AuthenticatedRou
         },        
         editItem: function(item) {
             this.transitionTo(this.get('editPath'), item);
-        },        
+        }, 
+        viewItem: function(item) {
+            this.transitionTo(this.get('archivedPath'), item);
+        },
         newItem: function() {
             if (this.currentUserCan(this.get('addCapability'))) {
                 this.transitionTo(this.get('editPath'), 'new');

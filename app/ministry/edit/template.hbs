@@ -71,20 +71,14 @@
 
 /*------------------------------------------------------------------------------*/
 
-/*======= Peter's Styles ======*/
-
-  #reportDateHeader {
-      padding-top: 15px;
-      padding-left: 15px;
-      margin: 0px;
-      font-size: 18px;
-      font-weight: bold;
-  }
-
-/*======= END Peter's STYLES ===*/
-
 </style>
-<h3 id="reportDateHeader">{{displayReportDate}}</h3>
+<div class="row">
+    <h3 class="reportDateHeader">
+        {{displayReportDate}}
+    </h3>
+    <p class="reportDateHeaderNote">Last Edited: {{date-format lastModified format="l hh:mm A"}}</p>
+    <span class="clearReportHeader"></span>
+</div>
 <ul class="nav nav-pills" role="tablist">
     <li role="presentation" class="active"><a href="#hospital" role="tab" data-toggle="pill">Hospital</a></li>
     <li role="presentation"><a href="#events" role="tab" data-toggle="pill">Events</a></li>

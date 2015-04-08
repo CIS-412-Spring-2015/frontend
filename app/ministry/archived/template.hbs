@@ -1,0 +1,14 @@
+<div role="tabpanel" class="tab-pane" id="archivedReportView">
+    <div class="panel">
+        <div class="row">
+            <h3 class="reportDateHeader">
+                {{date-format reportDate format="MMMM YYYY"}}
+            </h3>
+            <p class="reportDateHeaderNote">Last Edited: {{date-format lastModified format="l hh:mm A"}}</p>
+            <span class="clearReportHeader"></span>
+        </div>
+        <div class="panel-body detail-section-content">            
+            {{partial 'ministry/edit/preview'}}
+        </div>
+    </div>
+  </div>

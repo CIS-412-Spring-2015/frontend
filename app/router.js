@@ -62,7 +62,7 @@ Router.map(function() {
 
     this.resource('ministry', function() {
         this.route('edit', { path: "/edit/:ministry_id" }); //set most recently edited
-                                                            //report's ID here
+        this.route('archived', { path:"/archived/:ministry_id"});//report's ID here
         this.route('report');
     });
 
