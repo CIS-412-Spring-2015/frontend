@@ -10,6 +10,13 @@ export default AbstractModel.extend(ReportDate, {
     // New Believers Section
     // believers: DS.hasMany('new-believers'),
     believers: DS.attr(),
+    
+    // Events Section
+    // leadEvents: DS.hasMany('new leadership events)
+    leadEvents: DS.attr(),
+    
+    // leadEvents: DS.hasMany('new community events)
+    commEvents: DS.attr(),
 
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
