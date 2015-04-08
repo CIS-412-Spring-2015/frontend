@@ -9,22 +9,15 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     showPreview: false,
 
     submitPage: false,
-
+    
+    //Function sets default variables for new report
     reportDateChanged: function() {
-        var reportDate = moment(this.get('reportDate')).format('MMMM YYYY'),
-            sectionDetails = {};
 
         if (Ember.isEmpty(this.get('reportDate'))) {
             this.set('reportDate', new Date());
             this.set('reportArchived', false);
         }
 
-        sectionDetails.currentScreenTitle = 'Edit Monthly Report For ' + reportDate;
-
-        this.send('setSectionHeader', sectionDetails);
-
-        //Save changed reportDate
-       // this.get('model').save();
     }.observes('reportDate'),
 
     actions: {

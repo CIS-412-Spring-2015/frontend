@@ -51,14 +51,20 @@
 
 /*------------------------------------------------------------------------------*/
 
-/*======= Spiritual Ministries Styles ======*/
+/*======= Peter's Styles ======*/
 
-  textarea {resize: none;}
+  #reportDateHeader {
+      padding-top: 15px;
+      padding-left: 15px;
+      margin: 0px;
+      font-size: 18px;
+      font-weight: bold;
+  }
 
-/*======= END SPIRITUAL MINISTRIES STYLES ===*/
+/*======= END Peter's STYLES ===*/
 
 </style>
-
+<h3 id="reportDateHeader">{{displayReportDate}}</h3>
 <ul class="nav nav-pills" role="tablist">
     <li role="presentation" class="active"><a href="#hospital" role="tab" data-toggle="pill">Hospital</a></li>
     <li role="presentation"><a href="#events" role="tab" data-toggle="pill">Events</a></li>
@@ -68,7 +74,6 @@
     <!--<li role="presentation"><a href="#demographics" role="tab" data-toggle="pill">Demographics</a></li>-->
     <li role="presentation"><a href="#submit" role="tab" data-toggle="pill">Submit</a></li>
 </ul>
-
 <div class="tab-content">
     {{partial 'ministry/edit/hospital'}}
     {{partial 'ministry/edit/events'}}
