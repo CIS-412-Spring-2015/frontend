@@ -22,6 +22,12 @@ export default AbstractModel.extend(ReportDate, {
     ministryResults: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
     recommendationsNeeds: DS.attr('string'),
+	
+	// Christianity Explored //
+	Participants: DS.attr('string'),
+	Graduates: DS.attr('string'),
+	ContinuedEducation: DS.attr('string'),
+	Session: DS.attr('string'),
 
     displayReportDate: function() {
         var reportDate = this.get('reportDate');
