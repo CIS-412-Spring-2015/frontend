@@ -6,25 +6,24 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
 
     actions: {
         cancel: function() {
+            //this.get('model').rollback();
             this.send('closeModal');
         },
 
         update: function() {
-            var newLeadership = this.getProperties('description', 'eventName', 'date', 'location');
-            this.get('editController').send('addLeadership', newLeadership);
+            var isNew = this.get('isNew'),
+            newLeadership = this.getProperties('description', 'eventName', 'date', 'location');
+            newLeadership.save().then(function() {
+                if (isNew) {    
+                    this.get('editController').send('addLeadership', newLeadership);
+                } else {
+                    this.send('closeModal');
+                }
+            }.bind(this));      
         }
     },
     
     editController: Ember.computed.alias('controllers.ministry/edit'),
-    updateButtonAction: 'update',
-    updateButtonText: function() {
-        var isNew = this.get('isNew');
-        if (isNew) {
-            return 'Add';
-        } else {
-            return 'Update';
-        }
-    }.property('isNew'),
     showUpdateButton: true,
     
     title: function() {
@@ -32,6 +31,16 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
             return 'Add Leadership Event';
         } else {
             return 'Edit Leadership Event';
+        }
+    }.property('isNew'),
+    
+    updateButtonAction: 'update',
+    updateButtonText: function() {
+        var isNew = this.get('isNew');
+        if (isNew) {
+            return 'Add';
+        } else {
+            return 'Update';
         }
     }.property('isNew'),
     
