@@ -177,6 +177,10 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         },
         
+        editCommunity: function(communityToEdit) {                            
+            this.send('openModal', 'ministry.add-community', communityToEdit);
+        },
+        
         showAddLeadership: function() {
             this.send('openModal', 'ministry.add-leadership', {});
         },
