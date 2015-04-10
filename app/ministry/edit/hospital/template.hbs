@@ -1,66 +1,8 @@
 <div role="tabpanel" class="tab-pane active" id="hospital">
     {{#em-form model=this submit_button=false bubbles=false}}
     <div class="panel">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                Hospital
-            </h3>
-        </div>
-        <div class="panel-body detail-section-content">
-            <table class="table">
-                <tr class="detail-section-content panel-title">
-                    <th>Bedside Evangelism</th>
-
-                    <th>Playroom Activities</th>
-                </tr>
-                    <tr>
-                        <td>{{em-text property="bedsideEvangelism" rows=12 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="playroomActivities" rows=12 class="col-lg-12 col-sm-6"}}</td>
-                    </tr>
-
-            </table>
-        </div>
-        <hr />
-        <div class="panel-body detail-section-content">
-            <table class="table">
-                <tr class="table-header">
-                    <th>Entire Staff Devotions</th>
-                    <th>Department Devotions</th>
-                    <th>Hospital Prayer Group Intercessions</th>
-                    <th>Spiritual Center Staff Meetings</th>
-                </tr>
-                <tr class="table-header">
-                    <td>
-                        <div class="col-xs-12 col-sm-6">
-                            {{em-input property="entireStaffDevotions"}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-xs-12 col-sm-6">
-                            {{em-input property="departmentDevotions"}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-xs-12 col-sm-6">
-                            {{em-input property="hospitalPrayerGroupIntercessions"}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-xs-12 col-sm-6">
-                            {{em-input property="spiritualCenterStaffMeetings"}}
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="panel-body detail-section-content">
-            <h3>Staff Development
-            </h3>
-                {{em-text property="staffDevelopment" rows=8 class="col-lg-12 col-sm-6"}}
-            <h3>Continuing Education/Counseling/Support Opportunities
-            </h3>
-                {{em-text property="staffOpportunities" rows=8 class="col-lg-12 col-sm-6"}}
-        </div><!--end row-->
+        {{partial 'ministry/edit/staff'}}
+        {{partial 'ministry/edit/patient'}}        
     </div>
     {{/em-form}}
 </div>
