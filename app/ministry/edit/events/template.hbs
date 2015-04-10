@@ -39,6 +39,7 @@
                             <td>{{numberPastorChurch}}</td>
                             <td>{{numberParticipants}}</td>
                             <td>
+                                <button type="button" class="btn btn-default neutral" {{action "editCommunity" this}}>Edit</button>
                                 <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                             </td>
                         </tr>
@@ -74,7 +75,8 @@
                             <td>{{date}}</td>
                             <td>{{location}}</td>
                             <td>
-                                <button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                                <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
+                                <button class="btn btn-primary" {{action "showAddParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
                             </td>
                         </tr>
                     {{/each}}

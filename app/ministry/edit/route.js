@@ -10,9 +10,5 @@ export default AbstractEditRoute.extend({
         deleteCommEvent: function(model) {
             this.controller.send('deleteCommEvent', model);
         },
-        
-        deleteLeadEvent: function(model) {
-            this.controller.send('deleteLeadEvent', model);
-        }
     }
 });
