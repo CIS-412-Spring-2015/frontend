@@ -9,6 +9,19 @@
 #MinistryFooter .panel-footer .form-control{
     line-height: 1;  
 }
+#MinistryFooter .has-feedback .form-control {
+    padding-right: 0px;   
+}
+#MinistryFooter .noPadding {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#MinistryFooter .padding-5-top {
+    padding-top: 5px;   
+}
+#MinistryFooter .padding-5-right {
+    padding-right: 5px;   
+}
 #reportDateHeader {
   padding-top: 15px;
   padding-left: 15px;
@@ -26,6 +39,8 @@
     padding-top: 22px;
 }
 .clearReportHeader { clear:both; }
+//Placed on textarea for no resize
+.noResize textarea { resize:none; }
 
 /* ================================================================== */
 /* =====Celtson CSS changes until I find where to put CSS file ====== */

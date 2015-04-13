@@ -10,8 +10,9 @@
           <button {{action 'nextMinistryTab'}} class="btn btn-default neutral">Next</button>
         {{/unless}}
         <span class="pull-right">
-          <span class="col-xs-7">{{date-picker property="reportDate" maxDate="now"}}</span>
-          <button class="btn btn-default col-xs-5" {{action 'updateReport'}}>Change Date</button>
+          <p class="col-xs-3 noPadding padding-5-top">Change Date:</p>
+          <span class="col-xs-5 noPadding padding-5-right">{{date-picker property="reportDate" maxDate="now"}}</span>
+          <button class="btn btn-default col-xs-4" {{action 'updateReport'}}>Save Change</button>
         </span>
       {{/em-form}}
     </div>
