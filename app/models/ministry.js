@@ -15,6 +15,8 @@ export default AbstractModel.extend(ReportDate, {
         staffDevelopment: DS.attr('string'),
         staffOpportunities: DS.attr('string'),
         //Patient View
+        bedsideEvangelism: DS.attr('string'),
+        playroomActivities: DS.attr('string'),
     
     // New Believers Section
     // believers: DS.hasMany('new-believers'),
