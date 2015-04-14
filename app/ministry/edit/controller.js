@@ -146,6 +146,21 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.toggleProperty('showPreview');
         },
 
+       /* toggleArrowInPreview: function() {
+          if ($('.showDownArrow').is(":visible")) {
+              $('.showDownArrow').click(toggle());
+              $('.showUpArrow').click(toggle());
+          } else {
+              $('.showDownArrow').toggle();
+              $('.showUpArrow').toggle();
+          }
+        }, */  
+        
+        toggleArrowInPreview: function() {
+          this.toggleProperty('showDetails');
+        }, 
+
+
         //Save Report
         updateReport: function() {
             this.get('model').save().then(function() {

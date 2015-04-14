@@ -1,387 +1,367 @@
 <div role="tabpanel" class="tab-pane" id="preview">
-      <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">
-                Preview
-              </h3>
-          </div>
-          <div class="panel-body detail-section-content">
-
 <!-- Hospital -->              
-              <div class="panel">
-                  <div class="panel-heading" role="tab" id="hospitalPreview">
-                      <a data-toggle="collapse" href="#hospitalPreviewCollapse" aria-expanded="true" aria-controls="hospitalPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Hospital 
-                              <!--{#if}}-->
-                                <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--{else}}
-                                <span class="octicon octicon-triangle-up pull-right"></span>
-                              {/if}}-->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="hospitalPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hospitalPreview">
-                      <div class="panel-body">
-                         <h4>
-                            Staff Ministries
-                         </h4>
-                         <hr>
-                         <span class="row">
-                            <span class="col-xs-3">
-                                <p>Entire Staff Devotions: (Pull Correct Data)</p>
-                            </span>
-                            <span class="col-xs-3">
-                                <p>Department Devotions: (Pull Correct Data)</p>
-                            </span>
-                            <span class="col-xs-3">
-                                <p>Hospital Prayer Group Intercession: (Pull Correct Data)</p>
-                            </span>
-                            <span class="col-xs-3">
-                                <p>Spiritual Center Staff Meeting: (Pull Correct Data)</p>
-                            </span>
-                        </span>
-                        <span class="row">
-                            <span class="col-xs-12">
-                                <p>Staff Development:</p>
-                                <p>(Pull Correct Data)</p>
-                            </span>
-                         </span>
-                         <span class="row">
-                            <span class="col-xs-12">
-                                <p>Continuing Education/Counseling/Support Opportunities:</p>
-                                <p>(Pull Correct Data)</p>
-                            </span>
-                        </span>
-                        <hr>
-                        <h4>
-                            Patient Ministries
-                        </h4>
-                        <hr>
-                        <span class="row">
-                            <span class="col-xs-12">
-                                <p>Bedside Evangelism:</p>
-                                <p>(Pull Correct Data)</p>
-                            </span>
-                        </span>
-                        <span class="row">
-                            <span class="col-xs-12">
-                                <p>Playroom Activities:</p>
-                                <p>(Pull Correct Data)</p>
-                            </span>
-                        </span>
-                      </div>
-                  </div>
+      <div class="panel">
+          <div class="panel-heading" role="tab" id="hospitalPreview">
+              <a data-toggle="collapse" href="#hospitalPreviewCollapse" aria-expanded="true" aria-controls="hospitalPreviewCollapse" {{action "toggleArrowInPreview"}}>
+                  <h3 class="panel-title headingsForPreview">
+                      Hospital 
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                  </h3>
+              </a>
+          </div>
+          <div id="hospitalPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hospitalPreview">
+              <div class="panel-body">
+                 <h4>
+                    Staff Ministries
+                 </h4>
+                 <hr>
+                 <span class="row">
+                    <span class="col-xs-3">
+                        <p>Entire Staff Devotions: {{entireStaffDevotions}}</p>
+                    </span>
+                    <span class="col-xs-3">
+                        <p>Department Devotions: {{departmentDevotions}}</p>
+                    </span>
+                    <span class="col-xs-3">
+                        <p>Hospital Prayer Group Intercession: {{hospitalPrayerGroupIntercessions}}</p>
+                    </span>
+                    <span class="col-xs-3">
+                        <p>Spiritual Center Staff Meeting: {{spiritualCenterStaffMeetings}}</p>
+                    </span>
+                </span>
+                <span class="row">
+                    <span class="col-xs-12">
+                        <p>Staff Development:</p>
+                        <p>{{staffDevelopment}}</p>
+                    </span>
+                 </span>
+                 <span class="row">
+                    <span class="col-xs-12">
+                        <p>Continuing Education/Counseling/Support Opportunities:</p>
+                        <p>{{staffOpportunities}}</p>
+                    </span>
+                </span>
+                <hr>
+                <h4>
+                    Patient Ministries
+                </h4>
+                <hr>
+                <span class="row">
+                    <span class="col-xs-12">
+                        <p>Bedside Evangelism:</p>
+                        <p>(Pull Correct Data)</p>
+                    </span>
+                </span>
+                <span class="row">
+                    <span class="col-xs-12">
+                        <p>Playroom Activities:</p>
+                        <p>(Pull Correct Data)</p>
+                    </span>
+                </span>
               </div>
-
-<!-- Events -->
-              <div class="panel">
-                  <div class="panel-heading" role="tab" id="eventsPreview">
-                      <a data-toggle="collapse" href="#eventsPreviewCollapse" aria-expanded="true" aria-controls="eventsPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Events
-                              <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="eventsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventsPreview">
-                      <div class="panel-body">
-                          <div class="panel">
-                            <div class="panel-heading" role="tab" id="LeadershipEventsPreview">
-                                <a class="collapsed" data-toggle="collapse" href="#LeadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="LeadershipEventsPreviewCollapse"> 
-                                    <h5 class="panel-title">
-                                        Leadership Events (Click to see Events)
-                                        <span class="octicon octicon-triangle-down pull-right"></span>
-                                        <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                                    </h5>
-                                </a>
-                            </div>
-                            <div id="LeadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="LeadershipEventsPreview">
-                                <div class="panel-body">
-                                    <h4> </h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Event Name</th> 
-                                                <th>Date</th>
-                                                <th>Location</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{#each leadEvents}}
-                                            <tr>
-                                                <td>{{eventName}}</td> 
-                                                <td>{{date}}</td>
-                                                <td>{{location}}</td>
-                                                <td>{{description}}</td> 
-                                            </tr>
-                                            {{/each}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                         </div>
-                         <div class="panel">
-                            <div class="panel-heading" role="tab" id="CommunityEventsPreview">
-                                <a class="collapsed" data-toggle="collapse" href="#CommunityEventsPreviewCollapse" aria-expanded="false" aria-controls="CommunityEventsPreviewCollapse"> 
-                                    <h5 class="panel-title">
-                                        Community Events (Click to see Events)
-                                        <span class="octicon octicon-triangle-down pull-right"></span>
-                                        <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                                    </h5>
-                                </a>
-                            </div>
-                            <div id="CommunityEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="CommunityEventsPreview">
-                                <div class="panel-body">
-                                    <h4> </h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Event Name</th> 
-                                                <th>Date</th>
-                                                <th>Event Type</th>
-                                                <th>Number of Pastors/Churches Present</th>
-                                                <th>Number of Participants</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{#each commEvents}}
-                                            <tr>
-                                                <td>{{eventName}}</td> 
-                                                <td>{{date}}</td>
-                                                <td>{{type}}</td>
-                                                <td>{{numberPastorChurch}}</td> 
-                                                <td>{{numberParticipants}}</td>
-                                            </tr>
-                                            {{/each}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                         </div>
-                      </div>
-                  </div>
-              </div>
-
-<!-- Faith Declarations -->
-              <div class="panel">
-                  <div class="panel-heading" role="tab" id="fdPreview">
-                      <a data-toggle="collapse" href="#fdPreviewCollapse" aria-expanded="false" aria-controls="fdPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Faith Declarations
-                              <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="fdPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="fdPreview">
-                      <div class="panel-body">
-                          <h4>
-                             Christianity Explored Class
-                          </h4>
-                          <hr>
-                          <span class="row">
-                             <span class="col-xs-3">
-                                 <p>Sessions: {{ceSession}}</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <p>Participants: {{ceParticipants}}</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <p>Graduates: {{ceGraduates}}</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <p>Participants Seeking Continuing Education: {{ceContinuedEducation}}</p>
-                             </span>
-                          </span>
-                          <hr>
-                          <h4>Faith Declarations</h4>
-                          <hr>
-                          <p>Total: {{believers.length}}</p>
-                          <div class="panel">
-                            <div class="panel-heading" role="tab" id="fdNamesPreview">
-                                <a class="collapsed" data-toggle="collapse" href="#fdNamesPreviewCollapse" aria-expanded="false" aria-controls="fdNamesPreviewCollapse"> 
-                                    <h5 class="panel-title">
-                                        New Believer/Recommitment Names (Click to see Names)
-                                        <span class="octicon octicon-triangle-down pull-right"></span>
-                                        <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                                    </h5>
-                                </a>
-                            </div>
-                            <div id="fdNamesPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="fdNamesPreview">
-                                <div class="panel-body">
-                                    <h4> </h4>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th> 
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{#each believers}}
-                                            <tr>
-                                                <td>{{believerName}}</td> 
-                                                <td>{{age}}</td>
-                                                <td>{{gender}}</td> 
-                                            </tr>
-                                            {{/each}}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                         </div>
-                      </div>
-                  </div>
-              </div>
-                  
-<!-- Additional Info --> 
-              <div class="panel">
-                  <div class="panel-heading" role="tab" id="aiPreview">
-                      <a data-toggle="collapse" href="#aiPreviewCollapse" aria-expanded="true" aria-controls="aiPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Additional Info
-                              <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="aiPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="aiPreview">
-                      <div class="panel-body">
-                        <h4>Ministry Results</h4>
-                        <hr>
-                        <p>{{ministryResults}}</p>
-                        <hr>
-                        <h4>Recommendations/Needs</h4>
-                        <hr>
-                        <p>{{recommendationsNeeds}}</p>
-                        <hr>
-                        <h4>Other Significant Items</h4>
-                        <hr>
-                        <p>{{otherSignificantItems}}</p>
-                      </div>
-                  </div>
-              </div>
-              
-<!-- Summary --> <!--Once Celtson Finishes Summary Tab-->
-              <div class="panel">
-                  <div class="panel-heading" role="tab" id="summaryPreview">
-                      <a data-toggle="collapse" href="#summaryPreviewCollapse" aria-expanded="true" aria-controls="summaryPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Summary
-                              <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--<span class="octicon octicon-triangle-up pull-right"></span>-->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="summaryPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="summaryPreview">
-                      <div class="panel-body">
-                          <h4> </h4>
-                          <table class="table">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Bedside Presentations</th> 
-                                    <th>Playroom Presentations</th>
-                                    <th>Jesus Film</th>
-                                    <th>Open Air Meetings</th>
-                                    <th>Mobile Clinic Visits</th> 
-                                    <th>Additional Opportunities</th>
-                                    <th>Totals</th> 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th>People Reached</th>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                </tr>
-                                <tr>
-                                    <th>Bibles Given Out</th>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td>
-                                </tr>
-                                <tr>
-                                    <th>Salvations</th>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td>
-                                </tr>
-                                <tr>
-                                    <th>Recommitments</th>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td> 
-                                    <td>(Pull Correct Data)</td>
-                                    <td>(Pull Correct Data)</td>
-                                </tr>
-                            </tbody>
-                         </table>
-                      </div>
-                  </div>
-              </div>
-              
-<!-- Demographics --> 
-             <!-- <div class="panel">
-                  <div class="panel-heading" role="tab" id="demographicsPreview">
-                      <a data-toggle="collapse" href="#demographicsPreviewCollapse" aria-expanded="true" aria-controls="demographicsPreviewCollapse"> 
-                          <h3 class="panel-title headingsForPreview">
-                              Demographics
-                              <span class="octicon octicon-triangle-down pull-right"></span>
-                              <!--<span class="octicon octicon-triangle-up pull-right"></span>->
-                          </h3>
-                      </a>
-                  </div>
-                  <div id="demographicsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="demographicsPreview">
-                      <div class="panel-body">
-                          <span class="row">
-                             <span class="col-xs-3">
-                                 <h4>Staff</h4>
-                                 <p>Team Member #’s and Names</p>
-                                 <p>Church Affiliation</p>
-                                 <p>Paid vs. Volunteer</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <h4>Partner Organizations</h4>
-                                 <p>Organizations 1</p>
-                                 <p>Organizations 2</p>
-                                 <p>Organizations 3</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <h4>Churches</h4>
-                                 <p>Church 1</p>
-                                 <p>Church 2</p>
-                                 <p>Church 3</p>
-                             </span>
-                             <span class="col-xs-3">
-                                 <h4>People Groups</h4>
-                                 <p>Group 1</p>
-                                 <p>Group 2</p>
-                                 <p>Group 3</p>
-                             </span>
-                        </span>
-                      </div>
-                  </div>
-              </div>-->
           </div>
       </div>
+
+<!-- Events -->
+      <div class="panel">
+          <div class="panel-heading" role="tab" id="eventsPreview">
+              <a data-toggle="collapse" href="#eventsPreviewCollapse" aria-expanded="true" aria-controls="eventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                  <h3 class="panel-title headingsForPreview">
+                      Events
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                  </h3>
+              </a>
+          </div>
+          <div id="eventsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventsPreview">
+              <div class="panel-body">
+                  <div class="panel">
+                    <div class="panel-heading" role="tab" id="LeadershipEventsPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#LeadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="LeadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                            <h5 class="panel-title">
+                                Leadership Events (Click to see Events)
+                                <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                            </h5>
+                        </a>
+                    </div>
+                    <div id="LeadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="LeadershipEventsPreview">
+                        <div class="panel-body">
+                            <h4> </h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th> 
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each leadEvents}}
+                                    <tr>
+                                        <td>{{eventName}}</td> 
+                                        <td>{{date}}</td>
+                                        <td>{{location}}</td>
+                                        <td>{{description}}</td> 
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="panel">
+                    <div class="panel-heading" role="tab" id="CommunityEventsPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#CommunityEventsPreviewCollapse" aria-expanded="false" aria-controls="CommunityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                            <h5 class="panel-title">
+                                Community Events (Click to see Events)
+                                <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                            </h5>
+                        </a>
+                    </div>
+                    <div id="CommunityEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="CommunityEventsPreview">
+                        <div class="panel-body">
+                            <h4> </h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th> 
+                                        <th>Date</th>
+                                        <th>Event Type</th>
+                                        <th>Number of Pastors/Churches Present</th>
+                                        <th>Number of Participants</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each commEvents}}
+                                    <tr>
+                                        <td>{{eventName}}</td> 
+                                        <td>{{date}}</td>
+                                        <td>{{type}}</td>
+                                        <td>{{numberPastorChurch}}</td> 
+                                        <td>{{numberParticipants}}</td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
+              </div>
+          </div>
+      </div>
+
+<!-- Faith Declarations -->
+      <div class="panel">
+          <div class="panel-heading" role="tab" id="fdPreview">
+              <a data-toggle="collapse" href="#fdPreviewCollapse" aria-expanded="false" aria-controls="fdPreviewCollapse"> 
+                  <h3 class="panel-title headingsForPreview" {{action "toggleArrowInPreview"}}>
+                      Faith Declarations
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                  </h3>
+              </a>
+          </div>
+          <div id="fdPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="fdPreview">
+              <div class="panel-body">
+                  <h4>
+                     Christianity Explored Class
+                  </h4>
+                  <hr>
+                  <span class="row">
+                     <span class="col-xs-3">
+                         <p>Sessions: {{ceSession}}</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <p>Participants: {{ceParticipants}}</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <p>Graduates: {{ceGraduates}}</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <p>Participants Seeking Continuing Education: {{ceContinuedEducation}}</p>
+                     </span>
+                  </span>
+                  <hr>
+                  <h4>Faith Declarations</h4>
+                  <hr>
+                  <p>Total: {{believers.length}}</p>
+                  <div class="panel">
+                    <div class="panel-heading" role="tab" id="fdNamesPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#fdNamesPreviewCollapse" aria-expanded="false" aria-controls="fdNamesPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                            <h5 class="panel-title">
+                                New Believer/Recommitment Names (Click to see Names)
+                                <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                            </h5>
+                        </a>
+                    </div>
+                    <div id="fdNamesPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="fdNamesPreview">
+                        <div class="panel-body">
+                            <h4> </h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th> 
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each believers}}
+                                    <tr>
+                                        <td>{{believerName}}</td> 
+                                        <td>{{age}}</td>
+                                        <td>{{gender}}</td> 
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
+              </div>
+          </div>
+      </div>
+
+<!-- Additional Info --> 
+      <div class="panel">
+          <div class="panel-heading" role="tab" id="aiPreview">
+              <a data-toggle="collapse" href="#aiPreviewCollapse" aria-expanded="true" aria-controls="aiPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                  <h3 class="panel-title headingsForPreview">
+                      Additional Info
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                  </h3>
+              </a>
+          </div>
+          <div id="aiPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="aiPreview">
+              <div class="panel-body">
+                <h4>Ministry Results</h4>
+                <hr>
+                <p>{{ministryResults}}</p>
+                <hr>
+                <h4>Recommendations/Needs</h4>
+                <hr>
+                <p>{{recommendationsNeeds}}</p>
+                <hr>
+                <h4>Other Significant Items</h4>
+                <hr>
+                <p>{{otherSignificantItems}}</p>
+              </div>
+          </div>
+      </div>
+
+<!-- Summary --> <!--Once Celtson Finishes Summary Tab-->
+      <div class="panel">
+          <div class="panel-heading" role="tab" id="summaryPreview">
+              <a data-toggle="collapse" href="#summaryPreviewCollapse" aria-expanded="true" aria-controls="summaryPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                  <h3 class="panel-title headingsForPreview">
+                      Summary
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                      <!--<span class="showDownArrow octicon octicon-triangle-down pull-right"></span>-->
+                  </h3>
+              </a>
+          </div>
+          <div id="summaryPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="summaryPreview">
+              <div class="panel-body">
+                  <h4> </h4>
+                  <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Bedside Presentations</th> 
+                            <th>Playroom Presentations</th>
+                            <th>Jesus Film</th>
+                            <th>Open Air Meetings</th>
+                            <th>Mobile Clinic Visits</th> 
+                            <th>Additional Opportunities</th>
+                            <th>Totals</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>People Reached</th>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                        </tr>
+                        <tr>
+                            <th>Bibles Given Out</th>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td>
+                        </tr>
+                        <tr>
+                            <th>Salvations</th>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td>
+                        </tr>
+                        <tr>
+                            <th>Recommitments</th>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td> 
+                            <td>(Pull Correct Data)</td>
+                            <td>(Pull Correct Data)</td>
+                        </tr>
+                    </tbody>
+                 </table>
+              </div>
+          </div>
+      </div>
+
+<!-- Demographics --> 
+     <!-- <div class="panel">
+          <div class="panel-heading" role="tab" id="demographicsPreview">
+              <a data-toggle="collapse" href="#demographicsPreviewCollapse" aria-expanded="true" aria-controls="demographicsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                  <h3 class="panel-title headingsForPreview">
+                      Demographics
+                      <span class="showUpArrow octicon octicon-triangle-up pull-right"></span>
+                      <span class="showDownArrow octicon octicon-triangle-down pull-right"></span>
+                  </h3>
+              </a>
+          </div>
+          <div id="demographicsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="demographicsPreview">
+              <div class="panel-body">
+                  <span class="row">
+                     <span class="col-xs-3">
+                         <h4>Staff</h4>
+                         <p>Team Member #’s and Names</p>
+                         <p>Church Affiliation</p>
+                         <p>Paid vs. Volunteer</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <h4>Partner Organizations</h4>
+                         <p>Organizations 1</p>
+                         <p>Organizations 2</p>
+                         <p>Organizations 3</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <h4>Churches</h4>
+                         <p>Church 1</p>
+                         <p>Church 2</p>
+                         <p>Church 3</p>
+                     </span>
+                     <span class="col-xs-3">
+                         <h4>People Groups</h4>
+                         <p>Group 1</p>
+                         <p>Group 2</p>
+                         <p>Group 3</p>
+                     </span>
+                </span>
+              </div>
+          </div>
+      </div>-->
   </div>
