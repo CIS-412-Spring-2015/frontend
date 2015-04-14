@@ -41,6 +41,21 @@
 .clearReportHeader { clear:both; }
 //Placed on textarea for no resize
 .noResize textarea { resize:none; }
+/* ================================================================== */
+/* =====Katie's CSS changes until I find where to put CSS file ====== */
+/* ================================================================== */
+#summary #instructions {
+    margin: 0 0 30px;
+    text-align: center;
+}
+#summary .enabled {
+    padding-right: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+#summary .disabled {
+    width: 100%;
+}
 
 /* ================================================================== */
 /* =====Celtson CSS changes until I find where to put CSS file ====== */
