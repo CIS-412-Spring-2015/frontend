@@ -64,7 +64,7 @@
 
         <ul class="list-group text-center nav-pills showHideBelievers">
           {{#each believers}}
-            <li class="listSet">
+            <li class="listSet" {{action "showEditBeliever" bubbles=false }}>
               <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
             </li>
           {{/each}}

@@ -9,7 +9,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     showPreview: false,
 
     submitPage: false,
-    
+
     //Function sets default variables for new report
     reportDateChanged: function() {
 
@@ -121,24 +121,47 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
         showAddBeliever: function() {
-            this.send('openModal', 'ministry.add-believer', {});
+          this.send('openModal', 'ministry.add-believer', {
+            title: 'Add Believer',
+            updateButtonText: 'Add',
+            updateButtonAction: 'add',
+            showUpdateButton: true,
+          });
+        },
+
+        showEditBeliever: function() {
+          this.send('openModal', 'ministry.add-believer', {
+            title: "Edit This Believer's Info",
+            updateButtonText: 'Update',
+            updateButtonAction: 'update',
+            showUpdateButton: true,
+          });
         },
 
         addBeliever: function(newBeliever) {
           var believers = this.getWithDefault('believers', []);
-          // var newBeliever = this.getProperties('new-believer.address', 'new-believer.age',
-          // 'new-believer.declarationType', 'new-believer.email', 'new-believer.firstName',
-          // 'new-believer.gender', 'new-believer.lastName', 'new-believer.phone',
-          // 'new-believer.presentActivity', 'new-believer.religiousAffiliation');
-
           believers.addObject(newBeliever);
           this.set('believers', believers);
           this.send('update', true);
           this.send('closeModal');
+        },
 
-          // this.get('model').save().then(function() {
-          //     this.displayAlert('Believer Saved', 'The believer has been saved.');
-          // }.bind(this));
+        editBeliever: function(updatedBeliever) {
+          var believers = this.getWithDefault('believers');
+          // delete old one that exist and then add new one
+          believers.addObject(updatedBeliever);
+          this.set('believers', believers);
+          this.send('update', true);
+          this.send('closeModal');
+        },
+
+        deleteBeliever: function(model) {
+            var believer = model.get('believerToDelete');
+            var believers = this.get('believers');
+            believers.removeObject(believer);
+            this.set('believers', believers);
+            this.send('update', true);
+            this.send('closeModal');
         },
 
         //Toggle Preview
@@ -177,11 +200,11 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
                 window.location.href = "#/ministry";
             }.bind(this));
         },
-        
+
         showAddCommunity: function() {
             this.send('openModal', 'ministry.add-community', {});
         },
-        
+
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
 
@@ -191,15 +214,15 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('closeModal');
 
         },
-        
-        editCommunity: function(communityToEdit) {                            
+
+        editCommunity: function(communityToEdit) {
             this.send('openModal', 'ministry.add-community', communityToEdit);
         },
-        
+
         showAddLeadership: function() {
             this.send('openModal', 'ministry.add-leadership', {});
         },
-        
+
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
 
@@ -209,7 +232,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('closeModal');
 
         },
-        
+
         showDeleteCommunity: function(commEvent){
                 this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deleteCommEvent',
@@ -220,7 +243,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
                 updateButtonText: 'Ok'
             }));
         },
-        
+
         deleteCommEvent: function(model) {
             var commEvent = model.get('commEventToDelete');
             var commEvents = this.get('commEvents');
@@ -228,7 +251,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             this.set('commEvents', commEvents);
             this.send('update', true);
         },
-        
+
         showDeleteLeadership: function(leadEvent){
                 this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deleteLeadEvent',
@@ -239,7 +262,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
                 updateButtonText: 'Ok'
             }));
         },
-        
+
         deleteLeadEvent: function(model) {
             var leadEvent = model.get('leadEventToDelete');
             var leadEvents = this.get('leadEvents');

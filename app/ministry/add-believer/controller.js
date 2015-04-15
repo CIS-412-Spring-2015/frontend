@@ -6,10 +6,6 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBe
     needs: 'ministry/edit',
 
     editController: Ember.computed.alias('controllers.ministry/edit'),
-    title: 'Add Believer',
-    updateButtonText: 'Add',
-    updateButtonAction: 'add',
-    showUpdateButton: true,
 
     actions: {
         cancel: function() {
@@ -21,6 +17,14 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBe
             'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
             'phone', 'email', 'address', 'country');
             this.get('editController').send('addBeliever', newBeliever);
+        },
+
+        update: function() {
+            var updatedBeliever = this.getProperties('believerName', 'believer.religiousAffiliation',
+            'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
+            'phone', 'email', 'address', 'country');
+            this.get('editController').send('editBeliever', updatedBeliever);
         }
+
     }
 });
