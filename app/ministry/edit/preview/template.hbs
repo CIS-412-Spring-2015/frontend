@@ -74,14 +74,24 @@
                 <hr>
                 <span class="row">
                     <span class="col-xs-12">
-                        <p class="filledInPreview">Bedside Evangelism:</p>
-                        <p>(Pull Correct Data)</p>
+                        {{#if bedsideEvangelism}}
+                            <p class="filledInPreview">Bedside Evangelism:</p>
+                            <p>{{bedsideEvangelism}}</p>
+                        {{else}}
+                            <p>Bedside Evangelism:</p>
+                            <p class="pleaseFillInPreview">(Please Fill In)</p>
+                        {{/if}}
                     </span>
                 </span>
                 <span class="row">
                     <span class="col-xs-12">
-                        <p class="filledInPreview">Playroom Activities:</p>
-                        <p>(Pull Correct Data)</p>
+                        {{#if playroomActivities}}
+                            <p class="filledInPreview">Playroom Activities:</p>
+                            <p>{{playroomActivities}}</p>
+                        {{else}}
+                            <p>Playroom Activities:</p>
+                            <p class="pleaseFillInPreview">(Please Fill In)</p>
+                        {{/if}}
                     </span>
                 </span>
               </div>
@@ -368,43 +378,101 @@
                     <tbody>
                         <tr>
                             <th>People Reached</th>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
+                            {{#if peopleBedside}}
+                                <td>{{peopleBedside}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if peoplePlayroom}}
+                                <td>{{peoplePlayroom}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if peopleJesus}}
+                                <td>{{peopleJesus}}</td> 
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if peopleOpenAir}}
+                                <td>{{peopleOpenAir}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if peopleMobile}}
+                                <td>{{peopleMobile}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if peopleMore}}
+                                <td>{{peopleMore}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            <td>{{peopleTotal}}</td>
                         </tr>
                         <tr>
                             <th>Bibles Given Out</th>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td>
+                            {{#if biblesBedside}}
+                                <td>{{biblesBedside}}</td> 
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if biblesPlayroom}}
+                                <td>{{biblesPlayroom}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if biblesJesus}}
+                                <td>{{biblesJesus}}</td> 
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if biblesOpenAir}}
+                                <td>{{biblesOpenAir}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if biblesMobile}}
+                                <td>{{biblesMobile}}</td> 
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if biblesMore}}
+                                <td>{{biblesMore}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            <td>{{biblesTotal}}</td>  
                         </tr>
                         <tr>
                             <th>Salvations</th>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td>
+                            <td>{{salvationBedside}}</td> 
+                            <td>{{salvationPlayroom}}</td>
+                            <td>{{salvationJesus}}</td> 
+                            <td>{{salvationOpenAir}}</td>
+                            <td>{{salvationMobile}}</td> 
+                            <td>{{salvationMore}}</td>
+                            <td>{{salvationTotal}}</td>
                         </tr>
                         <tr>
                             <th>Recommitments</th>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td> 
-                            <td>(Pull Correct Data)</td>
-                            <td>(Pull Correct Data)</td>
+                            <td>{{recommitmentBedside}}</td> 
+                            <td>{{recommitmentPlayroom}}</td>
+                            <td>{{recommitmentJesus}}</td> 
+                            <td>{{recommitmentOpenAir}}</td>
+                            <td>{{recommitmentMobile}}</td> 
+                            <td>{{recommitmentMore}}</td>
+                            <td>{{recommitmentTotal}}</td>  
                         </tr>
                     </tbody>
                  </table>
