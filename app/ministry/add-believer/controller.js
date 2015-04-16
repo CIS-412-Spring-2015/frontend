@@ -20,6 +20,14 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBe
         },
 
         update: function() {
+            var believers = this.get('editController').get('believers');
+            var believer = this.get('believerToEdit');
+            console.log(believers);
+            console.log(believer);
+
+            // delete old info that exist
+            believers.removeObject(believer);
+
             var updatedBeliever = this.getProperties('believerName', 'believer.religiousAffiliation',
             'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
             'phone', 'email', 'address', 'country');

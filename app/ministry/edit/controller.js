@@ -129,12 +129,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           });
         },
 
-        showEditBeliever: function() {
+        showEditBeliever: function(believer) {
           this.send('openModal', 'ministry.add-believer', {
             title: "Edit This Believer's Info",
             updateButtonText: 'Update',
             updateButtonAction: 'update',
             showUpdateButton: true,
+            believerToEdit: believer,
           });
         },
 
@@ -147,11 +148,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
         editBeliever: function(updatedBeliever) {
-          var believers = this.getWithDefault('believers');
-          // delete old one that exist and then add new one
+          // Add new info to believer
+          var believers = this.getWithDefault('believers', []);
           believers.addObject(updatedBeliever);
+          console.log(believers);
           this.set('believers', believers);
-          this.send('update', true);
+          // this.send('update', true);
           this.send('closeModal');
         },
 
@@ -177,11 +179,11 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
               $('.showDownArrow').toggle();
               $('.showUpArrow').toggle();
           }
-        }, */  
-        
+        }, */
+
         toggleArrowInPreview: function() {
           this.toggleProperty('showDetails');
-        }, 
+        },
 
 
         //Save Report

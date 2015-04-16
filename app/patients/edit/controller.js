@@ -7,8 +7,8 @@ import PouchAdapterUtils from "hospitalrun/mixins/pouch-adapter-utils";
 import SocialExpenseModel from 'hospitalrun/models/social-expense';
 import UserSession from "hospitalrun/mixins/user-session";
 export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapterUtils, UserSession, {
-    
-    canAddAppointment: function() {        
+
+    canAddAppointment: function() {
         return this.currentUserCan('add_appointment');
     }.property(),
 
@@ -18,61 +18,61 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
 
     canAddImaging: function() {
         return this.currentUserCan('add_imaging');
-    }.property(),    
+    }.property(),
 
-    canAddLab: function() {        
+    canAddLab: function() {
         return this.currentUserCan('add_lab');
-    }.property(),    
-    
-    canAddMedication: function() {        
+    }.property(),
+
+    canAddMedication: function() {
         return this.currentUserCan('add_medication');
     }.property(),
-    
+
     canAddPhoto: function() {
         var isFileSystemEnabled = this.get('isFileSystemEnabled');
         return (this.currentUserCan('add_photo') && isFileSystemEnabled);
     }.property(),
-    
-    canAddSocialWork: function() {        
+
+    canAddSocialWork: function() {
         return this.currentUserCan('add_socialwork');
     }.property(),
-    
-    canAddVisit: function() {        
+
+    canAddVisit: function() {
         return this.currentUserCan('add_visit');
     }.property(),
 
-    canDeleteAppointment: function() {        
+    canDeleteAppointment: function() {
         return this.currentUserCan('delete_appointment');
-    }.property(), 
-    
-    canDeleteContact: function() {        
+    }.property(),
+
+    canDeleteContact: function() {
         return this.currentUserCan('add_patient');
     }.property(),
-    
+
     canDeleteImaging: function() {
         return this.currentUserCan('delete_imaging');
-    }.property(),        
-    
-    canDeleteLab: function() {        
+    }.property(),
+
+    canDeleteLab: function() {
         return this.currentUserCan('delete_lab');
-    }.property(),        
-    
-    canDeleteMedication: function() {        
+    }.property(),
+
+    canDeleteMedication: function() {
         return this.currentUserCan('delete_medication');
     }.property(),
-    
-    canDeletePhoto: function() {        
+
+    canDeletePhoto: function() {
         return this.currentUserCan('delete_photo');
-    }.property(),    
-    
-    canDeleteSocialWork: function() {        
+    }.property(),
+
+    canDeleteSocialWork: function() {
         return this.currentUserCan('delete_socialwork');
     }.property(),
 
-    canDeleteVisit: function() {        
+    canDeleteVisit: function() {
         return this.currentUserCan('delete_visit');
     }.property(),
-    
+
     economicClassificationTypes: [
         'A',
         'B',
@@ -89,26 +89,26 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
         'Rent',
         'Shared'
     ],
-    
+
     patientTypes: [
         'Charity',
         'Private'
     ],
-    
-    philhealthTypes: [         
+
+    philhealthTypes: [
         'Employed: Government',
         'Employed: Non Paying Member/Lifetime',
         'Employed: OWWA/OFW',
         'Employed: Private',
         'Employed: Sponsored/Indigent',
-        'Self Employed'      
-    ],    
-    
-    
+        'Self Employed'
+    ],
+
+
     primaryDiagnosisIdChanged: function() {
         this.get('model').validate();
     }.observes('primaryDiagnosisId'),
-    
+
     needs: ['filesystem','pouchdb','patients'],
 
     addressOptions: Ember.computed.alias('controllers.patients.addressOptions'),
@@ -127,7 +127,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
     isFileSystemEnabled: Ember.computed.alias('controllers.filesystem.isFileSystemEnabled'),
     patientController: Ember.computed.alias('controllers.patients'),
     pricingProfiles: Ember.computed.alias('controllers.patients.pricingProfiles'),
-    
+
     haveAdditionalContacts: function() {
         var additionalContacts = this.get('additionalContacts');
         return (!Ember.isEmpty(additionalContacts));
@@ -136,7 +136,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
     haveAddressOptions: function() {
         var addressOptions = this.get('addressOptions');
         return (!Ember.isEmpty(addressOptions));
-    }.property('addressOptions'),    
+    }.property('addressOptions'),
 
     lookupListsToUpdate: [{
         name: 'countryList',
@@ -152,37 +152,37 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
         var primaryDiagnosesLength = this.get('primaryDiagnoses.length');
         return (primaryDiagnosesLength > 0);
     }.property('primaryDiagnoses.length'),
-    
+
     haveProcedures: function() {
         var proceduresLength = this.get('patientProcedures.length');
         return (proceduresLength > 0);
     }.property('patientProcedures.length'),
-    
+
     haveSecondaryDiagnoses: function() {
         var secondaryDiagnosesLength = this.get('secondaryDiagnoses.length');
         return (secondaryDiagnosesLength > 0);
     }.property('secondaryDiagnoses.length'),
-    
-    
+
+
     patientImaging: function() {
         return this._getVisitCollection('imaging');
-    }.property('visits.@each.imaging'),    
-    
+    }.property('visits.@each.imaging'),
+
     patientLabs: function() {
         return this._getVisitCollection('labs');
     }.property('visits.@each.labs'),
-    
+
     patientMedications: function() {
         return this._getVisitCollection('medication');
     }.property('visits.@each.medication'),
-    
+
     patientProcedures: function() {
         return this._getVisitCollection('procedures');
     }.property('visits.@each.procedures'),
 
     primaryDiagnoses: function() {
         var diagnosesList = [],
-            visits = this.get('visits');        
+            visits = this.get('visits');
         if (!Ember.isEmpty(visits)) {
             visits.forEach(function(visit) {
                 if (!Ember.isEmpty(visit.get('primaryDiagnosisId'))) {
@@ -203,25 +203,25 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
 
     secondaryDiagnoses: function() {
         var diagnosesList = [],
-            visits = this.get('visits');        
+            visits = this.get('visits');
         if (!Ember.isEmpty(visits)) {
-            visits.forEach(function(visit) {                
+            visits.forEach(function(visit) {
                 if (!Ember.isEmpty(visit.get('additionalDiagnoses'))) {
                     diagnosesList.addObjects(visit.get('additionalDiagnoses'));
                 }
             });
         }
-        
+
         var firstDiagnosis = diagnosesList.get('firstObject');
         if (!Ember.isEmpty(firstDiagnosis)) {
             firstDiagnosis.first = true;
         }
         return diagnosesList;
-    }.property('visits.@each'),    
+    }.property('visits.@each'),
 
-    
+
     showExpenseTotal: true,
-    
+
     totalExpenses: function() {
         var expenses = this.get('expenses');
         if (!Ember.isEmpty(expenses)) {
@@ -229,13 +229,13 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 if (!Ember.isEmpty(expense.cost)) {
                     return previousValue +  parseInt(expense.cost);
                 }
-            }, 0); 
+            }, 0);
             this.set('showExpenseTotal', true);
             return total;
         } else {
             this.set('showExpenseTotal', false);
         }
-    }.property('expenses'),    
+    }.property('expenses'),
 
     updateCapability: 'add_patient',
 
@@ -245,7 +245,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
             additionalContacts.addObject(newContact);
             this.set('additionalContacts', additionalContacts);
             this.send('update', true);
-            this.send('closeModal');            
+            this.send('closeModal');
         },
 
         /**
@@ -259,14 +259,14 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 fileSystem = this.get('fileSystem'),
                 photos = this.get('photos'),
                 newPatientPhoto = this.get('store').createRecord('photo', {
-                    patient: this.get('model'),                    
+                    patient: this.get('model'),
                     localFile: true,
                     caption: caption,
                     coverImage: coverImage,
                 });
             var pouchDbId = this._idToPouchId(newPatientPhoto.get('id'), 'photo');
             fileSystem.addFile(photoFile, dirToSaveTo, pouchDbId).then(function(fileEntry) {
-                fileSystem.fileToDataURL(photoFile).then(function(photoDataUrl) {                        
+                fileSystem.fileToDataURL(photoFile).then(function(photoDataUrl) {
                     var dataUrlParts = photoDataUrl.split(',');
                     newPatientPhoto.setProperties({
                         fileName: fileEntry.fullPath,
@@ -276,22 +276,22 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                                 content_type: photoFile.type,
                                 data: dataUrlParts[1]
                             }
-                        }                    
-                    });                        
+                        }
+                    });
                     newPatientPhoto.save().then(function() {
                         photos.addObject(newPatientPhoto);
                         this.send('closeModal');
                     }.bind(this));
-                }.bind(this));            
-            }.bind(this));            
+                }.bind(this));
+            }.bind(this));
         },
-        
+
         appointmentDeleted: function(deletedAppointment) {
-            var appointments = this.get('appointments');            
+            var appointments = this.get('appointments');
             appointments.removeObject(deletedAppointment);
             this.send('closeModal');
         },
-        
+
         deleteContact: function(model) {
             var contact = model.get('contactToDelete');
             var additionalContacts = this.get('additionalContacts');
@@ -331,7 +331,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 }
             }.bind(this));
         },
-        
+
         editAppointment: function(appointment) {
             appointment.set('returnToPatient', true);
             this.transitionToRoute('appointments.edit', appointment);
@@ -343,29 +343,29 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 'returnToPatient': true
             });
             this.transitionToRoute('imaging.edit', imaging);
-        },        
-        
+        },
+
         editLab: function(lab) {
             lab.setProperties({
                 'isCompleting': false,
                 'returnToPatient': true
             });
             this.transitionToRoute('labs.edit', lab);
-        },        
-        
+        },
+
         editMedication: function(medication) {
             medication.set('returnToPatient', true);
             this.transitionToRoute('medication.edit', medication);
-        },    
-        
-        editPhoto: function(photo) {        
+        },
+
+        editPhoto: function(photo) {
             this.send('openModal', 'patients.photo', photo);
         },
-        
+
         editVisit: function(visit) {
             this.transitionToRoute('visits.edit', visit);
         },
-        
+
         newAppointment: function() {
             var now = moment().hours(8).minutes(0).seconds(0).toDate();
             var newAppointment = this.get('store').createRecord('appointment', {
@@ -382,19 +382,19 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 isCompleting: false,
                 patient: this.get('model'),
                 returnToPatient: true
-            });            
+            });
             this.transitionToRoute('imaging.edit', newImaging);
         },
-        
+
         newLab: function() {
             var newLab = this.get('store').createRecord('lab', {
                 isCompleting: false,
                 patient: this.get('model'),
                 returnToPatient: true
-            });            
+            });
             this.transitionToRoute('labs.edit', newLab);
         },
-        
+
         newMedication: function() {
             var newMedication = this.get('store').createRecord('medication', {
                 prescriptionDate: moment().startOf('day').toDate(),
@@ -403,30 +403,30 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
             });
             this.transitionToRoute('medication.edit', newMedication);
         },
-        
+
         newVisit: function() {
             var newVisit = this.get('store').createRecord('visit', {
                 startDate: new Date(),
                 patient: this.get('model')
-            });            
+            });
             this.transitionToRoute('visits.edit', newVisit);
-        },     
+        },
 
         showAddContact: function() {
-            this.send('openModal', 'patients.add-contact', {});            
+            this.send('openModal', 'patients.add-contact', {});
         },
 
         showAddPhoto: function() {
             this.send('openModal', 'patients.photo', {
                 isNew: true
             });
-        },        
-        
+        },
+
         showDeleteAppointment: function(appointment) {
             appointment.set('deleteFromPatient', true);
             this.send('openModal', 'appointments.delete', appointment);
         },
-        
+
         showDeleteContact: function(contact) {
             this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deleteContact',
@@ -435,9 +435,9 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 contactToDelete: contact,
                 updateButtonAction: 'confirm',
                 updateButtonText: 'Ok'
-            }));                    
-        },        
-    
+            }));
+        },
+
         showDeleteExpense: function(expense) {
             this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deleteExpense',
@@ -446,9 +446,9 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 expenseToDelete: expense,
                 updateButtonAction: 'confirm',
                 updateButtonText: 'Ok'
-            }));   
+            }));
         },
-        
+
         showDeleteFamily: function(familyInfo) {
             this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deleteFamily',
@@ -457,14 +457,14 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                 familyToDelete: familyInfo,
                 updateButtonAction: 'confirm',
                 updateButtonText: 'Ok'
-            }));   
-            
+            }));
+
         },
 
         showDeleteImaging: function(imaging) {
             this.send('openModal', 'imaging.delete', imaging);
         },
-        
+
         showDeleteLab: function(lab) {
             this.send('openModal', 'labs.delete', lab);
         },
@@ -472,7 +472,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
         showDeleteMedication: function(medication) {
             this.send('openModal', 'medication.delete', medication);
         },
-        
+
         showDeletePhoto: function(photo) {
             this.send('openModal', 'dialog', Ember.Object.create({
                 confirmAction: 'deletePhoto',
@@ -488,32 +488,32 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
             visit.set('deleteFromPatient', true);
             this.send('openModal', 'visits.delete', visit);
         },
-    
+
         showEditExpense: function(model) {
             if (Ember.isEmpty(model)) {
                 model = SocialExpenseModel.create({isNew:true});
             }
-             this.send('openModal', 'patients.socialwork.expense', model);            
+             this.send('openModal', 'patients.socialwork.expense', model);
         },
-        
+
         showEditFamily: function(model) {
             if (Ember.isEmpty(model)) {
                 model = FamilyInfoModel.create({isNew:true});
             }
             this.send('openModal', 'patients.socialwork.family-info', model);
         },
-        
+
         updateExpense: function(model) {
             var expenses = this.getWithDefault('expenses', []),
                 isNew = model.isNew;
-            if (isNew) {                
+            if (isNew) {
                 delete model.isNew;
-                expenses.addObject(model);                
+                expenses.addObject(model);
             }
             this.set('expenses', expenses);
             this.send('update', true);
             this.send('closeModal');
-        },        
+        },
 
         updateFamilyInfo: function(model) {
             var familyInfo = this.getWithDefault('familyInfo',[]),
@@ -530,17 +530,17 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
         updatePhoto: function(photo) {
             photo.save().then(function() {
                 this.send('closeModal');
-            }.bind(this));            
+            }.bind(this));
         },
-        
+
         visitDeleted: function(deletedVisit) {
             var visits = this.get('visits');
             visits.removeObject(deletedVisit);
             this.send('closeModal');
         }
-        
+
     },
-    
+
     _getVisitCollection: function(name) {
         var returnList = [],
             visits = this.get('visits');
@@ -550,23 +550,23 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
                     returnList.addObjects(items);
                     if (returnList.length > 0) {
                         returnList[0].set('first', true);
-                    }                    
+                    }
                 });
             });
         }
-        return returnList;        
+        return returnList;
     },
-    
+
     beforeUpdate: function() {
         //Make sure payments async relationship is loaded before saving.
         return new Ember.RSVP.Promise(function(resolve, reject) {
             this.get('payments').then(resolve, reject);
         }.bind(this));
     },
-    
+
     afterUpdate: function(record) {
         var message =  'The patient record for %@ has been saved.'.fmt(record.get('displayName'));
-        this.displayAlert('Patient Saved', message);        
+        this.displayAlert('Patient Saved', message);
     }
-    
+
 });

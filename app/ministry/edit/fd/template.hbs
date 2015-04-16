@@ -58,9 +58,18 @@
           </button>
         </h4>
 
+        <div class="col-lg-6 showHideBelievers">
+          <div class="input-group input-group-lg">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+            <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1">
+          </div>
+        </div>
+
         <ul class="list-group text-center nav-pills showHideBelievers">
           {{#each believers}}
-            <li class="listSet" {{action "showEditBeliever" bubbles=false }}>
+            <li class="listSet" {{action "showEditBeliever" this bubbles=false }}>
               <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
             </li>
           {{/each}}
