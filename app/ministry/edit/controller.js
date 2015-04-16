@@ -23,10 +23,10 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     actions: {
         // These are here until I can find a more efficient way to do it.
         // They change the active classes to show and hide the respective tabs
-        aiTab: function () {
+        additionalInformationTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
-          $('#ai').addClass('active');
+          $('#additionalInformation').addClass('active');
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(4)').addClass('active');
         },
@@ -44,10 +44,10 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(2)').addClass('active');
         },
-        fdTab: function () {
+        faithDeclarationsTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
-          $('#fd').addClass('active');
+          $('#faithDeclarations').addClass('active');
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(3)').addClass('active');
         },

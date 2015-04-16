@@ -43,7 +43,7 @@
                         </span>                        
                     {{/if}}
                     
-                    {{#if fdReportValidation}}
+                    {{#if faithDeclarationsReportValidation}}
                         <span class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
                                 Faith Declaration
@@ -51,14 +51,14 @@
                         </span>
                     {{else}}
                         <span class="col-xs-4">
-                            <button {{action 'fdTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                            <button {{action 'faithDeclarationsTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
                                 Faith Declaration
                             </button>
                         </span>                    
                     {{/if}}
                 </span>
                 <span class="row">
-                    {{#if aiReportValidation}}
+                    {{#if additionalInformationReportValidation}}
                         <span class="col-xs-4">
                             <button class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsTrue">
                                 Additional Information
@@ -66,7 +66,7 @@
                         </span>
                     {{else}}
                         <span class="col-xs-4">
-                            <button {{action 'aiTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
+                            <button {{action 'additionalInformationTab'}} class="btn btn-primary col-xs-offset-2 col-xs-8 submissionTab submissionTabButtonsFalse">
                                 Additional Information
                             </button>
                         </span>                    

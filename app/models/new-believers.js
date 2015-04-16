@@ -14,7 +14,7 @@ export default AbstractModel.extend(ReportDate, {
     address2: DS.attr('string'),
     address3: DS.attr('string'),
     address4: DS.attr('string'),
-    age: DS.attr('string'),
+    age: DS.attr('number'),
     declarationType: DS.attr('string'),
     email: DS.attr('string'),
     firstName: DS.attr('string'),

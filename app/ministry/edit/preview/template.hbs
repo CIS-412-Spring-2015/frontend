@@ -18,28 +18,28 @@
                  <span class="row">
                     <span class="col-xs-3">
                         {{#if entireStaffDevotions}}
-                            <p>Entire Staff Devotions: {{entireStaffDevotions}}</p>
+                            <p><span class="filledInPreview">Entire Staff Devotions: </span>{{entireStaffDevotions}}</p>
                         {{else}}
                             <p>Entire Staff Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
                         {{#if entireStaffDevotions}}
-                            <p>Department Devotions: {{departmentDevotions}}</p>
+                            <p><span class="filledInPreview">Department Devotions: </span>{{departmentDevotions}}</p>
                         {{else}}
                             <p>Department Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
                         {{#if hospitalPrayerGroupIntercessions}}
-                            <p>Hospital Prayer Group Intercession: {{hospitalPrayerGroupIntercessions}}</p>
+                            <p><span class="filledInPreview">Hospital Prayer Group Intercession: </span>{{hospitalPrayerGroupIntercessions}}</p>
                         {{else}}
                             <p>Hospital Prayer Group Intercession: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
                         {{#if spiritualCenterStaffMeetings}}
-                            <p>Spiritual Center Staff Meeting: {{spiritualCenterStaffMeetings}}</p>
+                            <p><span class="filledInPreview">Spiritual Center Staff Meeting: </span>{{spiritualCenterStaffMeetings}}</p>
                         {{else}}
                             <p>Spiritual Center Staff Meeting: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
@@ -47,20 +47,22 @@
                 </span>
                 <span class="row">
                     <span class="col-xs-12">
-                        <p>Staff Development:</p>
                         {{#if staffDevelopment}}
+                            <p class="filledInPreview">Staff Development:</p>
                             <p>{{staffDevelopment}}</p>
                         {{else}}
+                            <p>Staff Development:</p>
                             <p class="pleaseFillInPreview">(Please Fill In)</p>
                         {{/if}}
                     </span>
                  </span>
                  <span class="row">
                     <span class="col-xs-12">
-                        <p>Continuing Education/Counseling/Support Opportunities:</p>
                         {{#if staffOpportunities}}
+                            <p class="filledInPreview">Continuing Education/Counseling/Support Opportunities:</p>
                             <p>{{staffOpportunities}}</p>
                         {{else}}
+                            <p>Continuing Education/Counseling/Support Opportunities:</p>
                             <p class="pleaseFillInPreview">(Please Fill In)</p>
                         {{/if}}
                     </span>
@@ -72,13 +74,13 @@
                 <hr>
                 <span class="row">
                     <span class="col-xs-12">
-                        <p>Bedside Evangelism:</p>
+                        <p class="filledInPreview">Bedside Evangelism:</p>
                         <p>(Pull Correct Data)</p>
                     </span>
                 </span>
                 <span class="row">
                     <span class="col-xs-12">
-                        <p>Playroom Activities:</p>
+                        <p class="filledInPreview">Playroom Activities:</p>
                         <p>(Pull Correct Data)</p>
                     </span>
                 </span>
@@ -99,8 +101,8 @@
           <div id="eventsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventsPreview">
               <div class="panel-body">
                   <div class="panel">
-                    <div class="panel-heading" role="tab" id="LeadershipEventsPreview">
-                        <a class="collapsed" data-toggle="collapse" href="#LeadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="LeadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                    <div class="panel-heading" role="tab" id="leadershipEventsPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#leadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="leadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
                                 {{#if leadEvents}}
                                     Leadership Events (Click to see Events)
@@ -111,7 +113,7 @@
                             </h5>
                         </a>
                     </div>
-                    <div id="LeadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="LeadershipEventsPreview">
+                    <div id="leadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="leadershipEventsPreview">
                         <div class="panel-body">
                             <h4> </h4>
                             <table class="table">
@@ -144,8 +146,8 @@
                     </div>
                  </div>
                  <div class="panel">
-                    <div class="panel-heading" role="tab" id="CommunityEventsPreview">
-                        <a class="collapsed" data-toggle="collapse" href="#CommunityEventsPreviewCollapse" aria-expanded="false" aria-controls="CommunityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                    <div class="panel-heading" role="tab" id="communityEventsPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#communityEventsPreviewCollapse" aria-expanded="false" aria-controls="communityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
                                 {{#if commEvents}}
                                     Community Events (Click to see Events)
@@ -156,7 +158,7 @@
                             </h5>
                         </a>
                     </div>
-                    <div id="CommunityEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="CommunityEventsPreview">
+                    <div id="communityEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="communityEventsPreview">
                         <div class="panel-body">
                             <h4> </h4>
                             <table class="table">
@@ -196,15 +198,15 @@
 
 <!-- Faith Declarations -->
       <div class="panel">
-          <div class="panel-heading" role="tab" id="fdPreview">
-              <a data-toggle="collapse" href="#fdPreviewCollapse" aria-expanded="false" aria-controls="fdPreviewCollapse"> 
+          <div class="panel-heading" role="tab" id="faithDeclarationsPreview">
+              <a data-toggle="collapse" href="#faithDeclarationsPreviewCollapse" aria-expanded="false" aria-controls="faithDeclarationsPreviewCollapse"> 
                   <h3 class="panel-title headingsForPreview" {{action "toggleArrowInPreview"}}>
                       Faith Declarations
                       <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                   </h3>
               </a>
           </div>
-          <div id="fdPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="fdPreview">
+          <div id="faithDeclarationsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="faithDeclarationsPreview">
               <div class="panel-body">
                   <h4>
                      Christianity Explored Class
@@ -213,44 +215,47 @@
                   <span class="row">
                      <span class="col-xs-3">
                          {{#if ceSession}}
-                            <p>Sessions: {{ceSession}}</p>
+                            <p><span class="filledInPreview">Sessions: </span>{{ceSession}}</p>
                          {{else}}
                             <p>Sessions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
                          {{#if ceParticipants}}
-                            <p>Participants: {{ceParticipants}}</p>
+                            <p><span class="filledInPreview">Participants: </span>{{ceParticipants}}</p>
                          {{else}}
                             <p>Participants: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
                          {{#if ceGraduates}}
-                            <p>Graduates: {{ceGraduates}}</p>
+                            <p><span class="filledInPreview">Graduates: </span>{{ceGraduates}}</p>
                          {{else}}
                             <p>Graduates: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
                          {{#if ceContinuedEducation}}
-                            <p>Seeking Continuing Education: {{ceContinuedEducation}}</p>
+                            <p><span class="filledInPreview">Seeking Continuing Education: </span>{{ceContinuedEducation}}</p>
                          {{else}}
                             <p>Seeking Continuing Education: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                   </span>
                   <hr>
-                  <h4>Faith Declarations</h4>
+                  <h4>
+                      Faith Declarations - 
+                      {{#if believers}}
+                          <span><span class="filledInPreview">Total: </span>{{believers.length}}</span>
+                      {{else}}
+                          <span>Total: <span class="pleaseFillInPreview">0</span></span>
+                      {{/if}}
+                  
+                  </h4>
                   <hr>
-                  {{#if believers}}
-                    <p>Total: {{believers.length}}</p>
-                  {{else}}
-                    <p>Total: <span class="pleaseFillInPreview">0</span></p>
-                  {{/if}}
                   <div class="panel">
-                    <div class="panel-heading" role="tab" id="fdNamesPreview">
-                        <a class="collapsed" data-toggle="collapse" href="#fdNamesPreviewCollapse" aria-expanded="false" aria-controls="fdNamesPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                    <div class="panel-heading" role="tab" id="faithDeclarationsNamesPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#faithDeclarationsNamesPreviewCollapse" aria-expanded="false" aria-controls="faithDeclarationsNamesPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
                                 {{#if believers}}
                                     New Believer/Recommitment Names (Click to see Names)
@@ -261,7 +266,7 @@
                             </h5>
                         </a>
                     </div>
-                    <div id="fdNamesPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="fdNamesPreview">
+                    <div id="faithDeclarationsNamesPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faithDeclarationsNamesPreview">
                         <div class="panel-body">
                             <h4> </h4>
                             <table class="table">
@@ -297,15 +302,15 @@
 
 <!-- Additional Info --> 
       <div class="panel">
-          <div class="panel-heading" role="tab" id="aiPreview">
-              <a data-toggle="collapse" href="#aiPreviewCollapse" aria-expanded="true" aria-controls="aiPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+          <div class="panel-heading" role="tab" id="additionalInformationPreview">
+              <a data-toggle="collapse" href="#additionalInformationPreviewCollapse" aria-expanded="true" aria-controls="additionalInformationPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                   <h3 class="panel-title headingsForPreview">
                       Additional Info
                       <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                   </h3>
               </a>
           </div>
-          <div id="aiPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="aiPreview">
+          <div id="additionalInformationPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="additionalInformationPreview">
               <div class="panel-body">
                 <h4>Ministry Results</h4>
                 <hr>

@@ -13,8 +13,8 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBe
         },
 
         add: function() {
-            var newBeliever = this.getProperties('believerName', 'believer.religiousAffiliation',
-            'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
+            var newBeliever = this.getProperties('believerName', 'religiousAffiliation',
+            'presentActivity', 'declarationType', 'age', 'gender',
             'phone', 'email', 'address', 'country');
             this.get('editController').send('addBeliever', newBeliever);
         },
@@ -28,8 +28,8 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, NewBe
             // delete old info that exist
             believers.removeObject(believer);
 
-            var updatedBeliever = this.getProperties('believerName', 'believer.religiousAffiliation',
-            'believer.presentActivity', 'believer.declarationType', 'age', 'gender',
+            var updatedBeliever = this.getProperties('believerName', 'religiousAffiliation',
+            'presentActivity', 'declarationType', 'age', 'gender',
             'phone', 'email', 'address', 'country');
             this.get('editController').send('editBeliever', updatedBeliever);
         }
