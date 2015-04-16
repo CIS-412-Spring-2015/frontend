@@ -102,17 +102,17 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
 		// Function generated to show and hide the Christianity Explored content.
-        showChristianityExplored: function() {
-            $('.showHideChristianityExplored').show(500);
-            $('.showChristianityExplored').hide();
-            $('.hideChristianityExplored').show();
-        },
+//        showChristianityExplored: function() {
+//            $('.showHideChristianityExplored').show(500);
+//            $('.showChristianityExplored').hide();
+//            $('.hideChristianityExplored').show();
+//        },
 
-        hideChristianityExplored: function() {
-            $('.showHideChristianityExplored').hide(500);
-            $('.hideChristianityExplored').hide();
-            $('.showChristianityExplored').show();
-        },
+//        hideChristianityExplored: function() {
+//            $('.showHideChristianityExplored').hide(500);
+//            $('.hideChristianityExplored').hide();
+//            $('.showChristianityExplored').show();
+//        },
 
         // To show and hide the general information view within the faith declarations
         // tab at the moment. Will probably change in future.

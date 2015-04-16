@@ -9,27 +9,23 @@
 	  <!--CE start-->
 		<div class="panel-body detail-section-content">
 
-			<h4 class="showChristianityExplored text-center">
-				<button class="btn btn-default neutral" {{action "showChristianityExplored" bubbles=false }}>
-					Show Christianity Explored
-					<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-				</button>
-			</h4>
-
-			<h4 class="hideChristianityExplored text-center">
-				<button class="btn btn-default neutral" {{action "hideChristianityExplored" bubbles=false }}>
-					Hide Christianity Explored
-					<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-				</button>
-			</h4>
-			<div class="row showHideChristianityExplored">
+			<div>
 				<div class="col-xs-12 col-sm-6">
-					{{em-input property="ceParticipants" label="Participants"}}
-					{{em-input property="ceGraduates" label="Graduates"}}
+					<h5><strong>Participants</strong></h5>
+					<h6>Enter the number of participants</h6>
+					{{em-input property="ceParticipants"}}
+					<h5><strong>Graduates</strong></h5>
+					<h6>Enter the number of graduates</h6>
+					{{em-input property="ceGraduates"}}
 				</div>
+
 				<div class="col-xs-12 col-sm-6">
-					{{em-input property="ceContinuedEducation" label="Participants seeking Continued Education"}}
-					{{em-input property="ceSession" label="Session"}}
+					<h5><strong>Participants seeking Continued Education</strong></h5>
+					<h6>Enter the number of participants seeking continued education</h6>
+					{{em-input property="ceContinuedEducation"}}
+					<h5><strong>Session</strong></h5>
+					<h6>Enter the number of session</h6>
+					{{em-input property="ceSession"}}
 				</div>
 			</div>
 
