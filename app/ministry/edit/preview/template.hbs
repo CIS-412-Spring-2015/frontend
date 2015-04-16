@@ -17,28 +17,52 @@
                  <hr>
                  <span class="row">
                     <span class="col-xs-3">
-                        <p>Entire Staff Devotions: {{entireStaffDevotions}}</p>
+                        {{#if entireStaffDevotions}}
+                            <p>Entire Staff Devotions: {{entireStaffDevotions}}</p>
+                        {{else}}
+                            <p>Entire Staff Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                        {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        <p>Department Devotions: {{departmentDevotions}}</p>
+                        {{#if entireStaffDevotions}}
+                            <p>Department Devotions: {{departmentDevotions}}</p>
+                        {{else}}
+                            <p>Department Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                        {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        <p>Hospital Prayer Group Intercession: {{hospitalPrayerGroupIntercessions}}</p>
+                        {{#if hospitalPrayerGroupIntercessions}}
+                            <p>Hospital Prayer Group Intercession: {{hospitalPrayerGroupIntercessions}}</p>
+                        {{else}}
+                            <p>Hospital Prayer Group Intercession: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                        {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        <p>Spiritual Center Staff Meeting: {{spiritualCenterStaffMeetings}}</p>
+                        {{#if spiritualCenterStaffMeetings}}
+                            <p>Spiritual Center Staff Meeting: {{spiritualCenterStaffMeetings}}</p>
+                        {{else}}
+                            <p>Spiritual Center Staff Meeting: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                        {{/if}}
                     </span>
                 </span>
                 <span class="row">
                     <span class="col-xs-12">
                         <p>Staff Development:</p>
-                        <p>{{staffDevelopment}}</p>
+                        {{#if staffDevelopment}}
+                            <p>{{staffDevelopment}}</p>
+                        {{else}}
+                            <p class="pleaseFillInPreview">(Please Fill In)</p>
+                        {{/if}}
                     </span>
                  </span>
                  <span class="row">
                     <span class="col-xs-12">
                         <p>Continuing Education/Counseling/Support Opportunities:</p>
-                        <p>{{staffOpportunities}}</p>
+                        {{#if staffOpportunities}}
+                            <p>{{staffOpportunities}}</p>
+                        {{else}}
+                            <p class="pleaseFillInPreview">(Please Fill In)</p>
+                        {{/if}}
                     </span>
                 </span>
                 <hr>
@@ -78,7 +102,11 @@
                     <div class="panel-heading" role="tab" id="LeadershipEventsPreview">
                         <a class="collapsed" data-toggle="collapse" href="#LeadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="LeadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
-                                Leadership Events (Click to see Events)
+                                {{#if leadEvents}}
+                                    Leadership Events (Click to see Events)
+                                {{else}}
+                                    Leadership Events <span class="pleaseFillInPreview">(Please Add Leadership Events)</span>
+                                {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
                         </a>
@@ -96,14 +124,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each leadEvents}}
-                                    <tr>
-                                        <td>{{eventName}}</td> 
-                                        <td>{{date}}</td>
-                                        <td>{{location}}</td>
-                                        <td>{{description}}</td> 
-                                    </tr>
-                                    {{/each}}
+                                    {{#if leadEvents}}
+                                        {{#each leadEvents}}
+                                        <tr>
+                                            <td>{{eventName}}</td> 
+                                            <td>{{date}}</td>
+                                            <td>{{location}}</td>
+                                            <td>{{description}}</td> 
+                                        </tr>
+                                        {{/each}}
+                                    {{else}}
+                                        <tr>
+                                            <td class="pleaseFillInPreview">(Please Add Leadership Events)</td> 
+                                        </tr>
+                                    {{/if}}
                                 </tbody>
                             </table>
                         </div>
@@ -113,7 +147,11 @@
                     <div class="panel-heading" role="tab" id="CommunityEventsPreview">
                         <a class="collapsed" data-toggle="collapse" href="#CommunityEventsPreviewCollapse" aria-expanded="false" aria-controls="CommunityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
-                                Community Events (Click to see Events)
+                                {{#if commEvents}}
+                                    Community Events (Click to see Events)
+                                {{else}}
+                                    Community Events <span class="pleaseFillInPreview">(Please Add Community Events)</span>
+                                {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
                         </a>
@@ -132,15 +170,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each commEvents}}
-                                    <tr>
-                                        <td>{{eventName}}</td> 
-                                        <td>{{date}}</td>
-                                        <td>{{type}}</td>
-                                        <td>{{numberPastorChurch}}</td> 
-                                        <td>{{numberParticipants}}</td>
-                                    </tr>
-                                    {{/each}}
+                                    {{#if commEvents}}
+                                        {{#each commEvents}}
+                                        <tr>
+                                            <td>{{eventName}}</td> 
+                                            <td>{{date}}</td>
+                                            <td>{{type}}</td>
+                                            <td>{{numberPastorChurch}}</td> 
+                                            <td>{{numberParticipants}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    {{else}}
+                                        <tr>
+                                            <td class="pleaseFillInPreview">(Please Add Community Events)</td> 
+                                        </tr>
+                                    {{/if}}
                                 </tbody>
                             </table>
                         </div>
@@ -168,27 +212,51 @@
                   <hr>
                   <span class="row">
                      <span class="col-xs-3">
-                         <p>Sessions: {{ceSession}}</p>
+                         {{#if ceSession}}
+                            <p>Sessions: {{ceSession}}</p>
+                         {{else}}
+                            <p>Sessions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                         {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         <p>Participants: {{ceParticipants}}</p>
+                         {{#if ceParticipants}}
+                            <p>Participants: {{ceParticipants}}</p>
+                         {{else}}
+                            <p>Participants: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                         {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         <p>Graduates: {{ceGraduates}}</p>
+                         {{#if ceGraduates}}
+                            <p>Graduates: {{ceGraduates}}</p>
+                         {{else}}
+                            <p>Graduates: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                         {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         <p>Participants Seeking Continuing Education: {{ceContinuedEducation}}</p>
+                         {{#if ceContinuedEducation}}
+                            <p>Seeking Continuing Education: {{ceContinuedEducation}}</p>
+                         {{else}}
+                            <p>Seeking Continuing Education: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
+                         {{/if}}
                      </span>
                   </span>
                   <hr>
                   <h4>Faith Declarations</h4>
                   <hr>
-                  <p>Total: {{believers.length}}</p>
+                  {{#if believers}}
+                    <p>Total: {{believers.length}}</p>
+                  {{else}}
+                    <p>Total: <span class="pleaseFillInPreview">0</span></p>
+                  {{/if}}
                   <div class="panel">
                     <div class="panel-heading" role="tab" id="fdNamesPreview">
                         <a class="collapsed" data-toggle="collapse" href="#fdNamesPreviewCollapse" aria-expanded="false" aria-controls="fdNamesPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                             <h5 class="panel-title">
-                                New Believer/Recommitment Names (Click to see Names)
+                                {{#if believers}}
+                                    New Believer/Recommitment Names (Click to see Names)
+                                {{else}}
+                                    New Believer/Recommitment Names <span class="pleaseFillInPreview">(Please Add Faith Declarations)</span>
+                                {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
                         </a>
@@ -205,13 +273,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{#each believers}}
-                                    <tr>
-                                        <td>{{believerName}}</td> 
-                                        <td>{{age}}</td>
-                                        <td>{{gender}}</td> 
-                                    </tr>
-                                    {{/each}}
+                                    {{#if believers}}
+                                        {{#each believers}}
+                                        <tr>
+                                            <td>{{believerName}}</td> 
+                                            <td>{{age}}</td>
+                                            <td>{{gender}}</td> 
+                                        </tr>
+                                        {{/each}}
+                                    {{else}}
+                                        <tr>
+                                            <td class="pleaseFillInPreview">(Please Add Faith Declarations)</td>
+                                        </tr>
+                                    {{/if}}
                                 </tbody>
                             </table>
                         </div>
@@ -235,15 +309,27 @@
               <div class="panel-body">
                 <h4>Ministry Results</h4>
                 <hr>
-                <p>{{ministryResults}}</p>
+                {{#if ministryResults}}
+                    <p>{{ministryResults}}</p>
+                {{else}}
+                    <p class="pleaseFillInPreview">(Please Fill In)</p>
+                {{/if}}
                 <hr>
                 <h4>Recommendations/Needs</h4>
                 <hr>
-                <p>{{recommendationsNeeds}}</p>
+                {{#if recommendationsNeeds}}
+                    <p>{{recommendationsNeeds}}</p>
+                {{else}}
+                    <p class="pleaseFillInPreview">(Please Fill In)</p>
+                {{/if}}
                 <hr>
                 <h4>Other Significant Items</h4>
                 <hr>
-                <p>{{otherSignificantItems}}</p>
+                {{#if otherSignificantItems}}
+                    <p>{{otherSignificantItems}}</p>
+                {{else}}
+                    <p class="pleaseFillInPreview">(Please Fill In)</p>
+                {{/if}}
               </div>
           </div>
       </div>
@@ -255,7 +341,6 @@
                   <h3 class="panel-title headingsForPreview">
                       Summary
                       <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
-                      <!--<span class="showDownArrow octicon octicon-triangle-down pull-right"></span>-->
                   </h3>
               </a>
           </div>
@@ -328,8 +413,7 @@
               <a data-toggle="collapse" href="#demographicsPreviewCollapse" aria-expanded="true" aria-controls="demographicsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
                   <h3 class="panel-title headingsForPreview">
                       Demographics
-                      <span class="showUpArrow octicon octicon-triangle-up pull-right"></span>
-                      <span class="showDownArrow octicon octicon-triangle-down pull-right"></span>
+                      <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                   </h3>
               </a>
           </div>
