@@ -1,12 +1,12 @@
 <div role="tabpanel" class="tab-pane" id="summary">
     {{#em-form model=this submit_button=false bubbles=false}}
         <div class="panel">
-          <div class="panel-heading">
-              <h3 class="panel-title">
-                Summary
-              </h3>
-          </div>
-          <div class="panel-body">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Summary
+                </h3>
+            </div>
+            <div class="panel-body">
                 <p id="instructions">
                       First enter a vaild number greater than or equal to 0 in any of the input fields in the Peopled Reached and/or Bibles Given Out rows
                       (excluding the Totals column). Then click the submit button below to save the numbers entered into the input field(s).
@@ -25,7 +25,7 @@
                   <tbody>
                       <tr>
                           <td>People Reached</td>
-                          <td>{{em-input property="peopleBedside" class="col-lg-12 enabled" bubbles=false}}</td>
+                          <td>{{em-input property="peopleBedside" class="col-lg-12 enabled"}}</td>
                           <td>{{em-input property="peoplePlayroom" class="col-lg-12 enabled"}}</td>
                           <td>{{em-input property="peopleJesus" class="col-lg-12 enabled"}}</td>
                           <td>{{em-input property="peopleOpenAir" class="col-lg-12 enabled"}}</td>
@@ -65,7 +65,7 @@
                       </tr>
                   </tbody>
               </table>
-          </div>
+            </div>
         </div>
     {{/em-form}}
   </div>
