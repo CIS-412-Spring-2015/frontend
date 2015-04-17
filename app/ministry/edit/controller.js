@@ -19,6 +19,97 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         }
 
     }.observes('reportDate'),
+    
+    //summary page totals
+    peopleReachedTotals: function() {
+        var peopleBedside, peoplePlayroom, peopleJesus, peopleOpenAir, peopleMobile, peopleMore, peopleTotal;
+        
+        if(this.get('peopleBedside') === undefined || this.get('peopleBedside') === "") {
+            peopleBedside = 0;
+        } else {
+            peopleBedside = parseInt(this.get('peopleBedside'));
+        }
+        
+        if(this.get('peoplePlayroom') === undefined || this.get('peoplePlayroom') === "") {
+            peoplePlayroom = 0;
+        } else {
+            peoplePlayroom = parseInt(this.get('peoplePlayroom'));
+        }
+        
+        if(this.get('peopleJesus') === undefined || this.get('peopleJesus') === "") {
+            peopleJesus = 0;
+        } else {
+            peopleJesus = parseInt(this.get('peopleJesus'));
+        }
+        
+        if(this.get('peopleOpenAir') === undefined || this.get('peopleOpenAir') === "") {
+            peopleOpenAir = 0;
+        } else {
+            peopleOpenAir = parseInt(this.get('peopleOpenAir'));
+        }
+        
+        if(this.get('peopleMobile') === undefined || this.get('peopleMobile') === "") {
+            peopleMobile = 0;
+        } else {
+            peopleMobile = parseInt(this.get('peopleMobile'));
+        }
+        
+        if(this.get('peopleMore') === undefined || this.get('peopleMore') === "") {
+            peopleMore = 0;
+        } else {
+            peopleMore = parseInt(this.get('peopleMore'));
+        }
+        
+        peopleTotal = peopleBedside + peoplePlayroom + peopleJesus + peopleOpenAir + peopleMobile + peopleMore;
+        
+        this.set('peopleTotal', peopleTotal);
+                    
+    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore'),
+    
+    bibleReachedTotals: function() {
+        var bibleBedside, biblePlayroom, bibleJesus, bibleOpenAir, bibleMobile, bibleMore, bibleTotal;
+        
+        if(this.get('bibleBedside') === undefined || this.get('bibleBedside') === "") {
+            bibleBedside = 0;
+        } else {
+            bibleBedside = parseInt(this.get('bibleBedside'));
+        }
+        
+        if(this.get('biblePlayroom') === undefined || this.get('biblePlayroom') === "") {
+            biblePlayroom = 0;
+        } else {
+            biblePlayroom = parseInt(this.get('biblePlayroom'));
+        }
+        
+        if(this.get('bibleJesus') === undefined || this.get('bibleJesus') === "") {
+            bibleJesus = 0;
+        } else {
+            bibleJesus = parseInt(this.get('bibleJesus'));
+        }
+        
+        if(this.get('bibleOpenAir') === undefined || this.get('bibleOpenAir') === "") {
+            bibleOpenAir = 0;
+        } else {
+            bibleOpenAir = parseInt(this.get('bibleOpenAir'));
+        }
+        
+        if(this.get('bibleMobile') === undefined || this.get('bibleMobile') === "") {
+            bibleMobile = 0;
+        } else {
+            bibleMobile = parseInt(this.get('bibleMobile'));
+        }
+        
+        if(this.get('bibleMore') === undefined || this.get('bibleMore') === "") {
+            bibleMore = 0;
+        } else {
+            bibleMore = parseInt(this.get('bibleMore'));
+        }
+        
+        bibleTotal = bibleBedside + biblePlayroom + bibleJesus + bibleOpenAir + bibleMobile + bibleMore;
+        
+        this.set('bibleTotal', bibleTotal);
+                    
+    }.observes('bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleMore'),
 
     actions: {
         // These are here until I can find a more efficient way to do it.
@@ -186,7 +277,8 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.toggleProperty('showDetails');
         },
 
-
+        
+            
         //Save Report
         updateReport: function() {
             this.get('model').save().then(function() {

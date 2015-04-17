@@ -117,7 +117,7 @@
                                 {{#if leadEvents}}
                                     Leadership Events (Click to see Events)
                                 {{else}}
-                                    Leadership Events <span class="pleaseFillInPreview">(Please Add Leadership Events)</span>
+                                    Leadership Events <span class="pleaseFillInPreview">(No Leadership Events)</span>
                                 {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
@@ -147,7 +147,7 @@
                                         {{/each}}
                                     {{else}}
                                         <tr>
-                                            <td class="pleaseFillInPreview">(Please Add Leadership Events)</td> 
+                                            <td class="pleaseFillInPreview">(No Leadership Events)</td> 
                                         </tr>
                                     {{/if}}
                                 </tbody>
@@ -162,7 +162,7 @@
                                 {{#if commEvents}}
                                     Community Events (Click to see Events)
                                 {{else}}
-                                    Community Events <span class="pleaseFillInPreview">(Please Add Community Events)</span>
+                                    Community Events <span class="pleaseFillInPreview">(No Community Events)</span>
                                 {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
@@ -194,7 +194,7 @@
                                         {{/each}}
                                     {{else}}
                                         <tr>
-                                            <td class="pleaseFillInPreview">(Please Add Community Events)</td> 
+                                            <td class="pleaseFillInPreview">(No Community Events)</td> 
                                         </tr>
                                     {{/if}}
                                 </tbody>
@@ -417,42 +417,42 @@
                         </tr>
                         <tr>
                             <th>Bibles Given Out</th>
-                            {{#if biblesBedside}}
-                                <td>{{biblesBedside}}</td> 
+                            {{#if bibleBedside}}
+                                <td>{{bibleBedside}}</td> 
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblesPlayroom}}
-                                <td>{{biblesPlayroom}}</td>
+                            {{#if biblePlayroom}}
+                                <td>{{biblePlayroom}}</td>
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblesJesus}}
-                                <td>{{biblesJesus}}</td> 
+                            {{#if bibleJesus}}
+                                <td>{{bibleJesus}}</td> 
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblesOpenAir}}
-                                <td>{{biblesOpenAir}}</td>
+                            {{#if bibleOpenAir}}
+                                <td>{{bibleOpenAir}}</td>
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblesMobile}}
-                                <td>{{biblesMobile}}</td> 
+                            {{#if bibleMobile}}
+                                <td>{{bibleMobile}}</td> 
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblesMore}}
-                                <td>{{biblesMore}}</td>
+                            {{#if bibleMore}}
+                                <td>{{bibleMore}}</td>
                             {{else}}
                                 <td class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
-                            <td>{{biblesTotal}}</td>  
+                            <td>{{bibleTotal}}</td>  
                         </tr>
                         <tr>
                             <th>Salvations</th>
