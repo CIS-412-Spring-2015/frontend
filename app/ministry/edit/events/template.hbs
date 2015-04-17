@@ -3,107 +3,98 @@
     <div class="panel">
         <div class="panel-heading">
             <h3 class="panel-title">
-                Events
+                Community Events
+                <!-- if canAddCommunityEvent make this function in future -->
+                    <button class="btn btn-primary align-right" {{action "showAddCommunity" bubbles=false }}>
+                        <span class="octicon octicon-plus"></span>Add New Community Event
+                    </button>
+                <!-- end if -->
+            </h3>
+        </div>            
+        <div class="panel-body detail-section-content">
+            <table class="table">
+                <tr class="table-header">
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Data</th>
+                    <th>Location</th>
+                    <th>Pastors/Churches Present</th>
+                    <th>Number of Participants</th>
+                    <th>Action</th>
+                </tr>
+                {{#each commEvents}}
+                    <tr>
+                        <td>{{eventName}}</td>
+                        <td>{{type}}</td>
+                        <td>{{date}}</td>
+                        <td>{{location}}</td>
+                        <td>{{numberPastorChurch}}</td>
+                        <td>{{numberParticipants}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default neutral" {{action "editCommunity" this}}>Edit</button>
+                            <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Leadership Events
+                <!-- if canAddCommunityEvent make this function in future -->
+                    <button class="btn btn-primary align-right" {{action "showAddLeadership" bubbles=false }}>
+                        <span class="octicon octicon-plus"></span>Add New Leadership Event
+                    </button>
+                <!-- end if -->
             </h3>
         </div>
-        
+
         <div class="panel-body detail-section-content">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Community Events
-                    <!-- if canAddCommunityEvent make this function in future -->
-                        <button class="btn btn-primary align-right" {{action "showAddCommunity" bubbles=false }}>
-                            <span class="octicon octicon-plus"></span>Add New Community Event
-                        </button>
-                    <!-- end if -->
-                </h3>
-            </div>
-            
-            <div class="panel-body detail-section-content">
-                <table class="table">
-                    <tr class="table-header">
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Data</th>
-                        <th>Location</th>
-                        <th>Pastors/Churches Present</th>
-                        <th>Number of Participants</th>
-                        <th>Action</th>
+            <table class="table">
+                <tr class="table-header">
+                    <th>Description</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+
+                {{#each leadEvents}}
+                    <tr>
+                        <td>{{description}}</td>
+                        <td>{{eventName}}</td>
+                        <td>{{date}}</td>
+                        <td>{{location}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
+                            <button class="btn btn-primary" {{action "showAddParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
+                        </td>
                     </tr>
-                    {{#each commEvents}}
-                        <tr>
-                            <td>{{eventName}}</td>
-                            <td>{{type}}</td>
-                            <td>{{date}}</td>
-                            <td>{{location}}</td>
-                            <td>{{numberPastorChurch}}</td>
-                            <td>{{numberParticipants}}</td>
-                            <td>
-                                <button type="button" class="btn btn-default neutral" {{action "editCommunity" this}}>Edit</button>
-                                <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
-            </div>
-            
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Leadership Events
-                    <!-- if canAddCommunityEvent make this function in future -->
-                        <button class="btn btn-primary align-right" {{action "showAddLeadership" bubbles=false }}>
-                            <span class="octicon octicon-plus"></span>Add New Leadership Event
-                        </button>
-                    <!-- end if -->
-                </h3>
-            </div>
-            
-            <div class="panel-body detail-section-content">
-                <table class="table">
-                    <tr class="table-header">
-                        <th>Description</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Location</th>
-                        <th>Actions</th>
-                    </tr>
+                {{/each}}
+            </table>
 
-                    {{#each leadEvents}}
-                        <tr>
-                            <td>{{description}}</td>
-                            <td>{{eventName}}</td>
-                            <td>{{date}}</td>
-                            <td>{{location}}</td>
-                            <td>
-                                <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
-                                <button class="btn btn-primary" {{action "showAddParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
-                            </td>
-                        </tr>
-                    {{/each}}
-                </table>
+            <table class="table">
+                <tr class="table-header">
+                    <th><p>Event for new Participant needed</p></th>
+                </tr>
 
-                <table class="table">
-                    <tr class="table-header">
-                        <th><p>Event for new Participant needed</p></th>
-                    </tr>
-
-                    <tr class="table-header">
-                        <th>Organization</th>
-                        <th>Name</th>
-                        <th>Gender</th>
-                    </tr>
+                <tr class="table-header">
+                    <th>Organization</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                </tr>
 
 
-                    <tr class="table-header">
+                <tr class="table-header">
 
-                        <td>{{em-text property="organization" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="pname" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                        <td>{{em-text property="gender" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                    <td>{{em-text property="organization" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                    <td>{{em-text property="pname" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                    <td>{{em-text property="gender" rows=1 class="col-lg-12 col-sm-6"}}</td>
 
-                    </tr>
+                </tr>
 
-                </table>
-            </div>
+            </table>
         </div>
     </div>
     {{/em-form}}
