@@ -131,7 +131,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         showEditBeliever: function(believer) {
           this.send('openModal', 'ministry.add-believer', {
-            title: "Edit This Believer's Info",
+            title: "Edit this believer's information",
             updateButtonText: 'Update',
             updateButtonAction: 'update',
             showUpdateButton: true,
@@ -155,16 +155,17 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.set('believers', believers);
           // this.send('update', true);
           this.send('closeModal');
+          this.displayAlert('Believer Updated', 'The believer has been updated.');
         },
 
-        deleteBeliever: function(model) {
-            var believer = model.get('believerToDelete');
-            var believers = this.get('believers');
-            believers.removeObject(believer);
-            this.set('believers', believers);
-            this.send('update', true);
-            this.send('closeModal');
-        },
+        // deleteBeliever: function(model) {
+        //     var believer = model.get('believerToDelete');
+        //     var believers = this.get('believers');
+        //     believers.removeObject(believer);
+        //     this.set('believers', believers);
+        //     this.send('update', true);
+        //     this.send('closeModal');
+        // },
 
         //Toggle Preview
         togglePreview: function() {
