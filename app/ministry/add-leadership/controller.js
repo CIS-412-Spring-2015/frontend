@@ -6,13 +6,13 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
 
     actions: {
         cancel: function() {
-            //this.get('model').rollback();
+            this.get('model').rollback();
             this.send('closeModal');
         },
 
         update: function() {
             var isNew = this.get('isNew'),
-            newLeadership = this.getProperties('description', 'eventName', 'date', 'location');
+            newLeadership = this.get('model');
             newLeadership.save().then(function() {
                 if (isNew) {    
                     this.get('editController').send('addLeadership', newLeadership);

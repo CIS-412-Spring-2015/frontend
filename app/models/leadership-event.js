@@ -7,7 +7,7 @@ export default AbstractModel.extend({
     
     //Main information
     description: DS.attr('string'),
-    name: DS.attr('string'),
+    eventName: DS.attr('string'),
     date: DS.attr('string'),
     location: DS.attr('string'),
     

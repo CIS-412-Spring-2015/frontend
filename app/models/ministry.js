@@ -23,8 +23,8 @@ export default AbstractModel.extend(ReportDate, {
     believers: DS.attr(),
     
     // Events Section
-    //leadEvents: DS.hasMany('leadership-event'), what will need implemented
-    leadEvents: DS.attr(), // Currently working with
+    leadEvents: DS.hasMany('leadership-event'),//what will need to work
+    //leadEvents: DS.attr(), // Currently working with
     commEvents: DS.attr(),
 
     //   Additional Info View    //
