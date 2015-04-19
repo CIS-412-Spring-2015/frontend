@@ -68,32 +68,56 @@
                         <td>{{location}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
-                            <button class="btn btn-primary" {{action "showAddParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
+                            <button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            <button class="btn btn-primary" {{action "editParticipant" bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
                         </td>
                     </tr>
+                
+                        <tr class="table-header">
+                        <th class="descriptor">Organization</th>
+                        <th class="descriptor">Name</th>
+                        <th class="descriptor">Gender</th>
+                        <th class="descriptor">Actions</th>
+                        <th class="descriptor">Place holder to be removed later</th>
+                    </tr>
+
+                    {{#each leadParticipants}}
+                        <tr>
+                            <td>{{organization}}</td>
+                            <td>{{participantName}}</td>
+                            <td>{{gender}}</td>
+                            <td>
+                                <button class="btn btn-primary" {{action "editParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Edit</button>
+                                <button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            </td>
+                        </tr>
+                    {{/each}}
                 {{/each}}
             </table>
 
+<!--
             <table class="table">
                 <tr class="table-header">
-                   <!-- <th><p>Event for new Participant needed</p></th> -->
+                    <th><p>Event for new Participant needed</p></th> 
                 </tr>
 
-                <tr class="table-header" id="Leadership">
+                <tr class="table-header">
                     <th class="descriptor2">Organization</th>
                     <th class="descriptor2">Name</th>
                     <th class="descriptor2">Gender</th>
                 </tr>
 
+
                 <tr class="table-header">
 
-                    <td>{{em-text property="organization" rows=1 class="col-lg-12 col-sm-6" placeholder="Enter the Organization's name"}}</td>
-                    <td>{{em-text property="pname" rows=1 class="col-lg-12 col-sm-6" placeholder="Enter the Name of the Leader"}}</td>
-                    <td>{{em-text property="gender" rows=1 class="col-lg-12 col-sm-6" placeholder="Enter the Leader's Gender"}}</td>
+                    <td>{{em-text property="organization" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                    <td>{{em-text property="pname" rows=1 class="col-lg-12 col-sm-6"}}</td>
+                    <td>{{em-text property="gender" rows=1 class="col-lg-12 col-sm-6"}}</td>
 
                 </tr>
 
             </table>
+-->
         </div>
     </div>
     {{/em-form}}

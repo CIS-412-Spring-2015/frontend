@@ -329,6 +329,23 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             }   
             this.send('openModal', 'ministry.add-leadership', leadershipToEdit);
         },
+        
+        addLeadershipParticipant: function(newParticipant) {
+          var leadParticipants = this.getWithDefault('leadParticipants', []);
+
+          leadParticipants.addObject(newParticipant);
+          this.set('leadParticipants', leadParticipants);
+          this.send('update', true);
+          this.send('closeModal');
+
+        },
+        
+        editParticipant: function(participantToEdit) {
+            if (Ember.isEmpty(participantToEdit)) {
+                participantToEdit = this.store.createRecord('leadership-participant');
+            }   
+            this.send('openModal', 'ministry.add-leadership-participant', participantToEdit);
+        },
 
         showDeleteCommunity: function(commEvent){
                 this.send('openModal', 'dialog', Ember.Object.create({

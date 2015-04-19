@@ -12,5 +12,5 @@ export default AbstractModel.extend({
     location: DS.attr('string'),
     
     //for adding multiple participants per leadership event
-    participants: DS.attr()
+    participants: DS.hasMany('leadership-participant'),//what will need to work
 });
