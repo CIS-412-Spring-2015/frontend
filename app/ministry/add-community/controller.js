@@ -5,13 +5,13 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
 
     actions: {
         cancel: function() {
-            //this.get('model').rollback();
+            this.get('model').rollback();
             this.send('closeModal');
         },
 
         update: function() {
             var isNew = this.get('isNew'),
-            newCommunity = this.getProperties('eventName', 'date', 'type', 'location', 'numberPastorChurch', 'numberParticipants');
+            newCommunity = this.get('model');
             newCommunity.save().then(function() {
                 if (isNew) {    
                     this.get('editController').send('addCommunity', newCommunity);

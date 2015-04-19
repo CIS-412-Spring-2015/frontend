@@ -13,6 +13,4 @@ export default AbstractModel.extend({
     numberPastorChurch: DS.attr('integer'),
     numberParticipants: DS.attr('integer'),
     
-    //for adding multiple participants per leadership event
-    participants: DS.attr()
 });
