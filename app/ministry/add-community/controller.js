@@ -3,20 +3,44 @@ import IsUpdateDisabled from "hospitalrun/mixins/is-update-disabled";
 export default Ember.ObjectController.extend(IsUpdateDisabled, {
     needs: 'ministry/edit',
 
-    editController: Ember.computed.alias('controllers.ministry/edit'),
-    title: 'Add Community Event',
-    updateButtonText: 'Add',
-    updateButtonAction: 'add',
-    showUpdateButton: true,
-
     actions: {
         cancel: function() {
+            //this.get('model').rollback();
             this.send('closeModal');
         },
 
-        add: function() {
-            var newCommunity = this.getProperties('eventName', 'date', 'type', 'location', 'numberPastorChurch', 'numberParticipants');
-            this.get('editController').send('addCommunity', newCommunity);
+        update: function() {
+            var isNew = this.get('isNew'),
+            newCommunity = this.getProperties('eventName', 'date', 'type', 'location', 'numberPastorChurch', 'numberParticipants');
+            newCommunity.save().then(function() {
+                if (isNew) {    
+                    this.get('editController').send('addCommunity', newCommunity);
+                } else {
+                    this.send('closeModal');
+                }
+            }.bind(this));      
         }
-    }
+    },
+    
+    editController: Ember.computed.alias('controllers.ministry/edit'),
+    showUpdateButton: true,
+    
+    title: function() {
+        if (this.get('isNew')) {            
+            return 'Add Community Event';
+        } else {
+            return 'Edit Community Event';
+        }
+    }.property('isNew'),
+    
+    updateButtonAction: 'update',
+    updateButtonText: function() {
+        var isNew = this.get('isNew');
+        if (isNew) {
+            return 'Add';
+        } else {
+            return 'Update';
+        }
+    }.property('isNew'),
+
 });

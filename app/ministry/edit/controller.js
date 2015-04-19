@@ -296,10 +296,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             }.bind(this));
         },
 
-        showAddCommunity: function() {
-            this.send('openModal', 'ministry.add-community', {});
-        },
-
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
 
@@ -311,13 +307,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
         editCommunity: function(communityToEdit) {
+            if (Ember.isEmpty(communityToEdit)) {
+                communityToEdit = this.store.createRecord('community-event');
+            }   
             this.send('openModal', 'ministry.add-community', communityToEdit);
         },
-
-        showAddLeadership: function() {
-            this.send('openModal', 'ministry.add-leadership', {});
-        },
-
+        
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
 
@@ -326,6 +321,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('update', true);
           this.send('closeModal');
 
+        },
+        
+        editLeadership: function(leadershipToEdit) {
+            if (Ember.isEmpty(leadershipToEdit)) {
+                leadershipToEdit = this.store.createRecord('leadership-event');
+            }   
+            this.send('openModal', 'ministry.add-leadership', leadershipToEdit);
         },
 
         showDeleteCommunity: function(commEvent){
