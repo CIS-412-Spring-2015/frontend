@@ -3,36 +3,6 @@
   <div class="panel">
       <div class="panel-heading">
           <h3 class="panel-title">
-              Christianity Explored
-          </h3>
-      </div>
-	  <!--CE start-->
-		<div class="panel-body detail-section-content">
-
-			<div>
-				<div class="col-xs-12 col-sm-6">
-					<h5><strong>Participants</strong></h5>
-					<h6>Enter the number of participants</h6>
-					{{em-input property="ceParticipants"}}
-					<h5><strong>Graduates</strong></h5>
-					<h6>Enter the number of graduates</h6>
-					{{em-input property="ceGraduates"}}
-				</div>
-
-				<div class="col-xs-12 col-sm-6">
-					<h5><strong>Participants seeking Continued Education</strong></h5>
-					<h6>Enter the number of participants seeking continued education</h6>
-					{{em-input property="ceContinuedEducation"}}
-					<h5><strong>Session</strong></h5>
-					<h6>Enter the number of session</h6>
-					{{em-input property="ceSession"}}
-				</div>
-			</div>
-
-		</div>
-	<!--CE end-->
-      <div class="panel-heading">
-          <h3 class="panel-title">
               Faith Declaration
               <!-- if canAddBeliever make this function in future -->
                 <button class="btn btn-primary align-right" {{action "showAddBeliever" bubbles=false }}>
@@ -75,6 +45,40 @@
           {{/each}}
         </ul>
       </div>
+<div class="panel-heading" role="tab" id="ChristianityExplored">
+			<a data-toggle="collapse" href="#ChristianityExploredCollapse" aria-expanded="true" aria-controls="ChristianityExploredCollapse" {{action "toggleArrowInPreview"}}>
+				<h3 class="panel-title headingsForPreview">
+					Christianity Explored
+					<span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+				</h3>
+			</a>
+		</div>
+	  <!--CE start-->
+		<div id="ChristianityExploredCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="ChristianityExplored">
+			<div class="panel-body detail-section-content">
+
+				<div>
+					<div class="col-xs-12 col-sm-6">
+						<h5><strong>Participants</strong></h5>
+						<h6>Enter the number of participants</h6>
+						{{em-input property="ceParticipants"}}
+						<h5><strong>Graduates</strong></h5>
+						<h6>Enter the number of graduates</h6>
+						{{em-input property="ceGraduates"}}
+					</div>
+
+					<div class="col-xs-12 col-sm-6">
+						<h5><strong>Participants seeking Continued Education</strong></h5>
+						<h6>Enter the number of participants seeking continued education</h6>
+						{{em-input property="ceContinuedEducation"}}
+						<h5><strong>Session</strong></h5>
+						<h6>Enter the number of session</h6>
+						{{em-input property="ceSession"}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--CE end-->
       <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson (Another option for adding Believer info)-->
       {{#if canBeSeen}}
         <div class="allGenInfo">
