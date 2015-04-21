@@ -203,12 +203,9 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 //            $('.showChristianityExplored').show();
 //        },
 
-        // To show and hide the general information view within the faith declarations
-        // tab at the moment. Will probably change in future.
-
         showBeliever: function(believer) {
           if (Ember.isEmpty(believer)) {
-            believer = this.store.createRecord('new-believer');
+              believer = this.store.createRecord('new-believer');
           }
           this.send('openModal', 'ministry.add-believer', believer);
         },
@@ -276,9 +273,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
-
           commEvents.addObject(newCommunity);
-          this.set('commEvents', commEvents);
           this.send('update', true);
           this.send('closeModal');
 
@@ -293,7 +288,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
-
           leadEvents.addObject(newLeadership);
           this.send('update', true);
           this.send('closeModal');
