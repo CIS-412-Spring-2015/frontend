@@ -1,10 +1,10 @@
 {{#em-form model=this submit_button=false }}
-    {{em-input label="Name" property="believerName"}}
-    {{em-input property="age" label="Age" class="required"}}
+    {{em-input label="Name" property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
+    {{em-input property="age" label="Age"}}
      {{em-select
          prompt=" "
          label="Religious Affiliation"
-         property="believer.religiousAffiliation"
+         property="religiousAffiliation"
          content=religiousAffiliation
          optionValuePath="content"
          optionLabelPath="content"
@@ -12,7 +12,7 @@
      {{em-select
          prompt=" "
          label="Present Activity"
-         property="believer.presentActivity"
+         property="presentActivity"
          content=presentActivity
          optionValuePath="content"
          optionLabelPath="content"
@@ -20,7 +20,7 @@
      {{em-select
          prompt=" "
          label="Type of Declaration"
-         property="believer.declarationType"
+         property="declarationType"
          content=declarationType
          optionValuePath="content"
          optionLabelPath="content"

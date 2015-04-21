@@ -14,26 +14,26 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
             var isNew = this.get('isNew'),
             newLeadership = this.get('model');
             newLeadership.save().then(function() {
-                if (isNew) {    
+                if (isNew) {
                     this.get('editController').send('addLeadership', newLeadership);
                 } else {
                     this.send('closeModal');
                 }
-            }.bind(this));      
+            }.bind(this));
         }
     },
-    
+
     editController: Ember.computed.alias('controllers.ministry/edit'),
     showUpdateButton: true,
-    
+
     title: function() {
-        if (this.get('isNew')) {            
+        if (this.get('isNew')) {
             return 'Add Leadership Event';
         } else {
             return 'Edit Leadership Event';
         }
     }.property('isNew'),
-    
+
     updateButtonAction: 'update',
     updateButtonText: function() {
         var isNew = this.get('isNew');
@@ -43,5 +43,5 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
             return 'Update';
         }
     }.property('isNew'),
-    
+
 });

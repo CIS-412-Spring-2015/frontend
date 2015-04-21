@@ -35,7 +35,7 @@
           <h3 class="panel-title">
               Faith Declaration
               <!-- if canAddBeliever make this function in future -->
-                <button class="btn btn-primary align-right" {{action "showAddBeliever" bubbles=false }}>
+                <button class="btn btn-primary align-right" {{action "showBeliever" bubbles=false }}>
                   <span class="octicon octicon-plus"></span>Add New Believer
                 </button>
               <!-- end if -->
@@ -69,112 +69,12 @@
 
         <ul class="list-group text-center nav-pills showHideBelievers">
           {{#each believers}}
-            <li class="listSet" {{action "showEditBeliever" this bubbles=false }}>
+            <li class="listSet" {{action "showBeliever" this bubbles=false }}>
               <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
             </li>
           {{/each}}
         </ul>
       </div>
-      <!--- THIS IS STATIC CODE FOR LATER REVISION (Faith Declaration)== by: Celtson (Another option for adding Believer info)-->
-      {{#if canBeSeen}}
-        <div class="allGenInfo">
-          <div class="panel detail-section">
-              <div class="panel-heading">
-                  <h3 class="panel-title">
-                          General Information
-                  </h3>
-              </div>
-
-              <div class="panel-body detail-section-content">
-                  <div class="row">
-                      <div class="col-xs-12 col-sm-6">
-                          <div class="form-group has-success">
-                              <label class="control-label">Record Number</label>
-                              <div class="form-control not-editable">
-                                  {{id}}
-                              </div>
-                          </div>
-                          {{em-input property="new-believer.firstName" label="First Name"}}
-                          {{em-input property="new-believer.lastName" label="Last Name"}}
-                      </div>
-                      <div class="col-xs-12 col-sm-6">
-                         {{em-input property="new-believer.age" label="Age" class="required"}}
-                          {{em-select
-                              prompt=" "
-                              label="Religious Affiliation"
-                              property="new-believer.religiousAffiliation"
-                              content=religiousAffiliation
-                              optionValuePath="content"
-                              optionLabelPath="content"
-                          }}
-                          {{em-select
-                              prompt=" "
-                              label="Present Activity"
-                              property="new-believer.presentActivity"
-                              content=presentActivity
-                              optionValuePath="content"
-                              optionLabelPath="content"
-                          }}
-                          {{em-select
-                              prompt=" "
-                              label="Type of Declaration"
-                              property="new-believer.declarationType"
-                              content=declarationType
-                              optionValuePath="content"
-                              optionLabelPath="content"
-                              class="required"
-                          }}
-                          <div class="form-group">
-                            <label>Gender</label>
-                            <div>
-                                {{ext-radio name=new-believer.gender content=genderList value=new-believer.gender showInline=true}}
-                            </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="panel detail-section">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    Address/Contact Information
-                </h3>
-            </div>
-
-            <div class="panel-body detail-section-content">
-                <div class="row">
-
-                    {{em-input property="new-believer.phone" label="Phone Contact" class="col-xs-12 col-sm-6"}}
-                    {{em-input property="new-believer.email" type="email" label="Email" class="col-xs-12 col-sm-6"}}
-                    {{#if haveAddressOptions}}
-                        {{#if address1Include}}
-                            {{em-text label=address1Label property="new-believer.address" rows=3 class="col-xs-12 col-sm-6"}}
-                        {{/if}}
-                        {{#if address2Include}}
-                            {{em-input label=address2Label property="new-believer.address2" class="col-xs-12 col-sm-6" }}
-                        {{/if}}
-                        {{#if address3Include}}
-                            {{em-input label=address3Label property="new-believer.address3" class="col-xs-12 col-sm-6" }}
-                        {{/if}}
-                        {{#if address4Include}}
-                            {{em-input label=address4Label property="new-believer.address4" class="col-xs-12 col-sm-6" }}
-                        {{/if}}
-                    {{else}}
-                        {{em-text label="Address" property="new-believer.address" rows=3  class="col-xs-12 col-sm-6"}}
-                    {{/if}}
-                    {{select-or-typeahead property="new-believer.country" label="Country" list=countryList selection=country class="col-xs-12 col-sm-6" }}
-
-                </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <button class="btn btn-primary" {{action "addBeliever" bubbles=false }}>
-              Save Believer
-            </button>
-          </div>
-        </div><!--end allGenInfo -->
-      {{/if}}
-      <!--- end comment ======== by: Celtson-->
-  </div>
+    </div>
 {{/em-form}}
 </div>

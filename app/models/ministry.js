@@ -17,11 +17,10 @@ export default AbstractModel.extend(ReportDate, {
     //Patient View
     bedsideEvangelism: DS.attr('string'),
     playroomActivities: DS.attr('string'),
-    
+
     // New Believers Section
-    // believers: DS.hasMany('new-believers'),
-    believers: DS.attr(),
-    
+    believers: DS.hasMany('new-believer'),
+
     // Events Section
     leadEvents: DS.hasMany('leadership-event'),//what will need to work
     //leadEvents: DS.attr(), // Currently working with
@@ -32,13 +31,13 @@ export default AbstractModel.extend(ReportDate, {
     ministryResults: DS.attr('string'),
     otherSignificantItems: DS.attr('string'),
     recommendationsNeeds: DS.attr('string'),
-	
+
 	// Christianity Explored //
 	ceParticipants: DS.attr('number'),
 	ceGraduates: DS.attr('number'),
 	ceContinuedEducation: DS.attr('number'),
 	ceSession: DS.attr('number'),
-    
+
     /* Summary Tab */
     // People Reached //
     peopleBedside: DS.attr('number'),
@@ -48,7 +47,7 @@ export default AbstractModel.extend(ReportDate, {
     peopleMobile: DS.attr('number'),
     peopleMore: DS.attr('number'),
     peopleTotal: DS.attr('number'), //this needs to be the people added up
-    
+
     //Bibles Given Out//
     biblesBedside: DS.attr('number'),
     biblesPlayroom: DS.attr('number'),
@@ -57,7 +56,7 @@ export default AbstractModel.extend(ReportDate, {
     biblesMobile: DS.attr('number'),
     biblesMore: DS.attr('number'),
     biblesTotal: DS.attr('number'), //this needs to be the bibles added up
-    
+
     //Salvations//
     salvationBedside: DS.attr('number'),
     salvationPlayroom: DS.attr('number'),
@@ -66,7 +65,7 @@ export default AbstractModel.extend(ReportDate, {
     salvationMobile: DS.attr('number'),
     salvationMore: DS.attr('number'),
     salvationTotal: DS.attr('number'), //this needs to be the salvations added up
-    
+
     //Recommittments//
     recommitmentBedside: DS.attr('number'),
     recommitmentPlayroom: DS.attr('number'),
@@ -75,7 +74,7 @@ export default AbstractModel.extend(ReportDate, {
     recommitmentMobile: DS.attr('number'),
     recommitmentMore: DS.attr('number'),
     recommitmentTotal: DS.attr('number'), //this needs to be the recommitments added up
-    
+
 
     displayReportDate: function() {
         var reportDate = this.get('reportDate');
