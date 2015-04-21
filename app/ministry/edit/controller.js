@@ -222,6 +222,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
         editBeliever: function() {
+          this.send('update', true);
           this.send('closeModal');
           this.displayAlert('Believer Updated', 'The believer has been updated.');
         },
@@ -311,7 +312,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('update', true);
           this.send('closeModal');
         },
-        
+
         createParticipant: function(leadershipToConnect) {
             var participantToEdit = this.store.createRecord('leadership-participant');
             participantToEdit.set('leadershipEvent',leadershipToConnect);
