@@ -69,10 +69,13 @@
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
                             <button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-                            <button class="btn btn-primary" {{action "editParticipant" bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
+                            <button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
                         </td>
-                    </tr>
 
+                {{/each}}
+            </table>
+            <table>
+                    </tr>
                         <tr class="table-header">
                         <th class="descriptor">Organization</th>
                         <th class="descriptor">Name</th>
@@ -81,20 +84,18 @@
                         <th class="descriptor">Place holder to be removed later</th>
                     </tr>
 
-                    {{#each leadParticipants}}
+                    {{#each participants}}
                         <tr>
                             <td>{{organization}}</td>
                             <td>{{participantName}}</td>
                             <td>{{gender}}</td>
                             <td>
-                                <button class="btn btn-primary" {{action "editParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Edit</button>
+                                <button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
                                 <button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                             </td>
                         </tr>
                     {{/each}}
-                {{/each}}
             </table>
-
 <!--
             <table class="table">
                 <tr class="table-header">

@@ -294,7 +294,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           var leadEvents = this.getWithDefault('leadEvents', []);
 
           leadEvents.addObject(newLeadership);
-          this.set('leadEvents', leadEvents);
           this.send('update', true);
           this.send('closeModal');
         },
@@ -307,13 +306,16 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         },
 
         addLeadershipParticipant: function(newParticipant) {
-          var leadParticipants = this.getWithDefault('leadParticipants', []);
-
-          leadParticipants.addObject(newParticipant);
-          this.set('leadParticipants', leadParticipants);
+          var participants = this.getWithDefault('participants', []);
+          participants.addObject(newParticipant);
           this.send('update', true);
           this.send('closeModal');
-
+        },
+        
+        createParticipant: function(leadershipToConnect) {
+            var participantToEdit = this.store.createRecord('leadership-participant');
+            participantToEdit.set('leadershipEvent',leadershipToConnect);
+            this.send('openModal', 'ministry.add-leadership-participant', participantToEdit);
         },
 
         editParticipant: function(participantToEdit) {
