@@ -10,7 +10,7 @@
                     </button>
                 <!-- end if -->
             </h3>
-        </div>
+        </div>            
         <div class="panel-body detail-section-content">
             <table class="table">
                 <tr class="table-header">
@@ -32,7 +32,7 @@
                         <td>{{numberParticipants}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editCommunity" this}}>Edit</button>
-                            <button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            <!--<button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                         </td>
                     </tr>
                 {{/each}}
@@ -68,21 +68,13 @@
                         <td>{{location}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
-                            <button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                            <!--<button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                             <button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
                         </td>
-
+                    
                 {{/each}}
             </table>
             <table>
-                    </tr>
-                        <tr class="table-header">
-                        <th class="descriptor">Organization</th>
-                        <th class="descriptor">Name</th>
-                        <th class="descriptor">Gender</th>
-                        <th class="descriptor">Actions</th>
-                    </tr>
-
                     {{#each participants}}
                         <tr>
                             <td>{{organization}}</td>
@@ -90,34 +82,11 @@
                             <td>{{gender}}</td>
                             <td>
                                 <button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
-                                <button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+                                <!--<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                             </td>
                         </tr>
                     {{/each}}
             </table>
-<!--
-            <table class="table">
-                <tr class="table-header">
-                    <th><p>Event for new Participant needed</p></th>
-                </tr>
-
-                <tr class="table-header">
-                    <th class="descriptor2">Organization</th>
-                    <th class="descriptor2">Name</th>
-                    <th class="descriptor2">Gender</th>
-                </tr>
-
-
-                <tr class="table-header">
-
-                    <td>{{em-text property="organization" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                    <td>{{em-text property="pname" rows=1 class="col-lg-12 col-sm-6"}}</td>
-                    <td>{{em-text property="gender" rows=1 class="col-lg-12 col-sm-6"}}</td>
-
-                </tr>
-
-            </table>
--->
         </div>
     </div>
     {{/em-form}}

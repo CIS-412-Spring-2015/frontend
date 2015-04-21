@@ -10,7 +10,7 @@ export default AbstractModel.extend({
     date: DS.attr('string'),
     type: DS.attr('string'),
     location: DS.attr('string'),
-    numberPastorChurch: DS.attr('integer'),
-    numberParticipants: DS.attr('integer'),
+    numberPastorChurch: DS.attr('string'),
+    numberParticipants: DS.attr('string'),
     
 });
