@@ -275,7 +275,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
-
           commEvents.addObject(newCommunity);
           this.set('commEvents', commEvents);
           this.send('update', true);
@@ -292,7 +291,6 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
-
           leadEvents.addObject(newLeadership);
           this.send('update', true);
           this.send('closeModal');
