@@ -32,10 +32,27 @@ export default AbstractModel.extend(ReportDate, {
     recommendationsNeeds: DS.attr('string'),
 
 	// Christianity Explored //
+	
+	validations: {
+		ceParticipants: {
+			numericality: true //Field must be a number
+		},
+		ceGraduates: {
+			numericality: true //Field must be a number
+		},
+		ceContinuedEducation: {
+			numericality: true //Field must be a number
+		},
+		ceSession: {
+			numericality: true //Field must be a number
+		},
+    },
+	
 	ceParticipants: DS.attr('number'),
 	ceGraduates: DS.attr('number'),
 	ceContinuedEducation: DS.attr('number'),
 	ceSession: DS.attr('number'),
+	
 
     /* Summary Tab */
     // People Reached //
