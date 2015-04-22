@@ -73,13 +73,13 @@ export default AbstractModel.extend(ReportDate, {
     peopleTotal: DS.attr('number'), //this needs to be the people added up
 
     //Bibles Given Out//
-    biblesBedside: DS.attr('number'),
-    biblesPlayroom: DS.attr('number'),
-    biblesJesus: DS.attr('number'),
-    biblesOpenAir: DS.attr('number'),
-    biblesMobile: DS.attr('number'),
-    biblesMore: DS.attr('number'),
-    biblesTotal: DS.attr('number'), //this needs to be the bibles added up
+    bibleBedside: DS.attr('number'),
+    biblePlayroom: DS.attr('number'),
+    bibleJesus: DS.attr('number'),
+    bibleOpenAir: DS.attr('number'),
+    bibleMobile: DS.attr('number'),
+    bibleMore: DS.attr('number'),
+    bibleTotal: DS.attr('number'), //this needs to be the bibles added up
 
     //Salvations//
     salvationBedside: DS.attr('number'),
