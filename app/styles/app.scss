@@ -134,15 +134,15 @@
 /* ================================================================== */
 /* =====Katie's CSS changes until I find where to put CSS file ====== */
 /* ================================================================== */
-#summary #instructions {
-    margin: 0 0 30px;
-    text-align: center;
+.summaryInstructions {
+    font-style: italic;
 }
 #summary .enabled {
     padding-right: 0;
     padding-left: 0;
     margin-bottom: 0;
 }
+
 #summary .disabled {
     width: 100%;
 }
