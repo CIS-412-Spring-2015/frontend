@@ -48,13 +48,13 @@ export default AbstractModel.extend(ReportDate, {
 		},
 		
 		//Patient View
-		bedsideEvangelism: {
-			presence: true //field must be filled in
-		}, 
-		playroomActivities: {
-			presence: true //field must be filled in
-		},
-    	},
+//		bedsideEvangelism: {
+//			presence: true //field must be filled in
+//		}, 
+//		playroomActivities: {
+//			presence: true //field must be filled in
+//		},
+    },
 	
 	ceParticipants: DS.attr('number'),
 	ceGraduates: DS.attr('number'),

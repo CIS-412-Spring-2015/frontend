@@ -22,37 +22,37 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     peopleReachedTotals: function() {
         var peopleBedside, peoplePlayroom, peopleJesus, peopleOpenAir, peopleMobile, peopleMore, peopleTotal;
 
-        if(this.get('peopleBedside') === undefined || this.get('peopleBedside') === "") {
+        if(this.get('peopleBedside') === undefined || this.get('peopleBedside') === "" || this.get('peopleBedside') === null) {
             peopleBedside = 0;
         } else {
             peopleBedside = parseInt(this.get('peopleBedside'));
         }
 
-        if(this.get('peoplePlayroom') === undefined || this.get('peoplePlayroom') === "") {
+        if(this.get('peoplePlayroom') === undefined || this.get('peoplePlayroom') === "" || this.get('peoplePlayroom') === null) {
             peoplePlayroom = 0;
         } else {
             peoplePlayroom = parseInt(this.get('peoplePlayroom'));
         }
 
-        if(this.get('peopleJesus') === undefined || this.get('peopleJesus') === "") {
+        if(this.get('peopleJesus') === undefined || this.get('peopleJesus') === "" || this.get('peopleJesus') === null) {
             peopleJesus = 0;
         } else {
             peopleJesus = parseInt(this.get('peopleJesus'));
         }
 
-        if(this.get('peopleOpenAir') === undefined || this.get('peopleOpenAir') === "") {
+        if(this.get('peopleOpenAir') === undefined || this.get('peopleOpenAir') === "" || this.get('peopleOpenAir') === null) {
             peopleOpenAir = 0;
         } else {
             peopleOpenAir = parseInt(this.get('peopleOpenAir'));
         }
 
-        if(this.get('peopleMobile') === undefined || this.get('peopleMobile') === "") {
+        if(this.get('peopleMobile') === undefined || this.get('peopleMobile') === "" || this.get('peopleMobile') === null) {
             peopleMobile = 0;
         } else {
             peopleMobile = parseInt(this.get('peopleMobile'));
         }
 
-        if(this.get('peopleMore') === undefined || this.get('peopleMore') === "") {
+        if(this.get('peopleMore') === undefined || this.get('peopleMore') === "" || this.get('peopleMore') === null) {
             peopleMore = 0;
         } else {
             peopleMore = parseInt(this.get('peopleMore'));
@@ -67,37 +67,37 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     bibleReachedTotals: function() {
         var bibleBedside, biblePlayroom, bibleJesus, bibleOpenAir, bibleMobile, bibleMore, bibleTotal;
 
-        if(this.get('bibleBedside') === undefined || this.get('bibleBedside') === "") {
+        if(this.get('bibleBedside') === undefined || this.get('bibleBedside') === "" || this.get('bibleBedside') === null) {
             bibleBedside = 0;
         } else {
             bibleBedside = parseInt(this.get('bibleBedside'));
         }
 
-        if(this.get('biblePlayroom') === undefined || this.get('biblePlayroom') === "") {
+        if(this.get('biblePlayroom') === undefined || this.get('biblePlayroom') === "" || this.get('biblePlayroom') === null) {
             biblePlayroom = 0;
         } else {
             biblePlayroom = parseInt(this.get('biblePlayroom'));
         }
 
-        if(this.get('bibleJesus') === undefined || this.get('bibleJesus') === "") {
+        if(this.get('bibleJesus') === undefined || this.get('bibleJesus') === "" || this.get('bibleJesus') === null) {
             bibleJesus = 0;
         } else {
             bibleJesus = parseInt(this.get('bibleJesus'));
         }
 
-        if(this.get('bibleOpenAir') === undefined || this.get('bibleOpenAir') === "") {
+        if(this.get('bibleOpenAir') === undefined || this.get('bibleOpenAir') === "" || this.get('bibleOpenAir') === null) {
             bibleOpenAir = 0;
         } else {
             bibleOpenAir = parseInt(this.get('bibleOpenAir'));
         }
 
-        if(this.get('bibleMobile') === undefined || this.get('bibleMobile') === "") {
+        if(this.get('bibleMobile') === undefined || this.get('bibleMobile') === "" || this.get('bibleMobile') === null) {
             bibleMobile = 0;
         } else {
             bibleMobile = parseInt(this.get('bibleMobile'));
         }
 
-        if(this.get('bibleMore') === undefined || this.get('bibleMore') === "") {
+        if(this.get('bibleMore') === undefined || this.get('bibleMore') === "" || this.get('bibleMore') === null) {
             bibleMore = 0;
         } else {
             bibleMore = parseInt(this.get('bibleMore'));
