@@ -177,6 +177,10 @@ ul.list-group li.listSet {
   @media screen and (max-width:1320px) and (min-width:760px) {
     margin: 0.7em 0.5em;
   }
+  &:hover {
+    background-color: #e9f3ff;
+    cursor: pointer;
+  }
 }
 
 li.listSet:active {
@@ -184,15 +188,13 @@ li.listSet:active {
   color:white;
 }
 
-ul.list-group li.listSet:hover {
-  background-color: #e9f3ff;
-  cursor: pointer;
-}
-
 li.listSet a, li.listSet a:active{
   text-decoration:none;
   display: block;
   padding: 15px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hideCurrentBelievers, .showHideBelievers {
@@ -203,6 +205,32 @@ li.listSet a, li.listSet a:active{
   margin: auto;
   float:none;
   .form-control { float:none; }
+}
+
+h1.navigateTabLeft {
+  position: fixed;
+  z-index: 100;
+  bottom: 35%;
+  left: 2%;
+  opacity: 0.2;
+  &:hover {
+    color: $green;
+    cursor: pointer;
+    opacity: 0.75;
+  }
+}
+
+h1.navigateTabRight {
+  position: fixed;
+  z-index: 10;
+  bottom: 35%;
+  right: 2%;
+  opacity: 0.2;
+  &:hover {
+    color: $green;
+    cursor: pointer;
+    opacity: 0.75;
+    }
 }
 /* end Celtson changes */
 /* =================== */
@@ -723,7 +751,7 @@ h1 {
 
 }
 
-        
+
 /*====================================//
 //======= KEITH'S STYLES =======//
 //====================================*/
@@ -742,18 +770,17 @@ th.descriptor {
     font-size: 20px;
 
 }
-    
+
 #Leadership.table-header {
     padding-left: 50px;
 
 }
-    
+
 .instructions {
     font-size: 11px;
     font-weight: bold;
     color: black;
 }
-    
+
 
 // end Keith's styles ------------/
-    
