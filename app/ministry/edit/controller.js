@@ -10,13 +10,62 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
 
     //Function sets default variables for new report
     reportDateChanged: function() {
-
+        
+        //Initialize report data
         if (Ember.isEmpty(this.get('reportDate'))) {
-            this.set('reportDate', new Date());
-            this.set('reportArchived', false);
+            this.setProperties({
+                'reportDate': new Date(),
+                'reportArchived': false,
+                'hospitalReportValidation': false,
+                'eventsReportValidation': false,
+                'faithDeclarationsReportValidation': false,
+                'additionalInformationReportValidation': false,
+                'summaryReportValidation': false,
+                'demographicsReportValidation': false,
+                'fullReportValidation': false
+            });
         }
 
     }.observes('reportDate'),
+    
+    //Function sets a report to be valid
+    setFullReportValidation: function() {
+        if (this.get('hospitalReportValidation') &&
+            this.get('eventsReportValidation') && 
+            this.get('faithDeclarationsReportValidation') &&
+            this.get('additionalInformationReportValidation') &&
+            this.get('summaryReportValidation')) {
+                //All variables are true, so set report to valid
+                this.set('fullReportValidation', true);   
+        }
+    }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation',
+               'additionalInformationReportValidation', 'summaryReportValidation'),
+    
+    //Function to set Hospital tab to valid
+    setHospitalReportValidation: function() {
+        
+    }.observes(/* list of variables */),
+    
+    //Function to set Events tab to valid
+    setEventsReportValidation: function() {
+        
+    }.observes(/* list of variables */),
+    
+    //Function to set Faith Delaration tab to valid
+    setFaithDelcarationsReportValidation: function() {
+        
+    }.observes(/* list of variables */),
+    
+    //Function to set Additional Info tab to valid
+    setAdditionalInformationReportValidation: function() {
+        
+    }.observes(/* list of variables */),
+    
+    //Function to set Summary tab validation
+    setSummaryReportValidation: function() {
+        
+    }.observes(/* list of variables */),
+
 
     //summary page totals
     peopleReachedTotals: function() {

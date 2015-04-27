@@ -5,6 +5,13 @@ export default AbstractModel.extend(ReportDate, {
     // Report Metadata //
     reportDate: DS.attr('date'),
     reportArchived: DS.attr('boolean'),
+    hospitalReportValidation: DS.attr('boolean'),
+    eventsReportValidation: DS.attr('boolean'),
+    faithDeclarationsReportValidation: DS.attr('boolean'),
+    additionalInformationReportValidation: DS.attr('boolean'),
+    summaryReportValidation: DS.attr('boolean'),
+    demographicsReportValidation: DS.attr('boolean'),
+    fullReportValidation: DS.attr('boolean'),
 
     //Hospital Tab Data
     //Staff View
