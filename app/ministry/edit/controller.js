@@ -37,9 +37,11 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             this.get('summaryReportValidation')) {
                 //All variables are true, so set report to valid
                 this.set('fullReportValidation', true);   
+        } else {
+            this.set('fullReportValidation', false);   
         }
     }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation',
-               'additionalInformationReportValidation', 'summaryReportValidation'),
+               'additionalInformationReportValidation', 'summaryReportValidation', 'fullReportValidation'),
     
     //Function to set Hospital tab to valid
     setHospitalReportValidation: function() {
