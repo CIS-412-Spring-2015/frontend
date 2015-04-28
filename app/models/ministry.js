@@ -123,7 +123,19 @@ export default AbstractModel.extend(ReportDate, {
 		},
 		ceSession: {
 			numericality: true //Field must be a number
-		}
+		},
+		
+		//Additional information
+			//3000 words roughly equals 25,200 characters with spaces
+		ministryResults: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+		otherSignificantItems: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+		recommendationsNeeds: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
     },
     
     displayReportDate: function() {
