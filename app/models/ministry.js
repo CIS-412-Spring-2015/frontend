@@ -40,29 +40,6 @@ export default AbstractModel.extend(ReportDate, {
 
 	// Christianity Explored //
 	
-	validations: {
-		ceParticipants: {
-			numericality: true //Field must be a number
-		},
-		ceGraduates: {
-			numericality: true //Field must be a number
-		},
-		ceContinuedEducation: {
-			numericality: true //Field must be a number
-		},
-		ceSession: {
-			numericality: true //Field must be a number
-		},
-		
-		//Patient View
-//		bedsideEvangelism: {
-//			presence: true //field must be filled in
-//		}, 
-//		playroomActivities: {
-//			presence: true //field must be filled in
-//		},
-    },
-	
 	ceParticipants: DS.attr('number'),
 	ceGraduates: DS.attr('number'),
 	ceContinuedEducation: DS.attr('number'),
@@ -106,7 +83,61 @@ export default AbstractModel.extend(ReportDate, {
     recommitmentMore: DS.attr('number'),
     recommitmentTotal: DS.attr('number'), //this needs to be the recommitments added up
 
-
+    //Validations for all pages
+    validations: {
+        //Hospital Tab
+        entireStaffDevotions: {
+            numericality: true
+        },
+        departmentDevotions: {
+            numericality: true
+        },
+        hospitalPrayerGroupIntercessions: {
+            numericality: true
+        },
+        spiritualCenterStaffMeetings: {
+            numericality: true
+        },
+        staffDevelopment: {
+            presence: true
+        },
+        staffOpportunities: {
+            presence: true    
+        },
+		bedsideEvangelism: {
+			presence: true //field must be filled in
+		}, 
+		playroomActivities: {
+			presence: true //field must be filled in
+		},
+        
+        //Faith Delcarations
+        ceParticipants: {
+			numericality: true //Field must be a number
+		},
+		ceGraduates: {
+			numericality: true //Field must be a number
+		},
+		ceContinuedEducation: {
+			numericality: true //Field must be a number
+		},
+		ceSession: {
+			numericality: true //Field must be a number
+		},
+		
+		//Additional information
+			//3000 words roughly equals 25,200 characters with spaces
+		ministryResults: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+		otherSignificantItems: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+		recommendationsNeeds: {
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+    },
+    
     displayReportDate: function() {
         var reportDate = this.get('reportDate');
         return moment(reportDate).format('MMMM YYYY');
