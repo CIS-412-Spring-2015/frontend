@@ -16,7 +16,6 @@
         </tr>
         {{#with this as parentController}}
             {{#each}}
-                {{#if reportArchived}}
                 <tr>
                     <td id="inprogressreportTitle">{{displayReportDate}}</td>
                     <td>{{date-format lastModified format="l hh:mm A"}}</td>     
@@ -29,7 +28,6 @@
                     </td>
                     {{/if}} 
                 </tr>
-                {{/if}}
             {{/each}}
         {{/with}}
     </table>

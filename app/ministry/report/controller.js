@@ -14,5 +14,12 @@ export default AbstractPagedController.extend(PouchAdapterUtils, UserSession,{
     
     showDeleteMinistryReport: function(ministry) {
             this.send('openModal', 'ministry.delete', ministry);
-    }
+    },
+
+    arrangedContent: function() {		
+        var arrangedContent = this._super();		
+        var filteredContent = arrangedContent.filterBy('reportArchived', false);
+        this.set('hasRecords', (filteredContent.length > 0));
+        return filteredContent;		
+    }.property('content.@each')
 });

@@ -43,6 +43,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation',
                'additionalInformationReportValidation', 'summaryReportValidation', 'fullReportValidation'),
     
+    setReportArchivedValidation: function() {
+        if (!this.get('fullReportValidation')) {
+            this.set('reportArchived', false);
+        }
+    }.observes('reportArchived'),
+    
     //Function to set Hospital tab to valid
     setHospitalReportValidation: function() {
         
