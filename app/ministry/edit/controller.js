@@ -51,8 +51,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Hospital tab to valid
     setHospitalReportValidation: function() {
-        
-    }.observes(/* list of variables */),
+        if(this.get('staffOpportunities') && this.get('staffDevelopment') && this.get('spiritualCenterStaffMeetings') && this.get('hospitalPrayerGroupIntercessions') && this.get('departmentDevotions') && this.get('entireStaffDevotions') && this.get('bedsideEvangelism') && this.get('playroomActivities')){
+        	this.set('hospitalReportValidation', true);
+        } else {
+        	this.set('hospitalReportValidation', false);
+        }
+    }.observes('staffOpportunities', 'staffDevelopment', 'spiritualCenterStaffMeetings', 'hospitalPrayerGroupIntercessions', 'departmentDevotions', 'entireStaffDevotions', 'bedsideEvangelism', 'playroomActivities'),
     
     //Function to set Events tab to valid
     setEventsReportValidation: function() {
