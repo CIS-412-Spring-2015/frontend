@@ -71,8 +71,13 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
+        if (this.get('peopleBedside') && this.get('peoplePlayroom') && this.get('peopleJesus') && this.get('peopleOpenAir') && this.get('peopleMobile') &&  this.get('peopleMore') && this.get('bibleBedside') && this.get('biblePlayroom') && this.get('bibleJesus') && this.get('bibleOpenAir') && this.get('bibleMobile') && this.get('bibleMore')) {
+            this.set('summaryReportValidation', true);
+        } else {
+            this.set('summaryReportValidation', false);   
+        }
         
-    }.observes(/* list of variables */),
+    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore'),
 
 
     //summary page totals

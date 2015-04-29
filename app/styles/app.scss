@@ -49,8 +49,9 @@
       border-style: solid;
   }
 
-  .submissionTabButtonsTrue:hover, .submissionTabButtonsTrue:focus, .submissionTabButtonsTrue:disabled{
+  .submissionTabButtonsTrue:hover, .submissionTabButtonsTrue:focus, .submissionTabButtonsTrue:disabled, .submissionTabButtonsTrue:target {
       background-color: #44941E;
+      cursor: auto;
   }
 
   #submissionTabButtonsBottom button {

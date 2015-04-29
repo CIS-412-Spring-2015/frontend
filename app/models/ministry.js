@@ -128,14 +128,64 @@ export default AbstractModel.extend(ReportDate, {
 		//Additional information
 			//3000 words roughly equals 25,200 characters with spaces
 		ministryResults: {
+            presence: true, //field must be filled in
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
 		otherSignificantItems: {
+            presence: true, //field must be filled in
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
 		recommendationsNeeds: {
+            presence: true, //field must be filled in
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
+        
+        peopleBedside: {
+            numericality: true //Field must be a number
+        }, 
+        
+        peoplePlayroom: {
+            numericality: true //Field must be a number
+        },
+        
+        peopleJesus: {
+            numericality: true //Field must be a number
+        },
+        
+        peopleOpenAir: {
+            numericality: true //Field must be a number
+        }, 
+        
+        peopleMobile: {
+            numericality: true //Field must be a number
+        },
+        
+        peopleMore: {
+            numericality: true //Field must be a number
+        },
+        bibleBedside: {
+            numericality: true //Field must be a number
+        }, 
+        
+        biblePlayroom: {
+            numericality: true //Field must be a number
+        },
+        
+        bibleJesus: {
+            numericality: true //Field must be a number
+        },
+        
+        bibleOpenAir: {
+            numericality: true //Field must be a number
+        }, 
+        
+        bibleMobile: {
+            numericality: true //Field must be a number
+        },
+        
+        bibleMore: {
+            numericality: true //Field must be a number
+        },
     },
     
     displayReportDate: function() {
