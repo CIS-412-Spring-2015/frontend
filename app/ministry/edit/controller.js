@@ -65,13 +65,21 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
-        
-    }.observes(/* list of variables */),
+		if(this.get('believerName') && this.get('age') && this.get('phone') && this.get('country') && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+			this.set('FaithDelcarationsReportValidation', true);
+		} else {
+			this.set('FaithDelcarationsReportValidation', false);
+		}        
+    }.observes('believerName', 'age', 'phone', 'country', 'ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
     
     //Function to set Additional Info tab to valid
     setAdditionalInformationReportValidation: function() {
-        
-    }.observes(/* list of variables */),
+		if(this.get('ministryResults') && this.get('otherSignificantItems') && this.get('recommendationsNeeds')){
+			this.set('additionalInformationReportValidation', true);
+		} else {
+			this.set('additionalInformationReportValidation', false);
+		}			
+    }.observes('ministryResults', 'otherSignificantItems', 'recommendationsNeeds'),
     
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
