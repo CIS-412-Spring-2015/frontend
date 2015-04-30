@@ -60,8 +60,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Events tab to valid
     setEventsReportValidation: function() {
-        
-    }.observes(/* list of variables */),
+        if(Ember.empty(this.get('leadEvents')) && Ember.empty(this.get('commEvents'))){
+        	this.set('eventsReportValidation', false);
+        } else {
+        	this.set('eventsReportValidation', true);
+        }
+    }.observes('leadEvents','commEvents'),
     
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
@@ -382,7 +386,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         addLeadershipParticipant: function(newParticipant) {
           //var leadEvent = this.find(newParticipant.get('leadershipEvent'));
           //var participants = leadEvent.getWithDefault('participants', []);
-          var participants = this.getWithDefault('participants', []);
+          var participants = this.getWithDefault('leadParticipants', []);
           participants.addObject(newParticipant);
           this.send('update', true);
           this.send('closeModal');
@@ -390,9 +394,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         
         //Making Leadership Event Participant
         createParticipant: function(leadershipToConnect) {
-            var participants = this.store.createRecord('leadership-participant');
-            participants.set('leadershipEvent',leadershipToConnect);
-            this.send('openModal', 'ministry.add-leadership-participant', participants);
+            var participant = this.store.createRecord('leadership-participant');
+            var participants = leadershipToConnect.getWithDefault('participants',[]);
+            participants.addObject(participant);
+            this.send('update', true);
+            //participants.set('leadershipEvent',leadershipToConnect);
+            this.send('openModal', 'ministry.add-leadership-participant', participant);
         },
         
         //Edit a Participant of Leadership Event

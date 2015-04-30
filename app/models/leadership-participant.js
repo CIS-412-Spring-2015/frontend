@@ -10,4 +10,19 @@ export default AbstractModel.extend({
     participantName: DS.attr('string'),
     gender: DS.attr('string'),
     
+    validations: {
+        participantName: {
+            format: { with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
+        },
+        gender: {
+            format: { with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
+        },
+        organization: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+    },
+    
 });

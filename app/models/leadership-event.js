@@ -13,4 +13,23 @@ export default AbstractModel.extend({
     
     //for adding multiple participants per leadership event
     participants: DS.hasMany('leadership-participant'),//what will need to work
+    
+    validations: {
+        eventName: {
+            format: { with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
+        },
+        date: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+        location: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+        description: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+    },
 });

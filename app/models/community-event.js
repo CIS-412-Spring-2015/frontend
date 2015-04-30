@@ -13,4 +13,31 @@ export default AbstractModel.extend({
     numberPastorChurch: DS.attr('string'),
     numberParticipants: DS.attr('string'),
     
+     validations: {
+        eventName: {
+            format: { with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
+        },
+        date: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+        type: {
+            format:  {with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
+        },
+        location: {
+            presence: true,
+            message: 'Cannot be left blank'
+        },
+        numberPastorChurch: {
+            numericality: true,
+            message: 'must numbers only'
+        },
+        numberParticipants: {
+            numericality: true,
+            message: 'must numbers only'
+        },
+     },
+    
 });
