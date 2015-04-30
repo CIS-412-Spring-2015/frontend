@@ -93,7 +93,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
             this.set('summaryReportValidation', false);   
         }
         
-    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore'),
+    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
 
 
     //summary page totals
