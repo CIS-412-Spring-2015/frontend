@@ -174,7 +174,7 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
         this.set('bibleTotal', bibleTotal);
 
     }.observes('bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleMore'),
-
+    
     actions: {
         // These are here until I can find a more efficient way to do it.
         // They change the active classes to show and hide the respective tabs
@@ -336,7 +336,8 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
                 window.location.href = "#/ministry";
             }.bind(this));
         },
-
+        
+        //Add community event
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
           commEvents.addObject(newCommunity);
@@ -344,41 +345,49 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
           this.send('closeModal');
 
         },
-
+        
+        //Edit community event
         editCommunity: function(communityToEdit) {
             if (Ember.isEmpty(communityToEdit)) {
                 communityToEdit = this.store.createRecord('community-event');
             }
             this.send('openModal', 'ministry.add-community', communityToEdit);
         },
-
+        
+        //Add Leadership Event
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
           leadEvents.addObject(newLeadership);
           this.send('update', true);
           this.send('closeModal');
         },
-
+        
+        //Edit Leadership Event
         editLeadership: function(leadershipToEdit) {
             if (Ember.isEmpty(leadershipToEdit)) {
                 leadershipToEdit = this.store.createRecord('leadership-event');
             }
             this.send('openModal', 'ministry.add-leadership', leadershipToEdit);
         },
-
+        
+        //Add Participant of Leadership Event
         addLeadershipParticipant: function(newParticipant) {
+          //var leadEvent = this.find(newParticipant.get('leadershipEvent'));
+          //var participants = leadEvent.getWithDefault('participants', []);
           var participants = this.getWithDefault('participants', []);
           participants.addObject(newParticipant);
           this.send('update', true);
           this.send('closeModal');
         },
-
+        
+        //Making Leadership Event Participant
         createParticipant: function(leadershipToConnect) {
-            var participantToEdit = this.store.createRecord('leadership-participant');
-            participantToEdit.set('leadershipEvent',leadershipToConnect);
-            this.send('openModal', 'ministry.add-leadership-participant', participantToEdit);
+            var participants = this.store.createRecord('leadership-participant');
+            participants.set('leadershipEvent',leadershipToConnect);
+            this.send('openModal', 'ministry.add-leadership-participant', participants);
         },
-
+        
+        //Edit a Participant of Leadership Event
         editParticipant: function(participantToEdit) {
             if (Ember.isEmpty(participantToEdit)) {
                 participantToEdit = this.store.createRecord('leadership-participant');
