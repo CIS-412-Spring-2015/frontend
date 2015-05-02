@@ -377,6 +377,45 @@
                     </thead>
                     <tbody>
                         <tr>
+                            <th>Gospel Presentations</th>
+                            {{#if bedsidePresentations}}
+                                <td>{{bedsidePresentations}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if playroomPresentations}}
+                                <td>{{playroomPresentations}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if jesusPresentations}}
+                                <td>{{jesusPresentations}}</td> 
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if openAirPresentations}}
+                                <td>{{openAirPresentations}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if mobilePresentations}}
+                                <td>{{mobilePresentations}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            
+                            {{#if morePresentations}}
+                                <td>{{morePresentations}}</td>
+                            {{else}}
+                                <td class="pleaseFillInPreview">(Please Fill In)</td>
+                            {{/if}}
+                            <td>{{totalPresentations}}</td>
+                        </tr>
+                        <tr>
                             <th>People Reached</th>
                             {{#if peopleBedside}}
                                 <td>{{peopleBedside}}</td>

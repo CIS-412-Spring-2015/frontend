@@ -1,8 +1,7 @@
 import AbstractEditController from 'hospitalrun/controllers/abstract-edit-controller';
 import Ember from 'ember';
 import GenderList from 'hospitalrun/mixins/gender-list';
-import NewBelieverInfo from 'hospitalrun/mixins/new-believer-info';
-export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
+export default AbstractEditController.extend(GenderList, {
 
     showPreview: false,
 
@@ -69,12 +68,12 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
-		if(this.get('believerName') && this.get('age') && this.get('phone') && this.get('country') && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
-			this.set('FaithDelcarationsReportValidation', true);
+		if(this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+			this.set('faithDeclarationsReportValidation', true);
 		} else {
-			this.set('FaithDelcarationsReportValidation', false);
+			this.set('faithDeclarationsReportValidation', false);
 		}        
-    }.observes('believerName', 'age', 'phone', 'country', 'ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
+    }.observes('ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
     
     //Function to set Additional Info tab to valid
     setAdditionalInformationReportValidation: function() {
@@ -87,16 +86,61 @@ export default AbstractEditController.extend(GenderList, NewBelieverInfo, {
     
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
-        if (this.get('peopleBedside') && this.get('peoplePlayroom') && this.get('peopleJesus') && this.get('peopleOpenAir') && this.get('peopleMobile') &&  this.get('peopleMore') && this.get('bibleBedside') && this.get('biblePlayroom') && this.get('bibleJesus') && this.get('bibleOpenAir') && this.get('bibleMobile') && this.get('bibleMore')) {
+        if (this.get('bedsidePresentations') && this.get('playroomPresentations') && this.get('jesusPresentations') && this.get('openAirPresentations') && this.get('mobilePresentations') && this.get('morePresentations') && this.get('peopleBedside') && this.get('peoplePlayroom') && this.get('peopleJesus') && this.get('peopleOpenAir') && this.get('peopleMobile') &&  this.get('peopleMore') && this.get('bibleBedside') && this.get('biblePlayroom') && this.get('bibleJesus') && this.get('bibleOpenAir') && this.get('bibleMobile') && this.get('bibleMore')) {
             this.set('summaryReportValidation', true);
         } else {
             this.set('summaryReportValidation', false);   
         }
         
-    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
+    }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
 
 
     //summary page totals
+    gospelPresentationTotals: function() {
+        var bedsidePresentations, playroomPresentations, jesusPresentations, openAirPresentations, mobilePresentations, morePresentations, totalPresentations;
+
+        if(this.get('bedsidePresentations') === undefined || this.get('bedsidePresentations') === "" || this.get('bedsidePresentations') === null) {
+            bedsidePresentations = 0;
+        } else {
+            bedsidePresentations = parseInt(this.get('bedsidePresentations'));
+        }
+
+        if(this.get('playroomPresentations') === undefined || this.get('playroomPresentations') === "" || this.get('playroomPresentations') === null) {
+            playroomPresentations = 0;
+        } else {
+            playroomPresentations = parseInt(this.get('playroomPresentations'));
+        }
+
+        if(this.get('jesusPresentations') === undefined || this.get('jesusPresentations') === "" || this.get('jesusPresentations') === null) {
+            jesusPresentations = 0;
+        } else {
+            jesusPresentations = parseInt(this.get('jesusPresentations'));
+        }
+
+        if(this.get('openAirPresentations') === undefined || this.get('openAirPresentations') === "" || this.get('openAirPresentations') === null) {
+            openAirPresentations = 0;
+        } else {
+            openAirPresentations = parseInt(this.get('openAirPresentations'));
+        }
+
+        if(this.get('mobilePresentations') === undefined || this.get('mobilePresentations') === "" || this.get('mobilePresentations') === null) {
+            mobilePresentations = 0;
+        } else {
+            mobilePresentations = parseInt(this.get('mobilePresentations'));
+        }
+
+        if(this.get('morePresentations') === undefined || this.get('morePresentations') === "" || this.get('morePresentations') === null) {
+            morePresentations = 0;
+        } else {
+            morePresentations = parseInt(this.get('morePresentations'));
+        }
+
+        totalPresentations =  bedsidePresentations +  playroomPresentations + jesusPresentations + openAirPresentations + mobilePresentations + morePresentations;
+
+        this.set('totalPresentations', totalPresentations);
+
+    }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations'),
+    
     peopleReachedTotals: function() {
         var peopleBedside, peoplePlayroom, peopleJesus, peopleOpenAir, peopleMobile, peopleMore, peopleTotal;
 

@@ -47,6 +47,15 @@ export default AbstractModel.extend(ReportDate, {
 	
 
     /* Summary Tab */
+    // Gospel Presentations //
+    bedsidePresentations: DS.attr('number'),
+    playroomPresentations: DS.attr('number'),
+    jesusPresentations: DS.attr('number'),
+    openAirPresentations: DS.attr('number'),
+    mobilePresentations: DS.attr('number'),
+    morePresentations: DS.attr('number'),
+    totalPresentations: DS.attr('number'), //this needs to be the gospel presentations added up
+    
     // People Reached //
     peopleBedside: DS.attr('number'),
     peoplePlayroom: DS.attr('number'),
