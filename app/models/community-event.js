@@ -27,16 +27,16 @@ export default AbstractModel.extend({
             message: 'Cannot have numbers or left blank'}
         },
         location: {
-            presence: true,
-            message: 'Cannot be left blank'
+            format: {with: /^([a-zA-Z]|\d)+$/,
+            message: 'You may only use letters and numbers.'}
         },
         numberPastorChurch: {
             numericality: true,
-            message: 'must numbers only'
+            message: 'must be numbers only'
         },
         numberParticipants: {
             numericality: true,
-            message: 'must numbers only'
+            message: 'must be numbers only'
         },
      },
     

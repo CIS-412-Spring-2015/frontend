@@ -20,8 +20,8 @@ export default AbstractModel.extend({
             message: 'Cannot have numbers or left blank'}
         },
         organization: {
-            presence: true,
-            message: 'Cannot be left blank'
+            format: {with: /^([a-zA-Z]|\d)+$/,
+            message: 'You may only use letters and numbers.'}
         },
     },
     

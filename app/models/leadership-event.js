@@ -21,15 +21,15 @@ export default AbstractModel.extend({
         },
         date: {
             presence: true,
-            message: 'Cannot be left blank'
+            message: 'Cannot be left blank.'
         },
         location: {
-            presence: true,
-            message: 'Cannot be left blank'
+            format: {with: /^([a-zA-Z]|\d)+$/,
+            message: 'You may only use letters and numbers.'}
         },
         description: {
-            presence: true,
-            message: 'Cannot be left blank'
+            format: { with: /(^[A-Za-z ]+$)/,
+            message: 'Cannot have numbers or left blank'}
         },
     },
 });
