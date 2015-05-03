@@ -6,7 +6,7 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, {
     editController: Ember.computed.alias('controllers.ministry/edit'),
     updateButtonAction: 'update',
     showUpdateButton: true,
-    
+
     religiousAffiliationList: ['none', 'Catholic', 'Muslim', 'Protestant', 'Other'],
     presentActivityList: ['Bedside Evangelism', 'Playroom Presentation', 'Jesus Film', 'Open Air Meeting', 'Mobile Clinic Outreach', 'Door to Door Evangelism', 'Other Opportunities'],
     declarationTypeList: ['New Believer', 'Recommitment'],

@@ -9,7 +9,7 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function sets default variables for new report
     reportDateChanged: function() {
-        
+
         //Initialize report data
         if (Ember.isEmpty(this.get('reportDate'))) {
             this.setProperties({
@@ -26,28 +26,28 @@ export default AbstractEditController.extend(GenderList, {
         }
 
     }.observes('reportDate'),
-    
+
     //Function sets a report to be valid
     setFullReportValidation: function() {
         if (this.get('hospitalReportValidation') &&
-            this.get('eventsReportValidation') && 
+            this.get('eventsReportValidation') &&
             this.get('faithDeclarationsReportValidation') &&
             this.get('additionalInformationReportValidation') &&
             this.get('summaryReportValidation')) {
                 //All variables are true, so set report to valid
-                this.set('fullReportValidation', true);   
+                this.set('fullReportValidation', true);
         } else {
-            this.set('fullReportValidation', false);   
+            this.set('fullReportValidation', false);
         }
     }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation',
                'additionalInformationReportValidation', 'summaryReportValidation', 'fullReportValidation'),
-    
+
     setReportArchivedValidation: function() {
         if (!this.get('fullReportValidation')) {
             this.set('reportArchived', false);
         }
     }.observes('reportArchived'),
-    
+
     //Function to set Hospital tab to valid
     setHospitalReportValidation: function() {
         if(this.get('staffOpportunities') && this.get('staffDevelopment') && this.get('spiritualCenterStaffMeetings') && this.get('hospitalPrayerGroupIntercessions') && this.get('departmentDevotions') && this.get('entireStaffDevotions') && this.get('bedsideEvangelism') && this.get('playroomActivities')){
@@ -56,7 +56,7 @@ export default AbstractEditController.extend(GenderList, {
         	this.set('hospitalReportValidation', false);
         }
     }.observes('staffOpportunities', 'staffDevelopment', 'spiritualCenterStaffMeetings', 'hospitalPrayerGroupIntercessions', 'departmentDevotions', 'entireStaffDevotions', 'bedsideEvangelism', 'playroomActivities'),
-    
+
     //Function to set Events tab to valid
     setEventsReportValidation: function() {
         if(Ember.empty(this.get('leadEvents')) && Ember.empty(this.get('commEvents'))){
@@ -65,33 +65,33 @@ export default AbstractEditController.extend(GenderList, {
         	this.set('eventsReportValidation', true);
         }
     }.observes('leadEvents','commEvents'),
-    
+
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
 		if(this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
 			this.set('faithDeclarationsReportValidation', true);
 		} else {
 			this.set('faithDeclarationsReportValidation', false);
-		}        
+		}
     }.observes('ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
-    
+
     //Function to set Additional Info tab to valid
     setAdditionalInformationReportValidation: function() {
 		if(this.get('ministryResults') && this.get('otherSignificantItems') && this.get('recommendationsNeeds')){
 			this.set('additionalInformationReportValidation', true);
 		} else {
 			this.set('additionalInformationReportValidation', false);
-		}			
+		}
     }.observes('ministryResults', 'otherSignificantItems', 'recommendationsNeeds'),
-    
+
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
         if (this.get('bedsidePresentations') && this.get('playroomPresentations') && this.get('jesusPresentations') && this.get('openAirPresentations') && this.get('mobilePresentations') && this.get('morePresentations') && this.get('peopleBedside') && this.get('peoplePlayroom') && this.get('peopleJesus') && this.get('peopleOpenAir') && this.get('peopleMobile') &&  this.get('peopleMore') && this.get('bibleBedside') && this.get('biblePlayroom') && this.get('bibleJesus') && this.get('bibleOpenAir') && this.get('bibleMobile') && this.get('bibleMore')) {
             this.set('summaryReportValidation', true);
         } else {
-            this.set('summaryReportValidation', false);   
+            this.set('summaryReportValidation', false);
         }
-        
+
     }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
 
 
@@ -140,7 +140,7 @@ export default AbstractEditController.extend(GenderList, {
         this.set('totalPresentations', totalPresentations);
 
     }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations'),
-    
+
     peopleReachedTotals: function() {
         var peopleBedside, peoplePlayroom, peopleJesus, peopleOpenAir, peopleMobile, peopleMore, peopleTotal;
 
@@ -230,7 +230,25 @@ export default AbstractEditController.extend(GenderList, {
         this.set('bibleTotal', bibleTotal);
 
     }.observes('bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleMore'),
-    
+
+
+    // Filter function for the believers section
+    searchTerm: '',
+
+    filteredContent: function() {
+        var believer = this.get('believers');
+        var search = this.get('searchTerm').toLowerCase();
+        if(this.searchTerm === '') {
+            return believer.filter(function(person) {
+              return person.get('believerName');
+            });
+        } else {
+            return believer.filter(function(person) {
+                return person.get('believerName').toLowerCase().indexOf(search) !== -1;
+            });
+        }
+    }.property('believers', 'searchTerm', 'content.@each'),
+
     actions: {
         // These are here until I can find a more efficient way to do it.
         // They change the active classes to show and hide the respective tabs
@@ -241,13 +259,6 @@ export default AbstractEditController.extend(GenderList, {
           $('ul.nav li.active').removeClass('active');
           $('ul.nav li:nth-child(4)').addClass('active');
         },
-        /*demographicsTab: function () {
-          this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#demographics').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(6)').addClass('active');
-        },*/
         eventsTab: function () {
           this.set('submitPage', false);
           $('#submit').removeClass('active');
@@ -294,13 +305,6 @@ export default AbstractEditController.extend(GenderList, {
           $('.tab-pane.active').removeClass('active').prev('.tab-pane').addClass('active');
           $('ul.nav li.active').removeClass('active').prev('li').addClass('active');
         },
-        // hideNextPrevious: function () {
-        //   this.set('submitPage', true);
-        //   $('.tab-pane.active').removeClass('active');
-        //   $('#submit').addClass('active');
-        //   $('ul.nav li.active').removeClass('active');
-        //   $('ul.nav li:nth-child(10)').addClass('active');
-        // },
         showCurrentBelievers: function() {
           $('.showHideBelievers').show(500);
           $('.showCurrentBelievers').hide();
@@ -392,7 +396,7 @@ export default AbstractEditController.extend(GenderList, {
                 window.location.href = "#/ministry";
             }.bind(this));
         },
-        
+
         //Add community event
         addCommunity: function(newCommunity) {
           var commEvents = this.getWithDefault('commEvents', []);
@@ -401,7 +405,7 @@ export default AbstractEditController.extend(GenderList, {
           this.send('closeModal');
 
         },
-        
+
         //Edit community event
         editCommunity: function(communityToEdit) {
             if (Ember.isEmpty(communityToEdit)) {
@@ -409,7 +413,7 @@ export default AbstractEditController.extend(GenderList, {
             }
             this.send('openModal', 'ministry.add-community', communityToEdit);
         },
-        
+
         //Add Leadership Event
         addLeadership: function(newLeadership) {
           var leadEvents = this.getWithDefault('leadEvents', []);
@@ -417,7 +421,7 @@ export default AbstractEditController.extend(GenderList, {
           this.send('update', true);
           this.send('closeModal');
         },
-        
+
         //Edit Leadership Event
         editLeadership: function(leadershipToEdit) {
             if (Ember.isEmpty(leadershipToEdit)) {
@@ -425,7 +429,7 @@ export default AbstractEditController.extend(GenderList, {
             }
             this.send('openModal', 'ministry.add-leadership', leadershipToEdit);
         },
-        
+
         //Add Participant of Leadership Event
         addLeadershipParticipant: function(newParticipant) {
           //var leadEvent = this.find(newParticipant.get('leadershipEvent'));
@@ -435,7 +439,7 @@ export default AbstractEditController.extend(GenderList, {
           this.send('update', true);
           this.send('closeModal');
         },
-        
+
         //Making Leadership Event Participant
         createParticipant: function(leadershipToConnect) {
             var participant = this.store.createRecord('leadership-participant');
@@ -445,7 +449,7 @@ export default AbstractEditController.extend(GenderList, {
             //participants.set('leadershipEvent',leadershipToConnect);
             this.send('openModal', 'ministry.add-leadership-participant', participant);
         },
-        
+
         //Edit a Participant of Leadership Event
         editParticipant: function(participantToEdit) {
             if (Ember.isEmpty(participantToEdit)) {

@@ -33,12 +33,13 @@
             <span class="input-group-btn">
               <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
             </span>
-            <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1">
+            {{em-input property="searchTerm" placeholder="Search"}}
+            <!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1"> -->
           </div>
         </div>
 
         <ul class="list-group text-center nav-pills showHideBelievers">
-          {{#each believers}}
+          {{#each filteredContent}}
             <li class="listSet" {{action "showBeliever" this bubbles=false }}>
               <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
             </li>
