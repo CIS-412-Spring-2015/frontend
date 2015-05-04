@@ -17,6 +17,7 @@ export default AbstractEditController.extend(GenderList, {
                 'reportArchived': false,
                 'hospitalReportValidation': false,
                 'eventsReportValidation': false,
+                'eventsThisMonth': true,
                 'faithDeclarationsReportValidation': false,
                 'additionalInformationReportValidation': false,
                 'summaryReportValidation': false,
@@ -59,12 +60,12 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Events tab to valid
     setEventsReportValidation: function() {
-        if(Ember.empty(this.get('leadEvents')) && Ember.empty(this.get('commEvents'))){
+        if(Ember.empty(this.get('leadEvents')) && Ember.empty(this.get('commEvents')) && this.get('eventsThisMonth')){
         	this.set('eventsReportValidation', false);
         } else {
         	this.set('eventsReportValidation', true);
         }
-    }.observes('leadEvents','commEvents'),
+    }.observes('leadEvents','commEvents','eventsThisMonth'),
 
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
@@ -248,6 +249,10 @@ export default AbstractEditController.extend(GenderList, {
             });
         }
     }.property('believers', 'searchTerm', 'content.@each'),
+    
+    hasEventsThisMonth: function(){
+        return this.get('eventsThisMonth');
+    }.property('eventsThisMonth'),
 
     actions: {
         // These are here until I can find a more efficient way to do it.
@@ -494,6 +499,14 @@ export default AbstractEditController.extend(GenderList, {
             leadEvents.removeObject(leadEvent);
             this.set('leadEvents', leadEvents);
             this.send('update', true);
+        },
+        
+        shiftEventsThisMonth: function(){
+            if(this.get('eventsThisMonth')) {
+                this.set('eventsThisMonth', false);
+            } else {
+                this.set('eventsThisMonth', true);
+            }
         }
     }
 });

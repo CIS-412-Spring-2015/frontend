@@ -1,6 +1,13 @@
 <div role="tabpanel" class="tab-pane" id="events">
     {{#em-form model=this submit_button=false bubbles=false}}
     <div class="panel">
+        <div class="panel-body detail-section-content">
+            {{#if hasEventsThisMonth}}
+                <button type="button" class="btn btn-default warning align-right" {{action "shiftEventsThisMonth" bubbles=false }}>No Events This Month: Disabled</button>
+            {{else}}
+                <button class="btn btn-primary align-right" {{action "shiftEventsThisMonth" bubbles=false }}>No Events This Month: Enabled</button>
+            {{/if}}
+        </div>
         <div class="panel-heading">
             <h3 class="panel-title">
                 Community Events
