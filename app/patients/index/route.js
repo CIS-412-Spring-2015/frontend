@@ -12,6 +12,6 @@ export default AbstractIndexRoute.extend({
         return {
             mapReduce: 'patient_by_display_id'
         };
-    },
-    
+    }
+
 });

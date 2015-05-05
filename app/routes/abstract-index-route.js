@@ -1,6 +1,7 @@
 import Ember from "ember";
 import PouchDbMixin from 'hospitalrun/mixins/pouchdb';
-export default Ember.Route.extend(PouchDbMixin, Ember.SimpleAuth.AuthenticatedRouteMixin, {
+import ProgressDialog from 'hospitalrun/mixins/progress-dialog';
+export default Ember.Route.extend(PouchDbMixin, ProgressDialog, Ember.SimpleAuth.AuthenticatedRouteMixin, {
     firstKey: null,
     hideNewButton: false,
     itemsPerPage: 25,
@@ -31,6 +32,12 @@ export default Ember.Route.extend(PouchDbMixin, Ember.SimpleAuth.AuthenticatedRo
             var modelName = this.get('modelName'),
                 itemsPerPage = this.get('itemsPerPage'),
                 queryParams = this._modelQueryParams(params);
+            if (!Ember.isEmpty(params.sortDesc)) {
+                queryParams.sortDesc = params.sortDesc;
+            }
+            if (!Ember.isEmpty(params.sortKey)) {
+                queryParams.sortKey = params.sortKey;
+            }
             if (Ember.isEmpty(queryParams.options)) {
                 queryParams.options = {};
             }
@@ -54,6 +61,8 @@ export default Ember.Route.extend(PouchDbMixin, Ember.SimpleAuth.AuthenticatedRo
     },
     
     queryParams: {
+        sortDesc: {refreshModel: true},
+        sortKey: {refreshModel: true},
         startKey: {refreshModel: true}
     },
     
@@ -75,6 +84,7 @@ export default Ember.Route.extend(PouchDbMixin, Ember.SimpleAuth.AuthenticatedRo
             sectionDetails.newButtonText = this.get('newButtonText');
         }
         this.send('setSectionHeader', sectionDetails);
+        this.closeProgressModal();
         this._super(controller, model);
     }
 });
