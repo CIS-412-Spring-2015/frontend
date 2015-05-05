@@ -55,6 +55,7 @@ export default AbstractModel.extend(ReportDate, {
     openAirPresentations: DS.attr('number'),
     mobilePresentations: DS.attr('number'),
     morePresentations: DS.attr('number'),
+    doorPresentations: DS.attr('number'),
     totalPresentations: DS.attr('number'), //this needs to be the gospel presentations added up
     
     // People Reached //
@@ -64,6 +65,7 @@ export default AbstractModel.extend(ReportDate, {
     peopleOpenAir: DS.attr('number'),
     peopleMobile: DS.attr('number'),
     peopleMore: DS.attr('number'),
+    peopleDoor: DS.attr('number'),
     peopleTotal: DS.attr('number'), //this needs to be the people added up
 
     //Bibles Given Out//
@@ -73,6 +75,7 @@ export default AbstractModel.extend(ReportDate, {
     bibleOpenAir: DS.attr('number'),
     bibleMobile: DS.attr('number'),
     bibleMore: DS.attr('number'),
+    bibleDoor: DS.attr('number'),
     bibleTotal: DS.attr('number'), //this needs to be the bibles added up
 
     //Salvations//
@@ -82,6 +85,7 @@ export default AbstractModel.extend(ReportDate, {
     salvationOpenAir: DS.attr('number'),
     salvationMobile: DS.attr('number'),
     salvationMore: DS.attr('number'),
+    salvationDoor: DS.attr('number'),
     salvationTotal: DS.attr('number'), //this needs to be the salvations added up
 
     //Recommittments//
@@ -91,6 +95,7 @@ export default AbstractModel.extend(ReportDate, {
     recommitmentOpenAir: DS.attr('number'),
     recommitmentMobile: DS.attr('number'),
     recommitmentMore: DS.attr('number'),
+    recommitmentDoor: DS.attr('number'),
     recommitmentTotal: DS.attr('number'), //this needs to be the recommitments added up
 
     //Validations for all pages
@@ -150,6 +155,33 @@ export default AbstractModel.extend(ReportDate, {
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
         
+        bedsidePresentations: {
+            numericality: true //Field must be a number
+        }, 
+        
+        playroomPresentations: {
+            numericality: true //Field must be a number
+        },
+        
+        jesusPresentations: {
+            numericality: true //Field must be a number
+        },
+        
+        openAirPresentations: {
+            numericality: true //Field must be a number
+        }, 
+        
+        mobilePresentations: {
+            numericality: true //Field must be a number
+        },
+        
+        morePresentations: {
+            numericality: true //Field must be a number
+        },
+        doorPresentations: {
+            numericality: true //Field must be a number
+        },
+        
         peopleBedside: {
             numericality: true //Field must be a number
         }, 
@@ -173,6 +205,9 @@ export default AbstractModel.extend(ReportDate, {
         peopleMore: {
             numericality: true //Field must be a number
         },
+        peopleDoor: {
+            numericality: true //Field must be a number
+        },
         bibleBedside: {
             numericality: true //Field must be a number
         }, 
@@ -194,6 +229,9 @@ export default AbstractModel.extend(ReportDate, {
         },
         
         bibleMore: {
+            numericality: true //Field must be a number
+        },
+        bibleDoor: {
             numericality: true //Field must be a number
         },
     },
