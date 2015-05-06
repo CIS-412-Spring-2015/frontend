@@ -103,6 +103,10 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
         id: 'clinic_list'
     }, {
         name: 'diagnosisList',
+        property: 'primaryBillingDiagnosis',
+        id: 'diagnosis_list'
+    }, {
+        name: 'diagnosisList',
         property: 'primaryDiagnosis',
         id: 'diagnosis_list'
     }, {
@@ -123,9 +127,9 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
 
     updateCapability: 'add_visit',
 
-    primaryDiagnosisIdChanged: function() {
-        this.get('model').validate();
-    }.observes('primaryDiagnosisId'),
+    haveAdditionalDiagnoses: function() {
+        return !Ember.isEmpty(this.get('additionalDiagnoses'));
+    }.property('additionalDiagnoses.@each'),
 
     afterUpdate: function() {
         this.displayAlert('Visit Saved', 'The visit record has been saved.');
