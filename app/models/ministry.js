@@ -46,7 +46,6 @@ export default AbstractModel.extend(ReportDate, {
 	ceContinuedEducation: DS.attr('number'),
 	ceSession: DS.attr('number'),
 	
-
     /* Summary Tab */
     // Gospel Presentations //
     bedsidePresentations: DS.attr('number'),
@@ -227,13 +226,12 @@ export default AbstractModel.extend(ReportDate, {
         bibleMobile: {
             numericality: true //Field must be a number
         },
-        
-        bibleMore: {
-            numericality: true //Field must be a number
-        },
         bibleDoor: {
             numericality: true //Field must be a number
         },
+        bibleMore: {
+            numericality: true //Field must be a number
+        }    
     },
     
     displayReportDate: function() {

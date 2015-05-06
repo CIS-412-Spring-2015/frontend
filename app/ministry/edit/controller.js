@@ -346,27 +346,34 @@ export default AbstractEditController.extend(GenderList, {
             return believer.get('presentActivity').indexOf(activity) !== -1 && believer.get('declarationType').indexOf(declaration) !== -1;
         });
         counter = filteredList.length;
+        
         return counter;
     },
     //salvation totals
     salvationBedside: function() {
         return this.filterSummaryNumbers('Bedside Evangelism', 'New Believer');
     }.property('believers.@each'),
+    
     salvationPlayroom: function() {
         return this.filterSummaryNumbers('Playroom Presentation', 'New Believer');
     }.property('believers.@each'),
+    
     salvationJesus: function() {
         return this.filterSummaryNumbers('Jesus Film', 'New Believer');
     }.property('believers.@each'),
+    
     salvationOpenAir: function() {
         return this.filterSummaryNumbers('Open Air Meeting', 'New Believer');
     }.property('believers.@each'),
+    
     salvationMobile: function() {
         return this.filterSummaryNumbers('Mobile Clinic Outreach', 'New Believer');
     }.property('believers.@each'),
+    
     salvationDoor: function() {
         return this.filterSummaryNumbers('Door to Door Evangelism', 'New Believer');
     }.property('believers.@each'),
+    
     salvationMore: function() {
         return this.filterSummaryNumbers('Other Opportunities', 'New Believer');
     }.property('believers.@each'),
@@ -375,21 +382,27 @@ export default AbstractEditController.extend(GenderList, {
     recommitmentBedside: function() {
         return this.filterSummaryNumbers('Bedside Evangelism', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentPlayroom: function() {
         return this.filterSummaryNumbers('Playroom Presentation', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentJesus: function() {
         return this.filterSummaryNumbers('Jesus Film', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentOpenAir: function() {
         return this.filterSummaryNumbers('Open Air Meeting', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentMobile: function() {
         return this.filterSummaryNumbers('Mobile Clinic Outreach', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentDoor: function() {
         return this.filterSummaryNumbers('Door to Door Evangelism', 'Recommitment');
     }.property('believers.@each'),
+    
     recommitmentMore: function() {
         return this.filterSummaryNumbers('Other Opportunities', 'Recommitment');
     }.property('believers.@each'),
@@ -482,19 +495,6 @@ export default AbstractEditController.extend(GenderList, {
           $('.showCurrentBelievers').show();
         },
 
-		// Function generated to show and hide the Christianity Explored content.
-//        showChristianityExplored: function() {
-//            $('.showHideChristianityExplored').show(500);
-//            $('.showChristianityExplored').hide();
-//            $('.hideChristianityExplored').show();
-//        },
-
-//        hideChristianityExplored: function() {
-//            $('.showHideChristianityExplored').hide(500);
-//            $('.hideChristianityExplored').hide();
-//            $('.showChristianityExplored').show();
-//        },
-
         showBeliever: function(believer) {
           if (Ember.isEmpty(believer)) {
               believer = this.store.createRecord('new-believer');
@@ -543,8 +543,6 @@ export default AbstractEditController.extend(GenderList, {
         toggleArrowInPreview: function() {
           this.toggleProperty('showDetails');
         },
-
-
 
         //Save Report
         updateReport: function() {
@@ -669,5 +667,6 @@ export default AbstractEditController.extend(GenderList, {
                 this.set('eventsThisMonth', true);
             }
         }
+        
     }
 });

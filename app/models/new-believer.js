@@ -34,6 +34,6 @@ export default AbstractModel.extend({
 		country: {
 			format: { with: /(^[A-Za-z ]+$)/, allowBlank: true, message: 'Cannot have numbers' }
 		},
-	},
+	}
 
 });
