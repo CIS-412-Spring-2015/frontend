@@ -1,6 +1,3 @@
-frontend
-========
-
 Ember front end for HospitalRun
 
 ### MAC set up: 

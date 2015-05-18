@@ -63,6 +63,7 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
         if (isAdmission) {
             this.set('outPatient', false);
         } else {
+            this.set('status');
             this.set('outPatient', true);
         }
         return isAdmission;
@@ -79,7 +80,6 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
     cancelAction: 'returnToPatient',
     chargePricingCategory: 'Ward',
     chargeRoute: 'visits.charge',
-    clincList: Ember.computed.alias('controllers.visits.clinicList'),
     dateTimeFormat: 'l h:mm A',
     diagnosisList: Ember.computed.alias('controllers.visits.diagnosisList'),
     findPatientVisits: false,
@@ -89,10 +89,6 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
     locationList: Ember.computed.alias('controllers.visits.locationList'),
     visitTypesList: Ember.computed.alias('controllers.visits.visitTypeList'),
     lookupListsToUpdate: [{
-        name: 'clinicList',
-        property: 'clinic',
-        id: 'clinic_list'
-    }, {
         name: 'diagnosisList',
         property: 'primaryBillingDiagnosis',
         id: 'diagnosis_list'
@@ -117,13 +113,36 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
     ],
 
     updateCapability: 'add_visit',
+    
+    _finishAfterUpdate: function() {
+        this.displayAlert('Visit Saved', 'The visit record has been saved.');
+    },
 
     haveAdditionalDiagnoses: function() {
         return !Ember.isEmpty(this.get('additionalDiagnoses'));
     }.property('additionalDiagnoses.@each'),
 
     afterUpdate: function() {
-        this.displayAlert('Visit Saved', 'The visit record has been saved.');
+        var patient = this.get('patient'),
+            patientAdmitted = patient.get('admitted'),
+            patientUpdated = false,
+            status = this.get('status');
+        if (status === 'Admitted' && !patientAdmitted) {
+            patient.set('admitted', true);
+            patientUpdated = true;
+        } else if (status === 'Discharged' && patientAdmitted) {
+            this.getPatientVisits(patient).then(function(visits)  {
+                if (Ember.isEmpty(visits.findBy('status', 'Admitted'))) {
+                    patient.set('admitted', false);
+                    patientUpdated = true;
+                }                    
+            }.bind(this));
+        }
+        if (patientUpdated) {
+            patient.save().then(this._finishAfterUpdate.bind(this));
+        } else {
+            this.displayAlert('Visit Saved', 'The visit record has been saved.');
+        }
     },
     
     beforeUpdate: function() {        
@@ -260,7 +279,7 @@ export default AbstractEditController.extend(ChargeActions, PatientSubmodule, Us
         
         showAddProcedure: function() {
             var newProcedure = this.get('store').createRecord('procedure', {
-                dateRecorded: new Date(),
+                procedureDate: new Date(),
                 visit: this.get('model'),
             });
             this.transitionToRoute('procedures.edit', newProcedure);

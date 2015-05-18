@@ -8,9 +8,6 @@ export default AbstractModuleRoute.extend({
         name: 'anesthesiologistList',
         findArgs: ['lookup','anesthesiologists'],
     }, {
-        name: 'clinicList',
-        findArgs: ['lookup','clinic_list']
-    }, {
         name: 'diagnosisList',
         findArgs: ['lookup','diagnosis_list']
     }, { 
@@ -36,7 +33,7 @@ export default AbstractModuleRoute.extend({
         findArgs: ['lookup','ward_pricing_types']
     }],
     moduleName: 'visits',
-    newButtonText: '+ new visit',
+    newButtonAction: null, //No new button
     sectionTitle: 'Visits'
    
 });
