@@ -1,5 +1,5 @@
 <div role="tabpanel" class="tab-pane" id="events">
-    {{#em-form model=this submit_button=false bubbles=false}}
+    {{#em-form model=this submit_button=false bubbles=false }}
     <div class="panel">
         <div class="panel-body detail-section-content">
             {{#if hasEventsThisMonth}}
@@ -19,7 +19,7 @@
             </h3>
         </div>            
         <div class="panel-body detail-section-content">
-            <p class="col-xs-12">Example: Mobile Clinic, Outreach, Family & Patient Outreach</p>
+            <p class="col-xs-12 ministryInstructions">Example: Mobile Clinic, Outreach, Family & Patient Outreach</p>
             <table class="table">
                 <tr class="table-header">
                     <th class="descriptor">Name</th>
@@ -40,7 +40,7 @@
                         <td>{{numberParticipants}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editCommunity" this}}>Edit</button>
-                            <!--<button type="button" class="btn btn-default warning" {{action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
+                            <!--<button type="button" class="btn btn-default warning" {action "showDeleteCommunity" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                         </td>
                     </tr>
                 {{/each}}
@@ -59,7 +59,7 @@
         </div>
 
         <div class="panel-body detail-section-content">
-            <p class="col-xs-12">Example: Training Leaders, Instructors, Pastors, Church Planters, etc.</p>
+            <p class="col-xs-12 ministryInstructions">Example: Training Leaders, Instructors, Pastors, Church Planters, etc.</p>
             <table class="table">
                 <tr class="table-header">
                     <th class="descriptor">Name</th>
@@ -77,7 +77,7 @@
                         <td>{{location}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
-                            <!--<button type="button" class="btn btn-default warning" {{action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
+                            <!--<button type="button" class="btn btn-default warning" {action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                             <button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
                         </td>
                     </tr>
@@ -102,7 +102,7 @@
                             <td>{{gender}}</td>
                             <td>
                                 <button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
-                                <!--<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
+                                <!--<button type="button" class="btn btn-default warning" {action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
                             </td>
                         </tr>
                     {{/each}}
