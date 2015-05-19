@@ -1,13 +1,14 @@
 import AbstractModel from 'hospitalrun/models/abstract';
+import StartEndOfReportMonth from 'hospitalrun/mixins/start-end-of-report-month';
 
-export default AbstractModel.extend({
+export default AbstractModel.extend(StartEndOfReportMonth, {
     
     //part of ministy models information
     ministry: DS.belongsTo('ministry'),
     
     //Main information
     eventName: DS.attr('string'),
-    date: DS.attr('string'),
+    date: DS.attr('date'),
     type: DS.attr('string'),
     location: DS.attr('string'),
     numberPastorChurch: DS.attr('string'),
@@ -15,29 +16,28 @@ export default AbstractModel.extend({
     
      validations: {
         eventName: {
-            format: { with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
+            presence: true
         },
         date: {
-            presence: true,
-            message: 'Cannot be left blank'
+            presence: true
         },
         type: {
-            format:  {with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
+            presence: true
         },
         location: {
-            format: {with: /^([a-zA-Z]|\d)+$/,
-            message: 'You may only use letters and numbers.'}
+            presence: true
         },
         numberPastorChurch: {
-            numericality: true,
-            message: 'must be numbers only'
+            numericality: true
         },
         numberParticipants: {
-            numericality: true,
-            message: 'must be numbers only'
+            numericality: true
         },
      },
+	
+	displayCommunityDate: function() {
+        var date = this.get('date');
+        return moment(date).format('MM/DD/YYYY');
+    }.property('date')
     
 });

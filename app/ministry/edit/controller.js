@@ -573,8 +573,9 @@ export default AbstractEditController.extend(GenderList, {
         //Edit community event
         editCommunity: function(communityToEdit) {
             if (Ember.isEmpty(communityToEdit)) {
-                communityToEdit = this.store.createRecord('community-event');
+                communityToEdit = this.store.createRecord('community-event', {date:this.get('reportDate')});
             }
+			communityToEdit.set('reportDate', this.get('reportDate'));
             this.send('openModal', 'ministry.add-community', communityToEdit);
         },
 
@@ -589,8 +590,9 @@ export default AbstractEditController.extend(GenderList, {
         //Edit Leadership Event
         editLeadership: function(leadershipToEdit) {
             if (Ember.isEmpty(leadershipToEdit)) {
-                leadershipToEdit = this.store.createRecord('leadership-event');
+                leadershipToEdit = this.store.createRecord('leadership-event', {date:this.get('reportDate')});
             }
+			leadershipToEdit.set('reportDate', this.get('reportDate'));
             this.send('openModal', 'ministry.add-leadership', leadershipToEdit);
         },
 

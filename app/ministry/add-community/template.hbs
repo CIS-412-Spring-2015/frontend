@@ -1,8 +1,8 @@
 {{#em-form model=this submit_button=false }}
     {{em-input label="Name" property="eventName" placeholder="Enter the name of the event" class="required"}}
-    {{em-input label="Date" property="date" placeholder="Enter the date of the event (ex: 04/01/1993)" class="required"}}
+	{{date-picker label="Date" property="date" minDate=startOfReportMonth maxDate=endOfReportMonth  placeholder="Click to enter the date of the event" class="required"}}
     {{em-input label="Type" property="type" placeholder="Enter the type of the event" class="required"}}
-    {{em-input label="Location" property="location" placeholder="Enter the location of the event" class="required"}}.
-    {{em-input label="Number of Churches\Pastors" property="numberPastorChurch" placeholder="Enter the number of pastors or churches involved in the event" class="required"}}
+    {{em-input label="Location" property="location" placeholder="Enter the location of the event" class="required"}}
+    {{em-input label="Number of Churches/Pastors" property="numberPastorChurch" placeholder="Enter the number of pastors or churches involved in the event" class="required"}}
     {{em-input label="Number of Participants" property="numberParticipants" placeholder="Enter the number of participants in the event" class="required"}}
 {{/em-form}}

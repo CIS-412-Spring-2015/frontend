@@ -1,6 +1,6 @@
 {{#em-form model=this submit_button=false }}
     {{em-input label="Name" property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
-    {{em-input property="age" label="Age"}}
+    {{em-input property="age" label="Age" class="required"}}
      {{em-select
          prompt=" "
          label="Religious Affiliation"
@@ -8,6 +8,7 @@
          content=religiousAffiliationList
          optionValuePath="content"
          optionLabelPath="content"
+		 class="required"
      }}
      {{em-select
          prompt=" "
@@ -16,6 +17,7 @@
          content=presentActivityList
          optionValuePath="content"
          optionLabelPath="content"
+		 class="required"
      }}
      {{em-select
          prompt=" "
@@ -27,10 +29,8 @@
          class="required"
      }}
      <div class="form-group">
-       <label>Gender</label>
-       <div>
-           {{ext-radio name=gender content=genderList value=gender showInline=true }}
-       </div>
+		 <label class="required">Gender</label>
+         {{ext-radio name=gender content=genderList value=gender showInline=true }}
      </div>
      {{em-input property="phone" label="Phone Contact"}}
      {{em-input property="email" type="email" label="Email"}}

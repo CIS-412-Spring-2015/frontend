@@ -1,6 +1,7 @@
 import AbstractModel from 'hospitalrun/models/abstract';
+import StartEndOfReportMonth from 'hospitalrun/mixins/start-end-of-report-month';
 
-export default AbstractModel.extend({
+export default AbstractModel.extend(StartEndOfReportMonth, {
     
     //part of ministy models information
     ministry: DS.belongsTo('ministry'),
@@ -8,7 +9,7 @@ export default AbstractModel.extend({
     //Main information
     description: DS.attr('string'),
     eventName: DS.attr('string'),
-    date: DS.attr('string'),
+    date: DS.attr('date'),
     location: DS.attr('string'),
     
     //for adding multiple participants per leadership event
@@ -16,20 +17,22 @@ export default AbstractModel.extend({
     
     validations: {
         eventName: {
-            format: { with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
+            presence: true
         },
         date: {
-            presence: true,
-            message: 'Cannot be left blank.'
+            presence: true
         },
         location: {
-            format: {with: /^([a-zA-Z]|\d)+$/,
-            message: 'You may only use letters and numbers.'}
+            presence: true
         },
         description: {
-            format: { with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
-        },
+            presence: true
+        }
     },
+	
+	displayLeadershipDate: function() {
+        var date = this.get('date');
+        return moment(date).format('MM/DD/YYYY');
+    }.property('date')
+	
 });

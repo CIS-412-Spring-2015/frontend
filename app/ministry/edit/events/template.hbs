@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{eventName}}</td>
                         <td>{{type}}</td>
-                        <td>{{date}}</td>
+                        <td>{{displayCommunityDate}}</td>
                         <td>{{location}}</td>
                         <td>{{numberPastorChurch}}</td>
                         <td>{{numberParticipants}}</td>
@@ -72,9 +72,9 @@
                 {{#each leadEvents}}
                     <tr>
                         <td>{{eventName}}</td>
-                        <td>{{description}}</td>
-                        <td>{{date}}</td>
+                        <td>{{displayLeadershipDate}}</td>
                         <td>{{location}}</td>
+						<td>{{description}}</td>
                         <td>
                             <button type="button" class="btn btn-default neutral" {{action "editLeadership" this}}>Edit</button>
                             <!--<button type="button" class="btn btn-default warning" {action "showDeleteLeadership" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
