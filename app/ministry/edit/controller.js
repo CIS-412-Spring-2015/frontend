@@ -97,7 +97,7 @@ export default AbstractEditController.extend(GenderList, {
 
 
     //summary page totals
-    totalPresentations: function() {
+    totalPresentationsFunction: function() {
         var bedsidePresentations, playroomPresentations, jesusPresentations, openAirPresentations, mobilePresentations, doorPresentations, morePresentations, totalPresentations;
 
         if(this.get('bedsidePresentations') === undefined || this.get('bedsidePresentations') === "" || this.get('bedsidePresentations') === null) {
@@ -142,12 +142,13 @@ export default AbstractEditController.extend(GenderList, {
             morePresentations = parseInt(this.get('morePresentations'));
         }
 
-        return totalPresentations =  bedsidePresentations +  playroomPresentations + jesusPresentations + openAirPresentations + mobilePresentations + doorPresentations + morePresentations;
+        totalPresentations =  bedsidePresentations +  playroomPresentations + jesusPresentations + openAirPresentations + mobilePresentations + doorPresentations + morePresentations;
 
+		return this.set('totalPresentations', totalPresentations);
 
-    }.property('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'doorPresentations', 'morePresentations'),
+    }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'doorPresentations', 'morePresentations'),
 
-    peopleTotal: function() {
+    peopleTotalFunction: function() {
         var peopleBedside, peoplePlayroom, peopleJesus, peopleOpenAir, peopleMobile, peopleDoor, peopleMore, peopleTotal;
 
         if(this.get('peopleBedside') === undefined || this.get('peopleBedside') === "" || this.get('peopleBedside') === null) {
@@ -192,11 +193,13 @@ export default AbstractEditController.extend(GenderList, {
             peopleMore = parseInt(this.get('peopleMore'));
         }
 
-        return peopleTotal = peopleBedside + peoplePlayroom + peopleJesus + peopleOpenAir + peopleMobile+ peopleDoor + peopleMore;
+        peopleTotal = peopleBedside + peoplePlayroom + peopleJesus + peopleOpenAir + peopleMobile+ peopleDoor + peopleMore;
+		
+		return this.set('peopleTotal', peopleTotal);
 
-    }.property('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleDoor', 'peopleMore'),
+    }.observes('peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleDoor', 'peopleMore'),
 
-    bibleTotal: function() {
+    bibleTotalFunction: function() {
         var bibleBedside, biblePlayroom, bibleJesus, bibleOpenAir, bibleMobile, bibleDoor, bibleMore, bibleTotal;
 
         if(this.get('bibleBedside') === undefined || this.get('bibleBedside') === "" || this.get('bibleBedside') === null) {
@@ -241,11 +244,13 @@ export default AbstractEditController.extend(GenderList, {
             bibleMore = parseInt(this.get('bibleMore'));
         }
 
-        return bibleTotal = bibleBedside + biblePlayroom + bibleJesus + bibleOpenAir + bibleMobile + bibleDoor + bibleMore;
+		bibleTotal = bibleBedside + biblePlayroom + bibleJesus + bibleOpenAir + bibleMobile + bibleDoor + bibleMore;
 
-    }.property('bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleDoor', 'bibleMore'),
+		return this.set('bibleTotal', bibleTotal);
+		
+    }.observes('bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleDoor', 'bibleMore'),
     
-    salvationTotal: function() {
+    salvationTotalFunction: function() {
         var salvationBedside, salvationPlayroom, salvationJesus, salvationOpenAir, salvationMobile, salvationDoor, salvationMore, salvationTotal;
 
         if(this.get('salvationBedside') === undefined) {
@@ -284,11 +289,13 @@ export default AbstractEditController.extend(GenderList, {
             salvationMore = parseInt(this.get('salvationMore'));
         }
 
-        return salvationTotal = salvationBedside + salvationPlayroom + salvationJesus + salvationOpenAir + salvationMobile + salvationDoor + salvationMore;
+        salvationTotal = salvationBedside + salvationPlayroom + salvationJesus + salvationOpenAir + salvationMobile + salvationDoor + salvationMore;
+		
+		return this.set('salvationTotal', salvationTotal);
         
-    }.property('salvationBedside', 'salvationPlayroom', 'salvationJesus', 'salvationOpenAir', 'salvationMobile', 'salvationDoor', 'salvationMore'),
+    }.observes('salvationBedside', 'salvationPlayroom', 'salvationJesus', 'salvationOpenAir', 'salvationMobile', 'salvationDoor', 'salvationMore'),
     
-    recommitmentTotal: function() {
+    recommitmentTotalFunction: function() {
         var recommitmentBedside, recommitmentPlayroom, recommitmentJesus, recommitmentOpenAir, recommitmentMobile, recommitmentDoor, recommitmentMore, recommitmentTotal;
 
         if(this.get('recommitmentBedside') === undefined) {
@@ -333,9 +340,11 @@ export default AbstractEditController.extend(GenderList, {
             recommitmentMore = parseInt(this.get('recommitmentMore'));
         }
 
-        return recommitmentTotal = recommitmentBedside + recommitmentPlayroom + recommitmentJesus + recommitmentOpenAir + recommitmentMobile + recommitmentDoor + recommitmentMore;
+        recommitmentTotal = recommitmentBedside + recommitmentPlayroom + recommitmentJesus + recommitmentOpenAir + recommitmentMobile + recommitmentDoor + recommitmentMore;
+		
+		return this.set('recommitmentTotal', recommitmentTotal);
 
-    }.property('recommitmentBedside', 'recommitmentPlayroom', 'recommitmentJesus', 'recommitmentOpenAir', 'recommitmentMobile', 'recommitmentDoor', 'recommitmentMore'),
+    }.observes('recommitmentBedside', 'recommitmentPlayroom', 'recommitmentJesus', 'recommitmentOpenAir', 'recommitmentMobile', 'recommitmentDoor', 'recommitmentMore'),
 
     filterSummaryNumbers(activity, declaration) {
         var believers = this.get('believers');
@@ -350,62 +359,90 @@ export default AbstractEditController.extend(GenderList, {
         return counter;
     },
     //salvation totals
-    salvationBedside: function() {
-        return this.filterSummaryNumbers('Bedside Evangelism', 'New Believer');
-    }.property('believers.@each'),
+    salvationBedsideFunction: function() {
+		var num;
+		num = this.filterSummaryNumbers('Bedside Evangelism', 'New Believer');
+		return this.set('salvationBedside', num);
+    }.observes('believers.@each'),
     
-    salvationPlayroom: function() {
-        return this.filterSummaryNumbers('Playroom Presentation', 'New Believer');
-    }.property('believers.@each'),
+    salvationPlayroomFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Playroom Presentation', 'New Believer');
+		return this.set('salvationPlayroom', num);
+    }.observes('believers.@each'),
     
-    salvationJesus: function() {
-        return this.filterSummaryNumbers('Jesus Film', 'New Believer');
-    }.property('believers.@each'),
+    salvationJesusFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Jesus Film', 'New Believer');
+		return this.set('salvationJesus', num);
+    }.observes('believers.@each'),
     
-    salvationOpenAir: function() {
-        return this.filterSummaryNumbers('Open Air Meeting', 'New Believer');
-    }.property('believers.@each'),
+    salvationOpenAirFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Open Air Meeting', 'New Believer');
+		return this.set('salvationOpenAir', num);
+    }.observes('believers.@each'),
     
-    salvationMobile: function() {
-        return this.filterSummaryNumbers('Mobile Clinic Outreach', 'New Believer');
-    }.property('believers.@each'),
+    salvationMobileFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Mobile Clinic Outreach', 'New Believer');
+		return this.set('salvationMobile', num);
+    }.observes('believers.@each'),
     
-    salvationDoor: function() {
-        return this.filterSummaryNumbers('Door to Door Evangelism', 'New Believer');
-    }.property('believers.@each'),
+    salvationDoorFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Door to Door Evangelism', 'New Believer');
+		return this.set('salvationDoor', num);
+    }.observes('believers.@each'),
     
-    salvationMore: function() {
-        return this.filterSummaryNumbers('Other Opportunities', 'New Believer');
-    }.property('believers.@each'),
+    salvationMoreFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Other Opportunities', 'New Believer');
+		return this.set('salvationMore', num);
+    }.observes('believers.@each'),
     
     //recommitment totals
-    recommitmentBedside: function() {
-        return this.filterSummaryNumbers('Bedside Evangelism', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentBedsideFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Bedside Evangelism', 'Recommitment');
+		return this.set('recommitmentBedside', num);
+    }.observes('believers.@each'),
     
-    recommitmentPlayroom: function() {
-        return this.filterSummaryNumbers('Playroom Presentation', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentPlayroomFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Playroom Presentation', 'Recommitment');
+		return this.set('recommitmentPlayroom', num);
+    }.observes('believers.@each'),
     
-    recommitmentJesus: function() {
-        return this.filterSummaryNumbers('Jesus Film', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentJesusFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Jesus Film', 'Recommitment');
+		return this.set('recommitmentJesus', num);
+    }.observes('believers.@each'),
     
-    recommitmentOpenAir: function() {
-        return this.filterSummaryNumbers('Open Air Meeting', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentOpenAirFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Open Air Meeting', 'Recommitment');
+		return this.set('recommitmentOpenAir', num);
+    }.observes('believers.@each'),
     
-    recommitmentMobile: function() {
-        return this.filterSummaryNumbers('Mobile Clinic Outreach', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentMobileFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Mobile Clinic Outreach', 'Recommitment');
+		return this.set('recommitmentMobile', num);
+    }.observes('believers.@each'),
     
-    recommitmentDoor: function() {
-        return this.filterSummaryNumbers('Door to Door Evangelism', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentDoorFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Door to Door Evangelism', 'Recommitment');
+		return this.set('recommitmentDoor', num);
+    }.observes('believers.@each'),
     
-    recommitmentMore: function() {
-        return this.filterSummaryNumbers('Other Opportunities', 'Recommitment');
-    }.property('believers.@each'),
+    recommitmentMoreFunction: function() {
+		var num;
+        num = this.filterSummaryNumbers('Other Opportunities', 'Recommitment');
+		return this.set('recommitmentMore', num);
+    }.observes('believers.@each'),
 
     // Filter function for the believers section
     searchTerm: '',
