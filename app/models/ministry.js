@@ -1,3 +1,9 @@
+/* 
+ * I'm not sure we really want to limit any of the fields to a certain number
+ * of words, but for the time being I have a 3000 word "limit" should talk 
+ * about this at some point
+ */
+
 import AbstractModel from "hospitalrun/models/abstract";
 import ReportDate from 'hospitalrun/mixins/dob-days';
 
@@ -21,18 +27,22 @@ export default AbstractModel.extend(ReportDate, {
     spiritualCenterStaffMeetings: DS.attr('number'),
     staffDevelopment: DS.attr('string'),
     staffOpportunities: DS.attr('string'),
+	
     //Patient View
     bedsideEvangelism: DS.attr('string'),
     playroomActivities: DS.attr('string'),
 
     // New Believers Section
     believers: DS.hasMany('new-believer'),
+	newBelieverCheckbox: DS.attr('boolean'),
 
     // Events Section
     leadEvents: DS.hasMany('leadership-event'),
     commEvents: DS.hasMany('community-event'),
     leadParticipants: DS.hasMany('leadership-participant'),
-    eventsThisMonth: DS.attr('boolean'),
+    //eventsThisMonth: DS.attr('boolean'),
+	communityCheckbox: DS.attr('boolean'),
+	leadershipCheckbox: DS.attr('boolean'),
 
     //   Additional Info View    //
     ministryResults: DS.attr('string'),
@@ -40,7 +50,6 @@ export default AbstractModel.extend(ReportDate, {
     recommendationsNeeds: DS.attr('string'),
 
 	// Christianity Explored //
-	
 	ceParticipants: DS.attr('number'),
 	ceGraduates: DS.attr('number'),
 	ceContinuedEducation: DS.attr('number'),
@@ -101,136 +110,185 @@ export default AbstractModel.extend(ReportDate, {
     validations: {
         //Hospital Tab
         entireStaffDevotions: {
+			presence: true,
             numericality: true
         },
+		
         departmentDevotions: {
+			presence: true,
             numericality: true
         },
+		
         hospitalPrayerGroupIntercessions: {
+			presence: true,
             numericality: true
         },
+		
         spiritualCenterStaffMeetings: {
+			presence: true,
             numericality: true
         },
+		
         staffDevelopment: {
-            presence: true
+            presence: true,
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
         },
+		
         staffOpportunities: {
-            presence: true    
+            presence: true,
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
         },
+		
 		bedsideEvangelism: {
-			presence: true //field must be filled in
-		}, 
+			presence: true, 
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
+		},
+		
 		playroomActivities: {
-			presence: true //field must be filled in
+			presence: true,
+			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
         
         //Faith Delcarations
         ceParticipants: {
-			numericality: true //Field must be a number
-		},
-		ceGraduates: {
-			numericality: true //Field must be a number
-		},
-		ceContinuedEducation: {
-			numericality: true //Field must be a number
-		},
-		ceSession: {
-			numericality: true //Field must be a number
+			presence: true,
+			numericality: true
 		},
 		
-		//Additional information
+		ceGraduates: {
+			presence: true,
+			numericality: true
+		},
+		
+		ceContinuedEducation: {
+			presence: true,
+			numericality: true 
+		},
+		
+		ceSession: {
+			presence: true,
+			numericality: true 
+		},
+		
+		//Additional Information
 			//3000 words roughly equals 25,200 characters with spaces
 		ministryResults: {
-            presence: true, //field must be filled in
+            presence: true,
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
+		
 		otherSignificantItems: {
-            presence: true, //field must be filled in
+            presence: true,
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
+		
 		recommendationsNeeds: {
-            presence: true, //field must be filled in
+            presence: true,
 			length: { maximum: 25200, message: { tooLong: 'You cannot have more then 3000 words (25,200 characters)' } }
 		},
         
         bedsidePresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         playroomPresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         jesusPresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         openAirPresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         mobilePresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         morePresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         doorPresentations: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         peopleBedside: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         peoplePlayroom: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         peopleJesus: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         peopleOpenAir: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         peopleMobile: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         peopleMore: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
+		
         peopleDoor: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
+		
         bibleBedside: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         biblePlayroom: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         bibleJesus: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
         
         bibleOpenAir: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }, 
         
         bibleMobile: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
+		
         bibleDoor: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         },
+		
         bibleMore: {
-            numericality: true //Field must be a number
+			presence: true,
+            numericality: true
         }    
     },
     

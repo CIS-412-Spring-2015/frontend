@@ -28,9 +28,11 @@ export default AbstractModel.extend(StartEndOfReportMonth, {
             presence: true
         },
         numberPastorChurch: {
+			presence: true,
             numericality: true
         },
         numberParticipants: {
+			presence: true,
             numericality: true
         },
      },

@@ -60,21 +60,25 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Events tab to valid
     setEventsReportValidation: function() {
-        if(Ember.empty(this.get('leadEvents')) && Ember.empty(this.get('commEvents')) && this.get('eventsThisMonth')){
-        	this.set('eventsReportValidation', false);
-        } else {
+        if(this.get('communityCheckbox') && this.get('leadershipCheckbox')){
         	this.set('eventsReportValidation', true);
-        }
-    }.observes('leadEvents','commEvents','eventsThisMonth'),
+        } else if(!Ember.isEmpty(this.get('leadEvents')) && !Ember.isEmpty(this.get('commEvents'))){
+        	this.set('eventsReportValidation', true);
+        } else {
+			this.set('eventsReportValidation', false);
+		}
+    }.observes('leadEvents','commEvents','communityCheckbox', 'leadershipCheckbox'),
 
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
-		if(this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+		if(this.get('newBelieverCheckbox') && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+			this.set('faithDeclarationsReportValidation', true);
+		} else if(!Ember.isEmpty(this.get('believers')) && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
 			this.set('faithDeclarationsReportValidation', true);
 		} else {
 			this.set('faithDeclarationsReportValidation', false);
 		}
-    }.observes('ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
+    }.observes('believers', 'newBelieverCheckbox', 'ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession'),
 
     //Function to set Additional Info tab to valid
     setAdditionalInformationReportValidation: function() {
@@ -94,8 +98,57 @@ export default AbstractEditController.extend(GenderList, {
         }
 
     }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
-
-
+	
+	//events page validation
+	noCommunityEventsThisMonth: function() {  
+		if(this.get('communityCheckbox')) {
+			return true;
+		} else {
+			return false;
+		}
+	}.property('communityCheckbox'),
+	
+	noLeadershipEventsThisMonth: function() {
+		if(this.get('leadershipCheckbox')) {
+			return true;
+		} else {
+			return false;
+		}
+	}.property('leadershipCheckbox'),
+	
+	//new believers page validation
+	noNewBelieversThisMonth: function() {
+		if(this.get('newBelieverCheckbox')) {
+			return true;
+		} else {
+			return false;
+		}
+	}.property('newBelieverCheckbox'),
+	
+	communityLengthNotZero: function() {
+		if(!Ember.isEmpty(this.get('commEvents'))) {
+			return true;	
+		} else {
+			return false;	
+		}
+	}.property('believers'),
+	
+	leadershipLengthNotZero: function() {
+		if(!Ember.isEmpty(this.get('leadEvents'))) {
+			return true;	
+		} else {
+			return false;	
+		}
+	}.property('believers'),
+	
+	believersLengthNotZero: function() {
+		if(!Ember.isEmpty(this.get('believers'))) {
+			return true;	
+		} else {
+			return false;	
+		}
+	}.property('believers'),
+	
     //summary page totals
     totalPresentationsFunction: function() {
         var bedsidePresentations, playroomPresentations, jesusPresentations, openAirPresentations, mobilePresentations, doorPresentations, morePresentations, totalPresentations;
@@ -362,86 +415,86 @@ export default AbstractEditController.extend(GenderList, {
     salvationBedsideFunction: function() {
 		var num;
 		num = this.filterSummaryNumbers('Bedside Evangelism', 'New Believer');
-		return this.set('salvationBedside', num);
+		this.set('salvationBedside', num);
     }.observes('believers.@each'),
     
     salvationPlayroomFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Playroom Presentation', 'New Believer');
-		return this.set('salvationPlayroom', num);
+		this.set('salvationPlayroom', num);
     }.observes('believers.@each'),
     
     salvationJesusFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Jesus Film', 'New Believer');
-		return this.set('salvationJesus', num);
+		this.set('salvationJesus', num);
     }.observes('believers.@each'),
     
     salvationOpenAirFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Open Air Meeting', 'New Believer');
-		return this.set('salvationOpenAir', num);
+		this.set('salvationOpenAir', num);
     }.observes('believers.@each'),
     
     salvationMobileFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Mobile Clinic Outreach', 'New Believer');
-		return this.set('salvationMobile', num);
+		this.set('salvationMobile', num);
     }.observes('believers.@each'),
     
     salvationDoorFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Door to Door Evangelism', 'New Believer');
-		return this.set('salvationDoor', num);
+		this.set('salvationDoor', num);
     }.observes('believers.@each'),
     
     salvationMoreFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Other Opportunities', 'New Believer');
-		return this.set('salvationMore', num);
+		this.set('salvationMore', num);
     }.observes('believers.@each'),
     
     //recommitment totals
     recommitmentBedsideFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Bedside Evangelism', 'Recommitment');
-		return this.set('recommitmentBedside', num);
+		this.set('recommitmentBedside', num);
     }.observes('believers.@each'),
     
     recommitmentPlayroomFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Playroom Presentation', 'Recommitment');
-		return this.set('recommitmentPlayroom', num);
+		this.set('recommitmentPlayroom', num);
     }.observes('believers.@each'),
     
     recommitmentJesusFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Jesus Film', 'Recommitment');
-		return this.set('recommitmentJesus', num);
+		this.set('recommitmentJesus', num);
     }.observes('believers.@each'),
     
     recommitmentOpenAirFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Open Air Meeting', 'Recommitment');
-		return this.set('recommitmentOpenAir', num);
+		this.set('recommitmentOpenAir', num);
     }.observes('believers.@each'),
     
     recommitmentMobileFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Mobile Clinic Outreach', 'Recommitment');
-		return this.set('recommitmentMobile', num);
+		this.set('recommitmentMobile', num);
     }.observes('believers.@each'),
     
     recommitmentDoorFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Door to Door Evangelism', 'Recommitment');
-		return this.set('recommitmentDoor', num);
+		this.set('recommitmentDoor', num);
     }.observes('believers.@each'),
     
     recommitmentMoreFunction: function() {
 		var num;
         num = this.filterSummaryNumbers('Other Opportunities', 'Recommitment');
-		return this.set('recommitmentMore', num);
+		this.set('recommitmentMore', num);
     }.observes('believers.@each'),
 
     // Filter function for the believers section
@@ -460,10 +513,6 @@ export default AbstractEditController.extend(GenderList, {
             });
         }
     }.property('believers', 'searchTerm', 'content.@each'),
-    
-    hasEventsThisMonth: function(){
-        return this.get('eventsThisMonth');
-    }.property('eventsThisMonth'),
 
     actions: {
         // These are here until I can find a more efficient way to do it.
@@ -697,15 +746,14 @@ export default AbstractEditController.extend(GenderList, {
             leadEvents.removeObject(leadEvent);
             this.set('leadEvents', leadEvents);
             this.send('update', true);
-        },
-        
-        shiftEventsThisMonth: function(){
-            if(this.get('eventsThisMonth')) {
-                this.set('eventsThisMonth', false);
-            } else {
-                this.set('eventsThisMonth', true);
-            }
         }
         
+//        noEventsThisMonth: function(){
+//            if(this.get('eventsThisMonth')) {
+//                this.set('eventsThisMonth', false);
+//            } else {
+//                this.set('eventsThisMonth', true);
+//            }
+//        }  
     }
 });

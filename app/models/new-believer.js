@@ -6,9 +6,9 @@ export default AbstractModel.extend({
 
     // New Believer Fields
     address: DS.attr('string'),
-    address2: DS.attr('string'),
+   /* address2: DS.attr('string'),
     address3: DS.attr('string'),
-    address4: DS.attr('string'),
+    address4: DS.attr('string'),*/
     age: DS.attr('number'),
     believerName: DS.attr('string'),
     declarationType: DS.attr('string'),
@@ -20,10 +20,20 @@ export default AbstractModel.extend({
 
 	validations: {
 		believerName: {
-			format: { with: /(^[A-Za-z ]+$)/, message: 'Cannot have numbers or left blank' }
+			presence: true
 		},
 		age: {
+			presence: true,
 			numericality: {onlyInteger: true}
+		},
+		religiousAffiliation: {
+			presence: true
+		},
+		presentActivity: {
+			presence: true
+		},
+		declarationType: {
+			presence: true
 		},
 		gender: {
 			presence: true
@@ -31,8 +41,14 @@ export default AbstractModel.extend({
 		phone: { 
 			numericality: {allowBlank: true}
 		},
+		email: {
+			allowBlank: true
+		},
+		address: {
+			allowBlank: true
+		},
 		country: {
-			format: { with: /(^[A-Za-z ]+$)/, allowBlank: true}
+			allowBlank: true
 		}
 	}
 

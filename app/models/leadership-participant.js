@@ -12,16 +12,13 @@ export default AbstractModel.extend({
     
     validations: {
         participantName: {
-            format: { with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
+            presence: true
         },
         gender: {
-            format: { with: /(^[A-Za-z ]+$)/,
-            message: 'Cannot have numbers or left blank'}
+            presence: true
         },
         organization: {
-            format: {with: /^([a-zA-Z]|\d)+$/,
-            message: 'You may only use letters and numbers.'}
+            presence: true
         },
     },
     

@@ -1,52 +1,59 @@
 <div role="tabpanel" class="tab-pane" id="faithDeclarations">
 {{#em-form model=this submit_button=false bubbles=false }}
-  <div class="panel">
+	<div class="panel">
       <div class="panel-heading">
           <h3 class="panel-title">
               Faith Declaration
-              <!-- if canAddBeliever make this function in future -->
-                <button class="btn btn-primary align-right" {{action "showBeliever" bubbles=false }}>
-                  <span class="octicon octicon-plus"></span>Add New Believer
-                </button>
-              <!-- end if -->
+              {{#unless noNewBelieversThisMonth}}
+					<button class="btn btn-primary align-right" {{action "showBeliever" bubbles=false }}>
+					  <span class="octicon octicon-plus"></span>Add New Believer
+					</button>
+              {{/unless}}
           </h3>
       </div>
       <div class="panel-body detail-section-content">
-        <!-- Show Current Believers button-->
-        <h4 class="showCurrentBelievers text-center">
-          <button class="btn btn-default neutral" {{action "showCurrentBelievers" bubbles=false }}>
-            Show {{believers.length}} Current Believers
-            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-          </button>
-        </h4>
+		{{#unless believersLengthNotZero}}
+			<span class="noEventsCheckbox">{{em-checkbox label="No New Believers This Month" property="newBelieverCheckbox"}}</span>
+		{{/unless}}
+		  
+		{{#unless noNewBelieversThisMonth}}
+			<!-- Show Current Believers button-->
+			<h4 class="showCurrentBelievers text-center">
+			  <button class="btn btn-default neutral" {{action "showCurrentBelievers" bubbles=false }}>
+				Show {{believers.length}} Current Believers
+				<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+			  </button>
+			</h4>
 
-        <!-- Hide Current Believers button-->
-        <h4 class="hideCurrentBelievers text-center">
-          <button class="btn btn-default neutral" {{action "hideCurrentBelievers" bubbles=false }}>
-            Hide {{believers.length}} Current Believers
-            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-          </button>
-        </h4>
+			<!-- Hide Current Believers button-->
+			<h4 class="hideCurrentBelievers text-center">
+			  <button class="btn btn-default neutral" {{action "hideCurrentBelievers" bubbles=false }}>
+				Hide {{believers.length}} Current Believers
+				<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+			  </button>
+			</h4>
 
-        <div class="col-lg-6 showHideBelievers">
-          <div class="input-group input-group-lg">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-            </span>
-            {{em-input property="searchTerm" placeholder="Search"}}
-            <!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1"> -->
-          </div>
-        </div>
+			<div class="col-lg-6 showHideBelievers">
+			  <div class="input-group input-group-lg">
+				<span class="input-group-btn">
+				  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+				</span>
+				{{em-input property="searchTerm" placeholder="Search"}}
+				<!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1"> -->
+			  </div>
+			</div>
 
-        <ul class="list-group text-center nav-pills showHideBelievers">
-          {{#each filteredContent}}
-            <li class="listSet" {{action "showBeliever" this bubbles=false }}>
-              <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
+			<ul class="list-group text-center nav-pills showHideBelievers">
+			  {{#each filteredContent}}
+				<li class="listSet" {{action "showBeliever" this bubbles=false }}>
+				  <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
+				</li>
+			  {{/each}}
+			</ul>
+		{{/unless}}
+	  </div>
+	</div>
+	
 	<!--CE start-->
     <div class="panel-heading" role="tab" id="ChristianityExplored">
 		<h3 class="panel-title">

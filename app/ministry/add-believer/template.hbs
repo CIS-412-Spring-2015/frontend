@@ -32,8 +32,8 @@
 		 <label class="required">Gender</label>
          {{ext-radio name=gender content=genderList value=gender showInline=true }}
      </div>
-     {{em-input property="phone" label="Phone Contact"}}
+     {{em-input property="phone" label="Phone Number"}}
      {{em-input property="email" type="email" label="Email"}}
-     {{em-text label="Address" property="address" rows=3 }}
+     {{em-text property="address" rows=3 label="Address"}}
      {{select-or-typeahead property="country" label="Country" list=countryList selection=country }}
 {{/em-form}}
