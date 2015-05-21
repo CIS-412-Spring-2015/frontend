@@ -4,11 +4,12 @@ import Ember from "ember";
 import FamilyInfoModel from 'hospitalrun/models/family-info';
 import GenderList from 'hospitalrun/mixins/gender-list';
 import PouchAdapterUtils from "hospitalrun/mixins/pouch-adapter-utils";
+import ReturnTo from 'hospitalrun/mixins/return-to';
 import SocialExpenseModel from 'hospitalrun/models/social-expense';
 import UserSession from "hospitalrun/mixins/user-session";
-export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapterUtils, UserSession, {
-
-    canAddAppointment: function() {
+export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapterUtils, ReturnTo, UserSession, {
+    
+    canAddAppointment: function() {        
         return this.currentUserCan('add_appointment');
     }.property(),
 

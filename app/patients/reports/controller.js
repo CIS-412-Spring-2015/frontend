@@ -1,5 +1,5 @@
 import AbstractReportController from 'hospitalrun/controllers/abstract-report-controller';
-import Ember from "ember";
+import Ember from 'ember';
 import VisitTypes from 'hospitalrun/mixins/visit-types';
 export default AbstractReportController.extend(VisitTypes, {
     needs: ['patients'],
@@ -22,6 +22,30 @@ export default AbstractReportController.extend(VisitTypes, {
             property: 'total',
             format: '_numberFormat'
         }
+    },
+    admissionDetailReportColumns: {
+        id: {
+            label: 'Id',
+            include: true,
+            property: 'patientId'
+        },
+        name: {
+            label: 'Name',
+            include: true,
+            property: 'patientName'
+        },
+        admissionDate: {
+            label: 'Admission Date',
+            include: true,
+            property: 'admissionDate',
+            format: '_dateTimeFormat'
+        },
+        dischargeDate: {
+            label: 'Discharge Date',
+            include: false,
+            property: 'dischargeDate',
+            format: '_dateTimeFormat'
+        }        
     },
     diagnosticReportColumns: {
         type: {
@@ -119,13 +143,19 @@ export default AbstractReportController.extend(VisitTypes, {
         }
     },
     reportTypes: [{
-        name: 'Admissions',
+        name: 'Admissions Detail',
+        value: 'detailedAdmissions'
+    }, {
+        name: 'Admissions Summary',
         value: 'admissions'
     }, {
         name: 'Diagnostic Testing',
         value: 'diagnostic'
     }, {
-        name: 'Discharges',
+        name: 'Discharges Detail',
+        value: 'detailedDischarges'
+    }, {
+        name: 'Discharges Summary',
         value: 'discharges'
     }, {
         name: 'Procedures',
@@ -137,6 +167,11 @@ export default AbstractReportController.extend(VisitTypes, {
         name: 'Visit',
         value: 'visit'
     }],
+    
+    isDischargeReport: function() {
+        var reportType = this.get('reportType');
+        return (reportType.toLowerCase().indexOf('discharges') > -1);
+    }.property('reportType'),
     
     isVisitReport: function() {
         var reportType = this.get('reportType');
@@ -156,6 +191,16 @@ export default AbstractReportController.extend(VisitTypes, {
         }
     },
     
+    _addReportRow: function(row, skipFormatting, reportColumns, rowAction) {
+        if (Ember.isEmpty(rowAction) && !Ember.isEmpty(row.patient) && !Ember.isEmpty(row.patient.get('id'))) {
+            rowAction = {
+                action: 'viewPatient',
+                model: row.patient.get('id')
+            };
+        }
+        this._super(row, skipFormatting, reportColumns, rowAction);
+    },
+    
     /**
      * Given a list of records, organize and total by them by type and then add them to the report.
      * @param records {Array} list of records to total.
@@ -166,7 +211,7 @@ export default AbstractReportController.extend(VisitTypes, {
     _addRowsByType: function(records, typeField, totalLabel, reportColumns) {
         var types = this._totalByType(records, typeField, totalLabel);
         types.forEach(function(type) {
-            this._addReportRow(type, false, reportColumns);
+            this._addReportRow(type, true, reportColumns);
         }.bind(this));
     },
     
@@ -200,6 +245,10 @@ export default AbstractReportController.extend(VisitTypes, {
         return contactList.join(';\n');
     },
     
+    _dateTimeFormat: function(value) {
+        return this._dateFormat(value, 'l h:mm A');
+    },
+    
     _diagnosisListToString: function(diagnoses) {
         return this._listToString(diagnoses, 'description', 'date');
     },
@@ -215,9 +264,6 @@ export default AbstractReportController.extend(VisitTypes, {
             },
             maxValue = this.get('maxValue');
         return new Ember.RSVP.Promise(function(resolve, reject) {
-            if (Ember.isEmpty(filterStartDate)) {
-                reject();
-            }
             findParams.options.startkey =  ['Completed', null, filterStartDate.getTime(), null];
             
             if (!Ember.isEmpty(filterEndDate)) {
@@ -250,9 +296,6 @@ export default AbstractReportController.extend(VisitTypes, {
             },
             maxValue = this.get('maxValue');
         return new Ember.RSVP.Promise(function(resolve, reject) {
-            if (Ember.isEmpty(filterStartDate)) {
-                reject();
-            }
             findParams.options.startkey =  [filterStartDate.getTime(), null];
             
             if (!Ember.isEmpty(filterEndDate)) {
@@ -267,7 +310,7 @@ export default AbstractReportController.extend(VisitTypes, {
      * Find visits by the specified dates and the record's start and (optional) end dates.
      * @param {String} reportType the type of report to find visits for.
      */
-    _findVisitsByDate: function(reportType) {        
+    _findVisitsByDate: function() {        
         var filterEndDate = this.get('endDate'),
             filterStartDate = this.get('startDate'),
             findParams = {
@@ -281,17 +324,15 @@ export default AbstractReportController.extend(VisitTypes, {
          * Discharge end date between start and end date
          */
         return new Ember.RSVP.Promise(function(resolve, reject) {
-            if (Ember.isEmpty(filterStartDate)) {
-                reject();
-            }
-            if (reportType === 'discharges') {
+            var isDischargeReport = this.get('isDischargeReport');
+            if (isDischargeReport) {
                 findParams.options.startkey =  [null, filterStartDate.getTime()];
             } else {
                 findParams.options.startkey =  [filterStartDate.getTime(), null];
             }
             if (!Ember.isEmpty(filterEndDate)) {
                 filterEndDate = moment(filterEndDate).endOf('day').toDate();
-                if (reportType === 'discharges') {
+                if (isDischargeReport) {
                     findParams.options.endkey =  [maxValue, filterEndDate.getTime(), maxValue];
                 } else {
                     findParams.options.endkey =  [filterEndDate.getTime(), maxValue, maxValue];
@@ -346,22 +387,58 @@ export default AbstractReportController.extend(VisitTypes, {
     },
     
     _generateAdmissionOrDischargeReport: function(visits, reportType) {
-        var femaleCount = 0,
+        var detailedReport = false,
+            femaleCount = 0,
+            femaleRows = [],
             maleCount = 0,
+            maleRows = [],
+            reportColumns;
+        if (reportType.indexOf('detailed') > -1) {
+            detailedReport = true;
+            reportColumns = this.get('admissionDetailReportColumns');
+            if (reportType === 'detailedDischarges') {
+                reportColumns.dischargeDate.include = true;
+            } else {
+                reportColumns.dischargeDate.include = false;
+            }
+        } else {
             reportColumns = this.get('admissionReportColumns');
+        }
         visits = visits.filter(this._filterInPatientVisit);
         visits.forEach(function (visit) {
-            if (reportType !== 'discharges' || !Ember.isEmpty(visit.get('endDate'))) {
+            
+            if (!this.get('isDischargeReport') || !Ember.isEmpty(visit.get('endDate'))) {
+                var reportRow = {
+                    patient: visit.get('patient'),
+                    patientId: visit.get('patient.displayPatientId'),
+                    patientName: visit.get('patient.displayName'),
+                    admissionDate: visit.get('startDate'), 
+                    dischargeDate: visit.get('endDate')
+                };
                 if (visit.get('patient.gender') === 'F') {
                     femaleCount++;
+                    femaleRows.push(reportRow);
                 } else {
                     maleCount++;
+                    maleRows.push(reportRow);
                 }
             }
         }.bind(this));
-        this._addReportRow({gender: 'Female',total: femaleCount}, false, reportColumns);
-        this._addReportRow({gender: 'Male',total: maleCount}, false, reportColumns);
-        this._addReportRow({gender: 'Total: ',total: femaleCount+maleCount}, false, reportColumns);
+        if (detailedReport) {
+            femaleRows.forEach(function(reportRow) {
+                this._addReportRow(reportRow, false, reportColumns);
+            }.bind(this));
+            this._addReportRow({patientId: 'Female Total: '+femaleCount}, true, reportColumns);      
+            maleRows.forEach(function(reportRow) {
+                this._addReportRow(reportRow, false, reportColumns);
+            }.bind(this));
+            this._addReportRow({patientId: 'Male Total: '+maleCount}, true, reportColumns);  
+            this._addReportRow({patientId: 'Grand Total: '+ (femaleCount+maleCount)}, true, reportColumns); 
+        } else {
+            this._addReportRow({gender: 'Female',total: femaleCount}, true, reportColumns);
+            this._addReportRow({gender: 'Male',total: maleCount}, true, reportColumns);
+            this._addReportRow({gender: 'Total: ',total: femaleCount+maleCount}, true, reportColumns);
+        }
         this._finishReport(reportColumns);
     },
     
@@ -371,8 +448,8 @@ export default AbstractReportController.extend(VisitTypes, {
             this._addRowsByType(diagnostics.imaging, 'imagingType.name', 'Total for imaging: ', reportColumns);
             this._addRowsByType(diagnostics.labs, 'labType.name', 'Total for labs: ', reportColumns);
             this._finishReport(reportColumns);
-        }.bind(this), function() {
-            this.closeProgressModal();
+        }.bind(this), function(err) {
+            this._notifyReportError('Error in _generateDiagnosticReport:'+err);
         }.bind(this));
     },
     
@@ -419,8 +496,8 @@ export default AbstractReportController.extend(VisitTypes, {
             var reportColumns = this.get('diagnosticReportColumns');
             this._addRowsByType(procedures, 'description', 'Total procedures: ', reportColumns);
             this._finishReport(reportColumns);
-        }.bind(this), function() {
-            this.closeProgressModal();
+        }.bind(this), function(err) {
+            this._notifyReportError('Error in _generateProcedureReport:'+err);
         }.bind(this));
     },
     
@@ -508,47 +585,78 @@ export default AbstractReportController.extend(VisitTypes, {
         return this._listToString(procedures, 'description', 'procedureDate');      
     },
     
+    _validateDates: function() {
+        var alertMessage,
+            endDate = this.get('endDate'),
+            isValid = true,
+            startDate = this.get('startDate');
+        if (Ember.isEmpty(startDate)) {
+            alertMessage = 'Please enter a start date.';
+            isValid = false;
+        } else if (!Ember.isEmpty(endDate) && endDate.getTime() < startDate.getTime()) {
+            alertMessage = 'Please enter an end date after the start date.';
+            isValid = false;
+        }
+        if (!isValid) {
+            this.displayAlert('Error Generating Report', alertMessage);
+        }
+        return isValid;
+    },
+    
     actions: {
         generateReport: function() {
-            var reportRows = this.get('reportRows'),
-                reportType = this.get('reportType');
-            reportRows.clear();
-            this.showProgressModal();
-            switch (reportType) {
-                case 'diagnostic': {
-                    this._generateDiagnosticReport();
-                    break;
-                }
-                case 'procedures': {
-                    this._generateProcedureReport();
-                    break;
-                }
-                case 'admissions':
-                case 'discharges':
-                case 'patientDays':
-                case 'visit': {
-                    this._findVisitsByDate(reportType).then(function(visits) {
-                        switch (reportType) {
-                            case 'admissions':
-                            case 'discharges': {
-                                this._generateAdmissionOrDischargeReport(visits, reportType);
-                                break;
+            if (this._validateDates()) {
+                var reportRows = this.get('reportRows'),
+                    reportType = this.get('reportType');
+                reportRows.clear();            
+                this.showProgressModal();
+                switch (reportType) {
+                    case 'diagnostic': {
+                        this._generateDiagnosticReport();
+                        break;
+                    }
+                    case 'procedures': {
+                        this._generateProcedureReport();
+                        break;
+                    }
+                    case 'admissions':
+                    case 'discharges':
+                    case 'detailedAdmissions':
+                    case 'detailedDischarges':                    
+                    case 'patientDays':
+                    case 'visit': {
+                        this._findVisitsByDate().then(function(visits) {
+                            switch (reportType) {
+                                case 'admissions':
+                                case 'detailedAdmissions':
+                                case 'detailedDischarges':
+                                case 'discharges': {
+                                    this._generateAdmissionOrDischargeReport(visits, reportType);
+                                    break;
+                                }
+                                case 'patientDays': {
+                                    this._generatePatientDaysReport(visits);
+                                    break;
+                                }
+                                case 'visit': {
+                                    this._generateVisitReport(visits);
+                                    break;                    
+                                }
                             }
-                            case 'patientDays': {
-                                this._generatePatientDaysReport(visits);
-                                break;
-                            }
-                            case 'visit': {
-                                this._generateVisitReport(visits);
-                                break;                    
-                            }
-                        }
-                    }.bind(this), function() {
-                        this.closeProgressModal();
-                    }.bind(this));
-                    break;
+                        }.bind(this), function(err) {
+                            this._notifyReportError('Error in _findVisitsByDate:'+err);
+                        }.bind(this));
+                        break;
+                    }
                 }
             }
+        },
+        viewPatient: function(id) {
+            this.store.find('patient', id).then(function(item) {
+                item.set('returnTo', 'patients.reports');                
+                this.transitionToRoute('patients.edit', item);
+            }.bind(this));
         }
+
     }
 });
