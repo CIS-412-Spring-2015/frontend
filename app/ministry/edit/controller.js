@@ -6,10 +6,21 @@ export default AbstractEditController.extend(GenderList, {
     showPreview: false,
 
     submitPage: false,
+	
+	canDeleteCommEvent: function() {        
+        return this.currentUserCan('delete_comm_event');
+    }.property(),
+		
+	canDeleteLeadEvent: function() {        
+		return this.currentUserCan('delete_lead_event');
+    }.property(),
+	
+	canDeleteNewBeliever: function() {        
+		return this.currentUserCan('delete_new_believer');
+    }.property(),
 
     //Function sets default variables for new report
     reportDateChanged: function() {
-
         //Initialize report data
         if (Ember.isEmpty(this.get('reportDate'))) {
             this.setProperties({
@@ -99,6 +110,25 @@ export default AbstractEditController.extend(GenderList, {
 
     }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
 	
+	//Toggle Preview
+        togglePreview: function() {
+          this.toggleProperty('showPreview');
+        },
+
+       /* toggleArrowInPreview: function() {
+          if ($('.showDownArrow').is(":visible")) {
+              $('.showDownArrow').click(toggle());
+              $('.showUpArrow').click(toggle());
+          } else {
+              $('.showDownArrow').toggle();
+              $('.showUpArrow').toggle();
+          }
+        }, */
+
+        toggleArrowInPreview: function() {
+          this.toggleProperty('showDetails');
+        },
+	
 	//events page validation
 	noCommunityEventsThisMonth: function() {  
 		if(this.get('communityCheckbox')) {
@@ -106,7 +136,7 @@ export default AbstractEditController.extend(GenderList, {
 		} else {
 			return false;
 		}
-	}.property('communityCheckbox'),
+	}.property('communityCheckbox', 'commEvents'),
 	
 	noLeadershipEventsThisMonth: function() {
 		if(this.get('leadershipCheckbox')) {
@@ -114,7 +144,7 @@ export default AbstractEditController.extend(GenderList, {
 		} else {
 			return false;
 		}
-	}.property('leadershipCheckbox'),
+	}.property('leadershipCheckbox', 'leadEvents'),
 	
 	//new believers page validation
 	noNewBelieversThisMonth: function() {
@@ -123,7 +153,7 @@ export default AbstractEditController.extend(GenderList, {
 		} else {
 			return false;
 		}
-	}.property('newBelieverCheckbox'),
+	}.property('newBelieverCheckbox', 'believers'),
 	
 	communityLengthNotZero: function() {
 		if(!Ember.isEmpty(this.get('commEvents'))) {
@@ -131,7 +161,7 @@ export default AbstractEditController.extend(GenderList, {
 		} else {
 			return false;	
 		}
-	}.property('believers'),
+	}.property('commEvents'),
 	
 	leadershipLengthNotZero: function() {
 		if(!Ember.isEmpty(this.get('leadEvents'))) {
@@ -139,7 +169,7 @@ export default AbstractEditController.extend(GenderList, {
 		} else {
 			return false;	
 		}
-	}.property('believers'),
+	}.property('leadEvents'),
 	
 	believersLengthNotZero: function() {
 		if(!Ember.isEmpty(this.get('believers'))) {
@@ -602,33 +632,14 @@ export default AbstractEditController.extend(GenderList, {
           this.displayAlert('Believer Updated', 'The believer has been updated.');
         },
 
-        // deleteBeliever: function(model) {
-        //     var believer = model.get('believerToDelete');
-        //     var believers = this.get('believers');
-        //     believers.removeObject(believer);
-        //     this.set('believers', believers);
-        //     this.send('update', true);
-        //     this.send('closeModal');
-        // },
-
-        //Toggle Preview
-        togglePreview: function() {
-          this.toggleProperty('showPreview');
-        },
-
-       /* toggleArrowInPreview: function() {
-          if ($('.showDownArrow').is(":visible")) {
-              $('.showDownArrow').click(toggle());
-              $('.showUpArrow').click(toggle());
-          } else {
-              $('.showDownArrow').toggle();
-              $('.showUpArrow').toggle();
-          }
-        }, */
-
-        toggleArrowInPreview: function() {
-          this.toggleProperty('showDetails');
-        },
+//         deleteBeliever: function(model) {
+//             var believer = model.get('believerToDelete');
+//             var believers = this.get('believers');
+//             believers.removeObject(believer);
+//             this.set('believers', believers);
+//             this.send('update', true);
+//             this.send('closeModal');
+//         },
 
         //Save Report
         updateReport: function() {
@@ -709,51 +720,39 @@ export default AbstractEditController.extend(GenderList, {
             }
             this.send('openModal', 'ministry.add-leadership-participant', participantToEdit);
         },
-
-        showDeleteCommunity: function(commEvent){
-                this.send('openModal', 'dialog', Ember.Object.create({
-                confirmAction: 'deleteCommEvent',
-                title: 'Delete Community Event',
-                message: 'Are you sure you want to delete this event?',
-                commEventToDelete: commEvent,
-                updateButtonAction: 'confirm',
-                updateButtonText: 'Ok'
-            }));
-        },
-
-        deleteCommEvent: function(model) {
-            var commEvent = model.get('commEventToDelete');
-            var commEvents = this.get('commEvents');
-            commEvents.removeObject(commEvent);
-            this.set('commEvents', commEvents);
-            this.send('update', true);
-        },
-
-        showDeleteLeadership: function(leadEvent){
-                this.send('openModal', 'dialog', Ember.Object.create({
-                confirmAction: 'deleteLeadEvent',
-                title: 'Delete Leadership Event',
-                message: 'Are you sure you want to delete this event?',
-                leadEventToDelete: leadEvent,
-                updateButtonAction: 'confirm',
-                updateButtonText: 'Ok'
-            }));
-        },
-
-        deleteLeadEvent: function(model) {
-            var leadEvent = model.get('leadEventToDelete');
-            var leadEvents = this.get('leadEvents');
-            leadEvents.removeObject(leadEvent);
-            this.set('leadEvents', leadEvents);
-            this.send('update', true);
-        }
         
-//        noEventsThisMonth: function(){
-//            if(this.get('eventsThisMonth')) {
-//                this.set('eventsThisMonth', false);
-//            } else {
-//                this.set('eventsThisMonth', true);
-//            }
-//        }  
+		//delete Events/New Believer	
+		showDeleteCommEvent: function(commEvents) {
+           	this.send('openModal', 'ministry.delete-comm-event', commEvents);
+    	},
+	
+		showDeleteLeadEvent: function(leadEvents) {
+           	this.send('openModal', 'ministry.delete-lead-event', leadEvents);
+    	},
+		
+		showDeleteNewBeliever: function(believers) {
+           	this.send('openModal', 'ministry.delete-new-believer', believers);
+    	},
+		
+		commEventDeleted: function(deletedCommEvent) {
+            var commEvent = this.get('commEvents');
+            commEvent.removeObject(deletedCommEvent);
+            this.send('closeModal');
+			this.send('update', true);
+        },
+		
+		leadEventDeleted: function(deletedLeadEvent) {
+            var leadEvent = this.get('leadEvents');
+            leadEvent.removeObject(deletedLeadEvent);
+            this.send('closeModal');
+			this.send('update', true);
+        },
+		
+		newBelieverDeleted: function(deletedNewBeliever) {
+            var believer = this.get('believers');
+            believer.removeObject(deletedNewBeliever);
+            this.send('closeModal');
+			this.send('update', true);
+        }
     }
 });

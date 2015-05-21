@@ -40,15 +40,6 @@ export default AbstractModel.extend({
 		},
 		phone: { 
 			numericality: {allowBlank: true}
-		},
-		email: {
-			allowBlank: true
-		},
-		address: {
-			allowBlank: true
-		},
-		country: {
-			allowBlank: true
 		}
 	}
 

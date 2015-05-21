@@ -540,6 +540,7 @@ export default AbstractEditController.extend(BloodTypes, GenderList, PouchAdapte
             var visits = this.get('visits');
             visits.removeObject(deletedVisit);
             this.send('closeModal');
+			this.send('update', true);
         }
 
     },

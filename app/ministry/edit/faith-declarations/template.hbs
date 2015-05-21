@@ -39,14 +39,16 @@
 				  <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
 				</span>
 				{{em-input property="searchTerm" placeholder="Search"}}
-				<!-- <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1"> -->
 			  </div>
 			</div>
 
 			<ul class="list-group text-center nav-pills showHideBelievers">
 			  {{#each filteredContent}}
 				<li class="listSet" {{action "showBeliever" this bubbles=false }}>
-				  <a href="#" role="tab" data-toggle="pill">{{believerName}}</a>
+				  <a href="#" role="tab" data-toggle="pill">
+					  {{believerName}} 
+					  <!--<button type="button" class="btn btn-default warning" {action 'showDeleteNewBeliever' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
+				  </a>
 				</li>
 			  {{/each}}
 			</ul>

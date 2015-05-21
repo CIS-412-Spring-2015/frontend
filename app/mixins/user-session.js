@@ -216,6 +216,10 @@ export default Ember.Mixin.create({
             'Social Worker', 
             'System Administrator'
         ],
+		delete_comm_event: [
+			'Spiritual Ministry Director',
+            'System Administrator'
+		],
         delete_diagnosis: [
             'Doctor',
             'Hospital Administrator',
@@ -252,6 +256,10 @@ export default Ember.Mixin.create({
             'Medical Records Officer',
             'System Administrator'
         ],
+		delete_lead_event: [
+			'Spiritual Ministry Director',
+            'System Administrator'
+		],
         delete_medication: [
             'Doctor', 
             'Hospital Administrator',
@@ -262,6 +270,10 @@ export default Ember.Mixin.create({
             'Spiritual Ministry Director',
             'System Administrator'
         ],
+		delete_new_believer: [
+			'Spiritual Ministry Director',
+            'System Administrator'
+		],
         delete_photo: [
             'Data Entry',
             'Hospital Administrator',
