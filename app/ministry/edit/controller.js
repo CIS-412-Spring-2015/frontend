@@ -75,7 +75,11 @@ export default AbstractEditController.extend(GenderList, {
         	this.set('eventsReportValidation', true);
         } else if(!Ember.isEmpty(this.get('leadEvents')) && !Ember.isEmpty(this.get('commEvents'))){
         	this.set('eventsReportValidation', true);
-        } else {
+        } else if (!Ember.isEmpty(this.get('commEvents')) && this.get('leadershipCheckbox')){
+			this.set('eventsReportValidation', true);
+		} else if (!Ember.isEmpty(this.get('leadEvents')) && this.get('communityCheckbox')){
+			this.set('eventsReportValidation', true);
+		} else {
 			this.set('eventsReportValidation', false);
 		}
     }.observes('leadEvents','commEvents','communityCheckbox', 'leadershipCheckbox'),
