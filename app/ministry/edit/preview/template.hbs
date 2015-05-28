@@ -110,51 +110,6 @@
           </div>
           <div id="eventsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventsPreview">
               <div class="panel-body">
-                  <div class="panel">
-                    <div class="panel-heading" role="tab" id="leadershipEventsPreview">
-                        <a class="collapsed" data-toggle="collapse" href="#leadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="leadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
-                            <h5 class="panel-title">
-                                {{#if leadEvents}}
-                                    Leadership Events (Click to see Events)
-                                {{else}}
-                                    Leadership Events <span class="pleaseFillInPreview">(No Leadership Events)</span>
-                                {{/if}}
-                                <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
-                            </h5>
-                        </a>
-                    </div>
-                    <div id="leadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="leadershipEventsPreview">
-                        <div class="panel-body">
-                            <h4> </h4>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Event Name</th> 
-                                        <th>Date</th>
-                                        <th>Location</th>
-                                        <th>Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{#if leadEvents}}
-                                        {{#each leadEvents}}
-                                        <tr>
-                                            <td>{{eventName}}</td> 
-                                            <td>{{date}}</td>
-                                            <td>{{location}}</td>
-                                            <td>{{description}}</td> 
-                                        </tr>
-                                        {{/each}}
-                                    {{else}}
-                                        <tr>
-                                            <td class="pleaseFillInPreview">(No Leadership Events)</td> 
-                                        </tr>
-                                    {{/if}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                 </div>
                  <div class="panel">
                     <div class="panel-heading" role="tab" id="communityEventsPreview">
                         <a class="collapsed" data-toggle="collapse" href="#communityEventsPreviewCollapse" aria-expanded="false" aria-controls="communityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
@@ -162,7 +117,11 @@
                                 {{#if commEvents}}
                                     Community Events (Click to see Events)
                                 {{else}}
-                                    Community Events <span class="pleaseFillInPreview">(No Community Events)</span>
+									{{#if noCommunityEventsThisMonth}}
+										Community Events (No Community Events This Month)
+									{{else}}
+										Community Events <span class="pleaseFillInPreview">(No Community Events)</span>
+									{{/if}}
                                 {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
@@ -186,16 +145,77 @@
                                         {{#each commEvents}}
                                         <tr>
                                             <td>{{eventName}}</td> 
-                                            <td>{{date}}</td>
+                                            <td>{{displayCommunityDate}}</td>
                                             <td>{{type}}</td>
                                             <td>{{numberPastorChurch}}</td> 
                                             <td>{{numberParticipants}}</td>
                                         </tr>
                                         {{/each}}
                                     {{else}}
+										{{#if noCommunityEventsThisMonth}}
+											<tr>
+												<td>(No Community Events This Month)</td> 
+											</tr>
+										{{else}}
+											<tr>
+												<td class="pleaseFillInPreview">(No Community Events)</td> 
+											</tr>
+										{{/if}}
+                                    {{/if}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
+				 <div class="panel">
+                    <div class="panel-heading" role="tab" id="leadershipEventsPreview">
+                        <a class="collapsed" data-toggle="collapse" href="#leadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="leadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+                            <h5 class="panel-title">
+                                {{#if leadEvents}}
+                                    Leadership Events (Click to see Events)
+                                {{else}}
+									{{#if noLeadershipEventsThisMonth}}
+										Leadership Events (No Leadership Events This Month)
+									{{else}}
+										Leadership Events <span class="pleaseFillInPreview">(No Leadership Events)</span>
+									{{/if}}
+                                {{/if}}
+                                <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+                            </h5>
+                        </a>
+                    </div>
+                    <div id="leadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="leadershipEventsPreview">
+                        <div class="panel-body">
+                            <h4> </h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th> 
+                                        <th>Date</th>
+                                        <th>Location</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#if leadEvents}}
+                                        {{#each leadEvents}}
                                         <tr>
-                                            <td class="pleaseFillInPreview">(No Community Events)</td> 
+                                            <td>{{eventName}}</td> 
+                                            <td>{{displayLeadershipDate}}</td>
+                                            <td>{{location}}</td>
+                                            <td>{{description}}</td> 
                                         </tr>
+                                        {{/each}}
+                                    {{else}}
+										{{#if noLeadershipEventsThisMonth}}
+											<tr>
+												<td >(No Leadership Events This Month)</td> 
+											</tr>
+										{{else}}
+											<tr>
+												<td class="pleaseFillInPreview">(No Leadership Events)</td> 
+											</tr>
+										{{/if}}	
                                     {{/if}}
                                 </tbody>
                             </table>
@@ -258,7 +278,12 @@
                       {{#if believers}}
                           <span><span class="filledInPreview">Total: </span>{{believers.length}}</span>
                       {{else}}
-                          <span>Total: <span class="pleaseFillInPreview">0</span></span>
+					  	  {{#if noNewBelieversThisMonth}}
+					  		 <span>Total: 0</span>
+					  	  {{else}}
+					  		 <span>Total: <span class="pleaseFillInPreview">0</span></span>
+					  	  {{/if}}
+                          
                       {{/if}}
                   
                   </h4>
@@ -270,7 +295,11 @@
                                 {{#if believers}}
                                     New Believer/Recommitment Names (Click to see Names)
                                 {{else}}
-                                    New Believer/Recommitment Names <span class="pleaseFillInPreview">(Please Add Faith Declarations)</span>
+										{{#if noNewBelieversThisMonth}}
+											 New Believer/Recommitment Names (No Faith Declarations This Month)
+										{{else}}
+											 New Believer/Recommitment Names <span class="pleaseFillInPreview">(Please Add Faith Declarations)</span>
+										{{/if}}
                                 {{/if}}
                                 <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
                             </h5>
@@ -297,9 +326,15 @@
                                         </tr>
                                         {{/each}}
                                     {{else}}
-                                        <tr>
-                                            <td class="pleaseFillInPreview">(Please Add Faith Declarations)</td>
-                                        </tr>
+										{{#if noNewBelieversThisMonth}}
+											<tr>
+                                            	<td>(No Faith Declarations This Month)</td>
+											</tr>
+										{{else}}
+											<tr>
+                                            	<td class="pleaseFillInPreview">(Please Add Faith Declarations)</td>
+                                        	</tr>
+										{{/if}}
                                     {{/if}}
                                 </tbody>
                             </table>
