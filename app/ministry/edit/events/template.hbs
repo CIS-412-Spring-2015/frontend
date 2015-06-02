@@ -1,7 +1,8 @@
 <div role="tabpanel" class="tab-pane" id="events">
     {{#em-form model=this submit_button=false bubbles=false }}
     <div class="panel">
-        <div class="panel-heading">
+		<div class="panel-heading" role="tab" id="communityPreview">
+			<a data-toggle="collapse" href="#communityPreviewCollapse" aria-expanded="true" aria-controls="communityPreviewCollapse" {{action "toggleArrowInPreview"}}>
             <h3 class="panel-title">
                 Community Events
                 {{#unless noCommunityEventsThisMonth}}
@@ -10,82 +11,100 @@
                     </button>
 				{{/unless}}
             </h3>
-        </div>            
-        <div class="panel-body detail-section-content">
-			{{#unless communityLengthNotZero}}
-				<span class="noEventsCheckbox">{{em-checkbox label="No Community Events This Month" property="communityCheckbox"}}</span>
-			{{/unless}}
-			
-            {{#unless noCommunityEventsThisMonth}}
-				<p class="col-xs-12 ministryInstructions">Example: Mobile Clinic, Outreach, Family & Patient Outreach</p>
-				<table class="table">
-					<tr class="table-header">
-						<th class="descriptor">Name</th>
-						<th class="descriptor">Type</th>
-						<th class="descriptor">Date</th>
-						<th class="descriptor">Location</th>
-						<th class="descriptor">Pastors/Churches Present</th>
-						<th class="descriptor">Number of Participants</th>
-						<th class="descriptor">Action</th>
-					</tr>
-					{{#each commEvents}}
-						<tr>
-							<td>{{eventName}}</td>
-							<td>{{type}}</td>
-							<td>{{displayCommunityDate}}</td>
-							<td>{{location}}</td>
-							<td>{{numberPastorChurch}}</td>
-							<td>{{numberParticipants}}</td>
-							<td>
-								<button type="button" class="btn btn-default neutral" {{action 'editCommunity' this bubbles=false }}>Edit</button>
-								<button type="button" class="btn btn-default warning" {{action 'showDeleteCommEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-							</td>
-						</tr>
-					{{/each}}
-				</table>
-			{{/unless}}
-        </div>
-
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                Leadership Events
-				{{#unless noLeadershipEventsThisMonth}}
-                	<button class="btn btn-primary align-right" {{action "editLeadership" bubbles=false }}>
-                		<span class="octicon octicon-plus"></span>Add New Leadership Event
-                	</button>
+			</a>
+        </div> 
+        <div id="communityPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="communityPreview">
+			<div class="panel-body detail-section-content">
+				{{#unless communityLengthNotZero}}
+					<span class="noEventsCheckbox">{{em-checkbox label="No Community Events This Month" property="communityCheckbox"}}</span>
 				{{/unless}}
-            </h3>
-        </div>
 
-        <div class="panel-body detail-section-content">
-			{{#unless leadershipLengthNotZero}}
-				<span class="noEventsCheckbox">{{em-checkbox label="No Leadership Events This Month" property="leadershipCheckbox"}}</span>
-			{{/unless}}
-			
-			{{#unless noLeadershipEventsThisMonth}}
-				<p class="col-xs-12 ministryInstructions">Example: Training Leaders, Instructors, Pastors, Church Planters, etc.</p>
-				<table class="table">
-					<tr class="table-header">
-						<th class="descriptor">Name</th>
-						<th class="descriptor">Description</th>
-						<th class="descriptor">Date</th>
-						<th class="descriptor">Location</th>
-						<th class="descriptor">Actions</th>
-					</tr>
-
-					{{#each leadEvents}}
-						<tr>
-							<td>{{eventName}}</td>
-							<td>{{displayLeadershipDate}}</td>
-							<td>{{location}}</td>
-							<td>{{description}}</td>
-							<td>
-								<button type="button" class="btn btn-default neutral" {{action 'editLeadership' this bubbles=false }}>Edit</button>
-								<button type="button" class="btn btn-default warning" {{action 'showDeleteLeadEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-								<button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
-							</td>
+				{{#unless noCommunityEventsThisMonth}}
+					<p class="col-xs-12 ministryInstructions">Example: Mobile Clinic, Outreach, Family & Patient Outreach</p>
+					<table class="table">
+						<tr class="table-header">
+							<th class="descriptor">Name</th>
+							<th class="descriptor">Type</th>
+							<th class="descriptor">Date</th>
+							<th class="descriptor">Location</th>
+							<th class="descriptor">Pastors/Churches Present</th>
+							<th class="descriptor">Number of Participants</th>
+							<th class="descriptor">Action</th>
 						</tr>
-						{{#each participants}}
+						{{#each commEvents}}
+							<tr>
+								<td>{{eventName}}</td>
+								<td>{{type}}</td>
+								<td>{{displayCommunityDate}}</td>
+								<td>{{location}}</td>
+								<td>{{numberPastorChurch}}</td>
+								<td>{{numberParticipants}}</td>
+								<td>
+									<button type="button" class="btn btn-default neutral" {{action 'editCommunity' this bubbles=false }}>Edit</button>
+									<button type="button" class="btn btn-default warning" {{action 'showDeleteCommEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+								</td>
+							</tr>
+						{{/each}}
+					</table>
+				{{/unless}}
+			</div>
+		</div>
+        <div class="panel-heading" role="tab" id="leadershipPreview">
+			<a data-toggle="collapse" href="#leadershipPreviewCollapse" aria-expanded="true" aria-controls="leadershipPreviewCollapse" {{action "toggleArrowInPreview"}}>
+				<h3 class="panel-title">
+					Leadership Events
+					{{#unless noLeadershipEventsThisMonth}}
+						<button class="btn btn-primary align-right" {{action "editLeadership" bubbles=false }}>
+							<span class="octicon octicon-plus"></span>Add New Leadership Event
+						</button>
+					{{/unless}}
+            	</h3>
+			</a>
+		</div>
+		<div id="leadershipPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="leadershipPreview">
+			<div class="panel-body detail-section-content">
+				{{#unless leadershipLengthNotZero}}
+					<span class="noEventsCheckbox">{{em-checkbox label="No Leadership Events This Month" property="leadershipCheckbox"}}</span>
+				{{/unless}}
+
+				{{#unless noLeadershipEventsThisMonth}}
+					<p class="col-xs-12 ministryInstructions">Example: Training Leaders, Instructors, Pastors, Church Planters, etc.</p>
+					<table class="table">
+						<tr class="table-header">
+							<th class="descriptor">Name</th>
+							<th class="descriptor">Date</th>
+							<th class="descriptor">Location</th>
+							<th class="descriptorDescription">Description</th>
+							<th class="descriptor">Actions</th>
+						</tr>
+
+						{{#each leadEvents}}
+							<tr>
+								<td>{{eventName}}</td>
+								<td>{{displayLeadershipDate}}</td>
+								<td>{{location}}</td>
+								<td>{{description}}</td>
+								<td>
+									<button type="button" class="btn btn-default neutral" {{action 'editLeadership' this bubbles=false }}>Edit</button>
+									<button type="button" class="btn btn-default warning" {{action 'showDeleteLeadEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+									<button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
+								</td>
+							</tr>
+							{{#each participants}}
+									<tr>
+										<td>{{participantName}}</td>
+										<td>{{organization}}</td>
+										<td>{{gender}}</td>
+										<td>
+											<button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
+											<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+										</td>
+									</tr>
+							{{/each}}
+						{{/each}}
+					</table>
+					<table class="table">
+							{{#each leadParticipants}}
 								<tr>
 									<td>{{participantName}}</td>
 									<td>{{organization}}</td>
@@ -95,24 +114,11 @@
 										<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
 									</td>
 								</tr>
-						{{/each}}
-					{{/each}}
-				</table>
-				<table class="table">
-						{{#each leadParticipants}}
-							<tr>
-								<td>{{participantName}}</td>
-								<td>{{organization}}</td>
-								<td>{{gender}}</td>
-								<td>
-									<button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
-									<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-								</td>
-							</tr>
-						{{/each}}
-				</table>
-			{{/unless}}
-        </div>
+							{{/each}}
+					</table>
+				{{/unless}}
+			</div>
+		</div>
     </div>
     {{/em-form}}
   </div>

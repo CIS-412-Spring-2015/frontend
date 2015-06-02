@@ -101,6 +101,16 @@
 	margin-bottom: 20px;
 }
 
+.panel-heading a {
+	text-decoration: none;
+}
+.descriptorDescription th {
+	word-wrap: normal;
+	font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: black;
+}
 /*============ END REBEKAH STYLES ============*/
 
 /*====================================//
@@ -254,6 +264,39 @@ h1.navigateTabRight {
     }
 }
 /*============ END CELTSON STYLES ============*/
+
+/*====================================//
+//======= KEITH'S STYLES =======//
+//====================================*/
+
+th.descriptor {
+    font-size: 14px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: black;
+}
+
+.descriptor2 {
+    margin-left: 55px;
+    color: black;
+    font-size: 20px;
+
+}
+
+#Leadership.table-header {
+    padding-left: 50px;
+
+}
+
+.instructions {
+    font-size: 11px;
+    font-weight: bold;
+    color: black;
+}
+
+
+// end Keith's styles ------------/
+
 
 @keyframes domChanged {
     from {
@@ -770,37 +813,3 @@ h1 {
     }
 
 }
-
-
-/*====================================//
-//======= KEITH'S STYLES =======//
-//====================================*/
-
-th.descriptor {
-    font-size: 14px;
-    padding-left: 10px;
-    font-weight: bold;
-    color: black;
-}
-
-.descriptor2 {
-
-    margin-left: 55px;
-    color: black;
-    font-size: 20px;
-
-}
-
-#Leadership.table-header {
-    padding-left: 50px;
-
-}
-
-.instructions {
-    font-size: 11px;
-    font-weight: bold;
-    color: black;
-}
-
-
-// end Keith's styles ------------/
