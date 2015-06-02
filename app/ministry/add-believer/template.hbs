@@ -1,7 +1,15 @@
 {{#em-form model=this submit_button=false }}
     {{em-input label="Name" property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
     {{em-input property="age" label="Age" class="required"}}
-     {{em-select
+	{{em-select
+         prompt=" "
+         label="Family Relationship"
+         property="familyRelationship"
+         content=familyRelationshipList
+         optionValuePath="content"
+         optionLabelPath="content"
+    }}
+    {{em-select
          prompt=" "
          label="Religious Affiliation"
          property="religiousAffiliation"
@@ -9,8 +17,8 @@
          optionValuePath="content"
          optionLabelPath="content"
 		 class="required"
-     }}
-     {{em-select
+    }}
+    {{em-select
          prompt=" "
          label="Present Activity"
          property="presentActivity"
@@ -18,8 +26,8 @@
          optionValuePath="content"
          optionLabelPath="content"
 		 class="required"
-     }}
-     {{em-select
+    }}
+    {{em-select
          prompt=" "
          label="Type of Declaration"
          property="declarationType"
@@ -27,13 +35,13 @@
          optionValuePath="content"
          optionLabelPath="content"
          class="required"
-     }}
-     <div class="form-group">
+    }}
+    <div class="form-group">
 		 <label>Gender</label>
          {{ext-radio name=gender content=genderList value=gender showInline=true class="required"}}
-     </div>
-     {{em-input property="phone" label="Phone Number"}}
-     {{em-input property="email" type="email" label="Email"}}
-     {{em-text property="address" rows=3 label="Address"}}
-     {{select-or-typeahead property="country" label="Country" list=countryList selection=country }}
+    </div>
+    {{em-input property="phone" label="Phone Number"}}
+    {{em-input property="email" type="email" label="Email"}}
+    {{em-text property="address" rows=3 label="Address"}}
+    {{select-or-typeahead property="country" label="Country" list=countryList selection=country }}
 {{/em-form}}

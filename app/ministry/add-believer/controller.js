@@ -10,6 +10,7 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, {
     religiousAffiliationList: ['none', 'Catholic', 'Muslim', 'Protestant', 'Other'],
     presentActivityList: ['Bedside Evangelism', 'Playroom Presentation', 'Jesus Film', 'Open Air Meeting', 'Mobile Clinic Outreach', 'Door to Door Evangelism', 'Other Opportunities'],
     declarationTypeList: ['New Believer', 'Recommitment'],
+	familyRelationshipList: ['No Relationship', 'Patient', 'Grandmother', 'Grandfather', 'Mother', 'Father', 'Brother', 'Sister', 'Caregiver', 'Other'],
 
     //Title of the Modal
     title: function() {
