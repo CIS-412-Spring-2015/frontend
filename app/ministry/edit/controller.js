@@ -553,38 +553,23 @@ export default AbstractEditController.extend(GenderList, {
         // They change the active classes to show and hide the respective tabs
         additionalInformationTab: function () {
           this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#additionalInformation').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(4)').addClass('active');
+          $('#additionalInformationTab').tab('show');
         },
         eventsTab: function () {
           this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#events').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(2)').addClass('active');
+          $('#eventsTab').tab('show');
         },
         faithDeclarationsTab: function () {
           this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#faithDeclarations').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(3)').addClass('active');
+          $('#faithDeclarationsTab').tab('show');
         },
         hospitalTab: function () {
           this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#hospital').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(1)').addClass('active');
+          $('#hospitalTab').tab('show');
         },
         summaryTab: function () {
           this.set('submitPage', false);
-          $('#submit').removeClass('active');
-          $('#summary').addClass('active');
-          $('ul.nav li.active').removeClass('active');
-          $('ul.nav li:nth-child(5)').addClass('active');
+          $('#summaryTab').tab('show');
         },
 
         // ======= Function to move onto the next tab ========== //
