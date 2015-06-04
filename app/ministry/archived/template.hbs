@@ -8,7 +8,457 @@
             <span class="clearReportHeader"></span>
         </div>
         <div class="panel-body detail-section-content">            
-            {{partial 'ministry/edit/preview'}}
-        </div>
-    </div>
-  </div>
+		<!-- Hospital -->              
+			  <div class="panel">
+				  <div class="panel-heading" role="tab" id="hospitalPreview">
+					  <a data-toggle="collapse" href="#hospitalPreviewCollapse" aria-expanded="true" aria-controls="hospitalPreviewCollapse" {{action "toggleArrowInPreview"}}>
+						  <h3 class="panel-title headingsForPreview">
+							  Hospital 
+							  <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="hospitalPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hospitalPreview">
+					  <div class="panel-body">
+						 <h4>
+							Staff Ministries
+						 </h4>
+						 <hr>
+						 <span class="row">
+							<span class="col-xs-3">
+								<p><span class="filledInPreview">Entire Staff Devotions: </span>{{entireStaffDevotions}}</p>
+							</span>
+							<span class="col-xs-3">
+								<p><span class="filledInPreview">Department Devotions: </span>{{departmentDevotions}}</p>
+							</span>
+							<span class="col-xs-3">
+								<p><span class="filledInPreview">Hospital Prayer Group Intercession: </span>{{hospitalPrayerGroupIntercessions}}</p>
+							</span>
+							<span class="col-xs-3">
+								<p><span class="filledInPreview">Spiritual Center Staff Meeting: </span>{{spiritualCenterStaffMeetings}}</p>
+							</span>
+						</span>
+						<span class="row">
+							<span class="col-xs-12">
+								<p class="filledInPreview">Staff Development:</p>
+								<p>{{staffDevelopment}}</p>
+							</span>
+						 </span>
+						 <span class="row">
+							<span class="col-xs-12">
+								<p class="filledInPreview">Continuing Education/Counseling/Support Opportunities:</p>
+								<p>{{staffOpportunities}}</p>
+							</span>
+						</span>
+						<hr>
+						<h4>
+							Patient Ministries
+						</h4>
+						<hr>
+						<span class="row">
+							<span class="col-xs-12">
+								<p class="filledInPreview">Bedside Evangelism:</p>
+								<p>{{bedsideEvangelism}}</p>
+							</span>
+						</span>
+						<span class="row">
+							<span class="col-xs-12">
+								<p class="filledInPreview">Playroom Activities:</p>
+								<p>{{playroomActivities}}</p>
+							</span>
+						</span>
+					  </div>
+				  </div>
+			  </div>
+
+		<!-- Events -->
+			  <div class="panel">
+				  <div class="panel-heading" role="tab" id="eventsPreview">
+					  <a data-toggle="collapse" href="#eventsPreviewCollapse" aria-expanded="true" aria-controls="eventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+						  <h3 class="panel-title headingsForPreview">
+							  Events
+							  <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="eventsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eventsPreview">
+					  <div class="panel-body">
+						 <div class="panel">
+							<div class="panel-heading" role="tab" id="communityEventsPreview">
+								<a class="collapsed" data-toggle="collapse" href="#communityEventsPreviewCollapse" aria-expanded="false" aria-controls="communityEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+									<h5 class="panel-title">
+										{{#if commEvents}}
+											Community Events (Click to see Events)
+										{{else}}
+											{{#if noCommunityEventsThisMonth}}
+												Community Events (No Community Events This Month)
+											{{else}}
+												Community Events <span {{action 'eventsTab'}} class="pleaseFillInPreview">(No Community Events)</span>
+											{{/if}}
+										{{/if}}
+										<span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+									</h5>
+								</a>
+							</div>
+							<div id="communityEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="communityEventsPreview">
+								<div class="panel-body">
+									<h4> </h4>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Event Name</th> 
+												<th>Date</th>
+												<th>Event Type</th>
+												<th>Number of Pastors/Churches Present</th>
+												<th>Number of Participants</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#if commEvents}}
+												{{#each commEvents}}
+												<tr>
+													<td>{{eventName}}</td> 
+													<td>{{displayCommunityDate}}</td>
+													<td>{{type}}</td>
+													<td>{{numberPastorChurch}}</td> 
+													<td>{{numberParticipants}}</td>
+												</tr>
+												{{/each}}
+											{{else}}
+												{{#if noCommunityEventsThisMonth}}
+													<tr>
+														<td>(No Community Events This Month)</td> 
+													</tr>
+												{{else}}
+													<tr>
+														<td {{action 'eventsTab'}} class="pleaseFillInPreview">(No Community Events)</td> 
+													</tr>
+												{{/if}}
+											{{/if}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						 </div>
+						 <div class="panel">
+							<div class="panel-heading" role="tab" id="leadershipEventsPreview">
+								<a class="collapsed" data-toggle="collapse" href="#leadershipEventsPreviewCollapse" aria-expanded="false" aria-controls="leadershipEventsPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+									<h5 class="panel-title">
+										{{#if leadEvents}}
+											Leadership Events (Click to see Events)
+										{{else}}
+											{{#if noLeadershipEventsThisMonth}}
+												Leadership Events (No Leadership Events This Month)
+											{{else}}
+												Leadership Events <span {{action 'eventsTab'}} class="pleaseFillInPreview">(No Leadership Events)</span>
+											{{/if}}
+										{{/if}}
+										<span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+									</h5>
+								</a>
+							</div>
+							<div id="leadershipEventsPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="leadershipEventsPreview">
+								<div class="panel-body">
+									<h4> </h4>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Event Name</th> 
+												<th>Date</th>
+												<th>Location</th>
+												<th>Description</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#if leadEvents}}
+												{{#each leadEvents}}
+												<tr>
+													<td>{{eventName}}</td> 
+													<td>{{displayLeadershipDate}}</td>
+													<td>{{location}}</td>
+													<td>{{description}}</td> 
+												</tr>
+												{{/each}}
+											{{else}}
+												{{#if noLeadershipEventsThisMonth}}
+													<tr>
+														<td >(No Leadership Events This Month)</td> 
+													</tr>
+												{{else}}
+													<tr>
+														<td {{action 'eventsTab'}} class="pleaseFillInPreview">(No Leadership Events)</td> 
+													</tr>
+												{{/if}}	
+											{{/if}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						 </div>
+					  </div>
+				  </div>
+			  </div>
+
+		<!-- Faith Declarations -->
+			  <div class="panel">
+				  <div class="panel-heading" role="tab" id="faithDeclarationsPreview">
+					  <a data-toggle="collapse" href="#faithDeclarationsPreviewCollapse" aria-expanded="false" aria-controls="faithDeclarationsPreviewCollapse"> 
+						  <h3 class="panel-title headingsForPreview" {{action "toggleArrowInPreview"}}>
+							  Faith Declarations
+							  <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="faithDeclarationsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="faithDeclarationsPreview">
+					  <div class="panel-body">
+						  <h4>
+							 Christianity Explored Class
+						  </h4>
+						  <hr>
+						  <span class="row">
+							 <span class="col-xs-3">
+								<p><span class="filledInPreview">Sessions: </span>{{ceSession}}</p>
+							 </span>
+							 <span class="col-xs-3">
+								<p><span class="filledInPreview">Participants: </span>{{ceParticipants}}</p>
+							 </span>
+							 <span class="col-xs-3">
+								<p><span class="filledInPreview">Graduates: </span>{{ceGraduates}}</p>
+							 </span>
+							 <span class="col-xs-3">
+								<p><span class="filledInPreview">Seeking Continuing Education: </span>{{ceContinuedEducation}}</p>
+							 </span>
+						  </span>
+						  <hr>
+						  <h4>
+							  Faith Declarations - 
+							  {{#if believers}}
+								  <span><span class="filledInPreview">Total: </span>{{believers.length}}</span>
+							  {{else}}
+								  {{#if noNewBelieversThisMonth}}
+									 <span>Total: 0</span>
+								  {{else}}
+									 <span {{action 'faithDeclarationsTab'}}>Total: <span class="pleaseFillInPreview">0</span></span>
+								  {{/if}}
+
+							  {{/if}}
+
+						  </h4>
+						  <hr>
+						  <div class="panel">
+							<div class="panel-heading" role="tab" id="faithDeclarationsNamesPreview">
+								<a class="collapsed" data-toggle="collapse" href="#faithDeclarationsNamesPreviewCollapse" aria-expanded="false" aria-controls="faithDeclarationsNamesPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+									<h5 class="panel-title">
+										{{#if believers}}
+											New Believer/Recommitment Names (Click to see Names)
+										{{else}}
+												{{#if noNewBelieversThisMonth}}
+													 New Believer/Recommitment Names (No Faith Declarations This Month)
+												{{else}}
+													 New Believer/Recommitment Names <span {{action 'faithDeclarationsTab'}} class="pleaseFillInPreview">(Please Add Faith Declarations)</span>
+												{{/if}}
+										{{/if}}
+										<span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+									</h5>
+								</a>
+							</div>
+							<div id="faithDeclarationsNamesPreviewCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="faithDeclarationsNamesPreview">
+								<div class="panel-body">
+									<h4> </h4>
+									<table class="table">
+										<thead>
+											<tr>
+												<th>Name</th> 
+												<th>Age</th>
+												<th>Gender</th>
+											</tr>
+										</thead>
+										<tbody>
+											{{#if believers}}
+												{{#each believers}}
+												<tr>
+													<td>{{believerName}}</td> 
+													<td>{{age}}</td>
+													<td>{{gender}}</td> 
+												</tr>
+												{{/each}}
+											{{else}}
+												{{#if noNewBelieversThisMonth}}
+													<tr>
+														<td>(No Faith Declarations This Month)</td>
+													</tr>
+												{{else}}
+													<tr>
+														<td {{action 'faithDeclarationsTab'}} class="pleaseFillInPreview">(Please Add Faith Declarations)</td>
+													</tr>
+												{{/if}}
+											{{/if}}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						 </div>
+					  </div>
+				  </div>
+			  </div>
+
+		<!-- Additional Info --> 
+			  <div class="panel">
+				  <div class="panel-heading" role="tab" id="additionalInformationPreview">
+					  <a data-toggle="collapse" href="#additionalInformationPreviewCollapse" aria-expanded="true" aria-controls="additionalInformationPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+						  <h3 class="panel-title headingsForPreview">
+							  Additional Info
+							  <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="additionalInformationPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="additionalInformationPreview">
+					  <div class="panel-body">
+						<h4>Ministry Results</h4>
+						<hr>
+						<p>{{ministryResults}}</p>
+						<hr>
+						<h4>Recommendations/Needs</h4>
+						<hr>
+						<p>{{recommendationsNeeds}}</p>
+						<hr>
+						<h4>Other Significant Items</h4>
+						<hr>
+						<p>{{otherSignificantItems}}</p>
+					  </div>
+				  </div>
+			  </div>
+
+		<!-- Summary -->
+			  <div class="panel">
+				  <div class="panel-heading" role="tab" id="summaryPreview">
+					  <a data-toggle="collapse" href="#summaryPreviewCollapse" aria-expanded="true" aria-controls="summaryPreviewCollapse" {{action "toggleArrowInPreview"}}> 
+						  <h3 class="panel-title headingsForPreview">
+							  Summary
+							  <span {{bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="summaryPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="summaryPreview">
+					  <div class="panel-body">
+						  <h4> </h4>
+						  <table class="table">
+							<thead>
+								<tr>
+									<th></th>
+									<th>Bedside Presentations</th> 
+									<th>Playroom Presentations</th>
+									<th>Jesus Film</th>
+									<th>Open Air Meetings</th>
+									<th>Mobile Clinic Visits</th> 
+									<th>Door to Door Evangelism</th> 
+									<th>Additional Opportunities</th>
+									<th>Totals</th> 
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th>Gospel Presentations</th>
+									<td>{{bedsidePresentations}}</td>
+									<td>{{playroomPresentations}}</td>
+									<td>{{jesusPresentations}}</td>
+									<td>{{openAirPresentations}}</td>
+									<td>{{mobilePresentations}}</td>
+									<td>{{doorPresentations}}</td>
+									<td>{{morePresentations}}</td>
+									<td>{{totalPresentations}}</td>
+								</tr>
+								<tr>
+									<th>People Reached</th>
+									<td>{{peopleBedside}}</td>
+									<td>{{peoplePlayroom}}</td>
+									<td>{{peopleJesus}}</td> 
+									<td>{{peopleOpenAir}}</td>
+									<td>{{peopleMobile}}</td>
+									<td>{{peopleDoor}}</td>
+									<td>{{peopleMore}}</td>
+									<td>{{peopleTotal}}</td>
+								</tr>
+								<tr>
+									<th>Bibles Given Out</th>
+									<td>{{bibleBedside}}</td>
+									<td>{{biblePlayroom}}</td>
+									<td>{{bibleJesus}}</td>
+									<td>{{bibleOpenAir}}</td>
+									<td>{{bibleMobile}}</td>
+									<td>{{bibleDoor}}</td>
+									<td>{{bibleMore}}</td>
+									<td>{{bibleTotal}}</td>  
+								</tr>
+								<tr>
+									<th>Salvations</th>
+									<td>{{salvationBedside}}</td> 
+									<td>{{salvationPlayroom}}</td>
+									<td>{{salvationJesus}}</td> 
+									<td>{{salvationOpenAir}}</td>
+									<td>{{salvationMobile}}</td> 
+									<td>{{salvationDoor}}</td>
+									<td>{{salvationMore}}</td>
+									<td>{{salvationTotal}}</td>
+								</tr>
+								<tr>
+									<th>Recommitments</th>
+									<td>{{recommitmentBedside}}</td> 
+									<td>{{recommitmentPlayroom}}</td>
+									<td>{{recommitmentJesus}}</td> 
+									<td>{{recommitmentOpenAir}}</td>
+									<td>{{recommitmentMobile}}</td> 
+									<td>{{recommitmentDoor}}</td>
+									<td>{{recommitmentMore}}</td>
+									<td>{{recommitmentTotal}}</td>  
+								</tr>
+							</tbody>
+						 </table>
+					  </div>
+				  </div>
+			  </div>
+
+		<!-- Demographics --> 
+			 <!-- <div class="panel">
+				  <div class="panel-heading" role="tab" id="demographicsPreview">
+					  <a data-toggle="collapse" href="#demographicsPreviewCollapse" aria-expanded="true" aria-controls="demographicsPreviewCollapse" {action "toggleArrowInPreview"}}> 
+						  <h3 class="panel-title headingsForPreview">
+							  Demographics
+							  <span {bind-attr class=":octicon :pull-right showDetails:octicon-triangle-down:octicon-triangle-up"}}></span>
+						  </h3>
+					  </a>
+				  </div>
+				  <div id="demographicsPreviewCollapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="demographicsPreview">
+					  <div class="panel-body">
+						  <span class="row">
+							 <span class="col-xs-3">
+								 <h4>Staff</h4>
+								 <p>Team Member #’s and Names</p>
+								 <p>Church Affiliation</p>
+								 <p>Paid vs. Volunteer</p>
+							 </span>
+							 <span class="col-xs-3">
+								 <h4>Partner Organizations</h4>
+								 <p>Organizations 1</p>
+								 <p>Organizations 2</p>
+								 <p>Organizations 3</p>
+							 </span>
+							 <span class="col-xs-3">
+								 <h4>Churches</h4>
+								 <p>Church 1</p>
+								 <p>Church 2</p>
+								 <p>Church 3</p>
+							 </span>
+							 <span class="col-xs-3">
+								 <h4>People Groups</h4>
+								 <p>Group 1</p>
+								 <p>Group 2</p>
+								 <p>Group 3</p>
+							 </span>
+						</span>
+					  </div>
+				  </div>
+			  </div>-->
+		</div>
+	</div>
+</div>

@@ -119,12 +119,11 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
-        if (!Ember.isEmpty(this.get('bedsidePresentations')) && !Ember.isEmpty(this.get('playroomPresentations')) && !Ember.isEmpty(this.get('jesusPresentations')) && !Ember.isEmpty(this.get('openAirPresentations')) && !Ember.isEmpty(this.get('mobilePresentations')) && !Ember.isEmpty(this.get('morePresentations')) && !Ember.isEmpty(this.get('doorPresentations')) && !Ember.isEmpty(this.get('peopleBedside')) && !Ember.isEmpty(this.get('peoplePlayroom')) && !Ember.isEmpty(this.get('peopleJesus')) && !Ember.isEmpty(this.get('peopleOpenAir')) && !Ember.isEmpty(this.get('peopleMobile')) &&  !Ember.isEmpty(this.get('peopleMore')) && !Ember.isEmpty(this.get('peopleDoor')) &&!Ember.isEmpty(this.get('bibleBedside')) && !Ember.isEmpty(this.get('biblePlayroom')) && !Ember.isEmpty(this.get('bibleJesus')) && !Ember.isEmpty(this.get('bibleOpenAir')) && !Ember.isEmpty(this.get('bibleMobile')) && !Ember.isEmpty(this.get('bibleMore')) && !Ember.isEmpty(this.get('bibleDoor'))) {
+        if (!Ember.isEmpty(this.get('bedsidePresentations')) && !Ember.isEmpty(this.get('playroomPresentations')) && !Ember.isEmpty(this.get('jesusPresentations')) && 			   !Ember.isEmpty(this.get('openAirPresentations')) && !Ember.isEmpty(this.get('mobilePresentations')) && !Ember.isEmpty(this.get('morePresentations')) && 				!Ember.isEmpty(this.get('doorPresentations')) && !Ember.isEmpty(this.get('peopleBedside')) && !Ember.isEmpty(this.get('peoplePlayroom')) && 						!Ember.isEmpty(this.get('peopleJesus')) && !Ember.isEmpty(this.get('peopleOpenAir')) && !Ember.isEmpty(this.get('peopleMobile')) &&  								!Ember.isEmpty(this.get('peopleMore')) && !Ember.isEmpty(this.get('peopleDoor')) &&!Ember.isEmpty(this.get('bibleBedside')) && 										!Ember.isEmpty(this.get('biblePlayroom')) && !Ember.isEmpty(this.get('bibleJesus')) && !Ember.isEmpty(this.get('bibleOpenAir')) && 									!Ember.isEmpty(this.get('bibleMobile')) && !Ember.isEmpty(this.get('bibleMore')) && !Ember.isEmpty(this.get('bibleDoor'))) {
             this.set('summaryReportValidation', true);
         } else {
             this.set('summaryReportValidation', false);
         }
-
     }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'doorPresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'peopleDoor', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'bibleDoor', 'summaryReportValidation'),
 	
 	//Toggle Preview
