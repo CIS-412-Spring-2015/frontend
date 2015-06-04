@@ -35,6 +35,8 @@ export default AbstractModel.extend(ReportDate, {
     // New Believers Section
     believers: DS.hasMany('new-believer'),
 	newBelieverCheckbox: DS.attr('boolean'),
+	believersLengthNotZero: DS.attr('boolean'),
+	noNewBelieversThisMonth: DS.attr('boolean'),
 
     // Events Section
     leadEvents: DS.hasMany('leadership-event'),
@@ -42,6 +44,10 @@ export default AbstractModel.extend(ReportDate, {
     leadParticipants: DS.hasMany('leadership-participant'),
 	communityCheckbox: DS.attr('boolean'),
 	leadershipCheckbox: DS.attr('boolean'),
+	communityLengthNotZero: DS.attr('boolean'),
+	leadershipLengthNotZero: DS.attr('boolean'),
+	noLeadershipEventsThisMonth: DS.attr('boolean'),
+	noCommunityEventsThisMonth: DS.attr('boolean'),
 
     //   Additional Info View    //
     ministryResults: DS.attr('string'),

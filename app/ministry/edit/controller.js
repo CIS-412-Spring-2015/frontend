@@ -18,6 +18,21 @@ export default AbstractEditController.extend(GenderList, {
 	canDeleteNewBeliever: function() {        
 		return this.currentUserCan('delete_new_believer');
     }.property(),
+	
+	numberFieldsToCheck: ['spiritualCenterStaffMeetings', 'hospitalPrayerGroupIntercessions', 'departmentDevotions', 'entireStaffDevotions', 
+						  'ceParticipants', 'ceGraduates', 'ceContinuedEducation', 'ceSession', 
+						  'bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 						   'doorPresentations',				   
+						  'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'peopleDoor',
+						  'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleMore', 'bibleDoor'],
+	_setup: function() {
+			var numberFieldsToCheck= this.get('numberFieldsToCheck');
+			numberFieldsToCheck.forEach(function(numberField) {            
+				return Ember.defineProperty(this, numberField+'isNumber', Ember.computed(function() {
+					var checkValue = this.get(numberField);
+					return !isNaN(checkValue);            
+				}).property(numberField));
+			}.bind(this)); 
+	}.on('init'),
 
     //Function sets default variables for new report
     reportDateChanged: function() {
@@ -36,7 +51,6 @@ export default AbstractEditController.extend(GenderList, {
                 'fullReportValidation': false
             });
         }
-
     }.observes('reportDate'),
 
     //Function sets a report to be valid
@@ -51,8 +65,7 @@ export default AbstractEditController.extend(GenderList, {
         } else {
             this.set('fullReportValidation', false);
         }
-    }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation',
-               'additionalInformationReportValidation', 'summaryReportValidation', 'fullReportValidation'),
+    }.observes('hospitalReportValidation', 'eventsReportValidation', 'faithDeclarationsReportValidation', 'additionalInformationReportValidation', 'summaryReportValidation', 'fullReportValidation'),
 
     setReportArchivedValidation: function() {
         if (!this.get('fullReportValidation')) {
@@ -62,7 +75,7 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Hospital tab to valid
     setHospitalReportValidation: function() {
-        if(this.get('staffOpportunities') && this.get('staffDevelopment') && this.get('spiritualCenterStaffMeetings') && this.get('hospitalPrayerGroupIntercessions') && this.get('departmentDevotions') && this.get('entireStaffDevotions') && this.get('bedsideEvangelism') && this.get('playroomActivities')){
+        if(!Ember.isEmpty(this.get('staffOpportunities')) && !Ember.isEmpty(this.get('staffDevelopment')) && !Ember.isEmpty(this.get('spiritualCenterStaffMeetings')) && !Ember.isEmpty(this.get('hospitalPrayerGroupIntercessions')) && !Ember.isEmpty(this.get('departmentDevotions')) && !Ember.isEmpty(this.get('entireStaffDevotions')) && !Ember.isEmpty(this.get('bedsideEvangelism')) && !Ember.isEmpty(this.get('playroomActivities'))){
         	this.set('hospitalReportValidation', true);
         } else {
         	this.set('hospitalReportValidation', false);
@@ -86,9 +99,9 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Faith Delaration tab to valid
     setFaithDelcarationsReportValidation: function() {
-		if(this.get('newBelieverCheckbox') && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+		if(this.get('newBelieverCheckbox') && !Ember.isEmpty(this.get('ceParticipants')) && !Ember.isEmpty(this.get('ceGraduates')) && !Ember.isEmpty(this.get('ceContinuedEducation')) && !Ember.isEmpty(this.get('ceSession'))){
 			this.set('faithDeclarationsReportValidation', true);
-		} else if(!Ember.isEmpty(this.get('believers')) && this.get('ceParticipants') && this.get('ceGraduates') && this.get('ceContinuedEducation') && this.get('ceSession')){
+		} else if(!Ember.isEmpty(this.get('believers')) && !Ember.isEmpty(this.get('ceParticipants')) && !Ember.isEmpty(this.get('ceGraduates')) && !Ember.isEmpty(this.get('ceContinuedEducation')) && !Ember.isEmpty(this.get('ceSession'))){
 			this.set('faithDeclarationsReportValidation', true);
 		} else {
 			this.set('faithDeclarationsReportValidation', false);
@@ -97,7 +110,7 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Additional Info tab to valid
     setAdditionalInformationReportValidation: function() {
-		if(this.get('ministryResults') && this.get('otherSignificantItems') && this.get('recommendationsNeeds')){
+		if(!Ember.isEmpty(this.get('ministryResults')) && !Ember.isEmpty(this.get('otherSignificantItems')) && !Ember.isEmpty(this.get('recommendationsNeeds'))){
 			this.set('additionalInformationReportValidation', true);
 		} else {
 			this.set('additionalInformationReportValidation', false);
@@ -106,82 +119,82 @@ export default AbstractEditController.extend(GenderList, {
 
     //Function to set Summary tab validation
     setSummaryReportValidation: function() {
-        if (this.get('bedsidePresentations') && this.get('playroomPresentations') && this.get('jesusPresentations') && this.get('openAirPresentations') && this.get('mobilePresentations') && this.get('morePresentations') && this.get('peopleBedside') && this.get('peoplePlayroom') && this.get('peopleJesus') && this.get('peopleOpenAir') && this.get('peopleMobile') &&  this.get('peopleMore') && this.get('bibleBedside') && this.get('biblePlayroom') && this.get('bibleJesus') && this.get('bibleOpenAir') && this.get('bibleMobile') && this.get('bibleMore')) {
+        if (!Ember.isEmpty(this.get('bedsidePresentations')) && !Ember.isEmpty(this.get('playroomPresentations')) && !Ember.isEmpty(this.get('jesusPresentations')) && !Ember.isEmpty(this.get('openAirPresentations')) && !Ember.isEmpty(this.get('mobilePresentations')) && !Ember.isEmpty(this.get('morePresentations')) && !Ember.isEmpty(this.get('doorPresentations')) && !Ember.isEmpty(this.get('peopleBedside')) && !Ember.isEmpty(this.get('peoplePlayroom')) && !Ember.isEmpty(this.get('peopleJesus')) && !Ember.isEmpty(this.get('peopleOpenAir')) && !Ember.isEmpty(this.get('peopleMobile')) &&  !Ember.isEmpty(this.get('peopleMore')) && !Ember.isEmpty(this.get('peopleDoor')) &&!Ember.isEmpty(this.get('bibleBedside')) && !Ember.isEmpty(this.get('biblePlayroom')) && !Ember.isEmpty(this.get('bibleJesus')) && !Ember.isEmpty(this.get('bibleOpenAir')) && !Ember.isEmpty(this.get('bibleMobile')) && !Ember.isEmpty(this.get('bibleMore')) && !Ember.isEmpty(this.get('bibleDoor'))) {
             this.set('summaryReportValidation', true);
         } else {
             this.set('summaryReportValidation', false);
         }
 
-    }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'summaryReportValidation'),
+    }.observes('bedsidePresentations', 'playroomPresentations', 'jesusPresentations', 'openAirPresentations', 'mobilePresentations', 'morePresentations', 'doorPresentations', 'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'peopleDoor', 'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleeOpenAir', 'bibleMobile', 'bibleMore', 'bibleDoor', 'summaryReportValidation'),
 	
 	//Toggle Preview
-        togglePreview: function() {
-          this.toggleProperty('showPreview');
-        },
+	togglePreview: function() {
+	  this.toggleProperty('showPreview');
+	},
 
-       /* toggleArrowInPreview: function() {
-          if ($('.showDownArrow').is(":visible")) {
-              $('.showDownArrow').click(toggle());
-              $('.showUpArrow').click(toggle());
-          } else {
-              $('.showDownArrow').toggle();
-              $('.showUpArrow').toggle();
-          }
-        }, */
+   /* toggleArrowInPreview: function() {
+	  if ($('.showDownArrow').is(":visible")) {
+		  $('.showDownArrow').click(toggle());
+		  $('.showUpArrow').click(toggle());
+	  } else {
+		  $('.showDownArrow').toggle();
+		  $('.showUpArrow').toggle();
+	  }
+	}, */
 
-        toggleArrowInPreview: function() {
-          this.toggleProperty('showDetails');
-        },
-	
+	toggleArrowInPreview: function() {
+	  this.toggleProperty('showDetails');
+	},
+
 	//events page validation
-	noCommunityEventsThisMonth: function() {  
+	noCommunityEventsThisMonthFunction: function() {  
 		if(this.get('communityCheckbox')) {
-			return true;
+			this.set('noCommunityEventsThisMonth', true);
 		} else {
-			return false;
+			this.set('noCommunityEventsThisMonth', false);
 		}
-	}.property('communityCheckbox', 'commEvents'),
+	}.observes('communityCheckbox', 'commEvents'),
 	
-	noLeadershipEventsThisMonth: function() {
+	noLeadershipEventsThisMonthFunction: function() {
 		if(this.get('leadershipCheckbox')) {
-			return true;
+			this.set('noLeadershipEventsThisMonth', true);
 		} else {
-			return false;
+			this.set('noLeadershipEventsThisMonth', false);
 		}
-	}.property('leadershipCheckbox', 'leadEvents'),
+	}.observes('leadershipCheckbox', 'leadEvents'),
 	
 	//new believers page validation
-	noNewBelieversThisMonth: function() {
+	noNewBelieversThisMonthFunction: function() {
 		if(this.get('newBelieverCheckbox')) {
-			return true;
+			this.set('noNewBelieversThisMonth', true);
 		} else {
-			return false;
+			this.set('noNewBelieversThisMonth', false);
 		}
-	}.property('newBelieverCheckbox', 'believers'),
+	}.observes('newBelieverCheckbox', 'believers'),
 	
-	communityLengthNotZero: function() {
+	communityLengthNotZeroFunction: function() {
 		if(!Ember.isEmpty(this.get('commEvents'))) {
-			return true;	
+			this.set('communityLengthNotZero', true);	
 		} else {
-			return false;	
+			this.set('communityLengthNotZero', false);	
 		}
-	}.property('commEvents'),
+	}.observes('commEvents'),
 	
-	leadershipLengthNotZero: function() {
+	leadershipLengthNotZeroFunction: function() {
 		if(!Ember.isEmpty(this.get('leadEvents'))) {
-			return true;	
+			this.set('leadershipLengthNotZero', true);	
 		} else {
-			return false;	
+			this.set('leadershipLengthNotZero', false);	
 		}
-	}.property('leadEvents'),
+	}.observes('leadEvents'),
 	
-	believersLengthNotZero: function() {
+	believersLengthNotZeroFunction: function() {
 		if(!Ember.isEmpty(this.get('believers'))) {
-			return true;	
+			this.set('believersLengthNotZero', true);	
 		} else {
-			return false;	
+			this.set('believersLengthNotZero', false);	
 		}
-	}.property('believers'),
+	}.observes('believers'),
 	
     //summary page totals
     totalPresentationsFunction: function() {

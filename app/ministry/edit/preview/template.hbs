@@ -17,28 +17,28 @@
                  <hr>
                  <span class="row">
                     <span class="col-xs-3">
-                        {{#if entireStaffDevotions}}
+                        {{#if entireStaffDevotionsisNumber}}
                             <p><span class="filledInPreview">Entire Staff Devotions: </span>{{entireStaffDevotions}}</p>
                         {{else}}
                             <p {{action 'hospitalTab'}}>Entire Staff Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        {{#if entireStaffDevotions}}
+                        {{#if departmentDevotionsisNumber}}
                             <p><span class="filledInPreview">Department Devotions: </span>{{departmentDevotions}}</p>
                         {{else}}
                             <p {{action 'hospitalTab'}}>Department Devotions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        {{#if hospitalPrayerGroupIntercessions}}
+                        {{#if hospitalPrayerGroupIntercessionsisNumber}}
                             <p><span class="filledInPreview">Hospital Prayer Group Intercession: </span>{{hospitalPrayerGroupIntercessions}}</p>
                         {{else}}
                             <p {{action 'hospitalTab'}}>Hospital Prayer Group Intercession: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                         {{/if}}
                     </span>
                     <span class="col-xs-3">
-                        {{#if spiritualCenterStaffMeetings}}
+                        {{#if spiritualCenterStaffMeetingsisNumber}}
                             <p><span class="filledInPreview">Spiritual Center Staff Meeting: </span>{{spiritualCenterStaffMeetings}}</p>
                         {{else}}
                             <p {{action 'hospitalTab'}}>Spiritual Center Staff Meeting: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
@@ -244,28 +244,28 @@
                   <hr>
                   <span class="row">
                      <span class="col-xs-3">
-                         {{#if ceSession}}
+                         {{#if ceSessionisNumber}}
                             <p><span class="filledInPreview">Sessions: </span>{{ceSession}}</p>
                          {{else}}
                             <p {{action 'faithDeclarationsTab'}}>Sessions: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         {{#if ceParticipants}}
+                         {{#if ceParticipantsisNumber}}
                             <p><span class="filledInPreview">Participants: </span>{{ceParticipants}}</p>
                          {{else}}
                             <p {{action 'faithDeclarationsTab'}}>Participants: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         {{#if ceGraduates}}
+                         {{#if ceGraduatesisNumber}}
                             <p><span class="filledInPreview">Graduates: </span>{{ceGraduates}}</p>
                          {{else}}
                             <p {{action 'faithDeclarationsTab'}}>Graduates: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
                          {{/if}}
                      </span>
                      <span class="col-xs-3">
-                         {{#if ceContinuedEducation}}
+                         {{#if ceContinuedEducationisNumber}}
                             <p><span class="filledInPreview">Seeking Continuing Education: </span>{{ceContinuedEducation}}</p>
                          {{else}}
                             <p {{action 'faithDeclarationsTab'}}>Seeking Continuing Education: <span class="pleaseFillInPreview">(Please Fill In)</span></p>
@@ -414,43 +414,43 @@
                     <tbody>
                         <tr>
                             <th>Gospel Presentations</th>
-                            {{#if bedsidePresentations}}
+                            {{#if bedsidePresentationsisNumber}}
                                 <td>{{bedsidePresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if playroomPresentations}}
+                            {{#if playroomPresentationsisNumber}}
                                 <td>{{playroomPresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if jesusPresentations}}
+                            {{#if jesusPresentationsisNumber}}
                                 <td>{{jesusPresentations}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if openAirPresentations}}
+                            {{#if openAirPresentationsisNumber}}
                                 <td>{{openAirPresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if mobilePresentations}}
+                            {{#if mobilePresentationsisNumber}}
                                 <td>{{mobilePresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if doorPresentations}}
+                            {{#if doorPresentationsisNumber}}
                                 <td>{{doorPresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if morePresentations}}
+                            {{#if morePresentationsisNumber}}
                                 <td>{{morePresentations}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
@@ -459,43 +459,43 @@
                         </tr>
                         <tr>
                             <th>People Reached</th>
-                            {{#if peopleBedside}}
+                            {{#if peopleBedsideisNumber}}
                                 <td>{{peopleBedside}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peoplePlayroom}}
+                            {{#if peoplePlayroomisNumber}}
                                 <td>{{peoplePlayroom}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peopleJesus}}
+                            {{#if peopleJesusisNumber}}
                                 <td>{{peopleJesus}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peopleOpenAir}}
+                            {{#if peopleOpenAirisNumber}}
                                 <td>{{peopleOpenAir}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peopleMobile}}
+                            {{#if peopleMobileisNumber}}
                                 <td>{{peopleMobile}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peopleDoor}}
+                            {{#if peopleDoorisNumber}}
                                 <td>{{peopleDoor}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if peopleMore}}
+                            {{#if peopleMoreisNumber}}
                                 <td>{{peopleMore}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
@@ -504,43 +504,43 @@
                         </tr>
                         <tr>
                             <th>Bibles Given Out</th>
-                            {{#if bibleBedside}}
+                            {{#if bibleBedsideisNumber}}
                                 <td>{{bibleBedside}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if biblePlayroom}}
+                            {{#if biblePlayroomisNumber}}
                                 <td>{{biblePlayroom}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if bibleJesus}}
+                            {{#if bibleJesusisNumber}}
                                 <td>{{bibleJesus}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if bibleOpenAir}}
+                            {{#if bibleOpenAirisNumber}}
                                 <td>{{bibleOpenAir}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if bibleMobile}}
+                            {{#if bibleMobileisNumber}}
                                 <td>{{bibleMobile}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if bibleDoor}}
+                            {{#if bibleDoorisNumber}}
                                 <td>{{bibleDoor}}</td> 
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>
                             {{/if}}
                             
-                            {{#if bibleMore}}
+                            {{#if bibleMoreisNumber}}
                                 <td>{{bibleMore}}</td>
                             {{else}}
                                 <td {{action 'summaryTab'}} class="pleaseFillInPreview">(Please Fill In)</td>

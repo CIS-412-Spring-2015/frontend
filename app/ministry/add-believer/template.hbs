@@ -1,14 +1,6 @@
 {{#em-form model=this submit_button=false }}
     {{em-input label="Name" property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
     {{em-input property="age" label="Age" class="required"}}
-	{{em-select
-         prompt=" "
-         label="Family Relationship"
-         property="familyRelationship"
-         content=familyRelationshipList
-         optionValuePath="content"
-         optionLabelPath="content"
-    }}
     {{em-select
          prompt=" "
          label="Religious Affiliation"
@@ -40,6 +32,14 @@
 		 <label>Gender</label>
          {{ext-radio name=gender content=genderList value=gender showInline=true class="required"}}
     </div>
+	{{em-select
+         prompt=" "
+         label="Family Relationship"
+         property="familyRelationship"
+         content=familyRelationshipList
+         optionValuePath="content"
+         optionLabelPath="content"
+    }}
     {{em-input property="phone" label="Phone Number"}}
     {{em-input property="email" type="email" label="Email"}}
     {{em-text property="address" rows=3 label="Address"}}
