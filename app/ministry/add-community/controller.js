@@ -1,8 +1,8 @@
 import Ember from "ember";
 import IsUpdateDisabled from "hospitalrun/mixins/is-update-disabled";
 export default Ember.ObjectController.extend(IsUpdateDisabled, {
-    needs: 'ministry/edit',
-
+    needs: ['ministry/edit', 'ministry'],
+	
     actions: {
         cancel: function() {
             this.get('model').rollback();
@@ -21,6 +21,14 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, {
             }.bind(this));      
         }
     },
+	
+	communityEventType: Ember.computed.alias('controllers.ministry.communityEventType'),
+	
+	lookupListsToUpdate: [{
+        name: 'communityEventType',
+        property: 'type',
+        id: 'community_event_type'
+    }],
     
     editController: Ember.computed.alias('controllers.ministry/edit'),
     showUpdateButton: true,

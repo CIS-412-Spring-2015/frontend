@@ -1,6 +1,6 @@
 /* 
  * I'm not sure we really want to limit any of the fields to a certain number
- * of words, but for the time being I have a 3000 word "limit" should talk 
+ * of words, but for the time being I have a 3000 word "limit". We should talk 
  * about this at some point
  */
 

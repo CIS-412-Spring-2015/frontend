@@ -36,22 +36,28 @@ export default Ember.ArrayController.extend(BillingCategories, LabPricingTypes,
             patient: 'clinic'
         }
     }, {
+		name: 'Community Event Type',
+		value: 'community_event_type',
+		models: {
+			'add-community': 'type'	
+		}
+	}, {
         name: 'Countries',
         value: 'country_list',
         models: {
             patient: 'country'
         }
     }, {
-        name: 'Diagnoses',
-        value: 'diagnosis_list',
-        models: {
-            visit: 'primaryDiagnosis'
-        }
-    }, {
         name: 'CPT Codes',
         value: 'cpt_code_list',
         models: {
             procedure: 'cptCode'
+        }
+    }, {
+        name: 'Diagnoses',
+        value: 'diagnosis_list',
+        models: {
+            visit: 'primaryDiagnosis'
         }
     }, {
         name: 'Expense Accounts',
