@@ -25,7 +25,7 @@ export default AbstractEditController.extend(GenderList, {
 						  'peopleBedside', 'peoplePlayroom', 'peopleJesus', 'peopleOpenAir', 'peopleMobile', 'peopleMore', 'peopleDoor',
 						  'bibleBedside', 'biblePlayroom', 'bibleJesus', 'bibleOpenAir', 'bibleMobile', 'bibleMore', 'bibleDoor'],
 	_setup: function() {
-			var numberFieldsToCheck= this.get('numberFieldsToCheck');
+			var numberFieldsToCheck = this.get('numberFieldsToCheck');
 			numberFieldsToCheck.forEach(function(numberField) {            
 				return Ember.defineProperty(this, numberField+'isNumber', Ember.computed(function() {
 					var checkValue = this.get(numberField);

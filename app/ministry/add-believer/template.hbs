@@ -10,6 +10,11 @@
          optionLabelPath="content"
 		 class="required"
     }}
+	
+	{{#if religiousAffiliationIsOther}}
+		{{em-input property="religiousAffiliationWasOther" label="Religious Affiliation" class="required"}}
+	{{/if}}
+	
     {{em-select
          prompt=" "
          label="Present Activity"

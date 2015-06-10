@@ -314,6 +314,7 @@
                                         <th>Name</th> 
                                         <th>Age</th>
                                         <th>Gender</th>
+										<th>Religious Affiliation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -323,6 +324,7 @@
                                             <td>{{believerName}}</td> 
                                             <td>{{age}}</td>
                                             <td>{{gender}}</td> 
+											<td>{{religiousAffiliation}}{{#if religiousAffiliationWasOther}}-{{religiousAffiliationWasOther}}{{/if}}</td>
                                         </tr>
                                         {{/each}}
                                     {{else}}

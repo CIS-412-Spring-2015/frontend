@@ -17,6 +17,7 @@ export default AbstractModel.extend({
     phone: DS.attr('string'),
     presentActivity: DS.attr('string'),
     religiousAffiliation: DS.attr('string'),
+	religiousAffiliationWasOther: DS.attr('string'),
 	familyRelationship: DS.attr('string'),
 
 	validations: {

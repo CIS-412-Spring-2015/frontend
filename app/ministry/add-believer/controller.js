@@ -20,6 +20,14 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, {
             return "Edit this believer's information";
         }
     }.property('isNew'),
+	
+	religiousAffiliationIsOther: function() {
+		if(this.get('religiousAffiliation') === 'Other'){
+			return true;
+		} else {
+			return false;	
+		}
+	}.property('religiousAffiliation'),
 
     //Update or Add Button
     updateButtonText: function() {
