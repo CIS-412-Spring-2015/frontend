@@ -1,8 +1,20 @@
 {{#em-form model=this submit_button=false }}
-    {{em-input label="Name" property="eventName" placeholder="Enter the name of the event" class="required"}}
-	{{date-picker label="Date" property="date" minDate=startOfReportMonth maxDate=endOfReportMonth  placeholder="Click to enter the date of the event" class="required"}}
-	{{select-or-typeahead property="type" label="Type" list=communityEventType selection=type placeholder="Enter the type of the event" class="required"}}
-    {{em-input label="Location" property="location" placeholder="Enter the location of the event" class="required"}}
-    {{em-input label="Number of Churches/Pastors" property="numberPastorChurch" placeholder="Enter the number of pastors or churches involved in the event" class="required"}}
-    {{em-input label="Number of Participants" property="numberParticipants" placeholder="Enter the number of participants in the event" class="required"}}
+	<label>Event Name<span class="redWordSubmission">*</span></label>
+    {{em-input property="eventName" placeholder="Enter the name of the event" class="required"}}
+
+	<label>Event Date<span class="redWordSubmission">*</span></label>
+	{{date-picker property="date" minDate=startOfReportMonth maxDate=endOfReportMonth  placeholder="Click to enter the date of the event" class="required"}}
+
+	<label>Event Type<span class="redWordSubmission">*</span></label>
+	<p class="ministryInstructions">i.e. Outreach/Mobile Clinic</p>
+	{{select-or-typeahead property="type" list=communityEventType selection=type placeholder="Enter the type of the event" class="required"}}
+
+	<label>Event Location<span class="redWordSubmission">*</span></label>
+    {{em-input property="location" placeholder="Enter the location of the event" class="required"}}
+
+	<label>Number of Churches/Pastors<span class="redWordSubmission">*</span></label>
+    {{em-input property="numberPastorChurch" placeholder="Enter the number of pastors or churches involved in the event" class="required"}}
+
+	<label>Number of Participants<span class="redWordSubmission">*</span></label>
+    {{em-input property="numberParticipants" placeholder="Enter the number of participants in the event" class="required"}}
 {{/em-form}}

@@ -1,52 +1,40 @@
 {{#em-form model=this submit_button=false }}
-    {{em-input label="Name" property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
-    {{em-input property="age" label="Age" class="required"}}
-    {{em-select
-         prompt=" "
-         label="Religious Affiliation"
-         property="religiousAffiliation"
-         content=religiousAffiliationList
-         optionValuePath="content"
-         optionLabelPath="content"
-		 class="required"
-    }}
+	<label>Name<span class="redWordSubmission">*</span></label>
+    {{em-input property="believerName" placeholder="Enter 'Unknown' if no name exists" class="required"}}
+	
+	<label>Age<span class="redWordSubmission">*</span></label>
+    {{em-input property="age" placeholder="Enter the age of the believer" class="required"}}
+
+	<label>Religious Affiliation<span class="redWordSubmission">*</span></label>
+    {{em-select prompt=" " property="religiousAffiliation" content=religiousAffiliationList optionValuePath="content" optionLabelPath="content" class="required"}}
 	
 	{{#if religiousAffiliationIsOther}}
-		{{em-input property="religiousAffiliationWasOther" label="Religious Affiliation" class="required"}}
+		{{em-input property="religiousAffiliationWasOther" label="Religious Affiliation" placeholder="Enter the religious affiliation if other had been chosen" class="required"}}
 	{{/if}}
 	
-    {{em-select
-         prompt=" "
-         label="Present Activity"
-         property="presentActivity"
-         content=presentActivityList
-         optionValuePath="content"
-         optionLabelPath="content"
-		 class="required"
-    }}
-    {{em-select
-         prompt=" "
-         label="Type of Declaration"
-         property="declarationType"
-         content=declarationTypeList
-         optionValuePath="content"
-         optionLabelPath="content"
-         class="required"
-    }}
+	<label>Presentation Activity<span class="redWordSubmission">*</span></label>
+    {{em-select prompt=" " property="presentActivity" content=presentActivityList optionValuePath="content" optionLabelPath="content" class="required"}}
+
+	<label>Type of Declaration<span class="redWordSubmission">*</span></label>
+    {{em-select prompt=" " property="declarationType" content=declarationTypeList optionValuePath="content" optionLabelPath="content" class="required"}}
+
     <div class="form-group">
-		 <label>Gender</label>
+		 <label>Gender<span class="redWordSubmission">*</span></label>
          {{ext-radio name=gender content=genderList value=gender showInline=true class="required"}}
     </div>
-	{{em-select
-         prompt=" "
-         label="Family Relationship"
-         property="familyRelationship"
-         content=familyRelationshipList
-         optionValuePath="content"
-         optionLabelPath="content"
-    }}
-    {{em-input property="phone" label="Phone Number"}}
-    {{em-input property="email" type="email" label="Email"}}
-    {{em-text property="address" rows=3 label="Address"}}
-    {{select-or-typeahead property="country" label="Country" list=countryList selection=country }}
+
+	<label>Family Relationship</label>
+	{{em-select prompt=" " property="familyRelationship" content=familyRelationshipList optionValuePath="content" optionLabelPath="content"}}
+
+	<label>Phone Number</label>
+    {{em-input property="phone" placeholder="Enter the phone number of the believer"}}
+
+	<label>Email</label>
+    {{em-input property="email" type="email" placeholder="Enter the email address of the believer"}}
+
+	<label>Address</label>
+    {{em-text property="address" rows=3 placeholder="Enter the address of the believer"}}
+
+	<label>Country</label>
+    {{select-or-typeahead property="country" list=countryList selection=country placeholder="Enter the country of the believer"}}
 {{/em-form}}
