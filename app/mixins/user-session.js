@@ -433,6 +433,8 @@ export default Ember.Mixin.create({
             'Finance',
             'Finance Manager',            
             'Hospital Administrator',
+            'Imaging Technician',
+            'Lab Technician',
             'Medical Records Officer',
             'Nurse', 
             'Nurse Manager', 
@@ -440,6 +442,13 @@ export default Ember.Mixin.create({
             'Social Worker', 
             'System Administrator'
         ],
+
+        patient_reports: [
+            'Hospital Administrator',
+            'Patient Administration', 
+            'System Administrator'
+        ],
+        
         pricing: [
             'Data Entry',
             'Finance',
