@@ -74,7 +74,7 @@
 							<th class="descriptor">Name</th>
 							<th class="descriptor">Date</th>
 							<th class="descriptor">Location</th>
-							<th class="descriptorDescription">Description</th>
+							<th class="descriptor">Description</th>
 							<th class="descriptor">Actions</th>
 						</tr>
 
@@ -90,32 +90,42 @@
 									<button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
 								</td>
 							</tr>
-							{{#each participants}}
+							<!--{#each participants}}
 									<tr>
-										<td>{{participantName}}</td>
-										<td>{{organization}}</td>
-										<td>{{gender}}</td>
+										<td>{participantName}}</td>
+										<td>{organization}}</td>
+										<td>{gender}}</td>
 										<td>
-											<button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
-											<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+											<button class="btn btn-default neutral" {action "editParticipant" this bubbles=false }}>Edit</button>
+											<button type="button" class="btn btn-default warning" {action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
 										</td>
 									</tr>
-							{{/each}}
+							{/each}}-->
 						{{/each}}
 					</table>
+					{{#if leadParticipants}}
 					<table class="table">
+							<tr class="table-header">
+								<th class="descriptor">Event Name</th>
+								<th class="descriptor">Participant Name</th>
+								<th class="descriptor">Organization</th>
+								<th class="descriptor">Gender</th>
+								<th class="descriptor">Actions</th>
+							</tr>
 							{{#each leadParticipants}}
 								<tr>
+									<td>{{eventName}}</td>
 									<td>{{participantName}}</td>
 									<td>{{organization}}</td>
 									<td>{{gender}}</td>
 									<td>
 										<button class="btn btn-default neutral" {{action "editParticipant" this bubbles=false }}>Edit</button>
-										<button type="button" class="btn btn-default warning" {{action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+										<button type="button" class="btn btn-default warning" {{action "showDeleteLeadershipParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
 									</td>
 								</tr>
 							{{/each}}
 					</table>
+					{{/if}}
 				{{/unless}}
 			</div>
 		</div>

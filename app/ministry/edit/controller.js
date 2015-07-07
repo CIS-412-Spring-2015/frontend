@@ -15,6 +15,10 @@ export default AbstractEditController.extend(GenderList, {
 		return this.currentUserCan('delete_lead_event');
     }.property(),
 	
+	canDeleteLeadershipParticipant: function() {        
+		return this.currentUserCan('delete_leadership_participant');
+    }.property(),
+	
 	canDeleteNewBeliever: function() {        
 		return this.currentUserCan('delete_new_believer');
     }.property(),
@@ -731,6 +735,10 @@ export default AbstractEditController.extend(GenderList, {
            	this.send('openModal', 'ministry.delete-lead-event', leadEvents);
     	},
 		
+		showDeleteLeadershipParticipant: function(participant) {
+           	this.send('openModal', 'ministry.delete-leadership-participant', participant);
+    	},
+		
 		showDeleteNewBeliever: function(believers) {
            	this.send('openModal', 'ministry.delete-new-believer', believers);
     	},
@@ -745,6 +753,13 @@ export default AbstractEditController.extend(GenderList, {
 		leadEventDeleted: function(deletedLeadEvent) {
             var leadEvent = this.get('leadEvents');
             leadEvent.removeObject(deletedLeadEvent);
+            this.send('closeModal');
+			this.send('update', true);
+        },
+		
+		leadershipParticipantDeleted: function(deletedLeadershipParticipant) {
+            var leadershipParticipant = this.get('leadership-participant');
+            leadershipParticipant.removeObject(deletedLeadershipParticipant);
             this.send('closeModal');
 			this.send('update', true);
         },

@@ -1,9 +1,12 @@
 {{#em-form model=this submit_button=false }}
-    {{em-input label="Name" property="participantName" placeholder="Enter the name of the event participant" class="required"}}
-    {{em-input label="Organization" property="organization" placeholder="Enter name of participant's organization" class="required"}}
-    <!--{em-input label="Gender" property="gender" placeholder="Enter gender of participant either Male, Female, Other" class="required"}}-->
+	<label>Name<span class="redWordSubmission">*</span></label>
+    {{em-input property="participantName" placeholder="Enter the name of the event participant" class="required"}}
+	
+	<label>Organization<span class="redWordSubmission">*</span></label>
+    {{em-input property="organization" placeholder="Enter name of participant's organization" class="required"}}
+
 	<div class="form-group">
-		 <label>Gender</label>
+		 <label>Gender<span class="redWordSubmission">*</span></label>
          {{ext-radio name=gender content=genderList value=gender showInline=true class="required"}}
     </div>
 {{/em-form}}

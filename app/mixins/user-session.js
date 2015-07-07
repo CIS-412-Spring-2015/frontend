@@ -260,6 +260,10 @@ export default Ember.Mixin.create({
 			'Spiritual Ministry Director',
             'System Administrator'
 		],
+		delete_leadership_participant: [
+			'Spiritual Ministry Director',
+            'System Administrator'
+		],
         delete_medication: [
             'Doctor', 
             'Hospital Administrator',
