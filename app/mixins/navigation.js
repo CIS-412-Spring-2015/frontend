@@ -247,6 +247,33 @@ export default Ember.Mixin.create({
                     capability: 'add_user'                    
                 }
             ]
+        },
+		{
+            title: 'Ministry',
+            iconClass: 'octicon-heart',
+            route: 'ministry.report',
+            capability: 'ministry',
+            subnav: [
+                {
+                    title: 'New Monthly Report',
+                    iconClass: 'octicon-plus',
+                    route: 'ministry.edit',
+					subroute: 'new',
+                    capability: 'add_ministry_report'                 
+                },
+                {
+                    title: 'In Progress Reports',
+                    iconClass: 'octicon-chevron-right',
+                    route: 'ministry.report',
+                    capability: 'ministry'                    
+                },
+                {
+                    title: 'Reports Archive',
+                    iconClass: 'octicon-chevron-right',
+                    route: 'ministry.index',
+                    capability: 'ministry'                    
+                }
+            ]
         }
     ]
 });
