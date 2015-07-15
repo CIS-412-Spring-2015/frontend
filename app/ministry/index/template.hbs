@@ -24,10 +24,6 @@
     </table>
 {{else}}
     <div class="alert alert-info">
-        <em>No 'Archived' Report Exists.</em>
-        {{#if canAddReport}}
-            <em>Create a new monthly report?</em>
-            <button class="btn btn-primary" {{action 'newItem'}}>New Report</button>
-        {{/if}}
+        <p>No 'Archived' Report Exists. {{#if canAddReport}}Create a new monthly report? <a href="#" {{action 'newItem'}}>New Report</a>{{/if}}</p>
     </div>
 {{/if}}
