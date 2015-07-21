@@ -9,6 +9,7 @@ export default AbstractEditController.extend(InventorySelection, PatientId, Pati
     needs: ['application','medication','pouchdb'],    
     
     applicationConfigs: Ember.computed.alias('controllers.application.model'),
+    expenseAccountList: Ember.computed.alias('controllers.medication.expenseAccountList'),
     
     canFulfill: function() {
         return this.currentUserCan('fulfill_medication');
@@ -81,6 +82,7 @@ export default AbstractEditController.extend(InventorySelection, PatientId, Pati
     },
     
     _addNewPatient: function() {        
+        this.displayAlert('Please Wait','A new patient needs to be created...Please wait..');
         this._getNewPatientId().then(function(friendlyId) {
             var patientTypeAhead = this.get('patientTypeAhead'),
                 nameParts = patientTypeAhead.split(' '),
@@ -162,6 +164,7 @@ export default AbstractEditController.extend(InventorySelection, PatientId, Pati
         if (isFulfilling) {
             var inventoryLocations = this.get('inventoryLocations'),
                 inventoryRequest = this.get('store').createRecord('inv-request', {
+                    expenseAccount: this.get('expenseAccount'),
                     dateCompleted: new Date(),
                     inventoryItem: this.get('inventoryItem'),
                     inventoryLocations: inventoryLocations,
