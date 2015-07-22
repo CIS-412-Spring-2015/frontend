@@ -166,6 +166,14 @@ export default AbstractEditController.extend(GenderList, {
 		}
 	}.observes('leadershipCheckbox', 'leadEvents'),
 	
+	leadParticipantLengthZeroFunction: function() {
+		if(!Ember.isEmpty(this.get('leadParticipant'))) {
+			this.set('noLeadParticipantsThisMonth', true);	
+		} else {
+			this.set('noLeadParticipantsThisMonth', false);	
+		}
+	}.observes('leadParticipant'),
+	
 	//new believers page validation
 	noNewBelieversThisMonthFunction: function() {
 		if(this.get('newBelieverCheckbox')) {

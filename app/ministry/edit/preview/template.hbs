@@ -194,6 +194,7 @@
                                         <th>Date</th>
                                         <th>Location</th>
                                         <th>Description</th>
+										<!--<th>Participants</th>-->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -204,12 +205,13 @@
                                             <td>{{displayLeadershipDate}}</td>
                                             <td>{{location}}</td>
                                             <td>{{description}}</td> 
+											<!--<td>{{leadParticipants.length}}</td>-->
                                         </tr>
                                         {{/each}}
                                     {{else}}
 										{{#if noLeadershipEventsThisMonth}}
 											<tr>
-												<td >(No Leadership Events This Month)</td> 
+												<td>(No Leadership Events This Month)</td> 
 											</tr>
 										{{else}}
 											<tr>
@@ -219,6 +221,38 @@
                                     {{/if}}
                                 </tbody>
                             </table>
+							<table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Lead Event Name</th> 
+                                        <th>Participant Name</th>
+                                        <th>Organization</th>
+                                        <th>Gender</th>
+                                    </tr>
+                                </thead>
+								<tbody>
+                                    {{#if leadParticipant}}
+										{{#each leadParticipant}}
+											<tr>
+												<td>{{leadEvent.eventName}}</td>
+												<td>{{participantName}}</td>
+												<td>{{organization}}</td>
+												<td>{{gender}}</td>
+											</tr>
+										{{/each}}
+                                    {{else}}
+										{{#if noLeadParticipantsThisMonth}}
+											<tr>
+												<td>(No Leadership Participants This Month)</td> 
+											</tr>
+										{{else}}
+											<tr>
+												<td {{action 'eventsTab'}} class="pleaseFillInPreview">(No Leadership Participants)</td> 
+											</tr>
+										{{/if}}
+                                    {{/if}}
+                                </tbody>
+							</table>
                         </div>
                     </div>
                  </div>

@@ -75,6 +75,7 @@
 							<th class="descriptor">Date</th>
 							<th class="descriptor">Location</th>
 							<th class="descriptor">Description</th>
+							<!--<th class="descriptor">Participants</th>-->
 							<th class="descriptor">Actions</th>
 						</tr>
 
@@ -84,6 +85,7 @@
 								<td>{{displayLeadershipDate}}</td>
 								<td>{{location}}</td>
 								<td>{{description}}</td>
+								<!--<td>{{leadParticipant.length}}</td>-->
 								<td>
 									<button type="button" class="btn btn-default neutral addParticipantSpace" {{action 'editLeadership' this bubbles=false }}>Edit</button>
 									{{#unless leadParticipant}}
