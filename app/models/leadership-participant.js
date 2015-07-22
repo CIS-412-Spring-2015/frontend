@@ -3,7 +3,7 @@ import AbstractModel from 'hospitalrun/models/abstract';
 export default AbstractModel.extend({
     
     //part of ministy models information
-    leadershipEvent: DS.belongsTo('leadership-event'),
+    leadEvent: DS.belongsTo('leadership-event', 'ministry'),
     
     //Main information
     organization: DS.attr('string'),
@@ -20,6 +20,6 @@ export default AbstractModel.extend({
         organization: {
             presence: true
         },
-    },
+    }
     
 });

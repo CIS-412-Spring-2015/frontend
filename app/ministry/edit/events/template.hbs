@@ -85,25 +85,16 @@
 								<td>{{location}}</td>
 								<td>{{description}}</td>
 								<td>
-									<button type="button" class="btn btn-default neutral" {{action 'editLeadership' this bubbles=false }}>Edit</button>
-									<button type="button" class="btn btn-default warning" {{action 'showDeleteLeadEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-									<button class="btn btn-primary" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
+									<button type="button" class="btn btn-default neutral addParticipantSpace" {{action 'editLeadership' this bubbles=false }}>Edit</button>
+									{{#unless leadParticipant}}
+									<button type="button" class="btn btn-default warning addParticipantSpace" {{action 'showDeleteLeadEvent' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
+									{{/unless}}
+									<button class="btn btn-primary addParticipantSpace" {{action "createParticipant" this bubbles=false }}><span class="octicon octicon-plus"></span>Add Participant</button>
 								</td>
 							</tr>
-							<!--{#each participants}}
-									<tr>
-										<td>{participantName}}</td>
-										<td>{organization}}</td>
-										<td>{gender}}</td>
-										<td>
-											<button class="btn btn-default neutral" {action "editParticipant" this bubbles=false }}>Edit</button>
-											<button type="button" class="btn btn-default warning" {action "showDeleteParticipant" this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
-										</td>
-									</tr>
-							{/each}}-->
 						{{/each}}
 					</table>
-					{{#if leadParticipants}}
+					{{#if leadParticipant}}
 					<table class="table">
 							<tr class="table-header">
 								<th class="descriptor">Event Name</th>
@@ -112,9 +103,9 @@
 								<th class="descriptor">Gender</th>
 								<th class="descriptor">Actions</th>
 							</tr>
-							{{#each leadParticipants}}
+							{{#each leadParticipant}}
 								<tr>
-									<td>{{eventName}}</td>
+									<td>{{leadEvent.eventName}}</td>
 									<td>{{participantName}}</td>
 									<td>{{organization}}</td>
 									<td>{{gender}}</td>

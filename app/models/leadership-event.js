@@ -3,7 +3,7 @@ import StartEndOfReportMonth from 'hospitalrun/mixins/start-end-of-report-month'
 
 export default AbstractModel.extend(StartEndOfReportMonth, {
     
-    //part of ministy models information
+    //part of ministry models information
     ministry: DS.belongsTo('ministry'),
     
     //Main information
@@ -13,7 +13,7 @@ export default AbstractModel.extend(StartEndOfReportMonth, {
     location: DS.attr('string'),
     
     //for adding multiple participants per leadership event
-    participants: DS.hasMany('leadership-participant'),//what will need to work
+    leadParticipant: DS.hasMany('leadership-participant'),//what will need to work
     
     validations: {
         eventName: {

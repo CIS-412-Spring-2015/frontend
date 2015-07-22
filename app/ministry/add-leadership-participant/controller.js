@@ -2,7 +2,7 @@ import Ember from "ember";
 import IsUpdateDisabled from "hospitalrun/mixins/is-update-disabled";
 import GenderList from 'hospitalrun/mixins/gender-list';
 export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, {
-    needs: 'ministry/edit',
+    needs: ['ministry/edit', 'ministry'],
 
     actions: {
         cancel: function() {

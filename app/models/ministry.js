@@ -41,7 +41,8 @@ export default AbstractModel.extend(ReportDate, {
     // Events Section
     leadEvents: DS.hasMany('leadership-event'),
     commEvents: DS.hasMany('community-event'),
-    leadParticipants: DS.hasMany('leadership-participant'),
+    leadParticipant: DS.hasMany('leadership-participant'),
+	
 	communityCheckbox: DS.attr('boolean'),
 	leadershipCheckbox: DS.attr('boolean'),
 	communityLengthNotZero: DS.attr('boolean'),

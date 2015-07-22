@@ -702,7 +702,7 @@ export default AbstractEditController.extend(GenderList, {
         addLeadershipParticipant: function(newParticipant) {
           //var leadEvent = this.find(newParticipant.get('leadershipEvent'));
           //var participants = leadEvent.getWithDefault('participants', []);
-          var participants = this.getWithDefault('leadParticipants', []);
+          var participants = this.getWithDefault('leadParticipant', []);
           participants.addObject(newParticipant);
           this.send('update', true);
           this.send('closeModal');
@@ -710,12 +710,12 @@ export default AbstractEditController.extend(GenderList, {
 
         //Making Leadership Event Participant
         createParticipant: function(leadershipToConnect) {
-            var participant = this.store.createRecord('leadership-participant');
-            var participants = leadershipToConnect.getWithDefault('participants',[]);
-            participants.addObject(participant);
+            var leadParticipant = this.store.createRecord('leadership-participant');
+            var leadParticipants = leadershipToConnect.getWithDefault('leadParticipant',[]);
+            leadParticipants.addObject(leadParticipant);
             this.send('update', true);
             //participants.set('leadershipEvent',leadershipToConnect);
-            this.send('openModal', 'ministry.add-leadership-participant', participant);
+            this.send('openModal', 'ministry.add-leadership-participant', leadParticipant);
         },
 
         //Edit a Participant of Leadership Event
@@ -735,8 +735,8 @@ export default AbstractEditController.extend(GenderList, {
            	this.send('openModal', 'ministry.delete-lead-event', leadEvents);
     	},
 		
-		showDeleteLeadershipParticipant: function(participant) {
-           	this.send('openModal', 'ministry.delete-leadership-participant', participant);
+		showDeleteLeadershipParticipant: function(leadParticipant) {
+           	this.send('openModal', 'ministry.delete-leadership-participant', leadParticipant);
     	},
 		
 		showDeleteNewBeliever: function(believers) {
@@ -750,15 +750,16 @@ export default AbstractEditController.extend(GenderList, {
 			this.send('update', true);
         },
 		
-		leadEventDeleted: function(deletedLeadEvent) {
+		leadEventDeleted: function(deletedLeadEvent, deletedLeadershipParticipant) {
             var leadEvent = this.get('leadEvents');
-            leadEvent.removeObject(deletedLeadEvent);
+			//if leadership participants exist delete them too!
+			leadEvent.removeObject(deletedLeadEvent);
             this.send('closeModal');
 			this.send('update', true);
         },
 		
 		leadershipParticipantDeleted: function(deletedLeadershipParticipant) {
-            var leadershipParticipant = this.get('leadership-participant');
+            var leadershipParticipant = this.get('leadParticipant');
             leadershipParticipant.removeObject(deletedLeadershipParticipant);
             this.send('closeModal');
 			this.send('update', true);
