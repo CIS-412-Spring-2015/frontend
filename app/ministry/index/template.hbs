@@ -2,7 +2,7 @@
     <table class="table">
         <tr class="table-header">
             <th>Report Title</th>
-            <th>Submitted</th>
+            <th>Last Edited</th>
             <th>Actions</th>
         </tr>
         {{#with this as parentController}}
@@ -12,7 +12,9 @@
                     <td>{{date-format lastModified format="l hh:mm A"}}</td>     
                     {{#if parentController.showActions}}
                     <td>
-                        <button class="btn btn-default neutral"  {{action 'viewItem' this bubbles=false }}>View</button>
+                        {{#if parentController.canAddReport}}
+                            <button class="btn btn-default neutral" {{action 'editItem' this  bubbles=false }}>Edit</button>
+                        {{/if}}
                         {{#if parentController.canDeleteReport}}
                             <button class="btn btn-default warning" {{action 'deleteItem' this  bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>
                         {{/if}}
@@ -24,6 +26,6 @@
     </table>
 {{else}}
     <div class="alert alert-info">
-        <p>No 'Archived' Report Exists. {{#if canAddReport}}Create a new monthly report? <a href="#" {{action 'newItem'}}>New Report</a>{{/if}}</p>
+        <p>No 'In Progress' Report Exists. {{#if canAddReport}}Create a new monthly report? <a href="#" {{action 'newItem'}}>New Report</a>{{/if}}</p>
     </div>
 {{/if}}

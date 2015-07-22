@@ -258,7 +258,7 @@ export default Ember.Mixin.create({
 		{
             title: 'Ministry',
             iconClass: 'octicon-heart',
-            route: 'ministry.report',
+            route: 'ministry.index',
             capability: 'ministry',
             subnav: [
                 {
@@ -271,13 +271,13 @@ export default Ember.Mixin.create({
                 {
                     title: 'In Progress Reports',
                     iconClass: 'octicon-chevron-right',
-                    route: 'ministry.report',
+                    route: 'ministry.index',
                     capability: 'ministry'                    
                 },
                 {
                     title: 'Reports Archive',
                     iconClass: 'octicon-chevron-right',
-                    route: 'ministry.index',
+                    route: 'ministry.report',
                     capability: 'ministry'                    
                 }
             ]

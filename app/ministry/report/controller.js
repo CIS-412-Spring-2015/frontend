@@ -2,7 +2,7 @@ import AbstractPagedController from 'hospitalrun/controllers/abstract-paged-cont
 import PouchAdapterUtils from "hospitalrun/mixins/pouch-adapter-utils";
 import UserSession from "hospitalrun/mixins/user-session";
 export default AbstractPagedController.extend(PouchAdapterUtils, UserSession,{
-    addPermission: 'add_ministry_report',
+    addPermission: 'add_ministry_report', 
     
     canAddReport: function() {        
         return this.currentUserCan('add_ministry_report');
@@ -14,7 +14,7 @@ export default AbstractPagedController.extend(PouchAdapterUtils, UserSession,{
 
     arrangedContent: function() {		
         var arrangedContent = this._super();		
-        var filteredContent = arrangedContent.filterBy('reportArchived', false);
+        var filteredContent = arrangedContent.filterBy('reportArchived', true);
         this.set('hasRecords', (filteredContent.length > 0));
         return filteredContent;		
     }.property('content.@each')

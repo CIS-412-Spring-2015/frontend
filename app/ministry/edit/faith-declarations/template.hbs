@@ -47,7 +47,7 @@
 				<li class="listSet" {{action "showBeliever" this bubbles=false }}>
 				  <a href="#" role="tab" data-toggle="pill">
 					  {{believerName}} 
-					  <!--<button type="button" class="btn btn-default warning" {action 'showDeleteNewBeliever' this bubbles=false }}><span class="octicon octicon-x"></span>Delete</button>-->
+					  <button type="button" class="btn btn-default warning deleteBelieverStyle" {{action 'showDeleteNewBeliever' this bubbles=false }}><span class="glyphicon glyphicon-remove"></span></button>
 				  </a>
 				</li>
 			  {{/each}}

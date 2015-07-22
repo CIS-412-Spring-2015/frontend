@@ -565,8 +565,6 @@ export default AbstractEditController.extend(GenderList, {
     }.property('believers', 'searchTerm', 'content.@each'),
 
     actions: {
-        // These are here until I can find a more efficient way to do it.
-        // They change the active classes to show and hide the respective tabs
         additionalInformationTab: function () {
           this.set('submitPage', false);
           $('#additionalInformationTab').tab('show');
@@ -636,15 +634,6 @@ export default AbstractEditController.extend(GenderList, {
           this.send('closeModal');
           this.displayAlert('Believer Updated', 'The believer has been updated.');
         },
-
-//         deleteBeliever: function(model) {
-//             var believer = model.get('believerToDelete');
-//             var believers = this.get('believers');
-//             believers.removeObject(believer);
-//             this.set('believers', believers);
-//             this.send('update', true);
-//             this.send('closeModal');
-//         },
 
         //Save Report
         updateReport: function() {
@@ -750,7 +739,7 @@ export default AbstractEditController.extend(GenderList, {
 			this.send('update', true);
         },
 		
-		leadEventDeleted: function(deletedLeadEvent, deletedLeadershipParticipant) {
+		leadEventDeleted: function(deletedLeadEvent) {
             var leadEvent = this.get('leadEvents');
 			//if leadership participants exist delete them too!
 			leadEvent.removeObject(deletedLeadEvent);

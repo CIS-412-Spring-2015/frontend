@@ -10,9 +10,9 @@ export default AbstractModuleRoute.extend( {
     sectionTitle: 'Ministry',
     subActions: [{
         text: 'In Progress',
-        linkTo: 'ministry.report'
+        linkTo: 'ministry.index'
     }, {
         text: 'Report Archive',
-        linkTo: 'ministry.index'
+        linkTo: 'ministry.report'
     }]
 });
