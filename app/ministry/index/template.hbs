@@ -9,7 +9,7 @@
             {{#each}}
                 <tr>
                     <td id="inprogressreportTitle">{{displayReportDate}}</td>
-                    <td>{{date-format lastModified format="l hh:mm A"}}</td>     
+                    <td>{{date-format lastModified format="l hh:mm:ss A"}}</td>     
                     {{#if parentController.showActions}}
                     <td>
                         {{#if parentController.canAddReport}}
