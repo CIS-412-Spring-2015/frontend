@@ -42,6 +42,5 @@ export default Ember.ObjectController.extend(IsUpdateDisabled, GenderList, {
         } else {
             return 'Update';
         }
-    }.property('isNew'),
-    
+    }.property('isNew'), 
 });
